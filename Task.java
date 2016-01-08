@@ -59,21 +59,21 @@ public class Task {
 	 */
 	public void setPriority(short p) {
 		switch (p) {
-			case 0:
+			case PRIO_UNDEF:
 				priority = PRIO_UNDEF;
 				break;
-			case 1:
+			case PRIO_HIGH:
 				priority = PRIO_HIGH;
 				break;
-			case 2:
+			case PRIO_MED:
 				priority = PRIO_MED;
 				break;
-			case 3:
+			case PRIO_LOW:
 				priority = PRIO_LOW;
 				break;
 			default:
 				priority = PRIO_UNDEF;
-				System.out.println("Priority of (" + p + ") is undefinded.");
+				System.out.println("Given value is undefinded for priority.");
 				break;
 		}
 	}
@@ -92,8 +92,8 @@ public class Task {
 	 * @param m Month
 	 * @param d Date
 	 */
-	public void setDueDate(int y, int m, int d) {
-		dueDate = new Date(y, m, d);
+	public void setDueDate(int year, int month, int date) {
+		dueDate = new Date(year, month, date);
 	}
 	
 	/**
@@ -110,27 +110,27 @@ public class Task {
 	 */
 	public void setCategory(short c) {
 		switch (c) {
-			case 0:
+			case CAT_UNDEF:
 				category = CAT_UNDEF;
 				break;
-			case 1:
+			case CAT_OTHER:
 				 category = CAT_OTHER;
 				 break;
-			case 2:
+			case CAT_SCHOOL:
 				 category = CAT_SCHOOL;
 				 break;
-			case 3:
+			case CAT_PERSONAL:
 				 category = CAT_PERSONAL;
 				 break;
-			case 4:
+			case CAT_CHORE:
 				 category = CAT_CHORE;
 				 break;
-			case 5:
+			case CAT_WORK:
 				category = CAT_WORK;
 				break;
 			default:
 				category = CAT_UNDEF;
-				System.out.println("Category (" + c + ") is undefined.");
+				System.out.println("Give value is undefined for category.");
 				break;
 		}
 	}
@@ -189,5 +189,9 @@ public class Task {
 	 */
 	public Boolean getCompleted() {
 		return completed;
+	}
+	
+	public Boolean equals(Task task) {
+		return priority == task.getPriority() && dueDate.equals(task.getDueDate()) && category == task.getCategory() && description.equals(task.getDescription()) && location.equals(task.getLocation()) && completed == task.getCompleted();
 	}
 }
