@@ -12,56 +12,6 @@ import java.util.*;
  */
 public class Task {
 	
-	public static void Task() {
-	}
-	
-	public static void setPriority(short userPriority) {
-		priority = userPriority;
-	}
-	
-	public static short getPriority() {
-		return priority;
-	}
-	
-	public static void setDueDate(Date userDate) {
-		dueDate = userDate;
-	}
-	
-	public static Date getDate() {
-		return dueDate;
-	}
-	
-	public static void setCategory(short userCategory) {
-		category = userCategory;
-	}
-	
-	public static short getCategory() {
-		return category;
-	}
-	
-	public static void setDescription(String userDescription) {
-		description = userDescription;
-	}
-	
-	public static String getDescription() {
-		return description;
-	}
-	
-	public static void setLocation(String userLocation) {
-		location = userLocation;
-	}
-	
-	public static String getLocation() {
-		return location;
-	}
-	
-	public static void setCompleted(boolean userCompleted) {
-		completed = userCompleted;
-	}
-	
-	public static boolean getCompleted() {
-		return completed;
-	}
 	/*
 	 * Data fields:
 	 * - Priority
@@ -75,8 +25,60 @@ public class Task {
 	private Date dueDate;
 	private short category;
 	private String description;
-	private String locaiton;
+	private String location;
 	private boolean completed;
+	
+	public void Task() {
+	}
+	
+	public void setPriority(short userPriority) {
+		priority = userPriority;
+	}
+	
+	public short getPriority() {
+		return priority;
+	}
+	
+	public void setDueDate(Date userDate) {
+		dueDate = userDate;
+	}
+	
+	public Date getDueDate() {
+		return dueDate;
+	}
+	
+	public void setCategory(short userCategory) {
+		category = userCategory;
+	}
+	
+	public short getCategory() {
+		return category;
+	}
+	
+	public void setDescription(String userDescription) {
+		description = userDescription;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	public void setLocation(String userLocation) {
+		location = userLocation;
+	}
+	
+	public String getLocation() {
+		return location;
+	}
+	
+	public void setCompleted(boolean userCompleted) {
+		completed = userCompleted;
+	}
+	
+	public boolean getCompleted() {
+		return completed;
+	}
+
 	
 	/*
 	 * Priorities
