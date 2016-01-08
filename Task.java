@@ -58,23 +58,11 @@ public class Task {
 	 * @param p The priority
 	 */
 	public void setPriority(short p) {
-		switch (p) {
-			case PRIO_UNDEF:
-				priority = PRIO_UNDEF;
-				break;
-			case PRIO_HIGH:
-				priority = PRIO_HIGH;
-				break;
-			case PRIO_MED:
-				priority = PRIO_MED;
-				break;
-			case PRIO_LOW:
-				priority = PRIO_LOW;
-				break;
-			default:
-				priority = PRIO_UNDEF;
-				System.out.println("Given value is undefinded for priority.");
-				break;
+		if(priority <= 3 && priority >= 0) {
+			priority = p;
+		} else {
+			priority = PRIO_UNDEF;
+			System.out.println("Given value is undefinded for priority.");
 		}
 	}
 	
@@ -109,30 +97,13 @@ public class Task {
 	 * @param c The category
 	 */
 	public void setCategory(short c) {
-		switch (c) {
-			case CAT_UNDEF:
-				category = CAT_UNDEF;
-				break;
-			case CAT_OTHER:
-				 category = CAT_OTHER;
-				 break;
-			case CAT_SCHOOL:
-				 category = CAT_SCHOOL;
-				 break;
-			case CAT_PERSONAL:
-				 category = CAT_PERSONAL;
-				 break;
-			case CAT_CHORE:
-				 category = CAT_CHORE;
-				 break;
-			case CAT_WORK:
-				category = CAT_WORK;
-				break;
-			default:
-				category = CAT_UNDEF;
-				System.out.println("Give value is undefined for category.");
-				break;
+		if(category <= 5 && category >= 0) {
+			category = c;
+		} else {
+			category = CAT_UNDEF;
+			System.out.println("Give value is undefined for category.");
 		}
+
 	}
 	
 	/**
