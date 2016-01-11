@@ -29,10 +29,33 @@ public class Task_Manager {
 		
 		System.out.println("Welcom to task manager");
 		
-		Task.setPriority();
-		System.out.print(Task.getPrority());
+		/*
+		 * Earase from here to there when done testing task
+		 */
+		
+		Task foo = new Task(); 
 		
 		
+		foo.setDescription("Priority Task");
+		
+		try{
+			// what we do might throw an exception
+		foo.setPriority((short) 5);
+		
+		//System.out.print(Task.getPrority());
+		}catch(Exception e){
+			//what to do if we catch the aception
+			System.out.println("Error setting priority: " + e.getMessage());
+			
+			//System.exit(-1);
+			
+		}
+		
+		//time passes.....
+		
+		System.out.println("Task info: ");
+		System.out.println("\tTask " + foo.getDescrition());
+		System.out.println("\t\tPriority: " + foo.getPrority() );
 		System.exit(0);
 	}
 }

@@ -19,10 +19,10 @@ public class Task {
 	 * -completion(checkbox{y/n})
 	 */
 	 private static short priority;
-	 private Date dueDate;//odject
-	 private short catagory;
-	 private String descrition;
-	 private String location;
+	 private static Date dueDate;//odject
+	 private static short catagory;
+	 private static String descrition;
+	 private static String location;
 	 private boolean completed;
 	 
 	 /*
@@ -55,7 +55,7 @@ public class Task {
 	 * 
 	 */
 	 
-	Task(){
+	public Task(){
 		
 		
 	 }
@@ -63,13 +63,22 @@ public class Task {
 	 /**
 	  * Set priority level
 	  */
-	 public static void setPriority(){
+	 public static void setPriority(short i) throws Exception{
 		 
-		 System.out.println("What is the priority "
+		
+		 
+		/* System.out.println("What is the priority "
 					+ "	level of this task (0-3)");
 		  priority = k.nextShort();
-		 	
-		 getPrority();
+		 */	
+		 
+		 if(i< 0 || i>3){
+			 throw new IllegalArgumentException("Invalid priority");
+		 }
+			
+			 priority = (short) i;
+			  
+		 
 	 }
 	 
 	 
@@ -77,74 +86,90 @@ public class Task {
 	  * Get priority
 	  */
 	 public static short getPrority(){
-		 if(priority ==0){
-				
-			 return PRIO_UNDEF; 
-		 } else if(priority == 1){
-			 return PRIO_LOW;
-		 } else if(priority == 2){
-			 return PRIO_MED;
-		 }else if(priority == 3){
-			 return PRIO_HIGH;
-		 }else{
-			 return PRIO_UNDEF;
-		 }
+		
+		 
+		 return priority;
+	 }
+	 
+	 public String getPriorityName(){
+		 
+		 String pName = null;
+			 switch(priority){
+			 
+			 case 0:
+				 pName = "undefined";
+				 
+				 break;
+			 }
+			return pName;
 	 }
 	 
 	 /**
 	  * Set due date 
 	  */
-	 public static void setDate(){
+	 public static void setDate(Date d){
 		 
+		dueDate = d;
 	 }
 	 
 	 /**
 	  * get due date
+	 * @return 
 	  */
-	 public static void getDate(){
+	 public static Date getDate(){
 		 
+		 return dueDate;
 	 }
 	 
 	 /**
 	  * set catagory
 	  */
-	 public static void setCatagory(){
+	 public static void setCatagory(short cat){
 		 
+		 catagory = cat;
 	 }
 	 
 	 /**
 	  * get catagory
+	 * @return 
 	  */
-	 public static void getCatagory(){
+	 public static short getCatagory(){
 		 
+		 return catagory;
 	 }
 	 
 	 /**
 	  * set descrition
 	  */
-	 public static void setDescription(){
+	 public static void setDescription(String d){
 		 
+		 descrition = d;
 	 }
 	 
 	 /**
 	  * get description
+	 * @return 
 	  */
-	 public static void getDescrition(){
+	 public static String getDescrition(){
 		 
+		 return descrition;
 	 }
 	 
 	 /**
 	  * set location
 	  */
-	 public static void setLocation(){
+	 public static void setLocation(String l){
 		 
+		 location = l;
 	 }
 	 
 	 /**
 	  * get location
+	 * @return 
 	  */
-	 public static void getLocation(){
+	 public static String getLocation(){
 		 
+		 return location;
 	 }
 	 
 	 /**
