@@ -29,7 +29,8 @@ public class Task_Manager {
 		
 		System.out.println("Welcom to task manager");
 		
-		
+		Task.setPriority();
+		System.out.print(Task.getPrority());
 		
 		
 		System.exit(0);
