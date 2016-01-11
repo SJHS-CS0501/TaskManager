@@ -16,6 +16,8 @@ public class Task {
 	 *  -Location
 	 *  -Completed
 	 */
+	static String input;
+	
 	private short priority;
 	private Date dueDate;
 	private short category;
@@ -23,7 +25,60 @@ public class Task {
 	private String location;
 	private boolean completed;
 	
-	/*
+	
+	 public static void setPriority(  ){
+		 prio = input;
+	 }
+	
+	 public static void setDate(  ){
+	 }
+	 
+	 public static void setCategory(  ){
+	 
+	 }
+ 
+	 public static void setDescription( ){
+	 
+	 }
+ 
+	 public static void setLocation(  ){
+	 
+	 }
+ 
+	 public static void setCompleted( ){
+	 
+	 }
+	 
+	 
+	 
+	 public static short getPriority(  ){
+		 return prio;
+	 }
+	 public static Date getDate(  ){
+		 return date;			
+	 }
+	 public static short getCategory(){
+		 return cat;
+	 }
+	 public static String getDescription(  ){
+		 return desc;
+	 }
+	 public static String getLocation( ){
+		 return loc;
+	 }
+	 public static boolean getCompleted( ){
+		 return comp;
+	 }
+	 
+	 public static short prio;
+	 public static Date date;
+	 public static short cat;
+	 public static String desc;
+	 public static String loc;
+	 public static boolean comp;
+	 
+	 
+	 /*
 	 * priorities
 	 */
 	public static final short PRIO_HIGH = 1;
