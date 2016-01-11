@@ -55,15 +55,20 @@ public class Task {
 	
 	/**
 	 * Sets task priority
-	 * @param p The priority
+	 * @param p short priority value
 	 */
 	public void setPriority(short p) {
-		if(priority <= 3 && priority >= 0) {
-			priority = p;
-		} else {
-			priority = PRIO_UNDEF;
-			System.out.println("Given value is undefinded for priority.");
+		if( p < 0 || p > 3){
+			throw new IllegalArgumentException("Invalid priority");
 		}
+		priority = p; 
+		
+//		if(priority <= 3 && priority >= 0) {
+//			priority = p;
+//		} else {
+//			priority = PRIO_UNDEF;
+//			System.out.println("Given value is undefined for priority.");
+//		}
 	}
 	
 	/**
@@ -80,8 +85,8 @@ public class Task {
 	 * @param m Month
 	 * @param d Date
 	 */
-	public void setDueDate(int year, int month, int date) {
-		dueDate = new Date(year, month, date);
+	public void setDueDate(int y, int m, int d) {
+		dueDate = new Date(y, m, d);
 	}
 	
 	/**
@@ -94,15 +99,20 @@ public class Task {
 	
 	/**
 	 * Sets task category
-	 * @param c The category
+	 * @param c short category value
 	 */
 	public void setCategory(short c) {
-		if(category <= 5 && category >= 0) {
-			category = c;
-		} else {
-			category = CAT_UNDEF;
-			System.out.println("Give value is undefined for category.");
+		if( c < 0 || c > 5) {
+			throw new IllegalArgumentException("Invalid category");
 		}
+		category = c;
+		
+//		if(category <= 5 && category >= 0) {
+//			category = c;
+//		} else {
+//			category = CAT_UNDEF;
+//			System.out.println("Give value is undefined for category.");
+//		}
 
 	}
 	
