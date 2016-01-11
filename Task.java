@@ -27,7 +27,6 @@ public class Task {
 	
 	
 	 public static void setPriority(  ){
-		 prio = input;
 	 }
 	
 	 public static void setDate(  ){
@@ -77,7 +76,6 @@ public class Task {
 	 public static String loc;
 	 public static boolean comp;
 	 
-	 
 	 /*
 	 * priorities
 	 */
@@ -86,7 +84,17 @@ public class Task {
 	public static final short PRIO_LOW = 3;
 	public static final short PRIO_UNDEF = 0;
 	
-	
+	private short Prio(  ){
+		 if{
+			 return PRIO_HIGH;
+		 } else if{
+		 return PRIO_HIGH;
+		 } else if {
+		 return PRIO_HIGH;
+		 } else if{
+			 return PRIO_HIGH;
+		 }
+	}
 	/*
 	 * categories
 	 */
