@@ -105,27 +105,38 @@ public class Task {
 	}
 	
 	public String getPriorityName(){
-		String pName;
+		String pName = null;
 		switch( priority ){
 			case 0:
 				pName = "Undefined";
 				break;
 			case 1:
-				pName = "High"
+				pName = "High";
+				break;
+			case 2:
+				pName = "Medium";
+				break;
+			case 3:
+				pName = "Low";
+				break;
+		}
+		
+		return pName;
 			
 		}
-	}
+	
 	/**
 	 * Sets the value of dueDate by using dDateStrng and .parse 
 	 * @param dueDate
 	 * @param dDateStrng
 	 */
-	public  void getDate( Date dueDate, String dDateStrng ){
+	public  void getDate( Date d ){
 	/*	System.out.println( " Please a due date for your task " );
 		dDateStrng = keyboard.nextLine();
 		
 		DateFormat.parse( dDateStrng );
 		*/
+		dueDate = d;
 	}
 	
 	/**
@@ -165,6 +176,9 @@ public class Task {
 			}
 		}
 		*/
+		if( c < 0|| c > 5){
+			throw new IllegalArgumentException( " Invalid category " );
+		}
 		category = c;
 	}
 
@@ -172,16 +186,18 @@ public class Task {
 	 * returns the value of category to main
 	 * @return
 	 */
-	public short setCatagory(){
+	public short getCatagory(){
 		return category;
 	}
 	/**
 	 * Sets the value of description, no character checking is needed
 	 * @param description
 	 */
-	public void setDescription( String description ){
-		System.out.println( " Please enter a basic description of your task. " );
+	public void setDescription( String d ){
+		/*System.out.println( " Please enter a basic description of your task. " );
 		description = keyboard.nextLine();
+		*/
+		description = d;
 	}
 	/**
 	 * Returns the value description to main
@@ -194,9 +210,11 @@ public class Task {
 	 * Sets the value of location, no character checking was used, although it can be added
 	 * @param location
 	 */
-	public void setLocation( String location ){
-		System.out.println( " Please enter the location for your task " );
+	public void setLocation( String l ){
+		/*System.out.println( " Please enter the location for your task " );
 		location =  keyboard.nextLine();
+		*/
+		location = l;
 	}
 	/**
 	 * returns location to main
