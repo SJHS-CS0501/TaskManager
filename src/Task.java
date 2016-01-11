@@ -5,62 +5,148 @@ import java.util.Date;
  * @author SJHSStudent
  */
 public class Task {
+	
 	/*
 	 * data fields:
-	 * - priority
-	 * - due date
-	 * - category
-	 * - description
-	 * - location
-	 * - completion
+	 * - priority yes
+	 * - due date no
+	 * - category yes
+	 * - description no
+	 * - location no
+	 * - completion no
 	 */
 	
+	public Task() {
+		
+	}
+	
+	/**
+	 * set priority of task
+	 * @param userPriority
+	 */
+	 
 	public void setPriority( short userPriority ) {
+		if( userPriority < 0 || userPriority > 3 ) {
+			throw new IllegalArgumentException( "Invalid priority" );
+		}
 		userPriority = priority;
 	}
 	
-	public short getPriority() {
-		return priority;
-	}
+	/**
+	 * set due date of task
+	 * @param userDueDate
+	 */
 	
 	public void setDueDate( Date userDueDate ) {
 		userDueDate = dueDate;
 	}
 	
-	public Date getDueDate() {
-		return dueDate;
-	}
+	/**
+	 * set category of task
+	 * @param userCategory
+	 */
 	
 	public void setCategory( short userCategory ) {
 		userCategory = category;
 	}
 	
-	public short getCategory() {
-		return category;
-	}
+	/**
+	 * set description of task
+	 * @param userDescription
+	 */
 	
 	public void setDescription( String userDescription ) {
 		userDescription = description;
 	}
 	
-	public String getDescription() {
-		return description;
-	}
+	/**
+	 * set location of task
+	 * @param userLocation
+	 */
 	
 	public void setLocation( String userLocation ) {
 		userLocation = location;
 	}
 	
-	public String getLocation() {
-		return location;
-	}
+	/**
+	 * set if task is completed
+	 * @param userCompleted
+	 */
 	
 	public void setCompleted( boolean userCompleted ) {
 		userCompleted = completed;
 	}
 	
+	/**
+	 * get priority of task
+	 * @return
+	 */
+	
+	public short getPriority() {
+		return priority;
+	}
+	
+	/**
+	 * get due date of task
+	 * @return
+	 */
+	
+	public Date getDueDate() {
+		return dueDate;
+	}
+	
+	/**
+	 * get category of task
+	 * @return
+	 */
+	
+	public short getCategory() {
+		return category;
+	}
+	
+	/**
+	 * get description of task
+	 * @return
+	 */
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	/**
+	 * get location of task
+	 * @return
+	 */
+	
+	public String getLocation() {
+		return location;
+	}
+	
+	/**
+	 * get if task is completed
+	 * @return
+	 */
+	
 	public boolean getCompleted() {
 		return completed;
+	}
+	
+	public String getPriorityName() {
+		String pName;
+		switch( priority ) {
+		case 0:
+			pName = "Undefined";
+			break;
+		case 1:
+			pName = "High";
+			break;
+		case 2:
+			pName = "Medium";
+			break;
+		case 3:
+			pName = "Low";
+			break;
+		}
 	}
 	
 	private short priority;
@@ -74,20 +160,20 @@ public class Task {
 	 * priorities
 	 */
 	
-	private final short getPrio_High() {
-		return ;
+	public static short getPrioH() {
+		return PRIO_HIGH;
 	}
 	
-	private final short getPrio_Med() {
-		return ;
+	public static short getPrioM() {
+		return PRIO_MED;
 	}
 	
-	private final short getPrio_Low() {
-		return ;
+	public static short getPrioL() {
+		return PRIO_LOW;
 	}
 	
-	private final short getPrio_Undef() {
-		return ;
+	public static short getPrioU() {
+		return PRIO_UNDEF;
 	}
 	
 	public static final short PRIO_HIGH = 1;
@@ -99,28 +185,28 @@ public class Task {
 	 * categories
 	 */
 	
-	private final short getCat_Undef() {
-		return ;
+	public static short getCatU() {
+		return CAT_UNDEF;
 	}
 	
-	private final short getCat_Other() {
-		return ;
+	public static short getCatO() {
+		return CAT_OTHER;
 	}
 	
-	private final short getCat_School() {
-		return ;
+	public static short getCatS() {
+		return CAT_SCHOOL;
 	}
 	
-	private final short getCat_Personal() {
-		return ;
+	public static short getCatP() {
+		return CAT_PERSONAL;
 	}
 	
-	private final short getCat_Chore() {
-		return ;
+	public static short getCatC() {
+		return CAT_CHORE;
 	}
 	
-	private final short getCat_Work() {
-		return ;
+	public static short getCatW() {
+		return CAT_WORK;
 	}
 	
 	public static final short CAT_UNDEF = 0;
