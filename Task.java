@@ -18,63 +18,86 @@ public class Task {
 	 */
 	static String input;
 	
-	private short priority;
-	private Date dueDate;
-	private short category;
-	private String description;
-	private String location;
-	private boolean completed;
 	
-	
-	 public static void setPriority(  ){
+	/**
+	 * Set the description of the task.
+	 * @param prio
+	 */
+	 public void setPriority( short p ){
+		 if( p < 0 || p > 3){
+			 throw new IllegalArgumentException( "Invalid priority" );
+		 }
+		 priority = p;
 	 }
 	
-	 public static void setDate(  ){
+	 public String getPriorityName() {
+		 String pName;
+		 switch( priority ){
+		 case 0:
+			 pName = "Undefined";
+			 break;
+		 case 1:
+			 
+			 break;
+		 case 2:
+			 
+			 break;
+		 }
 	 }
 	 
-	 public static void setCategory(  ){
 	 
+	 
+	 
+	 public void setDate( Date date ){
+		 dueDate = date;
+	 }
+	 
+	 public void setCategory( short cat ){
+		 category = cat;
 	 }
  
-	 public static void setDescription( ){
-	 
+	 public void setDescription( String d ){
+		 description = d;
 	 }
  
-	 public static void setLocation(  ){
-	 
+	 public void setLocation( String l ){
+		 location = l;
 	 }
  
-	 public static void setCompleted( ){
-	 
+	 public void setCompleted( boolean c){
+		 completed = c;
 	 }
 	 
 	 
 	 
-	 public static short getPriority(  ){
-		 return prio;
+	 public short getPriority(){
+		 return priority;
 	 }
-	 public static Date getDate(  ){
-		 return date;			
+	 public Date getDate(){
+		 return dueDate;			
 	 }
-	 public static short getCategory(){
-		 return cat;
+	 public short getCategory(){
+		 return category;
 	 }
-	 public static String getDescription(  ){
-		 return desc;
+	 public String getDescription(  ){
+		 return description;
 	 }
-	 public static String getLocation( ){
-		 return loc;
+	 public String getLocation( ){
+		 return location;
 	 }
-	 public static boolean getCompleted( ){
-		 return comp;
+	 public boolean getCompleted( ){
+		 return completed;
 	 }
 	 
-	 public static short prio;
-	 public static Date date;
-	 public static short cat;
-	 public static String desc;
-	 public static String loc;
-	 public static boolean comp;
+	 // priority, category
+	 private short priority;
+	 private Date dueDate;
+	 private short category;
+	 private String description;
+	 private String location;
+	 private boolean completed;
+	 
+	 
 	 
 	 /*
 	 * priorities
@@ -84,20 +107,29 @@ public class Task {
 	public static final short PRIO_LOW = 3;
 	public static final short PRIO_UNDEF = 0;
 	
-	private short Prio(  ){
-		 if{
-			 return PRIO_HIGH;
-		 } else if{
-		 return PRIO_HIGH;
-		 } else if {
-		 return PRIO_HIGH;
-		 } else if{
-			 return PRIO_HIGH;
-		 }
+	public static short PrioH(  ){
+		return PRIO_HIGH;
+	}
+	public static short PrioM(  ){	
+		return PRIO_MED;
+	}
+	public static short PrioL(  ){
+		return PRIO_LOW;
+	}
+	public static short PrioU(  ){
+		return PRIO_UNDEF;
 	}
 	/*
 	 * categories
 	 */
+	
+	public static short PrioH(  ){
+		return PRIO_HIGH;
+	}
+	
+	
+	
+	
 	public static final short CAT_UNDEF = 0;
 	public static final short CAT_OTHER = 1;
 	public static final short CAT_SCHOOL = 2;
