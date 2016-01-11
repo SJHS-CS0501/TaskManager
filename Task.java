@@ -31,7 +31,7 @@ public class Task {
 	private char trFa; // variable for true or false, to be used with boolean completed
 	
 	/*
-	 * priorities
+	 * priorities - bounds check
 	 * use if statement to compare
 	 */
 	public static final short PRIO_HIGH = 1; // variable for high priority
@@ -41,7 +41,7 @@ public class Task {
 	
 	
 	/*
-	 * categories
+	 * categories -  bounds check
 	 */
 	
 	public static final short CAT_UNDEF = 0;// default category
@@ -71,8 +71,9 @@ public class Task {
 	 *Method to set the value of priority 
 	 * @param priority
 	 */
-	public void setPriority( short priority ){
-		System.out.print( " Please enter a catagory for your task between one and five" 
+	
+	public void setPriority( short p ){
+	/*	System.out.print( " Please enter a catagory for your task between one and five" 
 		+ "1 = high, 2 = medium, and 3 = low priority " );
 		priority = keyboard.nextShort();
 		if( priority == 1 ){
@@ -89,6 +90,11 @@ public class Task {
 				
 			}
 		}
+		*/
+		if( p < 0|| p > 3){
+			throw new IllegalArgumentException( " Invalid priority " );
+		}
+		priority = p;
 	}
 	/**
 	 * returns priority to main
@@ -97,16 +103,29 @@ public class Task {
 	public short getPriority(){
 		return priority;
 	}
+	
+	public String getPriorityName(){
+		String pName;
+		switch( priority ){
+			case 0:
+				pName = "Undefined";
+				break;
+			case 1:
+				pName = "High"
+			
+		}
+	}
 	/**
 	 * Sets the value of dueDate by using dDateStrng and .parse 
 	 * @param dueDate
 	 * @param dDateStrng
 	 */
 	public  void getDate( Date dueDate, String dDateStrng ){
-		System.out.println( " Please a due date for your task " );
+	/*	System.out.println( " Please a due date for your task " );
 		dDateStrng = keyboard.nextLine();
 		
 		DateFormat.parse( dDateStrng );
+		*/
 	}
 	
 	/**
@@ -120,8 +139,8 @@ public class Task {
 	 * sets the value of category
 	 * @param category
 	 */
-	public void setCatagory( short category ){
-		System.out.print( " Please enter a priority for your task between one and three" 
+	public void setCatagory( short c ){
+		/* System.out.print( " Please enter a priority for your task between one and three" 
 		+ "1 = other, 2 = school, 3 = personal, four = chores, and five = work. " );
 		category = keyboard.nextShort();
 		if( category == 5 ){
@@ -145,6 +164,8 @@ public class Task {
 				}
 			}
 		}
+		*/
+		category = c;
 	}
 
 	/**
