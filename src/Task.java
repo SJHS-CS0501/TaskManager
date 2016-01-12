@@ -47,6 +47,9 @@ public class Task {
 	 */
 	
 	public void setCategory( short userCategory ) {
+		if( userCategory < 0 || userCategory > 5) {
+			throw new IllegalArgumentException( "Invalid category" );
+		}
 		userCategory = category;
 	}
 	
@@ -131,8 +134,13 @@ public class Task {
 		return completed;
 	}
 	
+	/**
+	 * tell user what priority a task is set at
+	 * @return pName
+	 */
+	
 	public String getPriorityName() {
-		String pName;
+		String pName = null;
 		switch( priority ) {
 		case 0:
 			pName = "Undefined";
@@ -147,6 +155,36 @@ public class Task {
 			pName = "Low";
 			break;
 		}
+		return pName;
+	}
+	
+	/**
+	 * tell user what category a task is assigned to
+	 * @return cName
+	 */
+	
+	public String getCategoryName() {
+		String cName = null;
+		switch( priority ) {
+		case 0:
+			cName = "Undefined";
+			break;
+		case 1:
+			cName = "Other";
+			break;
+		case 2:
+			cName = "School";
+			break;
+		case 3:
+			cName = "Personal";
+			break;
+		case 4:
+			cName = "Chore";
+			break;
+		case 5:
+			cName = "Work";
+		}
+		return cName;
 	}
 	
 	private short priority;
