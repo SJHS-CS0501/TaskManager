@@ -102,9 +102,15 @@ public class Task {
 		return dueDate;
 	}
 	
-	public void setCategory(short userCategory) {
+	public void setCategory(short userCategory) thows IllegalArgumentException {
+		if (userCategory <j 0 || userCategory > 5) {
+			throw new IllegalArgumentException( "Invalid Category" );
+		}
 		category = userCategory;
 	}
+	
+	public short getPriority() {
+		return priority;
 	
 	public short getCategory() {
 		return category;
