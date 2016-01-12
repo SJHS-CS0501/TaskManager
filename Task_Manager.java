@@ -40,17 +40,30 @@ public class Task_Manager {
 		
 		try{
 			// what we do might throw an exception
-		foo.setPriority((short) 5);
+		foo.setPriority((short) 3);
 		
 		//System.out.print(Task.getPrority());
 		}catch(Exception e){
-			//what to do if we catch the aception
+			//what to do if we catch the exception
 			System.out.println("Error setting priority: " + e.getMessage());
 			
 			//System.exit(-1);
 			
 		}
 		
+		try{
+			//if exception thrown
+		
+		foo.setCatagory((short)3);
+		
+		}catch(Exception e){
+			//what to do if we catch the exception
+			System.out.println("Error setting priority: " + e.getMessage());
+			
+			//System.exit(-1);
+		}
+		
+		System.out.println(foo.getCatagory());
 		//time passes.....
 		
 		System.out.println("Task info: ");

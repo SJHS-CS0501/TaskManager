@@ -136,9 +136,12 @@ public class Task {
 	 /**
 	  * set catagory
 	  */
-	 public static void setCatagory(short cat){
+	 public static void setCatagory(short i){
 		 
-		 catagory = cat;
+		 if(i < 0 || i > 5){
+			 throw new IllegalArgumentException("Invalid priority");
+	 }
+		 catagory = i;
 	 }
 	 
 	 /**
