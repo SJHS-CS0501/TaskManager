@@ -77,7 +77,7 @@ public class Task {
 	}
 	
 	public String getPriorityName() {
-		String pName;
+		String pName = "FAIL";
 		switch( priority ) {
 			case 0:
 				pName = "Undefined";
@@ -90,6 +90,10 @@ public class Task {
 				break;
 			case 3:
 				pName = "Low";
+				break;
+			default:
+				pName = "ILLEGAL VALUE";
+				break;
 		}
 		return pName;
 	}
@@ -102,22 +106,19 @@ public class Task {
 		return dueDate;
 	}
 	
-	public void setCategory(short userCategory) thows IllegalArgumentException {
-		if (userCategory <j 0 || userCategory > 5) {
+	public void setCategory(short userCategory) throws IllegalArgumentException {
+		if (userCategory < 0 || userCategory > 5) {
 			throw new IllegalArgumentException( "Invalid Category" );
 		}
 		category = userCategory;
 	}
-	
-	public short getPriority() {
-		return priority;
 	
 	public short getCategory() {
 		return category;
 	}
 	
 	public String getCategoryName() {
-		String catName;
+		String catName = "FAIL";
 		switch( category ) {
 			case 0:
 				catName = "Undefined";
@@ -135,7 +136,10 @@ public class Task {
 				catName = "Chore";
 				break;
 			case 5:
-				catName = "WOrk";
+				catName = "Work";
+				break;
+			default:
+				catName = "ILLEGAL VALUE";
 				break;
 		}
 		return catName;
