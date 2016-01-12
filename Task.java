@@ -37,14 +37,40 @@ public class Task {
 			 pName = "Undefined";
 			 break;
 		 case 1:
-			 
+			 pName = "High";
 			 break;
 		 case 2:
-			 
+			 pName = "Medium";
+			 break;
+		 case 3:
+			 pName = "Low";
 			 break;
 		 }
 	 }
 	 
+	 public String getCategoryName() {
+		 String cName;
+		 switch( category ){
+		 case 0:
+			 cName = "Undefined";
+			 break;
+		 case 1:
+			 cName = "Other";
+			 break;
+		 case 2:
+			 cName = "School";
+			 break;
+		 case 3:
+			 cName = "Personal";
+			 break;
+		 case 4:
+			 cName = "Chore";
+			 break;
+		 case 5:
+			 cName = "Work";
+			 break;
+		 }
+	 }
 	 
 	 
 	 
@@ -53,6 +79,9 @@ public class Task {
 	 }
 	 
 	 public void setCategory( short cat ){
+		 if( cat < 0 || cat > 5){
+			 throw new IllegalArgumentException( "Invalid category" );
+		 }
 		 category = cat;
 	 }
  
@@ -123,10 +152,6 @@ public class Task {
 	 * categories
 	 */
 	
-	public static short PrioH(  ){
-		return PRIO_HIGH;
-	}
-	
 	
 	
 	
@@ -137,6 +162,29 @@ public class Task {
 	public static final short CAT_CHORE = 4;
 	public static final short CAT_WORK = 5;
 	
+	public static short CatU(  ){
+		return CAT_UNDEF;
+	}
+	
+	public static short CatO(  ){
+		return CAT_OTHER;
+	}
+	
+	public static short CatS(  ){
+		return CAT_SCHOOL;
+	}
+	
+	public static short CatP(  ){
+		return CAT_PERSONAL;
+	}
+	
+	public static short CatC(  ){
+		return CAT_CHORE;
+	}
+	
+	public static short CatW(  ){
+		return CAT_WORK;
+	}
 	
 	
 	/* 

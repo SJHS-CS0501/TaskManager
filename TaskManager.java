@@ -50,14 +50,6 @@ public class TaskManager {
 		System.out.println( "\tTask: " + foo.getDescription() );
 		System.out.println( "\t\tPriority: " + foo.getPriority() );
 		
-		
-		
-		
-		
-		
-		
-		
-		
 		/*
 		 * THERE
 		 */
