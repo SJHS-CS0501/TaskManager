@@ -116,6 +116,31 @@ public class Task {
 		return category;
 	}
 	
+	public String getCategoryName() {
+		String catName;
+		switch( category ) {
+			case 0:
+				catName = "Undefined";
+				break;
+			case 1:
+				catName = "Other";
+				break;
+			case 2:
+				catName = "School";
+				break;
+			case 3:
+				catName = "Personal";
+				break;
+			case 4:
+				catName = "Chore";
+				break;
+			case 5:
+				catName = "WOrk";
+				break;
+		}
+		return catName;
+	}
+	
 	public void setDescription(String userDescription) {
 		description = userDescription;
 	}
