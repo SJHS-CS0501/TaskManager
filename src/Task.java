@@ -140,7 +140,7 @@ public class Task {
 	 */
 	
 	public String getPriorityName() {
-		String pName = null;
+		String pName;
 		switch( priority ) {
 		case 0:
 			pName = "Undefined";
@@ -154,6 +154,8 @@ public class Task {
 		case 3:
 			pName = "Low";
 			break;
+		default:
+			pName = "Illegal Value";
 		}
 		return pName;
 	}
@@ -164,8 +166,8 @@ public class Task {
 	 */
 	
 	public String getCategoryName() {
-		String cName = null;
-		switch( priority ) {
+		String cName;
+		switch( category ) {
 		case 0:
 			cName = "Undefined";
 			break;
@@ -183,6 +185,8 @@ public class Task {
 			break;
 		case 5:
 			cName = "Work";
+		default:
+			cName = "Illegal Value";
 		}
 		return cName;
 	}
