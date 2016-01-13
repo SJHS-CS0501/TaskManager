@@ -93,12 +93,20 @@ public class Task {
 	 
 	 public String getPriorityName(){
 		 
-		 String pName = null;
+		 String pName = "Fail";
 			 switch(priority){
 			 
 			 case 0:
 				 pName = "undefined";
-				 
+				  break;
+			 case 1:
+				 pName = "High";
+				 break;
+			 case 2:
+				 pName = "Medium";
+				 break;
+			 case 3:
+				 pName = "Low";
 				 break;
 			 }
 			return pName;
