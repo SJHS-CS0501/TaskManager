@@ -31,7 +31,7 @@ public class Task {
 	 }
 	
 	 public String getPriorityName() {
-		 String pName;
+		 String pName = "NAME";
 		 switch( priority ){
 		 case 0:
 			 pName = "Undefined";
@@ -45,11 +45,15 @@ public class Task {
 		 case 3:
 			 pName = "Low";
 			 break;
+			default:
+				pName = "ILLEGAL VALUE";
+				break;
 		 }
+		 return pName;
 	 }
 	 
 	 public String getCategoryName() {
-		 String cName;
+		 String cName = "NAME";
 		 switch( category ){
 		 case 0:
 			 cName = "Undefined";
@@ -69,7 +73,10 @@ public class Task {
 		 case 5:
 			 cName = "Work";
 			 break;
+			 default:
+				 cName = "ILLEGAL VALUE";
 		 }
+		 return cName;
 	 }
 	 
 	 
