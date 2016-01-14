@@ -182,6 +182,8 @@ public class Task {
 		}
 		category = c;
 	}
+	
+	
 	public String getCategoryName(){
 		String cName = null;
 		switch( priority ){
@@ -209,7 +211,7 @@ public class Task {
 	 * returns the value of category to main
 	 * @return
 	 */
-	public short setCatagory(){
+	public short getCatagory(){
 		return category;
 	}
 	/**

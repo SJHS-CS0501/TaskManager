@@ -26,16 +26,16 @@ public class TaskList {
 	 * remove tasks
 	 * get task by index
 	 * get task by some other value?
-	 * search task by name - return object of type task
-	 * search tasks by priority
-	 * search tasks by due date
-	 * search tasks by category
-	 * search tasks by completion
+	 * search task by name - return object of type task check
+	 * search tasks by priority - check
+	 * search tasks by due date - check
+	 * search tasks by category - check
+	 * search tasks by completion - check
 	 * sort by priority
 	 * sort by completion
 	 * sort by category
-	 * write list to disk
-	 * read list from disk
+	 * write list to disk - check
+	 * read list from disk - check
 	 * 
 	 */
 	/**
@@ -109,16 +109,60 @@ public class TaskList {
 	}
 	
 	public Task serachByDescription( String d ){
-		Task foo;
+		Task t;
 		// NOTE: WILL FAIL 
-		foo = taskList.get(0);
+		t = taskList.get(0);
 		
 		for( int i = 0; i < taskList.size(); i++ ){
 			if( taskList.get(i).getDescription().equals(d) ){
-				foo = taskList.get(i);
+				t = taskList.get(i);
 				break;
 			}
 		}
-		return foo;
+		return t;
+	}
+	
+	public TaskList searchByPriority( short p ){
+		TaskList tL = new TaskList() ;
+		
+		for( int i = 0; i < taskList.size(); i++ ){
+			if( taskList.get(i).getPriority() == p){
+				tL.addTask(taskList.get(i));
+			}
+		}
+		return tL;
+	}
+	
+	public TaskList searchByDueDate( String d ){
+		TaskList tL = new TaskList();
+		
+		for( int i = 0; i < taskList.size(); i++){
+			if( taskList.get(i).getDate().equals(d) ){
+				tL.addTask(taskList.get(i));
+			}
+		}
+		return tL;
+	}
+	
+	public TaskList seachByCategory( short p ){
+		TaskList tL = new TaskList();
+		
+		for( int i = 0; i < taskList.size(); i++){
+			if( taskList.get(i).getCatagory() == p){
+				tL.addTask(taskList.get(i));
+			}
+		}
+		return tL;
+	}
+	
+	public TaskList searchByCompletion( boolean b ){
+		TaskList tL = new TaskList();
+		
+		for( int i = 0; i < taskList.size(); i++ ){
+			if( taskList.get(i).getCompleted() == b ){
+				tL.addTask(taskList.get(i));
+			}
+		}
+		return tL;
 	}
 }
