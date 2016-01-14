@@ -1,5 +1,8 @@
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.*;
 
 /**
@@ -48,8 +51,8 @@ public class Task_List {
 	 * New file from disk
 	 * @param fileName
 	 */
-	public Task_List(String fileName){
-		tasklist  = readFile(fileName);
+	public Task_List(String fileName) throws FileNotFoundException{
+	readFile(fileName);
 	}
 	
 	/**
@@ -83,18 +86,56 @@ public class Task_List {
 	
 	/**
 	 * reads file based on the file name
-	 * @param filename
-	 * @return
+	 * @param filename (Filename to read)
 	 */
-	private Task_List readFile(String filename){
+	private void readFile(String filename) throws FileNotFoundException{
 	
-		Task_List l = new TaskList()
+		tasklist.clear();// clears task list
 		
+		// assumes that the task list is initialized
 				BufferedReader reader = new BufferedReader( new FileReader(filename));
-				
-		return null;
 		
+				try{
+		reader.close();
+				} catch(IOException e){
+					System.out.println("Cannot close file" + e.getMessage());
+				
+				}
+					
+	}
+	
+	/**
+	 * 
+	 * @param filename
+	 * @throws FileNotFoundException
+	 */
+	public void writeFile( String filename)throws FileNotFoundException{
+		PrintWriter writer = new PrintWriter(filename);
+		
+		for(int i = 0; i< tasklist.size(); i++) {
+			tasklist.get(i).write(writer);
+			
+			/*
+			 * Equivalent:
+			 * Task foo = tasklist.get(i);
+			 * foo.write(writer);
+			 */
+		}
+		
+			writer.close();
+			}
+	
+	public Task searchByDescription(String d){
+		Task foo= null;
+		
+		for(int i = 0; i<tasklist.size(); i++){
+			if(tasklist.get(i).getDescription().equals(d) ){
+				foo = tasklist.get(i);
+			}break;
+		}
+		
+		return foo;
+		//Replace or fail
 	}
 }
 
-	

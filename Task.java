@@ -1,3 +1,4 @@
+import java.io.PrintWriter;
 import java.util.Date;
 import java.util.Scanner;
 /**
@@ -108,6 +109,9 @@ public class Task {
 			 case 3:
 				 pName = "Low";
 				 break;
+			default:
+				pName = "Illigal priority";
+				break;
 			 }
 			return pName;
 	 }
@@ -147,7 +151,7 @@ public class Task {
 	 }
 	 
 	 /**
-	  * set descrition
+	  * set description
 	  */
 	 public static void setDescription(String d){
 		 
@@ -184,9 +188,39 @@ public class Task {
 	  * Checks if a task has been completed
 	  * @return
 	  */
-	 public static boolean complete(){
+	 public static void complete(){
 		 
-		 return false;
+		 //return false;
 	 }
+	 
+	 /**
+	  * Write a task to provide printwritter object
+	  * @param writer
+	  */
+	 public void write(PrintWriter writer){
+		 // write data separated by tabs
+		 StringBuilder s = new StringBuilder();
+		 
+		/* private static short priority;
+		 private static Date dueDate;//odject
+		 private static short catagory;
+		 private static String descrition;
+		 private static String location;
+		 private boolean completed;
+		 */
+		 
+		 s.append(priority);
+		 s.append(\t);
+		 s.append(dueDate.toString());
+		 s.append(\t);
+		 s.append(catagory);
+		 s.append(\t);
+		 s.append(descrition);
+		 s.append(\t);
+		 s.append(location);
+		 s.append(\t);
+		 s.append.(completed);
+	 }
+	 
 	 
 }
