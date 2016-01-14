@@ -38,6 +38,27 @@ public class TaskList {
 	 */
 
 
+	
+	//* write methods to search tasks, should all return a type task
+	public Task searchByDescription( String d ){
+		Task foo = null;
+		
+		for( int i = 0; i < taskList.size(); i++ ){
+			if( taskList.get(i).getDescription().equals(d)) {
+				foo = taskList.get(i);
+				break;
+			}
+		}
+		
+		return foo;
+	}
+	
+	
+	
+	
+	
+	
+	
 	/**
 	 * Create a new TaskList from scratch
 	 */
@@ -50,8 +71,8 @@ public class TaskList {
 	 * 
 	 * @param filename String fileName
 	 */
-	public TaskList( String fileName ){
-		taskList = readFile( fileName );
+	public TaskList( String fileName ) throws FileNotFoundException {
+		readFile( fileName );
 	}
 
 	
@@ -82,19 +103,35 @@ public class TaskList {
 	}
 
 	/**
-	 * Read list of tasks from file name provided
-	 * @param fileName
-	 * @return
+	 * Read list of tasks from file name provided.
+	 * @param fileName File name to read
 	 */
-	private TaskList readFile( String fileName ) throws FileNotFoundException{
-		TaskList l = new TaskList();
+	private void readFile( String fileName ) throws FileNotFoundException{
+		// assume that taskList is initialized
+		taskList.clear(); // remove all old tasks
+		
 		BufferedReader reader = new BufferedReader( new FileReader( fileName) );
 		
-		reader.close();
-		return null;
+		try{
+			reader.close();
+		} catch( IOException e ){
+			System.out.println( "Cannot close file: " + e.getMessage() );
+		}
 	}
 	
-	
+	public void writeFile( String fileName ) throws FileNotFoundException {
+		PrintWriter writer = new PrintWriter( fileName );
+		for( int i = 0; i < taskList.size(); i++ ){
+			taskList.get(i).write( writer );
+			/*
+			 * EQUIVALENT
+			 * Task foo - taskList.get(i);
+			 * foo.write(writer);	
+			 */
+			
+		}	
+		writer.close();
+	}
 	
 
 

@@ -1,5 +1,5 @@
 import java.util.Date;
-
+import java.io.*;
 /**
  * 
  * Task object containing information on a single task.
@@ -51,6 +51,40 @@ public class Task {
 		 }
 		 return pName;
 	 }
+	 
+	
+	 
+	 
+	 
+	 /**
+	  * write a task to the provided PrintWriter object
+	  * @param writer
+	  */
+	 public void write( PrintWriter writer ){
+		 // write data separated by tabs
+		 StringBuilder s = new StringBuilder();
+		
+		 s.append( priority );
+		 s.append( "\t" );
+		 s.append( dueDate.toString() );
+		 s.append( "\t" );
+		 s.append( category);
+		 s.append( "\t" );
+		 s.append( description );
+		 s.append( "\t" );
+		 s.append( location );
+		 s.append( "\t" );
+		 s.append( completed );
+		 
+		 writer.println( s );
+	 }
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 	 
 	 public String getCategoryName() {
 		 String cName = "NAME";
@@ -125,7 +159,7 @@ public class Task {
 		 return completed;
 	 }
 	 
-	 // priority, category
+	 
 	 private short priority;
 	 private Date dueDate;
 	 private short category;
