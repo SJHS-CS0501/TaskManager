@@ -16,6 +16,12 @@ public class TaskList {
 	ArrayList<Task> taskList;
 	
 	/*
+	 * Homework!
+	 * methods that perform searches
+	 * each method should return 
+	 */
+	
+	/*
 	 * operations:
 	 * 
 	 * - add/remove tasks
@@ -42,8 +48,8 @@ public class TaskList {
 	 * Create a new TaskList from disk, reading from provided filename
 	 * @param filename String filename
 	 */
-	public TaskList( String filename ) {
-		taskList = readFile( filename );
+	public TaskList( String filename ) throws FileNotFoundException {
+		readFile( filename );
 	}
 	
 	/**
@@ -75,15 +81,52 @@ public class TaskList {
 	/**
 	 * Read list of tasks from filename provided
 	 * @param filename Filename to read
-	 * @return created TaskList
 	 */
-	private TaskList readFile( String filename ) throws FileNotFoundException {
-		TaskList l = new TaskList();
-
+	private void readFile( String filename ) throws FileNotFoundException {
+		//assume taskList is initialized
+		taskList.clear(); //remove all old tasks
+		
 		BufferedReader reader = new BufferedReader( new FileReader( filename ) );
 		
-		reader.close();
-		return null;
+		try {
+			reader.close();
+		} catch( IOException e ) {
+			System.out.println( "Cannot read file: " + e.getMessage() );
+		}
+	}
+	
+	/*
+	public Task searchByDescription( String d ) {
+		Task foo;
+		foo = taskList.get(0);
+		return foo;
+		
+		prob need loop to go through each task and see which matches:
+		for( int i = 0; i< taskList.size(); i++ ) {
+			if( taskList.get(i).getDescription().equals(d) ) {
+				foo = taskList.get(i);
+				break;
+			}
+		}
+	*/
+	
+	/**
+	 * Write list of tasks from filename provided
+	 * @param filename Filename to read
+	 */
+	public void writeFile( String filename ) throws FileNotFoundException {
+		PrintWriter writer = new PrintWriter( filename );
+		
+		for( int i = 0; i < taskList.size(); i++ ) {
+			taskList.get(i).write( writer );
+			/*
+			 * Equivalent to:
+			 * Task foo = taskList.get(i):
+			 * foo.write(writer);
+			 */
+		}
+		
+		writer.close();
 	}
 	
 }

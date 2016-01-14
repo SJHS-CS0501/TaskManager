@@ -1,4 +1,5 @@
 import java.util.Date;
+import java.io.*;
 
 /**
  * Task object containing information on a single task.
@@ -158,6 +159,29 @@ public class Task {
 			pName = "Illegal Value";
 		}
 		return pName;
+	}
+	
+	/**
+	 * Write a task to the provided PrintWriter object
+	 * @param writer
+	 */
+	public void write( PrintWriter writer ) {
+		//write data separated by tabs
+		StringBuilder s = new StringBuilder();
+		
+		s.append( priority );
+		s.append( "\t" );
+		s.append( dueDate.toString() );
+		s.append( "\t" );
+		s.append( category );
+		s.append( "\t" );
+		s.append( description );
+		s.append( "\t" );
+		s.append( location );
+		s.append( "\t" );
+		s.append( completed );
+		
+		writer.println( s );		
 	}
 	
 	/**
