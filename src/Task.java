@@ -289,9 +289,5 @@ public class Task {
 	 * - toString
 	 * - string.equals to compare tasks
 	 */
-	
-	/*
-	 * make getters/setters
-	 */
 
 }

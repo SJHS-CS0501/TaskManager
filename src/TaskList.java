@@ -17,8 +17,7 @@ public class TaskList {
 	
 	/*
 	 * Homework!
-	 * methods that perform searches
-	 * each method should return 
+	 * methods that perform searches 
 	 */
 	
 	/*
@@ -37,6 +36,7 @@ public class TaskList {
 	 * - sort by completion
 	 * - write/read list to/from disk
 	 */
+	
 	/**
 	 * Create new TaskList from scratch
 	 */
@@ -95,8 +95,12 @@ public class TaskList {
 		}
 	}
 	
-	/*
-	public Task searchByDescription( String d ) {
+	/**
+	 * Search through tasks based on their description
+	 * @param d
+	 * @return
+	 */
+	public Task searchDescription( String d ) {
 		Task foo;
 		foo = taskList.get(0);
 		return foo;
@@ -108,8 +112,84 @@ public class TaskList {
 				break;
 			}
 		}
-	*/
+	}	
 	
+	/**
+	 * Search through tasks based on their category	
+	 * @param d
+	 * @return
+	 */
+	public Task searchCategory( String c ) {
+		Task foo;
+		foo = taskList.get(0);
+		return foo;
+			
+		prob need loop to go through each task and see which matches:
+		for( int i = 0; i< taskList.size(); i++ ) {
+			if( taskList.get(i).getCategory().equals(c) ) {
+				foo = taskList.get(i);
+				break;
+			}
+		}
+	}	
+	
+	/**
+	 * Search through tasks based on their priority
+	 * @param d
+	 * @return
+	 */
+	public Task searchPriority( String p ) {
+		Task foo;
+		foo = taskList.get(0);
+		return foo;
+		
+		prob need loop to go through each task and see which matches:
+		for( int i = 0; i< taskList.size(); i++ ) {
+			if( taskList.get(i).getPriority().equals(p) ) {
+				foo = taskList.get(i);
+				break;
+			}
+		}
+	}
+	
+	/**
+	 * Search through tasks based on their location
+	 * @param d
+	 * @return
+	 */
+	public Task searchLocation( String l ) {
+		Task foo;
+		foo = taskList.get(0);
+		return foo;
+		
+		prob need loop to go through each task and see which matches:
+		for( int i = 0; i< taskList.size(); i++ ) {
+			if( taskList.get(i).getDescription().equals(d) ) {
+				foo = taskList.get(i);
+				break;
+			}
+		}
+	}	
+		
+	/**
+	 * Search through tasks based on their completed status	
+	 * @param d
+	 * @return
+	 */
+	public Task searchCompleted( String com ) {
+		Task foo;
+		foo = taskList.get(0);
+		return foo;
+		
+		prob need loop to go through each task and see which matches:
+		for( int i = 0; i< taskList.size(); i++ ) {
+			if( taskList.get(i).getDescription().equals(d) ) {
+				foo = taskList.get(i);
+				break;
+			}
+		}
+	}	
+		
 	/**
 	 * Write list of tasks from filename provided
 	 * @param filename Filename to read
