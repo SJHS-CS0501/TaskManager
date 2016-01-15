@@ -40,69 +40,64 @@ public class TaskList {
 
 	
 	//* write methods to search tasks, should all return a type task
-	public Task searchByDescription( String d ){
-		Task foo = null;
+	public TaskList searchByDescription( String d ){
+		TaskList search = new TaskList();
 		
 		for( int i = 0; i < taskList.size(); i++ ){
 			if( taskList.get(i).getDescription().equals(d)) {
-				foo = taskList.get(i);
-				break;
+				search.addTask( taskList.get(i) );
 			}
 		}
 		
-		return foo;
+		return search;
 	}
 	
-	public Task searchByCategory( short c ){
-		Task foo = null;
+	public TaskList searchByCategory( short c ){
+		TaskList search = new TaskList();
 		
 		for( int i = 0; i < taskList.size(); i++ ){
-			if( taskList.get(i).getCategory().equals(c)) {
-				foo = taskList.get(i);
-				break;
+			if( taskList.get(i).getCategory() == c ) {
+				search.addTask( taskList.get(i) );
 			}
 		}
 		
-		return foo;
+		return search;
 	}
 	
-	public Task searchByPriority( String p ){
-		Task foo = null;
+	public TaskList searchByPriority( String p ){
+		TaskList search = new TaskList();
 		
 		for( int i = 0; i < taskList.size(); i++ ){
 			if( taskList.get(i).getDescription().equals(p)) {
-				foo = taskList.get(i);
-				break;
+				search.addTask( taskList.get(i) );
 			}
 		}
 		
-		return foo;
+		return search;
 	}
 	
-	public Task searchByDueDate( String dD ){
-		Task foo = null;
+	public TaskList searchByDueDate( Date dD ){
+		TaskList search = new TaskList();
 		
 		for( int i = 0; i < taskList.size(); i++ ){
 			if( taskList.get(i).getDescription().equals(dD)) {
-				foo = taskList.get(i);
-				break;
+				search.addTask( taskList.get(i) );
 			}
 		}
 		
-		return foo;
+		return search;
 	}
 	
-	public Task searchByLocation( String l ){
-		Task foo = null;
+	public TaskList searchByLocation( String l ){
+		TaskList search = new TaskList();
 		
 		for( int i = 0; i < taskList.size(); i++ ){
 			if( taskList.get(i).getDescription().equals(l)) {
-				foo = taskList.get(i);
-				break;
+				search.addTask( taskList.get(i) );
 			}
 		}
 		
-		return foo;
+		return search;
 	}
 	
 	public Task searchByCompleted( String cP ){
