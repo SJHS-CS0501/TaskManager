@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.Date;
 
 /**
  * TaskList contains a list of tasks and operations for that list.
@@ -25,7 +26,7 @@ public class TaskList {
 	 * 
 	 * - add tasks
 	 * - remove tasks
-	 * - search by name
+	 * - search by description
 	 * - get tasks by index
 	 * - search by priority
 	 * - search by due date
@@ -80,17 +81,85 @@ public class TaskList {
 		taskList.remove(i);
 	}
 	
+	/**
+	 * Searches for s specific task by description.
+	 * @param d The task description to search for
+	 * @return The reference to the task
+	 */
 	public Task searchByDescription(String d) {
-		Task foo = null;
-		
+		Task search = null;
 		for( int i = 0; i < taskList.size(); i++) {
 			if (taskList.get(i).getDescription().equals(d)) {
-				foo = taskList.get(i);
+				search = taskList.get(i);
 				break;
 			}
 		}
 		
-		return foo;
+		return search;
+	}
+	
+	/**
+	 * Searches for every task with a specified priority.
+	 * @param p The task priority to search for
+	 * @return A TaskList containing all of the tasks of the specified priority.
+	 */
+	public TaskList searchByPriority(short p) {
+		TaskList search = new TaskList();
+		for( int i = 0; i < taskList.size(); i++) {
+			if (taskList.get(i).getPriority() == p) {
+				search.addTask(taskList.get(i));
+			}
+		}
+		
+		return search;
+	}
+	
+	/**
+	 * Searches for every task with a specified due date.
+	 * @param d The task due date to search for
+	 * @return A TaskList containing all of the tasks of the specified due date
+	 */
+	public TaskList searchByDueDate(Date d) {
+		TaskList search = new TaskList();
+		for( int i = 0; i < taskList.size(); i++) {
+			if (taskList.get(i).getDueDate().equals(d)) {
+				search.addTask(taskList.get(i));
+			}
+		}
+		
+		return search;
+	}
+	
+	/**
+	 * Searches for every task with a specified completion value of true or false
+	 * @param t The task to search for by completion
+	 * @return A TaskList containing all of the tasks of the specified completion
+	 */
+	public TaskList searchByCompleted(boolean t) {
+		TaskList search = new TaskList();
+		for( int i = 0; i < taskList.size(); i++) {
+			if (taskList.get(i).getCompleted() == t) {
+				search.addTask(taskList.get(i));
+			}
+		}
+		
+		return search;
+	}
+	
+	/**
+	 * Searches for every task with a specified category
+	 * @param t The task category to search for
+	 * @return A TaskList containing all of the tasks of the specified category
+	 */
+	public TaskList searchByCategory(short c) {
+		TaskList search = new TaskList();
+		for( int i = 0; i < taskList.size(); i++) {
+			if (taskList.get(i).getCategory() == c) {
+				search.addTask(taskList.get(i));
+			}
+		}
+		
+		return search;
 	}
 	
 	/**
