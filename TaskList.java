@@ -53,6 +53,70 @@ public class TaskList {
 		return foo;
 	}
 	
+	public Task searchByCategory( short c ){
+		Task foo = null;
+		
+		for( int i = 0; i < taskList.size(); i++ ){
+			if( taskList.get(i).getCategory().equals(c)) {
+				foo = taskList.get(i);
+				break;
+			}
+		}
+		
+		return foo;
+	}
+	
+	public Task searchByPriority( String p ){
+		Task foo = null;
+		
+		for( int i = 0; i < taskList.size(); i++ ){
+			if( taskList.get(i).getDescription().equals(p)) {
+				foo = taskList.get(i);
+				break;
+			}
+		}
+		
+		return foo;
+	}
+	
+	public Task searchByDueDate( String dD ){
+		Task foo = null;
+		
+		for( int i = 0; i < taskList.size(); i++ ){
+			if( taskList.get(i).getDescription().equals(dD)) {
+				foo = taskList.get(i);
+				break;
+			}
+		}
+		
+		return foo;
+	}
+	
+	public Task searchByLocation( String l ){
+		Task foo = null;
+		
+		for( int i = 0; i < taskList.size(); i++ ){
+			if( taskList.get(i).getDescription().equals(l)) {
+				foo = taskList.get(i);
+				break;
+			}
+		}
+		
+		return foo;
+	}
+	
+	public Task searchByCompleted( String cP ){
+		Task foo = null;
+		
+		for( int i = 0; i < taskList.size(); i++ ){
+			if( taskList.get(i).getDescription().equals(cP)) {
+				foo = taskList.get(i);
+				break;
+			}
+		}
+		
+		return foo;
+	}
 	
 	
 	
