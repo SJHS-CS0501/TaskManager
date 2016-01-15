@@ -98,96 +98,81 @@ public class TaskList {
 	/**
 	 * Search through tasks based on their description
 	 * @param d
-	 * @return
+	 * @return foo
 	 */
-	public Task searchDescription( String d ) {
-		Task foo;
-		foo = taskList.get(0);
-		return foo;
+	public TaskList searchDescription( String d ) {
+		TaskList foo = new TaskList();
 		
-		prob need loop to go through each task and see which matches:
 		for( int i = 0; i< taskList.size(); i++ ) {
 			if( taskList.get(i).getDescription().equals(d) ) {
-				foo = taskList.get(i);
-				break;
+				foo.addTask(taskList.get(i) );
 			}
 		}
+		return foo;
 	}	
 	
 	/**
 	 * Search through tasks based on their category	
 	 * @param d
-	 * @return
+	 * @return foo
 	 */
-	public Task searchCategory( String c ) {
-		Task foo;
-		foo = taskList.get(0);
-		return foo;
-			
-		prob need loop to go through each task and see which matches:
+	public TaskList searchCategory( short c ) {
+		TaskList foo = new TaskList();
+		
 		for( int i = 0; i< taskList.size(); i++ ) {
-			if( taskList.get(i).getCategory().equals(c) ) {
-				foo = taskList.get(i);
-				break;
+			if( taskList.get(i).getCategory() == c ) {
+				foo.addTask(taskList.get(i) );
 			}
 		}
+		return foo;
 	}	
 	
 	/**
 	 * Search through tasks based on their priority
 	 * @param d
-	 * @return
+	 * @return foo
 	 */
-	public Task searchPriority( String p ) {
-		Task foo;
-		foo = taskList.get(0);
-		return foo;
-		
-		prob need loop to go through each task and see which matches:
+	public TaskList searchPriority( short p ) {
+		TaskList foo = new TaskList();
+	
 		for( int i = 0; i< taskList.size(); i++ ) {
-			if( taskList.get(i).getPriority().equals(p) ) {
-				foo = taskList.get(i);
-				break;
+			if( taskList.get(i).getPriority() == p ) {
+				foo.addTask(taskList.get(i) );
 			}
 		}
+		return foo;
 	}
 	
 	/**
 	 * Search through tasks based on their location
 	 * @param d
-	 * @return
+	 * @return foo
 	 */
-	public Task searchLocation( String l ) {
-		Task foo;
-		foo = taskList.get(0);
-		return foo;
+	public TaskList searchLocation( String l ) {
+		TaskList foo = new TaskList();
 		
-		prob need loop to go through each task and see which matches:
 		for( int i = 0; i< taskList.size(); i++ ) {
-			if( taskList.get(i).getDescription().equals(d) ) {
-				foo = taskList.get(i);
-				break;
+			if( taskList.get(i).getDescription().equals(l) ) {
+				foo.addTask(taskList.get(i) );
 			}
 		}
+		return foo;
 	}	
 		
 	/**
 	 * Search through tasks based on their completed status	
 	 * @param d
-	 * @return
+	 * @return foo
 	 */
-	public Task searchCompleted( String com ) {
-		Task foo;
-		foo = taskList.get(0);
-		return foo;
+	public TaskList searchCompleted( String com ) {
+		TaskList foo = new TaskList();
 		
-		prob need loop to go through each task and see which matches:
 		for( int i = 0; i< taskList.size(); i++ ) {
-			if( taskList.get(i).getDescription().equals(d) ) {
-				foo = taskList.get(i);
-				break;
+			if( taskList.get(i).getDescription().equals(com) ) {
+				foo.addTask(taskList.get(i) );
 			}
 		}
+		return foo;
 	}	
 		
 	/**
