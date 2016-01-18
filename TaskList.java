@@ -100,17 +100,17 @@ public class TaskList {
 		return search;
 	}
 	
-	public Task searchByCompleted( String cP ){
-		Task foo = null;
+	public TaskList searchByCompleted( String cP ){
+		TaskList search = new TaskList();
 		
 		for( int i = 0; i < taskList.size(); i++ ){
 			if( taskList.get(i).getDescription().equals(cP)) {
-				foo = taskList.get(i);
+				search.addTask( taskList.get(i) );
 				break;
 			}
 		}
 		
-		return foo;
+		return search;
 	}
 	
 	
