@@ -24,7 +24,7 @@ public class Task {
 	 private static short catagory;
 	 private static String descrition;
 	 private static String location;
-	 private boolean completed;
+	 private static boolean completed;
 	 
 	 /*
 	  * Priorities:
@@ -193,7 +193,12 @@ public class Task {
 	  */
 	 public static void complete(){
 		 
-		 //return false;
+		 completed = false;
+	 }
+	 
+	 public static boolean getComplete(){
+		 
+		 return completed;
 	 }
 	 
 	 /**
@@ -213,16 +218,16 @@ public class Task {
 		 */
 		 
 		 s.append(priority);
-		 s.append(\t);
+		 s.append("\t");
 		 s.append(dueDate.toString());
-		 s.append(\t);
+		 s.append("\t");
 		 s.append(catagory);
-		 s.append(\t);
+		 s.append("\t");
 		 s.append(descrition);
-		 s.append(\t);
+		 s.append("\t");
 		 s.append(location);
-		 s.append(\t);
-		 s.append.(completed);
+		 s.append("\t");
+		 s.append(completed);
 	 }
 	 
 	 

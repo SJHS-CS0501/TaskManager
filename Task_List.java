@@ -33,8 +33,8 @@ public class Task_List {
 	 * Operations:
 	 * add tasks
 	 * remove task
-	 * search task by priority, due date, completion
-	 * Sort by priority, due date, completion, category
+	 * search task by priority, due date, completion, category, description
+	 * Sort by priority, due date, completion, category, description
 	 * write list to disk 
 	 * read disk from list
 	 * get task by index/value
@@ -129,13 +129,89 @@ public class Task_List {
 		Task foo= null;
 		
 		for(int i = 0; i<tasklist.size(); i++){
-			if(tasklist.get(i).getDescription().equals(d) ){
+			if(tasklist.get(i).getDescrition().equals(d) ){
 				foo = tasklist.get(i);
 			}break;
 		}
 		
 		return foo;
 		//Replace or fail
+	}
+	
+	/**
+	 * Search by Priority
+	 * @param a
+	 * @return
+	 */
+	public Task searchByPriority(short a){
+		
+		Task foo = null;
+		
+		for(int i = 0; i<tasklist.size(); i++){
+			if(tasklist.get(i).getPrority() == a ){
+				foo = tasklist.get(i);
+			}break;
+		}
+		
+		
+		return foo;
+	}
+	
+	/**
+	 * Search by Date
+	 * @param d
+	 * @return
+	 */
+	public Task searchByDate( Date d){
+		
+		Task foo = null;
+		
+		for(int i = 0; i<tasklist.size(); i++){
+			if(tasklist.get(i).getDate().equals(d) ){
+				foo = tasklist.get(i);
+			}break;
+		}
+		
+		
+		return foo;
+	}
+	
+	/**
+	 * Search by Category
+	 * @param a
+	 * @return
+	 */
+	public Task searchByCatagory(short a ){
+		
+		Task foo = null;
+		
+		for(int i = 0; i<tasklist.size(); i++){
+			if(tasklist.get(i).getCatagory() == a ){
+				foo = tasklist.get(i);
+			}break;
+		}
+		
+		
+		
+		return foo;
+	}
+	
+	/**
+	 * Search by Completion
+	 * @param d
+	 * @return
+	 */
+	public Task searchByCompletion(boolean d){
+		
+		Task foo = null;
+		
+		for(int i = 0; i<tasklist.size(); i++){
+			if(tasklist.get(i).getComplete() == d ){
+				foo = tasklist.get(i);
+			}break;
+		}
+		
+		return foo;
 	}
 }
 
