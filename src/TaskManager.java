@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  * 
  */
@@ -33,9 +35,13 @@ public class TaskManager {
 		// main stuff goes here, yo
 		System.out.println( "Welcome to the Task Manager!" );
 		
+		Task task = new Task();
+		String name = null
+		Scanner keyboard = new Scanner(System.in);
+		
 		/*
 		 * ERASE FROM HERE TO THERE WHEN DONE TESTING TASK
-		 */
+		 
 		Task foo = new Task();
 		foo.setDescription( "Test Task" );
 		try {
@@ -53,10 +59,18 @@ public class TaskManager {
 		System.out.println( "\tTask: " + foo.getDescription() );
 		System.out.println( "\t\tPriority: " + foo.getPriorityName() );
 		
-		/*
+		
 		 * THERE
 		 */
 		
+		// Allow user to make 4 tasks
+		
+		do{
+			System.out.println( "Please enter the name of your new task: " );
+			name = keyboard.nextLine();
+			
+			System.out.println( "Descrption:");
+		} while (choice != "q");
 		
 		
 		

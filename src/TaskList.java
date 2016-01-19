@@ -88,19 +88,18 @@ public class TaskList {
 		}
 	}
 	
-	public Task searchByPriority( String p ) {
-		Task foo = null;
+	public TaskList searchByPriority( short p ) {
+		TaskList foo = new TaskList();
 		
 		for( int i = 0; i < taskList.size(); i++ ) {
-			 if( taskList.get(i).getPriority().equals(p) ) {
-				 foo = taskList.get(i);
-				 break;
+			 if( taskList.get(i).getPriority() == p ) {
+				 foo.addTask(taskList.get(i));
 			 }
 		}
+		return foo;
 	}
 	
-	 * - Search tasks by completion
-	 * - Search tasks by category
+	
 	 
 	 public Task searchByDueDate( Date d ) {
 	 	 Task foo = null;
