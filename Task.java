@@ -106,36 +106,9 @@ public class Task {
 	}
 	
 	public String getPriorityName(){
-		String pName = null;
-		switch( priority ){
-			case 0:
-				pName = "Undefined";
-				break;
-			case 1:
-				pName = "High";
-				break;
-			case 2:
-				pName = "Medium";
-				break;
-			case 3:
-				pName = "Low";
-				break;
-<<<<<<< HEAD
-		}
-		
-		return pName;
-			
-		}
-	
-=======
-			default:
-				pName = "ILLEGAL VALUE";
-				break;
-			
-		}
 		return pName;
 	}
->>>>>>> origin/master
+
 	/**
 	 * Sets the value of dueDate by using dDateStrng and .parse 
 	 * @param dueDate
@@ -188,11 +161,9 @@ public class Task {
 		}
 		*/
 		if( c < 0|| c > 5){
-<<<<<<< HEAD
+
 			throw new IllegalArgumentException( " Invalid category " );
-=======
-			throw new IllegalArgumentException( " Invalid priority " );
->>>>>>> origin/master
+
 		}
 		category = c;
 	}

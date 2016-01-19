@@ -1,3 +1,4 @@
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -40,17 +41,23 @@ public class TaaskManager {
 		String d;
 		short p;
 		boolean b = false;
+		Date dDate;
 		Scanner keyboard = new Scanner(System.in);
 		
 		System.out.println( "Welcome to Task Manager! " );
 		
 		while( goOn == true ){
-			System.out.println( " Please enter a desciption for your task" );
+			System.out.println( " Please enter a desciption for your task " );
 			d = keyboard.nextLine();
-			System.out.println( "Please enter a priority for you task " );
+			System.out.println( "Please enter a priority for your task between 1-3 " );
 			p = keyboard.nextShort();
-		}
-		
+			System.out.println( "Please enter a category for your task between 1-5" );
+			p = keyboard.nextShort();
+			System.out.println( "Please enter a due date for your task " );
+			//not sure how to do this, parse doesnt seem to be working, or at least i can't fingure it out
+			System.out.println( "Please enter a location for your task " );
+			d = keyboard.nextLine();
+			
 		System.exit(0);
 	}
 
