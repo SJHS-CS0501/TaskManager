@@ -77,7 +77,43 @@ public class TaskList {
 	public void removeTask( int i ) {
 		taskList.remove(i);
 	}
+	 
+	public Task searchByName( String n ) {
+		Task foo = null;
+		
+		for( int i = 0; i < taskList.size(); i++ ) {
+			// ??    if( taskList.get(i).getName().equals(n) ) {
+				 foo = taskList.get(i);
+				 break;	
+		}
+	}
 	
+	public Task searchByPriority( String p ) {
+		Task foo = null;
+		
+		for( int i = 0; i < taskList.size(); i++ ) {
+			 if( taskList.get(i).getPriority().equals(p) ) {
+				 foo = taskList.get(i);
+				 break;
+			 }
+		}
+	}
+	
+	 * - Search tasks by completion
+	 * - Search tasks by category
+	 
+	 public Task searchByDueDate( Date d ) {
+	 	 Task foo = null;
+		 
+		 for( int i = 0; i < taskList.size(); i++ ) {
+			 if( taskList.get(i).getDueDate().equals(d) ) {
+				 foo = taskList.get(i);
+				 break;
+			 }
+		 }
+		 
+		 return foo;
+	 }
 	public Task searchByDescription( String d ) {
 		 Task foo = null;
 		 
