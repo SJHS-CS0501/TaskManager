@@ -92,7 +92,11 @@ public class TaskList {
 			System.out.println( " Cannot close file: " + e.getMessage() );
 		}	
 	}
-	
+	/**
+	 * Writes the data to the disk
+	 * @param filename
+	 * @throws FileNotFoundException
+	 */
 	public void writeFile( String filename ) throws FileNotFoundException{
 		PrintWriter writer = new PrintWriter( filename );
 		
@@ -107,7 +111,11 @@ public class TaskList {
 		}
 		writer.close();
 	}
-	
+	/**
+	 * Searches by the description of a task
+	 * @param d
+	 * @return
+	 */
 	public Task serachByDescription( String d ){
 		Task t = null;
 		
@@ -120,6 +128,11 @@ public class TaskList {
 		return t;
 	}
 	
+	/**
+	 * Searches by the Priority of a task
+	 * @param p
+	 * @return
+	 */
 	public TaskList searchByPriority( short p ){
 		TaskList tL = new TaskList() ;
 		
@@ -130,7 +143,11 @@ public class TaskList {
 		}
 		return tL;
 	}
-	
+	/**
+	 * Searches by the Due Date of a task
+	 * @param d
+	 * @return
+	 */
 	public TaskList searchByDueDate( String d ){
 		TaskList tL = new TaskList();
 		
@@ -141,7 +158,11 @@ public class TaskList {
 		}
 		return tL;
 	}
-	
+	/**
+	 * Searches by the category of a task
+	 * @param p
+	 * @return
+	 */
 	public TaskList seachByCategory( short p ){
 		TaskList tL = new TaskList();
 		
@@ -152,7 +173,11 @@ public class TaskList {
 		}
 		return tL;
 	}
-	
+	/**
+	 * Searches by whether a task is completed or not
+	 * @param b
+	 * @return
+	 */
 	public TaskList searchByCompletion( boolean b ){
 		TaskList tL = new TaskList();
 		
