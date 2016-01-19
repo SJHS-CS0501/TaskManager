@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /*
  * Task Manager Program 
  * 
@@ -27,7 +29,22 @@ public class TaskManager {
 
 	public static void main(String[] args) {
 
+		Scanner keyboard = new Scanner(System.in);
 		System.out.println( "Welcome to the Task Manager!" );
+		
+		// four tasks
+		
+		do{
+			System.out.println( "Enter task: " );
+			System.out.println( "Description: " );
+			System.out.println( "Priority(1-3): " );
+			System.out.println( "Category(1-5): " );
+			System.out.println( "Location: " );
+		}
+		
+		
+		
+		
 		
 		/*
 		 * ERASE FROM HERE TO THERE WHEN DONE TESTING TASK

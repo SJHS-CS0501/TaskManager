@@ -64,11 +64,11 @@ public class TaskList {
 		return search;
 	}
 	
-	public TaskList searchByPriority( String p ){
+	public TaskList searchByPriority( short p ){
 		TaskList search = new TaskList();
 		
 		for( int i = 0; i < taskList.size(); i++ ){
-			if( taskList.get(i).getDescription().equals(p)) {
+			if( taskList.get(i).getPriority() == p) {
 				search.addTask( taskList.get(i) );
 			}
 		}
@@ -80,7 +80,7 @@ public class TaskList {
 		TaskList search = new TaskList();
 		
 		for( int i = 0; i < taskList.size(); i++ ){
-			if( taskList.get(i).getDescription().equals(dD)) {
+			if( taskList.get(i).getDate().equals(dD)) {
 				search.addTask( taskList.get(i) );
 			}
 		}
