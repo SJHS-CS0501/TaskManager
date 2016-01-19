@@ -65,6 +65,20 @@ public class Task {
 	 * @param userPriority short priority value (found in Task)
 	 */
 	
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+  		s.append( "Description: " + description + "\n" );
+		s.append( "Priority: " + getPriorityName() + "\n" );
+		s.append( "Category: " + getCategoryName() + "\n" );
+  		if( dueDate != null ) {
+    			s.append( "Due Date: " + dueDate.toString() + "\n" );
+  		}
+  		s.append( "Location: " + location + "\n" );
+  		s.append( "Completed? " + (completed?"Y":"N") + "\n" );
+  		return s.toString();
+	}
+	
+	
 	public void setPriority(short userPriority) throws IllegalArgumentException{
 		if (userPriority < 0 || userPriority > 3) {
 			throw new IllegalArgumentException( "Invalid priority" );
