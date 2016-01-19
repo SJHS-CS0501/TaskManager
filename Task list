@@ -1,0 +1,67 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
+/**
+ * 
+ */
+
+/**
+ * @author SJHSStudent
+ *
+ */
+public class TaskList {
+ 
+	ArrayList<Task> TaskList;
+	/**
+	 * 
+	 */
+	public TaskList(){
+	TaskList = new ArrayList<Task>();
+	}//create array end----------------------
+	
+	public TaskList(String FileName) throws Throwable
+	{
+	readFile(FileName);
+	}//read file end-------------------------
+	
+	
+	public boolean addTask(Task t){
+		return TaskList.add(t);
+	}//add task end--------------------------
+	
+
+	public Task getTask(int i){
+		return TaskList.get(i); 
+	}//task get task end---------------------
+	
+	
+	public void removeTask( Task i){
+		TaskList.remove(i);
+	}//remove task end-----------------------
+	
+	
+	private void readFile( String FileName) throws Throwable{
+		BufferedReader reader = new BufferedReader( new FileReader (FileName));
+		try {
+		reader.close();
+		} catch(IOException e){
+			System.out.println("cannot open file");
+		}//end of catch
+	}//end of readFile-----------------------
+	
+	
+	public void writeFile(String FileName) throws FileNotFoundException
+	{
+		PrintWriter writer = new PrintWriter( FileName);
+		for(int i= 0; i < TaskList.size(); i++)
+		{
+			TaskList.get(i).write(writer);
+		}//end of for loop
+		
+		writer.close();
+	}//end of writeFile	
+}//task list end-------------------------
