@@ -182,11 +182,21 @@ public class TaskList {
 	/**
 	 * @param filename Filename to write
 	 */
-	public void writeFile(String filename) throws FileNotFoundException{
+	public void writeFile(String filename) throws FileNotFoundException {
 		PrintWriter writer = new PrintWriter(filename);
 		for(int i = 0; i < taskList.size(); i++) {
 			taskList.get(i).write(writer);
 		}
 		writer.close();
 	}
+	
+	/**
+	 * Prints TaskList to screen
+	 */
+	public void print() {
+		for( int i = 0; i < taskList.size(); i++) {
+			taskList.get(i).print();
+		} 
+	}
+	
 }

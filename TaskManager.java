@@ -40,14 +40,68 @@ public class TaskManager {
 	 */
 	
 	public static void main(String[] args) {
-		System.out.println("welcome to the Task Manager!");
 		Scanner scan = new Scanner(System.in);
+		TaskList tasks = new TaskList();
+		
+		int y = 0;
+		int m = 0;
+		int d = 0;
+		boolean quit = false;
+		
+		System.out.println("Welcome to the Task Manager!");
 		
 		do {
+			// New Task
+			Task task = new Task();
 			System.out.println("Create a new task:");
-			System.out.print("Description: ");
 			
-		}
+			// Get Description
+			System.out.print("Description: ");
+			task.setDescription(scan.nextLine());
+			
+			// Get Priority
+			System.out.print("Priority (1-3): ");
+			task.setPriority(scan.nextShort());
+			
+			// Get Date
+			System.out.println("Due Date:");
+			System.out.print("Year: ");
+			y = scan.nextInt();
+			System.out.print("Month: ");
+			m = scan.nextInt();
+			System.out.print("Date: ");
+			d = scan.nextInt();
+			
+			task.setDueDate(y - 1900, m - 1, d);
+			
+			// Get Category
+			System.out.print("Category (1-5): ");
+			task.setCategory(scan.nextShort());
+			scan.nextLine();
+			
+			// Get Location	
+			System.out.print("Location: ");
+			task.setLocation(scan.nextLine());
+			
+			// Get Completed
+			System.out.print("Is this task completed? (y/n): ");
+			if(scan.nextLine().toLowerCase().equals("y")){
+				task.setCompleted(true);
+			} else {
+				task.setCompleted(false);
+			}
+			
+			// Add tasks to list
+			tasks.addTask(task);
+			
+			// Continue entering tasks?
+			System.out.print("Continue? (y/n): ");
+			if(!scan.nextLine().toLowerCase().equals("y")){
+				quit = true;
+			}
+		} while(!quit);
+		
+		tasks.print();
 		
 		System.exit(0);
 	}

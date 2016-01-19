@@ -256,7 +256,7 @@ public class Task {
 		s.append('\t');
 		s.append(completed);
 		
-		// Ok, write that bad boy
+		// OK, write that bad boy
 		writer.println(s);
 		
 	}
@@ -265,12 +265,13 @@ public class Task {
 	 * Prints the Task to the screen
 	 */
 	public void print() {
-		System.out.print("\tTask: " + description);
-		System.out.print("\t\tPriority: " + getPriorityName());
-		System.out.print("\t\tDue Date: " + dueDate.toString());
-		System.out.print("\t\tCategory: " + getCategoryName());
-		System.out.print("\t\tLocation: " + location);
-		System.out.print("Completed: " + completed);
+		System.out.println("\tTask: " + description);
+		System.out.println("\t\tPriority: " + getPriorityName());
+		System.out.println("\t\tDue Date: " + dueDate.toString());
+		System.out.println("\t\tCategory: " + getCategoryName());
+		System.out.println("\t\tLocation: " + location);
+		System.out.println("\t\tCompleted: " + completed);
+		System.out.println();
 	}
 	
 	/**
