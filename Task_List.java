@@ -143,13 +143,13 @@ public class Task_List {
 	 * @param a
 	 * @return
 	 */
-	public Task searchByPriority(short a){
+	public Task_List searchByPriority(short a){
 		
-		Task foo = null;
-		
-		for(int i = 0; i<tasklist.size(); i++){
+		Task_List foo = new Task_List();
+		for(int i = 0; i< tasklist.size(); i++){
+			
 			if(tasklist.get(i).getPrority() == a ){
-				foo = tasklist.get(i);
+				foo.addTask(tasklist.get((i)));
 			}break;
 		}
 		
