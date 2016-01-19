@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /*
  * do these things:
  * - keep list of tasks
@@ -28,33 +30,22 @@ public class TaskManager {
 	 */
 
 	public static void main(String[] args) {
+		Scanner keyboard = new Scanner( System.in );
+		String newTask;
 		
-		System.out.println( "Welcome to the Task Manager!" );
+		System.out.print( "Welcome to the Task Manager! Do you want to add a new task? (Y for yes; N for no): "  );
+		newTask = keyboard.nextLine();
 		
-		/*
-		 * erase from here ....when done testing task
-		 */
-		
-		Task foo = new Task();
-		foo.setDescription( "Test Task" );
-		
-		try {
-			//what we want to try that might throw an exception
-			foo.setPriority( (short)1 );
-		} catch ( Exception e ) {
-			//what to do if we catch the exception
-			System.out.println( "Error setting priority: " + e.getMessage() );
-			//System.exit(-1);
+		if( newTask.toLowerCase().equals('y') ) {
+			
+		} else {
+			
 		}
 		
-		System.out.println( "Task info: " );
-		System.out.println( "\tTask: " + foo.getDescription() );
-		System.out.println( "\t\tPriority: " + foo.getPriorityName() );
 		
 		
-		/*
-		 * ....to here
-		 */
+		
+		//user has to create four tasks
 		
 		System.exit(0);
 

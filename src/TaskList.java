@@ -98,81 +98,81 @@ public class TaskList {
 	/**
 	 * Search through tasks based on their description
 	 * @param d
-	 * @return foo
+	 * @return match
 	 */
 	public TaskList searchDescription( String d ) {
-		TaskList foo = new TaskList();
+		TaskList match = new TaskList();
 		
 		for( int i = 0; i< taskList.size(); i++ ) {
 			if( taskList.get(i).getDescription().equals(d) ) {
-				foo.addTask(taskList.get(i) );
+				match.addTask(taskList.get(i) );
 			}
 		}
-		return foo;
+		return match;
 	}	
 	
 	/**
 	 * Search through tasks based on their category	
-	 * @param d
-	 * @return foo
+	 * @param c
+	 * @return match
 	 */
 	public TaskList searchCategory( short c ) {
-		TaskList foo = new TaskList();
+		TaskList match = new TaskList();
 		
 		for( int i = 0; i< taskList.size(); i++ ) {
 			if( taskList.get(i).getCategory() == c ) {
-				foo.addTask(taskList.get(i) );
+				match.addTask(taskList.get(i) );
 			}
 		}
-		return foo;
+		return match;
 	}	
 	
 	/**
 	 * Search through tasks based on their priority
-	 * @param d
-	 * @return foo
+	 * @param p
+	 * @return match
 	 */
 	public TaskList searchPriority( short p ) {
-		TaskList foo = new TaskList();
+		TaskList match = new TaskList();
 	
 		for( int i = 0; i< taskList.size(); i++ ) {
 			if( taskList.get(i).getPriority() == p ) {
-				foo.addTask(taskList.get(i) );
+				match.addTask(taskList.get(i) );
 			}
 		}
-		return foo;
+		return match;
 	}
 	
 	/**
 	 * Search through tasks based on their location
-	 * @param d
-	 * @return foo
+	 * @param l
+	 * @return match
 	 */
 	public TaskList searchLocation( String l ) {
-		TaskList foo = new TaskList();
+		TaskList match = new TaskList();
 		
 		for( int i = 0; i< taskList.size(); i++ ) {
 			if( taskList.get(i).getDescription().equals(l) ) {
-				foo.addTask(taskList.get(i) );
+				match.addTask(taskList.get(i) );
 			}
 		}
-		return foo;
+		return match;
 	}	
 		
 	/**
 	 * Search through tasks based on their completed status	
-	 * @param d
-	 * @return foo
+	 * @param com
+	 * @return match
 	 */
 	public TaskList searchCompleted( String com ) {
-		TaskList foo = new TaskList();
+		TaskList match = new TaskList();
 		
 		for( int i = 0; i< taskList.size(); i++ ) {
 			if( taskList.get(i).getDescription().equals(com) ) {
-				foo.addTask(taskList.get(i) );
+				match.addTask(taskList.get(i) );
 			}
 		}
-		return foo;
+		return match;
 	}	
 		
 	/**
@@ -184,13 +184,7 @@ public class TaskList {
 		
 		for( int i = 0; i < taskList.size(); i++ ) {
 			taskList.get(i).write( writer );
-			/*
-			 * Equivalent to:
-			 * Task foo = taskList.get(i):
-			 * foo.write(writer);
-			 */
 		}
-		
 		writer.close();
 	}
 	
