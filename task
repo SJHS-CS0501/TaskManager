@@ -1,0 +1,182 @@
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+/**
+ * 
+ */
+
+/**Task object containing information on a single task
+ * @author DylanJesse
+ *
+ */
+public class Task {
+	/*
+	 * Data fields:
+	 * -Priority
+	 * -Due date
+	 * -Category
+	 * -Description
+	 * -Location
+	 * -Completed
+	 */
+		private static short name;
+		private short priority;
+		private static short dueDate;
+		private static short category;
+		private static String description;
+		private static String location;
+		private boolean completed;
+	
+	 //Priorities
+		public static final short PRIO_HIGH = 1;
+		public static final short PRIO_MED = 2;
+		public static final short PRIO_LOW = 3;
+		public static final short PRIO_UNDEF = 0;
+		
+	//Categories
+		public static final short CAT_UNDEF = 0;
+		public static final short CAT_OTHER = 1;
+		public static final short CAT_SCHOOL = 2;
+		public static final short CAT_PERSONAL = 3;
+		public static final short CAT_CHORES = 4;
+		public static final short CAT_WORK = 5;
+	
+		
+		
+		
+		
+	//scanner
+		Scanner SC = new Scanner(System.in);
+		
+		
+		
+	//Setter for name-----------------------------------------
+		public static void setName(short n){ 
+			name = n;
+		}//end of name setter
+	//getter for name
+		public static short getName(){
+			return name;
+		}// end of name getter--------------------------------
+		
+	
+		
+	//due date setter------------------------------------------
+		public static void setDate(short d){
+			dueDate=d;
+		}//end of due date setter
+	//getter for date
+		public static short getDate(){
+			return dueDate;	
+		}//end of date getter----------------------------------
+	
+		
+		
+	//priority setter------------------------------------------
+		public void setPrio(short p){
+			if(p < 0 || p> 3){
+				throw new IllegalArgumentException("Invalid priority");
+			}//if p is right
+			priority = p;
+		}//priority setter end
+	//priority getter
+		
+		//Priority name getter----------------------------------------
+		public String getPrioName(){
+			
+			String p = "fail";
+			
+			switch(priority){
+			case 0:
+				p = "Undefined";
+				break;
+			case 1:
+				p = "Other";
+			case 2:
+				p ="School";
+				break;
+			case 3:
+				p ="Personal";
+				break;
+			case 4:
+				p = "Chores";
+				break;
+			case 5:
+				p ="Work";
+				break;
+			}//end of switch	
+			return p;
+	}//end of getPrioName	--------------------------------------
+		
+	//description setter--------------------------------------
+		public static void setDes(String d1){
+			description =  d1;
+		}//end description setter
+	//description getter
+		public static String getDes(){
+			return description;	
+		}// end of description getter------------------------
+		
+	
+		
+	//location setter----------------------------------------
+		public static void setLoc(String l){
+			location = l;
+		}//end location setter
+	//location getter
+		public static String getLoc(){
+			return location;
+		}//end of location setter----------------------------
+	
+		
+	
+	//category setter----------------------------------------
+		public static void setCat( short c){
+			if (c< 0 || c>5){
+				throw new IllegalArgumentException("Invalid Category");
+			}// end of error
+			category = c;
+		}//end of Category setter
+	//Category Getter
+		public static short getCat(){
+			return category;	
+		}//end of category getter---------------------------
+		
+		
+		//completed  getter--------------------------------
+		public boolean getCompleted() {
+			return completed;
+		}
+		public void setCompleted(boolean completed) {
+			this.completed = completed;
+		}//end of completed setter-------------------------
+		
+		public void write(PrintWriter writer)
+		{
+			StringBuilder s = new StringBuilder();
+			
+			s.append(priority);
+			s.append("\t");
+			s.append( dueDate );
+			s.append("\t");
+			s.append(category);
+			s.append("\t");
+			s.append(description);
+			s.append("\t");
+			s.append(location);
+			s.append("\t");
+			s.append(completed);
+		}//
+		
+		
+		
+		
+		/* 
+	 * Methods:
+	 * - EmptyConstructor class
+	 * - Accesors/Mutators for all fields
+	 * - override toString
+	 * - an equals method
+	 */
+	
+}//class task end
