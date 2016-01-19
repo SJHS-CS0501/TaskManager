@@ -109,9 +109,7 @@ public class TaskList {
 	}
 	
 	public Task serachByDescription( String d ){
-		Task t;
-		// NOTE: WILL FAIL 
-		t = taskList.get(0);
+		Task t = null;
 		
 		for( int i = 0; i < taskList.size(); i++ ){
 			if( taskList.get(i).getDescription().equals(d) ){
