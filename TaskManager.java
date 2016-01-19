@@ -4,6 +4,8 @@
  * 
  */
 
+import java.util.Scanner;
+
 /*
  * Task Manager Program
  * 
@@ -39,28 +41,13 @@ public class TaskManager {
 	
 	public static void main(String[] args) {
 		System.out.println("welcome to the Task Manager!");
+		Scanner scan = new Scanner(System.in);
 		
-		/*
-		 * ERASE FROM HERE TO THERE WHEN DONE TESTING TASK
-		 */
-		Task foo = new Task();
-		foo.setDescription("Test Task");
-		try {
-			foo.setPriority((short)12);
-		} catch(Exception e) {
-			System.out.println("Error setting priority: " + e.getMessage());
-			System.exit(-1);
+		do {
+			System.out.println("Create a new task:");
+			System.out.print("Description: ");
+			
 		}
-		
-		// time passes...
-		
-		System.out.println("Task info: ");
-		System.out.print("\tTask: " + foo.getDescription());
-		System.out.print("\t\tPrioity: " + foo.getPriority());
-		
-		/*
-		 * THERE
-		 */
 		
 		System.exit(0);
 	}

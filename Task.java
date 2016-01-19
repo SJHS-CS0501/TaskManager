@@ -261,6 +261,23 @@ public class Task {
 		
 	}
 	
+	/**
+	 * Prints the Task to the screen
+	 */
+	public void print() {
+		System.out.print("\tTask: " + description);
+		System.out.print("\t\tPriority: " + getPriorityName());
+		System.out.print("\t\tDue Date: " + dueDate.toString());
+		System.out.print("\t\tCategory: " + getCategoryName());
+		System.out.print("\t\tLocation: " + location);
+		System.out.print("Completed: " + completed);
+	}
+	
+	/**
+	 * Determines whether two tasks are equal
+	 * @param task The task to compare to
+	 * @return Whether the tasks are equal true/false
+	 */
 	public Boolean equals(Task task) {
 		return priority == task.getPriority() && dueDate.equals(task.getDueDate()) && category == task.getCategory() && description.equals(task.getDescription()) && location.equals(task.getLocation()) && completed == task.getCompleted();
 	}
