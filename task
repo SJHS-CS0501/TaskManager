@@ -166,7 +166,7 @@ public class Task {
 			s.append(location);
 			s.append("\t");
 			s.append(completed);
-		}//
+		}//end of string builder
 		
 		
 		
