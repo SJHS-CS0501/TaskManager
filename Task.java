@@ -1,4 +1,5 @@
 import java.text.DateFormat;
+import java.io.*;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -119,12 +120,22 @@ public class Task {
 			case 3:
 				pName = "Low";
 				break;
+<<<<<<< HEAD
 		}
 		
 		return pName;
 			
 		}
 	
+=======
+			default:
+				pName = "ILLEGAL VALUE";
+				break;
+			
+		}
+		return pName;
+	}
+>>>>>>> origin/master
 	/**
 	 * Sets the value of dueDate by using dDateStrng and .parse 
 	 * @param dueDate
@@ -177,9 +188,37 @@ public class Task {
 		}
 		*/
 		if( c < 0|| c > 5){
+<<<<<<< HEAD
 			throw new IllegalArgumentException( " Invalid category " );
+=======
+			throw new IllegalArgumentException( " Invalid priority " );
+>>>>>>> origin/master
 		}
 		category = c;
+	}
+	
+	
+	public String getCategoryName(){
+		String cName = null;
+		switch( priority ){
+			case 0:
+				cName = "Undefined";
+				break;
+			case 1:
+				cName = "High";
+				break;
+			case 2:
+				cName = "Medium";
+				break;
+			case 3:
+				cName = "Low";
+				break;
+			default:
+				cName = "ILLEGAL VALUE";
+				break;
+			
+		}
+		return cName;
 	}
 
 	/**
@@ -245,6 +284,40 @@ public class Task {
 	 */
 	public boolean getCompleted(){
 		return completed;
+	}
+	
+	/**
+	 * write a task to the provided PrintWriter object
+	 * @param writer
+	 */
+	
+	public void write( PrintWriter writer ){
+		// write data separated by tabs
+		StringBuilder s = new StringBuilder();
+		
+		/*
+		private short priority; // variable for priority of the task
+		private static Date dueDate; // variable for due date of the task 
+		private short category; // variable for the category of the task
+		private String description; // variable for the description of the task
+		private String location; // variable for the location of the task
+		private boolean completed; // variable for the completion of the task, either true or false
+		 */
+		s.append( priority );
+		s.append("\t" );
+		s.append( dueDate.toString() );
+		s.append( "\t" );
+		s.append( category );
+		s.append( "\t" );
+		s.append( description );
+		s.append( "\t" );
+		s.append( location );
+		s.append( "\t" );
+		s.append( completed );
+		
+		// Ok, write that bad boy
+		writer.println( s );
+		
 	}
 }
 	

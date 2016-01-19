@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  * 
  */
@@ -34,30 +36,21 @@ public class TaaskManager {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		boolean goOn = true;
+		String d;
+		short p;
+		boolean b = false;
+		Scanner keyboard = new Scanner(System.in);
 		
 		System.out.println( "Welcome to Task Manager! " );
 		
-		/*
-		 * ERASE FROM  HERE TO EXIT WHEN DONE
-		 */
-		Task foo = new Task();
-		foo.setDescription("Test Task ");
-		try {
-			//what we want to try that might throw an exception 
-		foo.setPriority((short)12);
-		} catch( Exception e){
-			//What to do if we catch an exception
-			System.out.println( "Error setting priority: " + e.getMessage());
-			//System.exit(-1);// exits program
+		while( goOn == true ){
+			System.out.println( " Please enter a desciption for your task" );
+			d = keyboard.nextLine();
+			System.out.println( "Please enter a priority for you task " );
+			p = keyboard.nextShort();
 		}
-		// time passes.........
 		
-		//System.out.println( " Task info "  );
-		//System.out.print( "\tTask " + description.getDescription );
-		//System.out.println( "\tTask: " + p.getPriority);
-		/*
-		 * STOP HERE
-		 */
 		System.exit(0);
 	}
 
