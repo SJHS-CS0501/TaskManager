@@ -53,6 +53,18 @@ public class TaskList {
 	}
 	
 	/**
+	 * Print all tasks in the task list.
+	 */
+	public void printTasks() {
+		System.out.println( "Tasks: " );
+		for( int i = 0; i < taskList.size(); i++ ) {
+			System.out.print( taskList.get(i).toString() );
+			System.out.println( "-----" );
+		}
+		System.out.println( "EOL" );
+	}
+	
+	/**
 	 * Add the provided task.
 	 * @param t
 	 * @return true if add succeeded
