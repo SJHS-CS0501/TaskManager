@@ -31,19 +31,34 @@ public class TaskManager {
 
 	public static void main(String[] args) {
 		Scanner keyboard = new Scanner( System.in );
-		String newTask;
+		String set;
+		int input;
 		
-		System.out.print( "Welcome to the Task Manager! Do you want to add a new task? (Y for yes; N for no): "  );
-		newTask = keyboard.nextLine();
+		System.out.print( "Welcome to the Task Manager!" );
 		
-		if( newTask.toLowerCase().equals('y') ) {
-			short userPriority;
-			Task.setPriority( userPrioirity);
-		} else {
+		do {
+			Task newTask = new Task();
 			
-		}
-		
-		
+			 System.out.print( "Enter description: " );
+			 set = keyboard.nextLine();
+			 newTask.setDescription( set );
+			 
+			 System.out.print( "Enter category: " );
+			 input = keyboard.nextInt();
+			 newTask.setCategory( input );
+			 
+			 System.out.print( "Enter priority: " );
+			 input = keyboard.nextInt();
+			 newTask.setPriority( input );
+			 
+			 System.out.print( "Enter location: " );
+			 set = keyboard.nextLine();
+			 newTask.setLocation( set );
+			 
+			 System.out.print( "Enter state of completion: " );
+			 set= keyboard.nextLine();
+			 
+		} while ()
 		
 		
 		//user has to create four tasks
