@@ -52,10 +52,6 @@ public class Task {
 		 return pName;
 	 }
 	 
-	
-	 
-	 
-	 
 	 /**
 	  * write a task to the provided PrintWriter object
 	  * @param writer
@@ -78,9 +74,22 @@ public class Task {
 		 
 		 writer.println( s );
 	 }
-	 
-	 
-	 
+
+	 public String toString() {
+		 
+		 StringBuilder s = new StringBuilder();
+		 s.append( "Description: " + description + "\n" );
+		 s.append( "Priority: " + getPriorityName() + "\n" );
+		 s.append( "Category: " + getCategoryName() + "\n" );
+		 
+		 if( dueDate != null ) {
+			 s.append( "Due Date: " + dueDate.toString() + "\n" );
+		 }
+		
+		 s.append( "Location: " + location + "\n" );
+		 s.append( "Completed? " + (completed?"Y":"N") + "\n" );
+		 return s.toString();
+}
 	 
 	 
 	 

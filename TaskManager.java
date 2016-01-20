@@ -1,3 +1,4 @@
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 /*
@@ -30,46 +31,37 @@ public class TaskManager {
 	public static void main(String[] args) {
 
 		Scanner keyboard = new Scanner(System.in);
+		String input;
 		System.out.println( "Welcome to the Task Manager!" );
 		
-		// four tasks
-		
 		do{
+			Task task = new Task();
+			
 			System.out.println( "Enter task: " );
+			input = keyboard.nextLine();
+
 			System.out.println( "Description: " );
+			input = keyboard.nextLine();
+			task.setDescription( input);
+			
 			System.out.println( "Priority(1-3): " );
+			input = keyboard.nextLine();
+			task.setPriority( input ); //short
+			
 			System.out.println( "Category(1-5): " );
+			input = keyboard.nextLine();
+			task.setCategory( input ); //short
+			
 			System.out.println( "Location: " );
-		}
+			input = keyboard.nextLine();
+			task.setLocation( input );
+			
+			System.out.println( "Add new task?" );
+			input = keyboard.nextLine();
 		
+		} while( input == ("n") );
+
 		
-		
-		
-		
-		/*
-		 * ERASE FROM HERE TO THERE WHEN DONE TESTING TASK
-		 */
-		
-		Task foo = new Task();
-		foo.setDescription( "Test Task" );
-		try{
-			// what we want to try that might throw an exception
-			foo.setPriority( (short)(1) );
-		} catch( Exception e ){
-			// What we do if we catch the exception
-			System.out.println( "Error setting priority: " + e.getMessage() );
-			//System.exit(-1);
-		}
-		
-		// time passes...
-		
-		System.out.println( "Task info: " );
-		System.out.println( "\tTask: " + foo.getDescription() );
-		System.out.println( "\t\tPriority: " + foo.getPriority() );
-		
-		/*
-		 * THERE
-		 */
 		
 		System.exit(0);
 	}
