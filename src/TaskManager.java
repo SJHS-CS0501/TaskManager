@@ -31,8 +31,9 @@ public class TaskManager {
 
 	public static void main(String[] args) {
 		Scanner keyboard = new Scanner( System.in );
-		String set;
-		int input;
+		String input;
+		short set;
+		boolean yesNo;
 		
 		System.out.print( "Welcome to the Task Manager!" );
 		
@@ -40,28 +41,31 @@ public class TaskManager {
 			Task newTask = new Task();
 			
 			 System.out.print( "Enter description: " );
-			 set = keyboard.nextLine();
-			 newTask.setDescription( set );
+			 input = keyboard.nextLine();
+			 newTask.setDescription( input );
 			 
 			 System.out.print( "Enter category: " );
-			 input = keyboard.nextInt();
-			 newTask.setCategory( input );
+			 set = keyboard.nextShort();
+			 newTask.setCategory( set );
 			 
 			 System.out.print( "Enter priority: " );
-			 input = keyboard.nextInt();
-			 newTask.setPriority( input );
+			 set = keyboard.nextShort();
+			 newTask.setPriority( set );
 			 
 			 System.out.print( "Enter location: " );
-			 set = keyboard.nextLine();
-			 newTask.setLocation( set );
+			 input = keyboard.nextLine();
+			 newTask.setLocation( input );
 			 
 			 System.out.print( "Enter state of completion: " );
-			 set= keyboard.nextLine();
+			 yesNo = keyboard.nextBoolean();
+			 newTask.setCompleted( yesNo );
 			 
-		} while ()
-		
-		
-		//user has to create four tasks
+			 TaskList.addTask( t );
+			 
+			 System.out.print( "Do you want to enter another task? (y for yes; n for no): " );
+			 input = keyboard.nextLine();
+			 
+		} while (input.equalsIgnoreCase("y") );
 		
 		System.exit(0);
 
