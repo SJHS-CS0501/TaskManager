@@ -36,7 +36,7 @@ public class TaskManager {
 		System.out.println( "Welcome to the Task Manager!" );
 		
 		TaskList taskList = new TaskList();
-		String name = null; description = null;
+		String name = null, description = null, decide = null;
 		Scanner keyboard = new Scanner(System.in);
 		
 		/*
@@ -66,11 +66,18 @@ public class TaskManager {
 		// Allow user to make 4 tasks
 		
 		do{
+			Task task = new Task();
+			decide = null;
 			
+			System.out.println( "Descrption: ");
+			task.setDescription(keyboard.nextLine());
 			
-			System.out.println( "Descrption:");
-			taskList.setDescription()
-		} while (choice != "q");
+			System.out.println( "Priority (as number) [1");
+			task.setPriority(keyboard.nextShort());
+			
+			System.out.println( "Would you like to add another task? y/n: ");
+			decide = keyboard.nextLine().toLowerCase();
+		} while (decide != "n");
 		
 		
 		
