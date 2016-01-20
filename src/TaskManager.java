@@ -37,7 +37,8 @@ public class TaskManager {
 		newTask = keyboard.nextLine();
 		
 		if( newTask.toLowerCase().equals('y') ) {
-			
+			short userPriority;
+			Task.setPriority( userPrioirity);
 		} else {
 			
 		}
