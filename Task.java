@@ -230,5 +230,18 @@ public class Task {
 		 s.append(completed);
 	 }
 	 
-	 
+	 public String toString() {
+		  StringBuilder s = new StringBuilder();
+		  s.append( "Description: " + getDescrition() + "\n" );
+		  s.append( "Priority: " + getPrority() + "\n" );
+		  s.append( "Category: " + getCatagory() + "\n" );
+		  if( dueDate != null ) {
+		    s.append( "Due Date: " + dueDate.toString() + "\n" );
+		  }
+		  s.append( "Location: " + location + "\n" );
+		  s.append( "Completed? " + (completed?"Y":"N") + "\n" );
+		  return s.toString();
+		}
+
+
 }

@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -212,6 +213,20 @@ public class Task_List {
 		}
 		
 		return foo;
+	}
+	
+	/**
+	 * Print all tasks in the task list.
+	 */
+
+	public void printTasks() {
+		System.out.println( "Tasks: " );
+		for( int i = 0; i < tasklist.size(); i++ ) {
+			System.out.print( tasklist.get(i).toString() );
+			System.out.println( "-----" );
+		}
+		System.out.println( "EOL" );
+
 	}
 }
 

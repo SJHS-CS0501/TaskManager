@@ -1,3 +1,10 @@
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.Date;
+import java.util.Scanner;
+
 /*
  * Task manager program
  * - keep list of task
@@ -24,9 +31,53 @@
 public class Task_Manager {
 
 	
-	public static void main(String[] args){
+	public static void main(String[] args) throws Exception{
 		//main stuff
+		Scanner k = new Scanner(System.in);// new scanner object
+		char choice;
+		Task_List list;
+		int numTask = 0;
+		File myFile = new File("Task Thing");
+		short prio;
+		short cat;
+		String loc;
+		String des;
+		Date d;
+		
+		Task that = new Task();
 		
 		
+		list = new Task_List();
+		
+		for(int i = 0; i < 4; i++){
+		
+			list.addTask(that);
+			
+			System.out.println("What is the priorety of this task 0-3");
+			prio = k.nextShort();
+			that.setPriority(prio);
+			
+			System.out.println("undefined = 0, other = 1, school = 2, chore = 3, work = 4 ");
+			cat = k.nextShort();
+			that.setCatagory(cat);
+			
+			System.out.println("What is the date it is due");
+			k.nextLine();
+			d = null;
+			that.setDate(d);
+			
+			System.out.println("the location");
+			loc = k.nextLine();
+			that.setLocation(loc);
+			
+			System.out.println("Description of the task");
+			des = k.nextLine();
+			that.setDescription(des);
+			
+			that.toString();
+			
+		}
+		
+		list.printTasks();
 	}
 }
