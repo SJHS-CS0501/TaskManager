@@ -31,10 +31,10 @@ import java.util.Scanner;
 public class Task_Manager {
 
 	
-	public static void main(String[] args) throws Exception{
+	public static void main(String[] args) {
 		//main stuff
 		Scanner k = new Scanner(System.in);// new scanner object
-		char choice;
+		char choice = 'n';
 		Task_List list;
 		int numTask = 0;
 		File myFile = new File("Task Thing");
@@ -49,13 +49,17 @@ public class Task_Manager {
 		
 		list = new Task_List();
 		
-		for(int i = 0; i < 4; i++){
+		do{
 		
 			list.addTask(that);
 			
 			System.out.println("What is the priorety of this task 0-3");
 			prio = k.nextShort();
+			try{
 			that.setPriority(prio);
+			}catch(InvalidArgumentException){
+				
+			}
 			
 			System.out.println("undefined = 0, other = 1, school = 2, chore = 3, work = 4 ");
 			cat = k.nextShort();
@@ -76,8 +80,12 @@ public class Task_Manager {
 			
 			that.toString();
 			
+			System.out.println("Would you like to add another task? \ny (for yes)\nn (for no)");
+			choice = k.nextLine().toLowerCase().charAt(0);
+			
 		}
+		while(choice == 'y');
 		
 		list.printTasks();
+		}
 	}
-}

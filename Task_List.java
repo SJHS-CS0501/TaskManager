@@ -220,7 +220,7 @@ public class Task_List {
 	 */
 
 	public void printTasks() {
-		System.out.println( "Tasks: " );
+		System.out.println( "\nTasks:" );
 		for( int i = 0; i < tasklist.size(); i++ ) {
 			System.out.print( tasklist.get(i).toString() );
 			System.out.println( "-----" );
