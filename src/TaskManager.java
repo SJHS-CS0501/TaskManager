@@ -35,8 +35,8 @@ public class TaskManager {
 		// main stuff goes here, yo
 		System.out.println( "Welcome to the Task Manager!" );
 		
-		Task task = new Task();
-		String name = null
+		TaskList taskList = new TaskList();
+		String name = null; description = null;
 		Scanner keyboard = new Scanner(System.in);
 		
 		/*
@@ -66,10 +66,10 @@ public class TaskManager {
 		// Allow user to make 4 tasks
 		
 		do{
-			System.out.println( "Please enter the name of your new task: " );
-			name = keyboard.nextLine();
+			
 			
 			System.out.println( "Descrption:");
+			taskList.setDescription()
 		} while (choice != "q");
 		
 		
