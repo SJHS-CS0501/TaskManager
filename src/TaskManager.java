@@ -39,6 +39,7 @@ public class TaskManager {
 		
 		do {
 			Task newTask = new Task();
+			TaskList newTaskList = new TaskList();
 			
 			 System.out.print( "Enter description: " );
 			 input = keyboard.nextLine();
@@ -60,7 +61,7 @@ public class TaskManager {
 			 yesNo = keyboard.nextBoolean();
 			 newTask.setCompleted( yesNo );
 			 
-			 TaskList.addTask( t );
+			 newTaskList.addTask( t );
 			 
 			 System.out.print( "Do you want to enter another task? (y for yes; n for no): " );
 			 input = keyboard.nextLine();
