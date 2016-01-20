@@ -235,7 +235,7 @@ public class Task {
 	public static short CatW(  ){
 		return CAT_WORK;
 	}
-	
+
 	
 	/* 
 	 * Methods:

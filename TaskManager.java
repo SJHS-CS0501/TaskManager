@@ -32,32 +32,34 @@ public class TaskManager {
 
 		Scanner keyboard = new Scanner(System.in);
 		String input;
+		short thing;
 		System.out.println( "Welcome to the Task Manager!" );
 		
 		do{
-			Task task = new Task();
+			Task stuff = new Task();
 			
 			System.out.println( "Enter task: " );
 			input = keyboard.nextLine();
 
 			System.out.println( "Description: " );
 			input = keyboard.nextLine();
-			task.setDescription( input);
+			stuff.setDescription( input);
 			
 			System.out.println( "Priority(1-3): " );
 			input = keyboard.nextLine();
-			task.setPriority( input ); //short
+			stuff.setPriority( thing );
 			
 			System.out.println( "Category(1-5): " );
 			input = keyboard.nextLine();
-			task.setCategory( input ); //short
+			stuff.setCategory( thing );
 			
 			System.out.println( "Location: " );
 			input = keyboard.nextLine();
-			task.setLocation( input );
+			stuff.setLocation( input );
 			
 			System.out.println( "Add new task?" );
 			input = keyboard.nextLine();
+			stuff.addTask( input );
 		
 		} while( input == ("n") );
 
