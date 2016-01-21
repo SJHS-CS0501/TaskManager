@@ -15,7 +15,7 @@ public class TaskList {
 	 * 
 	 * list of tasks 
 	 */
-	ArrayList<Task> taskList;
+	static ArrayList<Task> taskList;
 	
 	
 	
@@ -56,7 +56,7 @@ public class TaskList {
 	 * @param t
 	 * @return
 	 */
-	public boolean addTask( Task t ){
+	public static boolean addTask( Task t ){
 		return taskList.add(t);
 		
 	}
