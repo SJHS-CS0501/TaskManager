@@ -69,11 +69,17 @@ public class TaskManager {
 			Task task = new Task();
 			decide = null;
 			
+			
 			System.out.println( "Descrption: ");
 			task.setDescription(keyboard.nextLine());
 			
-			System.out.println( "Priority (as number) [1");
+			System.out.println( "Priority (as number) [1]");
 			task.setPriority(keyboard.nextShort());
+			
+			System.out.println( "Location: " );
+			task.setLocation(keyboard.nextLine());
+			
+			System.out.println( "Completed y/n: ");
 			
 			System.out.println( "Would you like to add another task? y/n: ");
 			decide = keyboard.nextLine().toLowerCase();
