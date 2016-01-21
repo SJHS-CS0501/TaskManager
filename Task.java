@@ -1,5 +1,6 @@
 import java.util.Date;
 import java.io.PrintWriter;
+import java.io.BufferedReader;
 
 /**
  * Task object containing information on a single task.
@@ -212,18 +213,9 @@ public class Task {
 		return completed;
 	}
 	
-//	/**
-//	 * Read a task from the provided BufferedReader object
-//	 * @param reader
-//	 * @returns The Task read from the file
-//	 */
-//	public Task read() {
-//		
-//	}
-	
 	/**
 	 * Write a task to the provided PrintWriter object 
-	 * @param writer
+	 * @param writer PrintWriter to write to disk
 	 */
 	public void write( PrintWriter writer) {
 		// write data separated by tabs
@@ -254,6 +246,17 @@ public class Task {
 		// OK, write that bad boy
 		writer.println(s);
 		
+	}
+	
+	/**
+	 * REad a task from disk using the provided BufferedReader
+	 * @param reader DufferedReader to read from disk
+	 * @return read task or null if not read
+	 */
+	public Task read(BufferedReader reader) {
+		Task t = new Task();
+		
+		return t;
 	}
 	
 	/**
