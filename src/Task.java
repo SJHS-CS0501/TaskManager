@@ -177,7 +177,9 @@ public class Task {
 		 */
 		s.append( priority );
 		s.append("\t");
-		s.append(dueDate.toString() );
+		if( dueDate != null ) {
+			s.append(dueDate.toString() );
+		}
 		s.append("\t");
 		s.append( category );
 		s.append("\t");
@@ -190,6 +192,19 @@ public class Task {
 		// OK, write that bad boy
 		writer.println( s );
 		
+		
+		/**
+		 * Read a task from disk using the provided BufferedReader.
+		 * @param reader BufferedReader to read from disk
+		 * @return read task or null if not read
+		 */
+		public Task read( BufferedReader reader ) {
+			Task t = new Task();
+			
+			
+			
+			return t;
+		}
 		
 		
 	}

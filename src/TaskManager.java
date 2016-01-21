@@ -1,5 +1,5 @@
 import java.util.Scanner;
-
+import java.io.*;
 /**
  * 
  */
@@ -36,7 +36,7 @@ public class TaskManager {
 		System.out.println( "Welcome to the Task Manager!" );
 		
 		TaskList taskList = new TaskList();
-		String name = null, description = null, decide = null;
+		String name = null, description = null, decide = null, filename = "Task name: ";
 		Scanner keyboard = new Scanner(System.in);
 		
 		/*
@@ -67,28 +67,50 @@ public class TaskManager {
 		
 		do{
 			Task task = new Task();
-			decide = null;
-			
+			decide = null;		
+			String input = null;
 			
 			System.out.println( "Descrption: ");
-			task.setDescription(keyboard.nextLine());
-			
-			System.out.println( "Priority (as number) [1]");
-			task.setPriority(keyboard.nextShort());
+			input = keyboard.nextLine();
+			task.setDescription(input);
 			
 			System.out.println( "Location: " );
-			task.setLocation(keyboard.nextLine());
+			input = keyboard.nextLine();
+			task.setLocation(input);
 			
-			System.out.println( "Completed y/n: ");
+			System.out.println( "Priority (as number) [1-3]");
+			input = keyboard.nextLine();
+			task.setPriority));
+			
+			System.out.println( "Category [1-5]: ");
+			task.setCategory(keyboard.nextShort());
+			
+			//System.out.println( "Completed y/n: ");
+			//task.setCompleted(keyboard.nextBoolean());
+			
+			taskList.addTask(task);
 			
 			System.out.println( "Would you like to add another task? y/n: ");
-			decide = keyboard.nextLine().toLowerCase();
-		} while (decide != "n");
+			decide = keyboard.nextLine();
+			System.out.println();
+			
+		} while (decide.toLowerCase() != "n" );
+		
+		taskList.printTasks();
+		
+		
+		try{
+			taskList.writeFile(filename);
+		} catch( FileNotFoundException e ) {
+			System.out.println( "File \"" + filename + "\" not found!" );
+			System.out.println( "Dying..." );
+			e.printStackTrace();
+			System.exit(-1);
+		}
 		
 		
 		
-		
-		
+		keyboard.close();
 		System.exit(0);
 	}
 }
