@@ -195,7 +195,7 @@ public class TaskList {
 	 */
 	public void print() {
 		for( int i = 0; i < taskList.size(); i++) {
-			taskList.get(i).print();
+			System.out.print(taskList.get(i).toString());
 		} 
 	}
 	

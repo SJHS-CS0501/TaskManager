@@ -5,6 +5,7 @@
  */
 
 import java.util.Scanner;
+import java.io.FileNotFoundException;
 
 /*
  * Task Manager Program
@@ -47,6 +48,7 @@ public class TaskManager {
 		int m = 0;
 		int d = 0;
 		boolean quit = false;
+		String filename = "tasklist.txt";
 		
 		System.out.println("Welcome to the Task Manager!");
 		
@@ -101,7 +103,17 @@ public class TaskManager {
 			}
 		} while(!quit);
 		
+		System.out.println();
 		tasks.print();
+		
+		try {
+			tasks.writeFile(filename);	
+		} catch(FileNotFoundException e) {
+			System.out.println("File \"" + filename + "\" not found!");
+			e.printStackTrace();
+			System.exit(-1);
+		}
+		
 		
 		System.exit(0);
 	}

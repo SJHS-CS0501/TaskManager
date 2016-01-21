@@ -59,13 +59,6 @@ public class Task {
 			throw new IllegalArgumentException("Invalid priority");
 		}
 		priority = p; 
-		
-//		if(priority <= 3 && priority >= 0) {
-//			priority = p;
-//		} else {
-//			priority = PRIO_UNDEF;
-//			System.out.println("Given value is undefined for priority.");
-//		}
 	}
 	
 	/**
@@ -129,14 +122,6 @@ public class Task {
 			throw new IllegalArgumentException("Invalid category");
 		}
 		category = c;
-		
-//		if(category <= 5 && category >= 0) {
-//			category = c;
-//		} else {
-//			category = CAT_UNDEF;
-//			System.out.println("Give value is undefined for category.");
-//		}
-
 	}
 	
 	/**
@@ -227,6 +212,15 @@ public class Task {
 		return completed;
 	}
 	
+//	/**
+//	 * Read a task from the provided BufferedReader object
+//	 * @param reader
+//	 * @returns The Task read from the file
+//	 */
+//	public Task read() {
+//		
+//	}
+	
 	/**
 	 * Write a task to the provided PrintWriter object 
 	 * @param writer
@@ -246,7 +240,8 @@ public class Task {
 		
 		s.append(priority);
 		s.append('\t');
-		s.append(dueDate.toString());
+		if(dueDate != null)
+			s.append(dueDate.toString());
 		s.append('\t');
 		s.append(category);
 		s.append('\t');
@@ -262,16 +257,25 @@ public class Task {
 	}
 	
 	/**
-	 * Prints the Task to the screen
+	 * Returns string representation of task
+	 * @return String representation of task
 	 */
-	public void print() {
-		System.out.println("\tTask: " + description);
-		System.out.println("\t\tPriority: " + getPriorityName());
-		System.out.println("\t\tDue Date: " + dueDate.toString());
-		System.out.println("\t\tCategory: " + getCategoryName());
-		System.out.println("\t\tLocation: " + location);
-		System.out.println("\t\tCompleted: " + completed);
-		System.out.println();
+	public String toString() {
+		StringBuilder s = new StringBuilder();
+		
+		s.append("\tTask: " + description + "\n");
+		s.append("\t\tPriority: " + getPriorityName() + "\n");
+		if(dueDate != null)
+			s.append("\t\tDue Date: " + dueDate.toString() + "\n");
+		s.append("\t\tCategory: " + getCategoryName() + "\n");
+		s.append("\t\tLocation: " +  location + "\n");
+		if(completed) {
+			s.append("\t\tComplete\n\n");
+		} else {
+			s.append("\t\tIncomplete\n\n");
+		}
+		
+		return s.toString();
 	}
 	
 	/**
