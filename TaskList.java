@@ -52,6 +52,11 @@ public class TaskList {
 		return search;
 	}
 	
+	/**
+	 * 
+	 * @param c
+	 * @return
+	 */
 	public TaskList searchByCategory( short c ){
 		TaskList search = new TaskList();
 		
@@ -112,9 +117,6 @@ public class TaskList {
 		
 		return search;
 	}
-	
-	
-	
 	
 	
 	

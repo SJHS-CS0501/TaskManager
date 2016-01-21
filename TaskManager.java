@@ -1,3 +1,4 @@
+import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
@@ -32,36 +33,39 @@ public class TaskManager {
 
 		Scanner keyboard = new Scanner(System.in);
 		String input;
+		String fileName = "Tasks.txt";
 		short thing = 0;
 		int numTasks = 0;
+		TaskList otherStuff = new TaskList();
 		
 		System.out.println( "Welcome to the Task Manager!" );
 		
 		do{
-			TaskList otherStuff = new TaskList();
-			
 			Task stuff = new Task();
 			
-			System.out.println( "Enter task: " );
+			System.out.print( "Enter task: " );
 			input = keyboard.nextLine();
 
-			System.out.println( "Description: " );
+			System.out.print( "Description: " );
 			input = keyboard.nextLine();
 			stuff.setDescription( input);
 			
-			System.out.println( "Priority(1-3): " );
+			System.out.print( "Priority(1-3): " );
 			input = keyboard.nextLine();
 			stuff.setPriority( thing );
 			
-			System.out.println( "Category(1-5): " );
+			System.out.print( "Category(1-5): " );
 			input = keyboard.nextLine();
 			stuff.setCategory( thing );
 			
-			System.out.println( "Location: " );
+			System.out.print( "Location: " );
 			input = keyboard.nextLine();
 			stuff.setLocation( input );
 			
-			System.out.println( "Add new task?" );
+			System.out.print( "Completed? : " );
+			input = keyboard.nextLine().toLowerCase();
+			
+			System.out.print( "Add new task?" );
 			input = keyboard.nextLine().toLowerCase();
 			
 			otherStuff.addTask( stuff );
@@ -71,8 +75,18 @@ public class TaskManager {
 		} while( input.equalsIgnoreCase("y") );
 
 		
-			
+		otherStuff.printTasks();
 		
+		try{
+			otherStuff.writeFile( fileName);
+		} catch( FileNotFoundException e ){
+			System.out.println("File \"" + fileName + "\" not found!");
+			System.out.println( "Dying..." );
+			e.printStackTrace();
+			System.exit( -1 );
+		}
+		
+		keyboard.close();
 		System.exit(0);
 	}
 

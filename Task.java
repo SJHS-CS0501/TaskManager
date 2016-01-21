@@ -54,7 +54,7 @@ public class Task {
 	 
 	 /**
 	  * write a task to the provided PrintWriter object
-	  * @param writer
+	  * @param writer 
 	  */
 	 public void write( PrintWriter writer ){
 		 // write data separated by tabs
@@ -62,7 +62,9 @@ public class Task {
 		
 		 s.append( priority );
 		 s.append( "\t" );
-		 s.append( dueDate.toString() );
+		 if( dueDate != null ){
+			 s.append( dueDate.toString() );
+		 }
 		 s.append( "\t" );
 		 s.append( category);
 		 s.append( "\t" );
@@ -75,6 +77,17 @@ public class Task {
 		 writer.println( s );
 	 }
 
+	 /**
+	  * Read a task from disk using the provided BufferedReader
+	  * @param reader BufferedReadrer to read from disk
+	  * @return read task or null if not read
+	  */
+	 public Task read( BufferedReader reader ){
+		 Task t = new Task();
+		 
+		 return t;
+	 }
+	 
 	 public String toString() {
 		 
 		 StringBuilder s = new StringBuilder();
@@ -89,11 +102,7 @@ public class Task {
 		 s.append( "Location: " + location + "\n" );
 		 s.append( "Completed? " + (completed?"Y":"N") + "\n" );
 		 return s.toString();
-}
-	 
-	 
-	 
-	 
+}	 
 	 
 	 public String getCategoryName() {
 		 String cName = "NAME";
