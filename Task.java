@@ -106,8 +106,19 @@ public class Task {
 	}
 	
 	public String getPriorityName(){
+<<<<<<< HEAD
 		return pName;
 	}
+=======
+		String pName = null;
+	
+		}
+		
+		return pName;
+			
+		}
+	
+>>>>>>> origin/master
 
 	/**
 	 * Sets the value of dueDate by using dDateStrng and .parse 
@@ -164,6 +175,11 @@ public class Task {
 
 			throw new IllegalArgumentException( " Invalid category " );
 
+<<<<<<< HEAD
+=======
+			throw new IllegalArgumentException( " Invalid priority " );
+
+>>>>>>> origin/master
 		}
 		category = c;
 	}
