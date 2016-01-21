@@ -33,6 +33,8 @@ public class TaskManager {
 		Scanner keyboard = new Scanner(System.in);
 		String input;
 		short thing;
+		int numTasks = 0;
+		
 		System.out.println( "Welcome to the Task Manager!" );
 		
 		do{
@@ -58,10 +60,13 @@ public class TaskManager {
 			stuff.setLocation( input );
 			
 			System.out.println( "Add new task?" );
-			input = keyboard.nextLine();
-			stuff.addTask( input );
+			input = keyboard.nextLine().toLowerCase();
+			
+			taskList.addTask( input );
+			
+			numTasks++;
 		
-		} while( input == ("n") );
+		} while( input.equalsIgnoreCase("y") );
 
 		
 		
