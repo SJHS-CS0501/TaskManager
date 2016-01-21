@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.Scanner;
 
 /*
@@ -31,42 +32,59 @@ public class TaskManager {
 
 	public static void main(String[] args) {
 		Scanner keyboard = new Scanner( System.in );
+		TaskList newTaskList = new TaskList();
+		String fileName = "Tasks.txt";
 		String input;
 		short set;
 		boolean yesNo;
 		
-		System.out.print( "Welcome to the Task Manager!" );
+		System.out.println( "Welcome to the Task Manager!" );
 		
 		do {
 			Task newTask = new Task();
-			TaskList newTaskList = new TaskList();
 			
 			 System.out.print( "Enter description: " );
 			 input = keyboard.nextLine();
 			 newTask.setDescription( input );
 			 
-			 System.out.print( "Enter category: " );
+			 System.out.print( "Enter category (1-5): " );
 			 set = keyboard.nextShort();
 			 newTask.setCategory( set );
 			 
-			 System.out.print( "Enter priority: " );
+			 System.out.print( "Enter priority (1-3): " );
 			 set = keyboard.nextShort();
 			 newTask.setPriority( set );
 			 
-			 System.out.print( "Enter location: " );
+			 keyboard.nextLine();
+			 
+			 System.out.print( "Enter location (return for none): " );
 			 input = keyboard.nextLine();
 			 newTask.setLocation( input );
 			 
-			 System.out.print( "Enter state of completion: " );
+			 System.out.print( "Enter state of completion (0/1): " );
 			 yesNo = keyboard.nextBoolean();
 			 newTask.setCompleted( yesNo );
 			 
-			 newTaskList.addTask( t );
+			 newTaskList.addTask( newTask );
 			 
 			 System.out.print( "Do you want to enter another task? (y for yes; n for no): " );
 			 input = keyboard.nextLine();
 			 
 		} while (input.equalsIgnoreCase("y") );
+		
+		
+		newTaskList.printTasks();
+		
+		try {
+			newTaskList.writeFile( fileName );
+		} catch( FileNotFoundException e ) {
+			System.out.println( "File \"" + fileName + "\" not found");
+			System.out.println( "Dying..." );
+			e.printStackTrace();
+			System.exit(-1);
+		}
+		
+		keyboard.close();
 		
 		System.exit(0);
 
