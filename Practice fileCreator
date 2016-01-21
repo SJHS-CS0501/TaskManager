@@ -9,6 +9,7 @@ public FileCreator
     Scanner inputFile;      //for file input
     Scanner SC = new Scanner(System.in);
     String fileName;        //to hold fileNmae
+    String str = "abcde";
     int n= 0;
     boolean confirmName = true;
     
@@ -19,6 +20,12 @@ public FileCreator
       System.out.println(fileName +" is the name you choose");
       System.out.println("Do you wish to set this name\n1.Yes\n2.No");
       n =SC.nextInt();
+      try
+      {
+        n = Interger,parseInt(str);
+        
+        
+      }
       if(n==1)
       {
         confirmName =false;
@@ -32,7 +39,7 @@ public FileCreator
     }//end of try
     catch (fileNotFoundException e)
     {
-      System.out.println("File not Found.");
+      System.out.println(null, e.getMessage());
     }//end of catch filenotfoundException
   System.out.println("Done");
   System.exit(0);  
