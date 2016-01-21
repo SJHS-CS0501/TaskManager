@@ -219,7 +219,11 @@ public class Task {
 		 
 		 s.append(priority);
 		 s.append("\t");
+		
+		 if(dueDate != null){
 		 s.append(dueDate.toString());
+		 }
+		 
 		 s.append("\t");
 		 s.append(catagory);
 		 s.append("\t");
@@ -227,7 +231,16 @@ public class Task {
 		 s.append("\t");
 		 s.append(location);
 		 s.append("\t");
-		 s.append(completed);
+		 //s.append(completed);
+		
+		 if(completed == false){
+			 s.append("n");
+		 } else if(completed == true){
+			 s.append("y");
+		 }
+		 
+		 writer.println(s);
+		
 	 }
 	 
 	 public String toString() {

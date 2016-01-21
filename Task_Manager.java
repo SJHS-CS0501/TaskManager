@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Date;
 import java.util.Scanner;
+import java.io.*;
 
 /*
  * Task manager program
@@ -31,7 +32,7 @@ import java.util.Scanner;
 public class Task_Manager {
 
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		//main stuff
 		Scanner k = new Scanner(System.in);// new scanner object
 		char choice = 'n';
@@ -43,6 +44,8 @@ public class Task_Manager {
 		String loc;
 		String des;
 		Date d;
+		
+		String fileName = "tasks.csv";
 		
 		Task that = new Task();
 		
@@ -57,8 +60,10 @@ public class Task_Manager {
 			prio = k.nextShort();
 			try{
 			that.setPriority(prio);
-			}catch(InvalidArgumentException){
+			}catch(IllegalArgumentException e){
 				
+				System.out.println("Why have you done this to me, I an now dead..........");
+				System.exit(-1);
 			}
 			
 			System.out.println("undefined = 0, other = 1, school = 2, chore = 3, work = 4 ");
@@ -87,5 +92,19 @@ public class Task_Manager {
 		while(choice == 'y');
 		
 		list.printTasks();
+		
+		try{	
+		list.writeFile(fileName);
+		}catch(FileNotFoundException e) {
+			System.out.println("File \"" + fileName + "\" not found!");
+			System.out.println("Dying....");
+			e.printStackTrace();
+			System.exit(-1);
 		}
+		
+	
+		k.close();
+		System.exit(0);
+		
 	}
+}
