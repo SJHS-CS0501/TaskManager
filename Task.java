@@ -302,7 +302,9 @@ public class Task {
 		 */
 		s.append( priority );
 		s.append("\t" );
+		if( dueDate != null ){
 		s.append( dueDate.toString() );
+		}
 		s.append( "\t" );
 		s.append( category );
 		s.append( "\t" );
@@ -316,6 +318,30 @@ public class Task {
 		writer.println( s );
 		
 	}
+	/**
+	 * Read a task from disk using the provided BufferedReader
+	 * @param reader
+	 * @return read task or return null if not read
+	 */
+	public Task read( BufferedReader reader ){
+		Task t = new Task();
+		
+		
+		return t;
+	}
+	public String toString() {
+		  StringBuilder s = new StringBuilder();
+		  s.append( "Description: " + description + "\n" );
+		  s.append( "Priority: " + getPriorityName() + "\n" );
+		  s.append( "Category: " + getCategoryName() + "\n" );
+		  if( dueDate != null ) {
+		    s.append( "Due Date: " + dueDate.toString() + "\n" );
+		  }
+		  s.append( "Location: " + location + "\n" );
+		  s.append( "Completed? " + (completed?"Y":"N") + "\n" );
+		  return s.toString();
+		}
+
 }
 	
 	

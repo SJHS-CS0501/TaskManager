@@ -56,7 +56,7 @@ public class TaskList {
 	 * @param t
 	 * @return
 	 */
-	public static boolean addTask( Task t ){
+	public boolean addTask( Task t ){
 		return taskList.add(t);
 		
 	}
@@ -188,4 +188,17 @@ public class TaskList {
 		}
 		return tL;
 	}
+	
+	/**
+	 * Print all tasks in the task list.
+	 */
+	public void printTasks() {
+		System.out.println( "Tasks: " );
+		for( int i = 0; i < taskList.size(); i++ ) {
+			System.out.print( taskList.get(i).toString() );
+			System.out.println( "-----" );
+		}
+		System.out.println( "EOL" );
+	}
+	
 }
