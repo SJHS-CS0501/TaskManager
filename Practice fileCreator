@@ -12,11 +12,20 @@ public FileCreator
     String str = "abcde";
     int n= 0;
     boolean confirmName = true;
+
+   
     
     while(confirmName= true)
     {
+      Public void setFilename(fileName)
+      {
       System.out.println("PLease enter the name of the file you wish to create");
-      fileName= SC.nextLine();
+      fileName= InputFile.nextLine();
+      }//end of set FileName
+      Public void getfileName(fileName)
+      {
+        return fileName;
+      }//end of getFileName 
       System.out.println(fileName +" is the name you choose");
       System.out.println("Do you wish to set this name\n1.Yes\n2.No");
       n =SC.nextInt();
