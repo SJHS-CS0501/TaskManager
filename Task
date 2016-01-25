@@ -18,10 +18,33 @@ public class task
   public static set.Name(String n)
   {
     n = Sc.nextLine();
-    break;
   }//setName end
   public static get.Name(String n)
   {
     return n;
   }//getName end
+  public static set.Time(short t)
+  {
+  t = SC.nextShort();
+  }//SetTime end
+  public static get.Time(short t)
+  {
+    return t;
+  }//getTime end
+  public static set.Date(short d)
+  {
+    d = SC.nextShort();
+  }//setDate end
+  public static get.Date(short d)
+  {
+    return d;
+  }//getDate end
+  public static set.Priority( int p)
+  {
+    p = SC.NextShort();
+  }//setPriority end
+  public static get.Priority( int p)
+  {
+    return p;
+  }//get Priority end
 }//public task end
