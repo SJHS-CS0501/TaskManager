@@ -36,7 +36,6 @@ public class TaskManager {
 		String fileName = "Tasks.txt";
 		short thing = 0;
 		int numTasks = 0;
-		int ctr = 0;
 		TaskList otherStuff = new TaskList();
 		
 		System.out.println( "Welcome to the Task Manager!" );
@@ -76,7 +75,19 @@ public class TaskManager {
 		} while( input.equalsIgnoreCase("y") );
 
 		
+		otherStuff = new TaskList();
+		System.out.println( "Before read: ");
 		otherStuff.printTasks();
+		
+		try{
+			otherStuff.readFile( fileName );
+		} catch( FileNotFoundException e ){
+			System.out.println( "File \"" + fileName + "\" not found!" );
+			System.out.println( "Dying...." );
+			e.printStackTrace();
+			System.exit(-1);
+		
+		}
 		
 		try{
 			otherStuff.writeFile( fileName);
@@ -86,6 +97,7 @@ public class TaskManager {
 			e.printStackTrace();
 			System.exit( -1 );
 		}
+	
 		
 		keyboard.close();
 		System.exit(0);

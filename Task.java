@@ -1,5 +1,7 @@
 import java.util.Date;
 import java.io.*;
+import java.text.DateFormat;
+import java.text.ParseException;
 /**
  * 
  * Task object containing information on a single task.
@@ -82,10 +84,33 @@ public class Task {
 	  * @param reader BufferedReadrer to read from disk
 	  * @return read task or null if not read
 	  */
-	 public Task read( BufferedReader reader ){
-		 Task t = new Task();
+	 public void read( BufferedReader reader ){
+		 String line = null;
+		 String [] results;
+		 try{
+			 line = reader.readLine();
+		 } catch( IOException e ){
+			 System.out.println( " Cannot read file: " + e.getMessage() );
+			 return;
+		 }
 		 
-		 return t;
+		 results = line.split( "\t" );
+		 
+		 for( int ctr = 0; ctr < results.length; ctr++ ){
+		 	System.out.println( "DBG: results[ " + ctr + "]: \"" + results[ctr] + "\"" );
+	 	}
+		 
+		 setPriority( Short.parseShort( results[0] ) );
+		 try{
+			 setDate( DateFormat.getDateInstance().parse( results[1] ) );
+		 } catch( ParseException e ) {
+			 System.out.println( "Could not parse the date. Setting to null." );
+			 // nothing to do here, move along...
+		 }
+		 setCategory( Short.parseShort( results[2] ) );
+		 setDescription( results[3] );
+		 setLocation( results[4] );
+		 setCompleted( Boolean.parseBoolean( results[5] ) );
 	 }
 	 
 	 public String toString() {
