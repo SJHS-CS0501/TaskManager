@@ -1,0 +1,23 @@
+/**
+*First: place scanner
+*Second: place variables 
+*Third: creat constructors of for each Variable
+*/
+public class task
+{
+  //scanner below
+  Scanner SC = new Scanner(System.in);
+  
+  //varaibles below
+  private String Name;
+  private short Time;
+  private short Date;
+  private int Priority;
+  
+  //Name setter
+  public static set.Name(String n)
+  {
+    n = Name;
+    break;
+  }//setName end
+}//public task end
