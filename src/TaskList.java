@@ -82,16 +82,24 @@ public class TaskList {
 	 * Read list of tasks from filename provided
 	 * @param filename Filename to read
 	 */
-	private void readFile( String filename ) throws FileNotFoundException {
+	public void readFile( String filename ) throws FileNotFoundException {
+		Task t;
 		//assume taskList is initialized
 		taskList.clear(); //remove all old tasks
 		
 		BufferedReader reader = new BufferedReader( new FileReader( filename ) );
 		
 		try {
+			while( reader.ready() ) {
+				t = new Task();
+				t.read( reader );
+				if( t != null ) {
+					taskList.add(t); 
+				}
+			}
 			reader.close();
 		} catch( IOException e ) {
-			System.out.println( "Cannot read file: " + e.getMessage() );
+			System.out.println( "IO Exception Encountered: " + e.getMessage() );
 		}
 	}
 	

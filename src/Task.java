@@ -1,3 +1,5 @@
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.Date;
 import java.io.*;
 
@@ -307,10 +309,37 @@ public class Task {
 	 * @param reader BufferedReader to read from disk 
 	 * @return read task or null if not read 
 	 */
-	public Task read( BufferedReader reader ) {
-		Task t = new Task();
+	public void read( BufferedReader reader ) {
+		String line = null;
+		String [] results;
 		
-		return t;
+		try {
+			line = reader.readLine();
+		} catch( IOException e ) {
+			System.out.println( "Cannot read file: " + e.getMessage() );
+			return;
+		}
+		
+		results = line.split( "\t" );
+		
+		for( int ctr = 0; ctr < results.length; ctr++ ) {
+			System.out.println( "DBG: results[" + ctr + "]: \"" + results[ctr] + "\"" );
+		}
+		
+		setPriority( Short.parseShort( results[0] ));
+		
+		try {
+			setDueDate( DateFormat.getDateInstance().parse( results[1] ) );
+		} catch( ParseException e ) {
+			System.out.println( "Could not parse date. Setting to null" );
+		}
+		
+		setCategory( Short.parseShort( results[2]));
+		setDescription( results[3] );
+		setLocation( results[4] );
+		setCompleted( Boolean.parseBoolean( results[5] ) );
+		
+		return;
 	}
 	
 	/*

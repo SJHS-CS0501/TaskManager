@@ -36,7 +36,7 @@ public class TaskManager {
 		String fileName = "Tasks.txt";
 		String input;
 		short set;
-		boolean yesNo;
+		boolean TrueFalse;
 		
 		System.out.println( "Welcome to the Task Manager!" );
 		
@@ -61,13 +61,13 @@ public class TaskManager {
 			 input = keyboard.nextLine();
 			 newTask.setLocation( input );
 			 
-			 System.out.print( "Enter state of completion (0/1): " );
-			 yesNo = keyboard.nextBoolean();
-			 newTask.setCompleted( yesNo );
+			 System.out.print( "Enter state of completion (type true or false): " );
+			 TrueFalse = keyboard.nextBoolean();
+			 newTask.setCompleted( TrueFalse );
 			 
 			 newTaskList.addTask( newTask );
 			 
-			 System.out.print( "Do you want to enter another task? (y for yes; n for no): " );
+			 System.out.println( "Do you want to enter another task? (y for yes; n for no): " );
 			 input = keyboard.nextLine();
 			 
 		} while (input.equalsIgnoreCase("y") );
@@ -77,6 +77,20 @@ public class TaskManager {
 		
 		try {
 			newTaskList.writeFile( fileName );
+		} catch( FileNotFoundException e ) {
+			System.out.println( "File \"" + fileName + "\" not found");
+			System.out.println( "Dying..." );
+			e.printStackTrace();
+			System.exit(-1);
+		}
+		
+		newTaskList = new TaskList();
+		
+		System.out.println( "Before read: " );
+		newTaskList.printTasks();
+		
+		try {
+			newTaskList.readFile( fileName );
 		} catch( FileNotFoundException e ) {
 			System.out.println( "File \"" + fileName + "\" not found");
 			System.out.println( "Dying..." );
