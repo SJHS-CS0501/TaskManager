@@ -37,6 +37,7 @@ public class TaskManager {
 		
 		TaskList taskList = new TaskList();
 		String name = null, description = null, decide = null, filename = "Task name: ";
+		short temp;
 		Scanner keyboard = new Scanner(System.in);
 		
 		/*
@@ -80,10 +81,13 @@ public class TaskManager {
 			
 			System.out.println( "Priority (as number) [1-3]");
 			input = keyboard.nextLine();
-			task.setPriority));
+			temp = parseShort(input);
+			task.setPriority(temp);
 			
 			System.out.println( "Category [1-5]: ");
-			task.setCategory(keyboard.nextShort());
+			input = keyboard.nextLine(;
+			temp = parseShort(input);
+			task.setCategory(temp);
 			
 			//System.out.println( "Completed y/n: ");
 			//task.setCompleted(keyboard.nextBoolean());
