@@ -68,9 +68,9 @@ public class TaskManager {
 			 newTaskList.addTask( newTask );
 			 
 			 System.out.println( "Do you want to enter another task? (y for yes; n for no): " );
-			 input = keyboard.nextLine();
+			 input = keyboard.nextLine().toLowerCase();
 			 
-		} while (input.equalsIgnoreCase("y") );
+		} while (input.equals("y") );
 		
 		
 		newTaskList.printTasks();
