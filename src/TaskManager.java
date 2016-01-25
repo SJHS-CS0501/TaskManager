@@ -38,6 +38,7 @@ public class TaskManager {
 		TaskList taskList = new TaskList();
 		String name = null, description = null, decide = null, filename = "Task name: ";
 		short temp;
+		boolean truth, tempB;
 		Scanner keyboard = new Scanner(System.in);
 		
 		/*
@@ -81,13 +82,26 @@ public class TaskManager {
 			
 			System.out.println( "Priority (as number) [1-3]");
 			input = keyboard.nextLine();
-			temp = parseShort(input);
+			temp = Short.parseShort(input);
 			task.setPriority(temp);
 			
 			System.out.println( "Category [1-5]: ");
-			input = keyboard.nextLine(;
-			temp = parseShort(input);
+			input = keyboard.nextLine();
+			temp = Short.parseShort(input);
 			task.setCategory(temp);
+			
+			System.out.println( "Completed (y or n): ");
+			input = keyboard.nextLine();
+			if( input == "y" ) {
+				tempB = true;
+			} else {
+				tempB = false;
+			}
+			task.setCompleted( tempB );
+			
+			System.out.println( "Due Date: ");
+			
+			
 			
 			//System.out.println( "Completed y/n: ");
 			//task.setCompleted(keyboard.nextBoolean());
@@ -98,7 +112,12 @@ public class TaskManager {
 			decide = keyboard.nextLine();
 			System.out.println();
 			
-		} while (decide.toLowerCase() != "n" );
+			if( decide == "y") {
+				truth = false;
+			} else {
+				truth = true;
+			}
+		} while (truth != true );
 		
 		taskList.printTasks();
 		
@@ -112,6 +131,18 @@ public class TaskManager {
 			System.exit(-1);
 		}
 		
+		taskList = new TaskList();
+		
+		System.out.println( "Before read: " );
+		taskList.printTasks();
+		
+		try {
+			taskList.readFile( filename );
+		} catch( FileNotFoundException e ) {
+			System.out.println( "file \"" + filename + "\" not found!" );
+			System.out.println( "Dying..." );
+			e.printStackTrace();
+		}
 		
 		
 		keyboard.close();
