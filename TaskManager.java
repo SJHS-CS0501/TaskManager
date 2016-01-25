@@ -36,6 +36,7 @@ public class TaskManager {
 		String fileName = "Tasks.txt";
 		short thing = 0;
 		int numTasks = 0;
+		int ctr = 0;
 		TaskList otherStuff = new TaskList();
 		
 		System.out.println( "Welcome to the Task Manager!" );
