@@ -60,9 +60,9 @@ public class Task_Manager {
 			prio = k.nextShort();
 			try{
 			that.setPriority(prio);
-			}catch(IllegalArgumentException e){
+			}catch(IllegalArgumentException e ){
 				
-				System.out.println("Why have you done this to me, I an now dead..........");
+				System.out.println("Why have you done this to me, I am now dead..........");
 				System.exit(-1);
 			}
 			
@@ -102,9 +102,24 @@ public class Task_Manager {
 			System.exit(-1);
 		}
 		
+		list = new Task_List();
+		
+		System.out.println("before read");
+		list.printTasks();
+		
+		try{	
+			list.writeFile(fileName);
+			}catch(FileNotFoundException e) {
+				System.out.println("File \"" + fileName + "\" not found!");
+				System.out.println("Dying....");
+				e.printStackTrace();
+				System.exit(-1);
+			}
+		
 	
 		k.close();
 		System.exit(0);
 		
 	}
+
 }

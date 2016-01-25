@@ -1,4 +1,8 @@
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.Scanner;
 /**
@@ -189,9 +193,10 @@ public class Task {
 	 
 	 /**
 	  * Checks if a task has been completed
+	 * @param b 
 	  * @return
 	  */
-	 public static void complete(){
+	 public static void complete(boolean b){
 		 
 		 completed = false;
 	 }
@@ -209,13 +214,6 @@ public class Task {
 		 // write data separated by tabs
 		 StringBuilder s = new StringBuilder();
 		 
-		/* private static short priority;
-		 private static Date dueDate;//odject
-		 private static short catagory;
-		 private static String descrition;
-		 private static String location;
-		 private boolean completed;
-		 */
 		 
 		 s.append(priority);
 		 s.append("\t");
@@ -255,6 +253,63 @@ public class Task {
 		  s.append( "Completed? " + (completed?"Y":"N") + "\n" );
 		  return s.toString();
 		}
+	 
+	 /**
+	  * Read task from disk using the provided Buffered reader 
+	  * @param reader
+	  */
+	 public void read(BufferedReader reader){
+		 Task t = new Task();
+		 String line = null;
+		 String [] results;
+		 try{
+			 line = reader.readLine();			 
+		 }catch(IOException e){
+			
+			 System.out.println("Why why why!!!!!");
+			 t = null;	 
+		 }
+		 
+		 results = line.split("\t");
+		
+		 for(int i=0; i <results.length; i++){
+			 System.out.println("DBG: [" + i + "]: \""+ results[i] + "\"");
+		 }
+		 
+		 /* private static short priority;
+		 private static Date dueDate;//odject
+		 private static short catagory;
+		 private static String descrition;
+		 private static String location;
+		 private boolean completed;
+		 */
+		 
+		 try {
+			t.setPriority(Short.parseShort(results[0]));
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 
+		 
+		 
+		 try {
+			t.setDate(DateFormat.getDateInstance().parse(results[1]));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		t.setCatagory(Short.parseShort(results[2]));
+		t.setDescription(results[3]); 
+		t.setLocation(results[4]);
+		t.complete(Boolean.parseBoolean(results[4]));
+		 
+	 }
 
+	
 
+	 
 }

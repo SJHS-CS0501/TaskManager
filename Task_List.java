@@ -88,21 +88,30 @@ public class Task_List {
 	/**
 	 * reads file based on the file name
 	 * @param filename (Filename to read)
+	 * @throws IOException 
 	 */
-	private void readFile(String filename) throws FileNotFoundException{
+	public void readFile(String filename) throws IOException{
 	
+		Task t;
 		tasklist.clear();// clears task list
 		
 		// assumes that the task list is initialized
-				BufferedReader reader = new BufferedReader( new FileReader(filename));
+		BufferedReader reader = new BufferedReader( new FileReader(filename));
 		
 				try{
-		reader.close();
+		while(reader.ready()){
+			t= new Task();
+			t.read(reader);
+			if(t!= null){
+				tasklist.add(t);
+			}
+		}
 				} catch(IOException e){
 					System.out.println("Cannot close file" + e.getMessage());
 				
 				}
-					
+				
+				reader.close();
 	}
 	
 	/**
