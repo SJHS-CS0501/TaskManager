@@ -2,6 +2,7 @@
 *First: place scanner
 *Second: place variables 
 *Third: creat constructors of for each Variable
+*fourth: create the file creator
 */
 public class task
 {
@@ -47,4 +48,19 @@ public class task
   {
     return p;
   }//get Priority end
+  
+  
+  public static void File(String[]args)
+  {
+    private formatter fx;
+    
+    try{
+      fx= new formatter("Task.txt");
+      System.println("File Cretaed");
+    }//try end
+    catch(Exception e)
+    {
+      System.out.println("Error has occured");
+    }//catch end
+  }//File end
 }//public task end
