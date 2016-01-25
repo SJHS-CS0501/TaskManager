@@ -7,18 +7,7 @@ import java.io.*;
  */
 public class TaskList {
 	
-	/*
-	 * data:
-	 * 
-	 * - list of tasks	
-	 */
-	
 	ArrayList<Task> taskList;
-	
-	/*
-	 * Homework!
-	 * methods that perform searches 
-	 */
 	
 	/*
 	 * operations:
@@ -201,7 +190,7 @@ public class TaskList {
 	 * @param
 	 */
 	public void printTasks() {
-		System.out.println( "Tasks: " );
+		System.out.println( "Tasks\n------" );
 		for( int i = 0; i < taskList.size(); i++ ) {
 			System.out.println( taskList.get(i).toString() );
 			System.out.println( "-----" );

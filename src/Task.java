@@ -27,7 +27,6 @@ public class Task {
 	 * set priority of task
 	 * @param userPriority
 	 */
-	 
 	public void setPriority( short userPriority ) {
 		if( userPriority < 0 || userPriority > 3 ) {
 			throw new IllegalArgumentException( "Invalid priority" );
@@ -39,7 +38,6 @@ public class Task {
 	 * set due date of task
 	 * @param userDueDate
 	 */
-	
 	public void setDueDate( Date userDueDate ) {
 		userDueDate = dueDate;
 	}
@@ -48,7 +46,6 @@ public class Task {
 	 * set category of task
 	 * @param userCategory
 	 */
-	
 	public void setCategory( short userCategory ) {
 		if( userCategory < 0 || userCategory > 5) {
 			throw new IllegalArgumentException( "Invalid category" );
@@ -60,7 +57,6 @@ public class Task {
 	 * set description of task
 	 * @param userDescription
 	 */
-	
 	public void setDescription( String userDescription ) {
 		userDescription = description;
 	}
@@ -69,7 +65,6 @@ public class Task {
 	 * set location of task
 	 * @param userLocation
 	 */
-	
 	public void setLocation( String userLocation ) {
 		userLocation = location;
 	}
@@ -78,7 +73,6 @@ public class Task {
 	 * set if task is completed
 	 * @param userCompleted
 	 */
-	
 	public void setCompleted( boolean userCompleted ) {
 		userCompleted = completed;
 	}
@@ -87,7 +81,6 @@ public class Task {
 	 * get priority of task
 	 * @return
 	 */
-	
 	public short getPriority() {
 		return priority;
 	}
@@ -96,7 +89,6 @@ public class Task {
 	 * get due date of task
 	 * @return
 	 */
-	
 	public Date getDueDate() {
 		return dueDate;
 	}
@@ -105,7 +97,6 @@ public class Task {
 	 * get category of task
 	 * @return
 	 */
-	
 	public short getCategory() {
 		return category;
 	}
@@ -114,7 +105,6 @@ public class Task {
 	 * get description of task
 	 * @return
 	 */
-	
 	public String getDescription() {
 		return description;
 	}
@@ -123,7 +113,6 @@ public class Task {
 	 * get location of task
 	 * @return
 	 */
-	
 	public String getLocation() {
 		return location;
 	}
@@ -132,7 +121,6 @@ public class Task {
 	 * get if task is completed
 	 * @return
 	 */
-	
 	public boolean getCompleted() {
 		return completed;
 	}
@@ -141,7 +129,6 @@ public class Task {
 	 * tell user what priority a task is set at
 	 * @return pName
 	 */
-	
 	public String getPriorityName() {
 		String pName;
 		switch( priority ) {
@@ -194,7 +181,6 @@ public class Task {
 	 * tell user what category a task is assigned to
 	 * @return cName
 	 */
-	
 	public String getCategoryName() {
 		String cName;
 		switch( category ) {
@@ -235,15 +221,12 @@ public class Task {
 	public static short getPrioH() {
 		return PRIO_HIGH;
 	}
-	
 	public static short getPrioM() {
 		return PRIO_MED;
 	}
-	
 	public static short getPrioL() {
 		return PRIO_LOW;
 	}
-	
 	public static short getPrioU() {
 		return PRIO_UNDEF;
 	}
@@ -260,23 +243,18 @@ public class Task {
 	public static short getCatU() {
 		return CAT_UNDEF;
 	}
-	
 	public static short getCatO() {
 		return CAT_OTHER;
 	}
-	
 	public static short getCatS() {
 		return CAT_SCHOOL;
 	}
-	
 	public static short getCatP() {
 		return CAT_PERSONAL;
 	}
-	
 	public static short getCatC() {
 		return CAT_CHORE;
 	}
-	
 	public static short getCatW() {
 		return CAT_WORK;
 	}
@@ -300,7 +278,7 @@ public class Task {
 			s.append( "Due Date: " + dueDate.toString() + "\n" );
 		}
 		s.append( "Location: " + location +"\n" );
-		s.append( "Completed?" + (completed?"y":"n") + "\n" );
+		s.append( "Completed? " + (completed?"y":"n") + "\n" );
 		return s.toString();
 	}
 	
