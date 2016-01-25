@@ -4,8 +4,9 @@
  * 
  */
 
+import java.util.Date;
 import java.util.Scanner;
-import java.io.FileNotFoundException;
+import java.io.*;
 
 /*
  * Task Manager Program
@@ -52,6 +53,11 @@ public class TaskManager {
 		
 		System.out.println("Welcome to the Task Manager!");
 		
+//		System.out.print("Do you want to create a new file? (y/n):");
+//		if(scan.nextLine().toLowerCase().equals("y")) {
+//			
+//		}
+		
 		do {
 			// New Task
 			Task task = new Task();
@@ -74,7 +80,7 @@ public class TaskManager {
 			System.out.print("Date: ");
 			d = scan.nextInt();
 			
-			task.setDueDate(y - 1900, m - 1, d);
+			task.setDueDate(new Date(y - 1900, m - 1, d));
 			
 			// Get Category
 			System.out.print("Category (1-5): ");
@@ -114,6 +120,17 @@ public class TaskManager {
 			System.exit(-1);
 		}
 		
+		tasks = new TaskList();
+		
+		System.out.println("Before read...");
+		tasks.print();
+		
+		try {
+			tasks.readFile(filename);
+		} catch(FileNotFoundException e) {	
+		}
+		
+		tasks.print();
 		
 		System.exit(0);
 	}

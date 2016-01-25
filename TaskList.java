@@ -163,19 +163,25 @@ public class TaskList {
 	}
 	
 	/**
-	 * Read list of tasks from filename provided. Throws exception
+	 * Read list of tasks from filename provided.
 	 * @param filename Filename to read
 	 */
-	private void readFile(String filename) throws FileNotFoundException {
+	public void readFile(String filename) throws FileNotFoundException {
 		//assume that taskList is initialized
 		taskList.clear(); // remove all old tasks
 
 		BufferedReader reader = new BufferedReader(new FileReader(filename));
-		
 		try {
+			while(reader.ready()) {
+				Task t = new Task();
+				t.read(reader);
+				if(t != null) {
+					taskList.add(t);
+				}
+			}
 			reader.close();
 		} catch(IOException e) {
-			System.out.print("Cannot close file: " + e.getMessage());
+			System.out.print("IOException Encountered: " + e.getMessage());
 		}
 	}
 	

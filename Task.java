@@ -1,6 +1,8 @@
 import java.util.Date;
 import java.io.PrintWriter;
+import java.text.ParseException;
 import java.io.BufferedReader;
+import java.io.IOException;
 
 /**
  * Task object containing information on a single task.
@@ -97,13 +99,11 @@ public class Task {
 	}
 	
 	/**
-	 * Sets due date in year/month/day format
-	 * @param y Year
-	 * @param m Month
-	 * @param d Date
+	 * Sets due date from date object
+	 * @param d Date object
 	 */
-	public void setDueDate(int y, int m, int d) {
-		dueDate = new Date(y, m, d);
+	public void setDueDate(Date d) {
+		dueDate = d;
 	}
 	
 	/**
@@ -249,14 +249,46 @@ public class Task {
 	}
 	
 	/**
-	 * REad a task from disk using the provided BufferedReader
+	 * Read a task from disk using the provided BufferedReader
 	 * @param reader DufferedReader to read from disk
 	 * @return read task or null if not read
 	 */
-	public Task read(BufferedReader reader) {
-		Task t = new Task();
+	public void read(BufferedReader reader) {
+		String line = null;
+		String[] results;
 		
-		return t;
+		try {
+			line = reader.readLine();
+		} catch (IOException e) {
+			System.out.println("Cannot read file: " + e.getMessage());
+		}
+		
+		results =  line.split("\t");
+		
+		for(int ctr = 0; ctr < results.length; ctr ++) {
+			System.out.println("DBG: results[" + ctr + "]: \"" + results[ctr] + "\"");
+		}
+		
+		/*
+			private short priority;
+			private Date dueDate;
+			private short category;
+			private String description;
+			private String location;
+			private boolean completed;
+		 */
+		
+		setPriority(Short.parseShort(results[0]));
+		try {
+			setDueDate(java.text.DateFormat.getDateInstance().parse(results[1]));
+		} catch( ParseException e) {
+			System.out.println("Could not parse date. Setting to null.");
+			//nothing to do here, move along...
+		}
+		setCategory(Short.parseShort(results[2]));
+		setDescription(results[3]);
+		setLocation(results[4]);
+		setCompleted(Boolean.parseBoolean(results[5]));
 	}
 	
 	/**
