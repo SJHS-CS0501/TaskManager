@@ -51,23 +51,26 @@ public class TaaskManager {
 		
 		do{
 			
-			tL.addTask(t);
-			System.out.println( " Please enter a desciption for your task " );
+			
+			System.out.print( " Please enter a desciption for your task " );
 			d = keyboard.nextLine();
 			t.setDescription(d);
-			System.out.println( "Please enter a priority for your task between 1-3 " );
+			System.out.print( "Please enter a priority for your task between 1-3 " );
 			p = keyboard.nextShort();
 			t.setPriority(p);
-			System.out.println( "Please enter a category for your task between 1-5" );
+			System.out.print( "Please enter a category for your task between 1-5" );
 			p = keyboard.nextShort();
 			t.setCatagory(p);
+			
 			//System.out.println( "Please enter a due date for your task " );
-			//not sure how to do this, parse doesn't seem to be working, or at least i can't fingure it out
-			System.out.println( "Please enter a location for your task " );
+			//not sure how to do this, parse doesn't seem to be working, or at least i can't figure it out
+			System.out.print( "Please enter a location for your task " );
 			d = keyboard.nextLine();
 			t.setLocation(d);
-			System.out.println( " Would you like to go on? Press 'y' to go on" );
+			tL.addTask(t);
+			System.out.print( " Would you like to go on? Press 'y' to go on" );
 			d = keyboard.nextLine().toLowerCase();
+			
 			if( d != "y"){
 				goOn = false;
 			}
@@ -82,6 +85,19 @@ public class TaaskManager {
 				System.out.println( "Dying..." );
 				e.printStackTrace();
 				System.exit(-1);
+			}
+			
+			tL = new TaskList();
+			
+			System.out.println( "Before read: " );
+			tL.printTasks();
+			
+			try{
+			tL.readFile( filename );
+			} catch( FileNotFoundException e ){
+				System.out.println( "file \"" + filename + "\" not found!" );
+				System.out.println("Dying... " );
+				
 			}
 			System.exit(0);
 }

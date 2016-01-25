@@ -81,16 +81,25 @@ public class TaskList {
 	 * @param filename
 	 * @throws FileNotFoundException 
 	 */
-	private void readFile( String filename ) throws FileNotFoundException{
+	public void readFile( String filename ) throws FileNotFoundException{
 		// assume task list is initialized
+		Task t;
 		taskList.clear(); // remove old tasks
 		BufferedReader reader = new BufferedReader( new FileReader(filename) ); 
 		
 		try{
+			while( reader.ready() ){
+				t = new Task();
+				t.read(reader);
+				if( t!= null ){
+					taskList.add(t);
+				}
+			}
 			reader.close();
 		} catch( IOException e ){
-			System.out.println( " Cannot close file: " + e.getMessage() );
+			System.out.println( " IO Exception Encountered: " + e.getMessage() );
 		}	
+		
 	}
 	/**
 	 * Writes the data to the disk

@@ -1,4 +1,5 @@
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.io.*;
 import java.util.Date;
 import java.util.Scanner;
@@ -138,7 +139,7 @@ public class Task {
 	 * @param dueDate
 	 * @param dDateStrng
 	 */
-	public  void getDate( Date d ){
+	public  void setDate( Date d ){
 	/*	System.out.println( " Please a due date for your task " );
 		dDateStrng = keyboard.nextLine();
 		
@@ -264,7 +265,7 @@ public class Task {
 	 * Sets the value of completed by using variable trFa to test if equaled to 'y'
 	 * @param completed
 	 */
-	public void setCompleted( boolean completed, char trFa ){
+	public void setCompleted( boolean completed ){
 		System.out.println( "If you have completed your task, type y , "
 		+ "otherwise type anything else " );
 		trFa  = keyboard.nextLine().toLowerCase().charAt(1);
@@ -291,6 +292,7 @@ public class Task {
 	public void write( PrintWriter writer ){
 		// write data separated by tabs
 		StringBuilder s = new StringBuilder();
+		
 		
 		/*
 		private short priority; // variable for priority of the task
@@ -324,9 +326,42 @@ public class Task {
 	 * @return read task or return null if not read
 	 */
 	public Task read( BufferedReader reader ){
+		// get rid of all this t crap, we don't want it
 		Task t = new Task();
+		String line = null;
+		String [] results;
+		try{
+			line = reader.readLine();
+		}catch(IOException e){
+			System.out.println( "Cannot read file: " + e.getMessage());
+			t = null;
+		}
 		
+		results = line.split("\t");
 		
+		for( int ctr = 0; ctr< results.length; ctr++ ){
+			System.out.println( "DBG: results[" + ctr + "]: \"" + results[ctr] + "\"" );
+			
+		}
+		/*
+		private short priority; // variable for priority of the task
+		private static Date dueDate; // variable for due date of the task 
+		private short category; // variable for the category of the task
+		private String description; // variable for the description of the task
+		private String location; // variable for the location of the task
+		private boolean completed; // variable for the completion of the task, either true or false
+		 */
+		
+		t.setPriority( Short.parseShort(results[0]));
+		try {
+		t.setDate( DateFormat.getDateInstance().parse(results[1]) ); 
+		} catch(ParseException e) {
+			System.out.println( "Could not parse date. Setting to null." );
+		}
+		t.setCatagory(Short.parseShort(results[2]));
+		t.setDescription(results[4]);
+		t.setLocation(results[4]);
+		t.setCompleted(Boolean.parseBoolean(results[5]));
 		return t;
 	}
 	public String toString() {
