@@ -17,7 +17,11 @@ public class task
   //Name setter
   public static set.Name(String n)
   {
-    n = Name;
+    n = Sc.nextLine();
     break;
   }//setName end
+  public static get.Name(String n)
+  {
+    return n;
+  }//getName end
 }//public task end
