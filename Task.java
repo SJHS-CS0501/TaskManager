@@ -233,7 +233,12 @@ public class Task {
 		s.append(priority);
 		s.append('\t');
 		if(dueDate != null)
-			s.append(dueDate.toString());
+			//s.append(dueDate.toString());
+			s.append(dueDate.getYear());
+			s.append('\t');
+			s.append(dueDate.getMonth());
+			s.append('\t');
+			s.append(dueDate.getDay());
 		s.append('\t');
 		s.append(category);
 		s.append('\t');
@@ -279,20 +284,21 @@ public class Task {
 		 */
 		
 		setPriority(Short.parseShort(results[0]));
-		try {
-			setDueDate(java.text.DateFormat.getDateInstance().parse(results[1]));
-		} catch( ParseException e) {
-			System.out.println("Could not parse date. Setting to null.");
-			//nothing to do here, move along...
-		}
-		setCategory(Short.parseShort(results[2]));
-		setDescription(results[3]);
-		setLocation(results[4]);
-		setCompleted(Boolean.parseBoolean(results[5]));
+//		try {
+			//setDueDate(java.text.DateFormat.getDateInstance().parse(results[1]));
+			setDueDate(new Date(Integer.parseInt(results[1]), Integer.parseInt(results[2]), Integer.parseInt(results[3])));
+//		} catch( ParseException e) {
+//			System.out.println("Could not parse date. Setting to null.");
+//			//nothing to do here, move along...
+//		}
+		setCategory(Short.parseShort(results[4]));
+		setDescription(results[5]);
+		setLocation(results[6]);
+		setCompleted(Boolean.parseBoolean(results[7]));
 	}
 	
 	/**
-	 * Returns string representation of task
+	 * Returns a string representation of task
 	 * @return String representation of task
 	 */
 	public String toString() {

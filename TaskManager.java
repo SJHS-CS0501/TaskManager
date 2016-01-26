@@ -80,7 +80,7 @@ public class TaskManager {
 			System.out.print("Date: ");
 			d = scan.nextInt();
 			
-			task.setDueDate(new Date(y - 1900, m - 1, d));
+			task.setDueDate(new Date(y - 1990, m - 1, d));
 			
 			// Get Category
 			System.out.print("Category (1-5): ");
