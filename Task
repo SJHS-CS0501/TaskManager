@@ -1,8 +1,11 @@
+import java.text.SimpleDateFormat;
 /**
 *First: place scanner
 *Second: place variables 
 *Third: creat constructors of for each Variable
 *fourth: create the file creator
+*5th:write to the file
+*6th:Organize the data by priority and time
 */
 public class task
 {
@@ -18,6 +21,7 @@ public class task
   //Name setter
   public static set.Name(String n)
   {
+    System.out.println("Please enter the name of the task");
     n = Sc.nextLine();
   }//setName end
   public static get.Name(String n)
@@ -26,15 +30,16 @@ public class task
   }//getName end
   public static set.Time(short t)
   {
-  t = SC.nextShort();
+   System.out.println("Please enter the time of the task");
+    t = SC.nextShort();
   }//SetTime end
   public static get.Time(short t)
   {
     return t;
   }//getTime end
-  public static set.Date(short d)
+  public static set.Date(short d1, d2, d3)
   {
-    d = SC.nextShort();
+    System.out.println("Please enter the date of task of the task");
   }//setDate end
   public static get.Date(short d)
   {
@@ -60,7 +65,7 @@ public class task
     }//try end
     catch(Exception e)
     {
-      System.out.println("Error has occured");
+      System.out.println("An Error has occured when creating the file");
     }//catch end
   }//File end
 }//public task end
