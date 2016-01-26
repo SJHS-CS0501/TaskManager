@@ -190,7 +190,7 @@ public class TaskList {
 	 * @param
 	 */
 	public void printTasks() {
-		System.out.println( "Tasks\n------" );
+		System.out.println( "Tasks:" );
 		for( int i = 0; i < taskList.size(); i++ ) {
 			System.out.println( taskList.get(i).toString() );
 			System.out.println( "-----" );

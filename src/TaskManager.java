@@ -40,22 +40,41 @@ public class TaskManager {
 		
 		System.out.println( "Welcome to the Task Manager!" );
 		
+		/*
+		 * menu:
+		 * 
+		 * read..
+		 * write..
+		 * add..
+		 * save..
+		 * add tasks..after they read from file
+		 * can ask for file name...not much validation..if file already exists ask if they want to overwrite  
+		 * allow to search
+		 * 
+		 * hard part:
+		 * sort by priority so they can print tasks in priority order
+		 * 
+		 * add date..
+		 */
+		
 		do {
 			Task newTask = new Task();
 			
-			 System.out.print( "Enter description: " );
-			 input = keyboard.nextLine();
-			 newTask.setDescription( input );
-			 
-			 System.out.print( "Enter category (1-5): " );
-			 set = keyboard.nextShort();
-			 newTask.setCategory( set );
-			 
 			 System.out.print( "Enter priority (1-3): " );
 			 set = keyboard.nextShort();
 			 newTask.setPriority( set );
 			 
 			 keyboard.nextLine();
+			 
+			 System.out.print( "Enter category (1-5): " );
+			 set = keyboard.nextShort();
+			 newTask.setCategory( set );
+			 
+			 keyboard.nextLine();
+			 
+			 System.out.print( "Enter description: " );
+			 input = keyboard.nextLine();
+			 newTask.setDescription( input );
 			 
 			 System.out.print( "Enter location (return for none): " );
 			 input = keyboard.nextLine();
@@ -65,12 +84,14 @@ public class TaskManager {
 			 TrueFalse = keyboard.nextBoolean();
 			 newTask.setCompleted( TrueFalse );
 			 
+			keyboard.nextLine();
+			 
 			 newTaskList.addTask( newTask );
 			 
-			 System.out.println( "Do you want to enter another task? (y for yes; n for no): " );
+			 System.out.print( "Do you want to enter another task? (yes/no): " );
 			 input = keyboard.nextLine().toLowerCase();
-			 
-		} while (input.equals("y") );
+			 			 
+		} while (input.charAt(0) == 'y' );
 		
 		
 		newTaskList.printTasks();

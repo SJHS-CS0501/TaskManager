@@ -9,16 +9,6 @@ import java.io.*;
  */
 public class Task {
 	
-	/*
-	 * data fields:
-	 * - priority yes
-	 * - due date no
-	 * - category yes
-	 * - description no
-	 * - location no
-	 * - completion no
-	 */
-	
 	public Task() {
 		
 	}
@@ -31,7 +21,7 @@ public class Task {
 		if( userPriority < 0 || userPriority > 3 ) {
 			throw new IllegalArgumentException( "Invalid priority" );
 		}
-		userPriority = priority;
+		priority = userPriority;
 	}
 	
 	/**
@@ -39,7 +29,7 @@ public class Task {
 	 * @param userDueDate
 	 */
 	public void setDueDate( Date userDueDate ) {
-		userDueDate = dueDate;
+		dueDate = userDueDate;
 	}
 	
 	/**
@@ -50,7 +40,7 @@ public class Task {
 		if( userCategory < 0 || userCategory > 5) {
 			throw new IllegalArgumentException( "Invalid category" );
 		}
-		userCategory = category;
+		category = userCategory;
 	}
 	
 	/**
@@ -58,7 +48,7 @@ public class Task {
 	 * @param userDescription
 	 */
 	public void setDescription( String userDescription ) {
-		userDescription = description;
+		description = userDescription;
 	}
 	
 	/**
@@ -66,7 +56,7 @@ public class Task {
 	 * @param userLocation
 	 */
 	public void setLocation( String userLocation ) {
-		userLocation = location;
+		location = userLocation;
 	}
 	
 	/**
@@ -74,7 +64,7 @@ public class Task {
 	 * @param userCompleted
 	 */
 	public void setCompleted( boolean userCompleted ) {
-		userCompleted = completed;
+		completed = userCompleted;
 	}
 	
 	/**
@@ -271,14 +261,14 @@ public class Task {
 	 */
 	public String toString() {
 		StringBuilder s = new StringBuilder();
-		s.append( "Description: " + description + "\n" );
 		s.append( "Priority: " + getPriorityName() + "\n" );
 		s.append( "Category: " + getCategoryName() + "\n" );
+		s.append( "Description: " + description + "\n" );
+		s.append( "Location: " + location +"\n" );
+		s.append( "Completed? " + (completed?"y":"n") + "\n" );
 		if( dueDate != null ) {
 			s.append( "Due Date: " + dueDate.toString() + "\n" );
 		}
-		s.append( "Location: " + location +"\n" );
-		s.append( "Completed? " + (completed?"y":"n") + "\n" );
 		return s.toString();
 	}
 	
