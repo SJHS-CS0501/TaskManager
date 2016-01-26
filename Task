@@ -1,11 +1,13 @@
-import java.text.SimpleDateFormat;
+import java.io.IOException;     //used to try and catch exceptions
+import java.io.File;            //allows us to acces files
+import java.io.FileWriter;      //allows us to write stuff inside the file
+
 /**
-*First: place scanner
-*Second: place variables 
-*Third: creat constructors of for each Variable
-*fourth: create the file creator
-*5th:write to the file
-*6th:Organize the data by priority and time
+*First: place scanner                                     //complete
+*Second: place variables                                  //complete
+*Third: creat constructors of for each Variable           //not sure if done correctly
+*fourth: create the file creator                          //unsure
+*5th:write to the file                                    //need help
 */
 public class task
 {
@@ -28,6 +30,9 @@ public class task
   {
     return n;
   }//getName end
+  
+  
+  //set time below
   public static set.Time(short t)
   {
    System.out.println("Please enter the time of the task");
@@ -37,7 +42,9 @@ public class task
   {
     return t;
   }//getTime end
-  public static set.Date(short d1, d2, d3)
+  
+  //set date
+  public static set.Date(short d)
   {
     System.out.println("Please enter the date of task of the task");
   }//setDate end
@@ -45,6 +52,9 @@ public class task
   {
     return d;
   }//getDate end
+  
+  
+  //set Priority below
   public static set.Priority( int p)
   {
     p = SC.NextShort();
@@ -55,6 +65,7 @@ public class task
   }//get Priority end
   
   
+  //file class below
   public static void File(String[]args)
   {
     private formatter fx;
@@ -67,5 +78,14 @@ public class task
     {
       System.out.println("An Error has occured when creating the file");
     }//catch end
-  }//File end
+    
+    
+    //fileWriter below
+    fileWriter Fiwr =new fileWriter();
+    
+    
+    
+   }//File end
+   
+   
 }//public task end
