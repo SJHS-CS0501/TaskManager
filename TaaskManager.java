@@ -38,11 +38,23 @@ public class TaaskManager {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		boolean goOn = true;
+		/*
+		 * 
+		 * menu
+		 * read tasks or add tasks
+		 * add task
+		 * save file
+		 * create a new task list and add to the file
+		 * you could ask for file name, ask for over ride 
+		 * add search menu items
+		 * FINALLY WARNING VERY HARD
+		 * implement the sort by priority so that the user can print out the lists of tasks in priority order
+		 */
+	    char goOn;
 		String d;
 		short p;
 		boolean b = false;
-		Date dDate;
+		Date dDate = new Date();
 		Task t = new Task();
 		Scanner keyboard = new Scanner(System.in);
 		String filename = "Task file";
@@ -61,22 +73,25 @@ public class TaaskManager {
 			System.out.print( "Please enter a category for your task between 1-5" );
 			p = keyboard.nextShort();
 			t.setCatagory(p);
-			
-			//System.out.println( "Please enter a due date for your task " );
+			keyboard.nextLine();
+			System.out.println( "Please enter a due date for your task " );
+			d = keyboard.
 			//not sure how to do this, parse doesn't seem to be working, or at least i can't figure it out
+			
 			System.out.print( "Please enter a location for your task " );
 			d = keyboard.nextLine();
 			t.setLocation(d);
 			tL.addTask(t);
 			System.out.print( " Would you like to go on? Press 'y' to go on" );
-			d = keyboard.nextLine().toLowerCase();
-			
-			if( d != "y"){
+			goOn = keyboard.nextLine().toLowerCase().charAt(0);
+			tL.printTasks();
+			/*if( d != "y"){
 				goOn = false;
 			}
-			}while( goOn == true );
+			*/
+			}while( goOn == 'y' );
 		
-			tL.printTasks();
+			
 			
 			try{
 				tL.writeFile( filename );

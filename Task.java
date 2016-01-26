@@ -111,20 +111,18 @@ public class Task {
 		String pName = null;
 		
 		switch( priority ){
-		case 0:
-			pName = "Other";
+		
+			case 0:
+			pName = "Undefined";
 			break;
 		case 1:
-			pName = "School";
+			pName = "High";
 			break;
 		case 2:
-			pName = "Personal";
+			pName = "Medium";
 			break;
 		case 3:
-			pName = "Chores";
-			break;
-		case 4:
-			pName = "Work";
+			pName = "Low";
 			break;
 		default:
 			pName = "ILLEGAL VALUE";
@@ -198,22 +196,25 @@ public class Task {
 	
 	public String getCategoryName(){
 		String cName = null;
-		switch( priority ){
-			case 0:
-				cName = "Undefined";
-				break;
-			case 1:
-				cName = "High";
-				break;
-			case 2:
-				cName = "Medium";
-				break;
-			case 3:
-				cName = "Low";
-				break;
-			default:
-				cName = "ILLEGAL VALUE";
-				break;
+		switch( category ){
+		case 0:
+			cName = "Other";
+			break;
+		case 1:
+			cName = "School";
+			break;
+		case 2:
+			cName = "Personal";
+			break;
+		case 3:
+			cName = "Chores";
+			break;
+		case 4:
+			cName = "Work";
+			break;
+		default:
+			cName = "ILLEGAL VALUE";
+			break;
 			
 		}
 		return cName;
@@ -265,17 +266,11 @@ public class Task {
 	 * Sets the value of completed by using variable trFa to test if equaled to 'y'
 	 * @param completed
 	 */
-	public void setCompleted( boolean completed ){
-		System.out.println( "If you have completed your task, type y , "
-		+ "otherwise type anything else " );
-		trFa  = keyboard.nextLine().toLowerCase().charAt(1);
+	public void setCompleted( boolean b ){
 		
-		if(trFa == 'y'){
-			completed = true;
-		}else{
-			completed = false;
-		}
+		completed = b;
 	}
+	
 	/**
 	 * returns completed as either true or false to main
 	 * @return
