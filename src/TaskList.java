@@ -158,12 +158,7 @@ public class TaskList {
 	public void writeFile( String filename ) throws FileNotFoundException{
 		PrintWriter writer = new PrintWriter( filename );
 		for( int i = 0; i < taskList.size(); i++ ) {
-			taskList.get(i).write( writer );
-			
-			
-			
-			
-			
+			taskList.get(i).write( writer );			
 			/*
 			 * EQUIVALENT:
 			 * Task foo = taskList.get(i);

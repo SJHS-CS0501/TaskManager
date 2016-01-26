@@ -1,5 +1,8 @@
-import java.util.Scanner;
+import java.util.*;
 import java.io.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 /**
  * 
  */
@@ -30,15 +33,33 @@ import java.io.*;
  *
  */
 public class TaskManager {
-	
-	public static void main( String [] args ) {
+	/*
+	 * Menu (text)
+	 * 
+	 * read from file
+	 * -add task to existing after reading
+	 * -create new tasks and add to file
+	 * -can ask user for task file name
+	 * -ask if they want to overwrite
+	 * -save file?
+	 * 
+	 * start task list
+	 * 
+	 * search from tasks
+	 * 
+	 * implement sort by priority
+	 * -can sort class by priority
+	 */
+	public static void main( String [] args ) throws ParseException {
 		// main stuff goes here, yo
 		System.out.println( "Welcome to the Task Manager!" );
 		
 		TaskList taskList = new TaskList();
-		String name = null, description = null, decide = null, filename = "Task name: ";
+		String name = null, description = null, decide = null, filename = "Task.txt";
 		short temp;
 		boolean truth, tempB;
+		Date date = new Date();
+		DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
 		Scanner keyboard = new Scanner(System.in);
 		
 		/*
@@ -100,24 +121,16 @@ public class TaskManager {
 			task.setCompleted( tempB );
 			
 			System.out.println( "Due Date: ");
-			
-			
-			
-			//System.out.println( "Completed y/n: ");
-			//task.setCompleted(keyboard.nextBoolean());
-			
+			input = keyboard.nextLine();
+			date = format.parse(input);
+
 			taskList.addTask(task);
 			
 			System.out.println( "Would you like to add another task? y/n: ");
-			decide = keyboard.nextLine();
+			decide = keyboard.nextLine().toLowerCase();
 			System.out.println();
-			
-			if( decide == "y") {
-				truth = false;
-			} else {
-				truth = true;
-			}
-		} while (truth != true );
+		
+		} while (decide.charAt(0) == 'y' );
 		
 		taskList.printTasks();
 		
