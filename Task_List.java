@@ -53,7 +53,12 @@ public class Task_List {
 	 * @param fileName
 	 */
 	public Task_List(String fileName) throws FileNotFoundException{
-	readFile(fileName);
+	try {
+		readFile(fileName);
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
 	}
 	
 	/**

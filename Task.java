@@ -259,15 +259,14 @@ public class Task {
 	  * @param reader
 	  */
 	 public void read(BufferedReader reader){
-		 Task t = new Task();
 		 String line = null;
 		 String [] results;
 		 try{
 			 line = reader.readLine();			 
 		 }catch(IOException e){
 			
-			 System.out.println("Why why why!!!!!");
-			 t = null;	 
+			 System.out.println("Why why why!!!!!:" + e.getMessage());
+			 
 		 }
 		 
 		 results = line.split("\t");
@@ -285,27 +284,27 @@ public class Task {
 		 */
 		 
 		 try {
-			t.setPriority(Short.parseShort(results[0]));
+			setPriority(Short.parseShort(results[0]));
 		} catch (NumberFormatException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Could not complete the parsing og set priority:" + e.getMessage());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Could not complete the parsing og set priority:" + e.getMessage());
 		}
 		 
 		 
 		 
 		 try {
-			t.setDate(DateFormat.getDateInstance().parse(results[1]));
+			setDate(DateFormat.getDateInstance().parse(results[1]));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Could not parse date: " + e.getMessage());
 		}
-		t.setCatagory(Short.parseShort(results[2]));
-		t.setDescription(results[3]); 
-		t.setLocation(results[4]);
-		t.complete(Boolean.parseBoolean(results[4]));
+		setCatagory(Short.parseShort(results[2]));
+		setDescription(results[3]); 
+		setLocation(results[4]);
+		complete(Boolean.parseBoolean(results[4]));
 		 
 	 }
 
