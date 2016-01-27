@@ -1,6 +1,7 @@
 import java.io.IOException;     //used to try and catch exceptions
 import java.io.File;            //allows us to acces files
 import java.io.FileWriter;      //allows us to write stuff inside the file
+import java.util.Scanner;       //allows user to enter data
 
 /**
 *First: place scanner                                     //complete
