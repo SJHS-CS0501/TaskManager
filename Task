@@ -8,7 +8,8 @@ import java.util.Scanner;       //allows user to enter data
 *Second: place variables                                  //complete
 *Third: creat constructors of for each Variable           //not sure if done correctly
 *fourth: create the file creator                          //unsure
-*5th:write to the file                                    //need help
+*5th:Format the variable entries                          //need help(My attempt is on lines 37-51)
+*6th:write to file                                        //need help(I tried reading the book and watching tutorials online)
 */
 public class task
 {
@@ -36,8 +37,17 @@ public class task
   //set time below
   public static set.Time(short t)
   {
-   System.out.println("Please enter the time of the task");
+   System.out.println("Please enter the hour of the task");
+    StringBuilder SB = new StringBuilder();
+    Formatter TimeF = new Formatter(TimeF);
+    Formatter.format(%H);
     t = SC.nextShort();
+    try{
+      t= time;
+      System.out.println("Valid hour entered");
+    }catch
+      (System.out.println("Invalid hour entered"));
+   
   }//SetTime end
   public static get.Time(short t)
   {
