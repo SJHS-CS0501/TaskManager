@@ -64,6 +64,23 @@ public class task
     return p;
   }//get Priority end
   
+  //priority switch statement
+  public static void SwitchPrio(short p)
+  {
+    switch(p) {
+      case1: priority = "Level 1 Priority";
+      break;
+      case2: priority = "Level 2 Priority";
+      break;
+      case3: priority = "Level 3 Priority";
+      break;
+      case4: priority = "Level 4 Priority";
+      break;
+      case5: priority = "Level 5 Priority";
+      break;
+      default: priority = "Invalid Priority";
+      break;
+  }//SwitchPrio end
   
   //file class below
   public static void File(String[]args)
