@@ -21,9 +21,9 @@ public final class CommandHelp {
 			"exit: closes the program\n",
 			"help: provides information on how to operate Task Manager\nEnter \"help [command name]\" for information on specific commands\n",
 			"open: loads a file\nEnter \"open [file name]\" to open a specific file\nEnter \"open\" to open the most recent file viewed\n",
-			"save: ",
-			"add: ",
-			"print: displays list of tasks in open file",
+			"save: \n",
+			"add: \n",
+			"print: displays list of tasks in open file\n",
 	};
 	
 	/**

@@ -45,6 +45,7 @@ public class TaskManager {
 		boolean run = true;
 		
 		final String DEFAULT_FILENAME = "tasklist.txt";
+		String openFile = "tasklist.txt";
 		
 		TaskList tasks = null;
 		String[] command;
@@ -60,11 +61,11 @@ public class TaskManager {
 			
 			if(command.length != 0)
 			switch(command[0]) {
-				case "exit":
+				case "exit": // exit the program
 					run = false;
 					break;
 					
-				case "help":
+				case "help": // get command descriptions
 					if(command.length == 1) {
 						System.out.print(CommandHelp.getHelpText());
 					} else {
@@ -72,43 +73,47 @@ public class TaskManager {
 					}
 					break;
 					
-				case "open":
+				case "open": // load a file
+					// Check to see if there is a file open
 					if(tasks == null) {
+						// if a filename is given try to open that
 						if(command.length > 1) {			
 							try {
 								tasks = new TaskList(command[1]);
-								System.out.printf("File \"%s\" was successfully opened\n\n", command[1]);
-								tasks.print();
+								System.out.printf("File \"%s\" was successfully opened\n", command[1]);
+								openFile = command[1];
 							} catch(FileNotFoundException e) {
 								System.out.printf("File \"%s\" could not be found\n", command[1]);
 							}
+						// if not, default to the most recent file
 						} else {
 							System.out.print("No file specified, defaulting...\n");
 							try {
 								tasks = new TaskList(DEFAULT_FILENAME);
-								System.out.print("Opened default file\n\n");
-								tasks.print();
+								System.out.print("Opened default file\n");
 							} catch(FileNotFoundException e) {
 								System.out.print("Default file could not be found, someone's been tampering with my program...\n");
 							}
 						}
 					} else {
+						// if there is, ask the user it they are sure that they want to open a new one and erase any unsaved changes
 						System.out.printf("Opening a new file will erase any changes made since the last save\nAre you sure you want to open a new file?\n");
 						if(confirmed(scan)){
+							// if a filename is given try to open that
 							if(command.length > 1) {			
 								try {
 									tasks = new TaskList(command[1]);
-									System.out.printf("File \"%s\" was successfully opened\n\n", command[1]);
-									tasks.print();
+									System.out.printf("File \"%s\" was successfully opened\n", command[1]);
+									openFile = command[1];
 								} catch(FileNotFoundException e) {
 									System.out.printf("File \"%s\" could not be found\n", command[1]);
 								}
+							// if not, default to the most recent file
 							} else {
 								System.out.print("No file specified, defaulting...\n");
 								try {
 									tasks = new TaskList(DEFAULT_FILENAME);
-									System.out.print("Opened default file\n\n");
-									tasks.print();
+									System.out.print("Opened default file\n");
 								} catch(FileNotFoundException e) {
 									System.out.print("Default file could not be found, someone's been tampering with my program...\n");
 								}
@@ -117,7 +122,51 @@ public class TaskManager {
 					}
 					break;
 					
-				case "print":
+				case "save": // make sure the "most recent file" file cannot be overwritten
+					// ensure there is a file open
+					if(tasks == null) {
+						System.out.print("There is no file open\n");
+					} else {
+						// if user enters a filename, use that
+						if(command.length > 1) {
+							File file = new File(command[1]);
+							// check if a file exists
+							if(file.exists()) {
+								// confirm that the user wants to overwrite it
+								System.out.print("That file already exists\nDo you want to overwrite it?\n");
+								if(confirmed(scan)) {
+									try {
+										tasks.writeFile(command[1]);
+										System.out.printf("\"%s\" has been saved\n", command[1]);
+										System.out.printf("Enter \"open %s\" to open the file\n", command[1]);
+									} catch(FileNotFoundException e) {
+										System.out.printf("File \"%s\" could not be found\n", command[1]);
+									}
+								}
+							} else {
+								// if file does not exist, make it
+								try {
+									tasks.writeFile(command[1]);
+									System.out.printf("\"%s\" has been created and saved\n", command[1]);
+									System.out.printf("Enter \"open %s\" to open the new file\n", command[1]);
+								} catch(FileNotFoundException e) {
+									System.out.printf("File \"%s\" could not be found\n", command[1]);
+								}
+							}
+						// if not use the name of the open file
+						} else {
+							try {
+								tasks.writeFile(openFile);
+								System.out.printf("\"%s\" has been saved\n", openFile);
+							} catch(FileNotFoundException e) {
+								System.out.printf("File \"%s\" could not be found\n", openFile);
+							}
+						}
+					}
+					break;
+					
+					
+				case "print": // display tasks to screen
 					if(tasks != null) {
 						System.out.print('\n');
 						tasks.print();
