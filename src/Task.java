@@ -1,7 +1,7 @@
 import java.util.*;
 
 import java.text.ParseException;
-
+import java.text.SimpleDateFormat;
 import java.io.*;
 /**
  * 
@@ -15,7 +15,7 @@ import java.text.DateFormat;
  *
  */
 public class Task {
-	
+	DateFormat format = new SimpleDateFormat("DDD MMM dd, yyyy", Locale.ENGLISH);
 	/*
 	 * Data fields:
 	 * - Priority
@@ -114,7 +114,7 @@ public class Task {
 	}
 	
 	public void setDueDate(Date userDate) {
-		dueDate = userDate;
+		dueDate = format.(userDate);
 	}
 	
 	public Date getDueDate() {

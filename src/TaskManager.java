@@ -50,45 +50,26 @@ public class TaskManager {
 	 * implement sort by priority
 	 * -can sort class by priority
 	 */
-	public static void main( String [] args ) throws ParseException {
+	public static void main( String [] args ) {
 		// main stuff goes here, yo
 		System.out.println( "Welcome to the Task Manager!" );
 		
 		TaskList taskList = new TaskList();
 		String name = null, description = null, decide = null, filename = "Task.txt";
-		short temp;
+		short temp, choice = 0;
 		boolean truth, tempB;
 		Date date = new Date();
-		DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
+		DateFormat format = new SimpleDateFormat("MMM dd, yyyy", Locale.ENGLISH);
 		Scanner keyboard = new Scanner(System.in);
 		
-		/*
-		 * ERASE FROM HERE TO THERE WHEN DONE TESTING TASK
-		 
-		Task foo = new Task();
-		foo.setDescription( "Test Task" );
-		try {
-			// What we want to try that might throw an exception
-			foo.setPriority( (short)12 );
-		} catch( Exception e ) {
-			// What to do if we catch the exception
-			System.out.println( "Error setting priority: " + e.getMessage() );
-			//System.exit(-1);
-		}
-		
-		// time passes...
-		
-		System.out.println( "Task info: " );
-		System.out.println( "\tTask: " + foo.getDescription() );
-		System.out.println( "\t\tPriority: " + foo.getPriorityName() );
-		
-		
-		 * THERE
-		 */
-		
-		// Allow user to make 4 tasks
-		
 		do{
+			System.out.println( "Please select your function: \n\t1 - Create a new file\n\t2 -"
+					+ " Create a new task and add to file\n\t3 - Search by priority\n\t4 - Load existing file\n\t5 - Exit");
+			choice = keyboard.nextShort();
+
+			switch (choice) {
+				
+			}
 			Task task = new Task();
 			decide = null;		
 			String input = null;
@@ -122,7 +103,13 @@ public class TaskManager {
 			
 			System.out.println( "Due Date: ");
 			input = keyboard.nextLine();
-			date = format.parse(input);
+			try {
+				date = format.parse(input);
+			} catch (ParseException e) {
+				System.out.println( "Bro..... that's broke now" );
+			}
+			
+			task.setDueDate( date );
 
 			taskList.addTask(task);
 			
@@ -162,3 +149,30 @@ public class TaskManager {
 		System.exit(0);
 	}
 }
+
+
+/*
+ * ERASE FROM HERE TO THERE WHEN DONE TESTING TASK
+ 
+Task foo = new Task();
+foo.setDescription( "Test Task" );
+try {
+	// What we want to try that might throw an exception
+	foo.setPriority( (short)12 );
+} catch( Exception e ) {
+	// What to do if we catch the exception
+	System.out.println( "Error setting priority: " + e.getMessage() );
+	//System.exit(-1);
+}
+
+// time passes...
+
+System.out.println( "Task info: " );
+System.out.println( "\tTask: " + foo.getDescription() );
+System.out.println( "\t\tPriority: " + foo.getPriorityName() );
+
+
+ * THERE
+ */
+
+// Allow user to make 4 tasks
