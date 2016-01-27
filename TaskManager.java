@@ -45,10 +45,79 @@ public class TaskManager {
 		Scanner keyboard = new Scanner(System.in);
 		String input;
 		String fileName = "Tasks.txt";
+		int menu = 0;
 		int numTasks = 0;
 		TaskList otherStuff = new TaskList();
 		
 		System.out.println( "Welcome to the Task Manager!" );
+		
+		System.out.println( "Would you like to: " );
+		System.out.println( "1. Load a task list from file" );
+		System.out.println( "2. Save task list" );
+		System.out.println( "3. Add a task" );
+		System.out.println( "4. Remove a task" );
+		System.out.println( "5. Edit a task" );
+		System.out.println( "6. Search tasks" );
+		System.out.println( "7. Sort tasks by priority" );
+		System.out.println( "8. Print task list" );
+		System.out.println( "9. Exit program" );
+		input = keyboard.nextLine();
+		
+		switch( menu ){
+			case 1:
+				// load
+				break;
+			case 2:
+				// save
+				break;
+			case 3:
+				// add
+				break;
+			case 4:
+				// remove
+				break;
+			case 5:
+				// edit
+				break;
+			case 6:
+				// search
+				System.out.println( "Would you like to search by: " );
+				System.out.println( "1. Category" );
+				System.out.println( "2. Priority" );
+				System.out.println( "3. Due date" );
+				System.out.println( "4. Location" );
+				System.out.println( "5. Completion" );
+				menu = keyboard.nextInt();
+				
+				switch( menu ){
+					case 1:
+						otherStuff.searchByCategory();
+						break;
+					case 2:
+						otherStuff.searchByPriority();
+						break;
+					case 3:
+						otherStuff.searchByDate();
+						break;
+					case 4:
+						otherStuff.searchByLocation();
+						break;
+					case 5:
+						otherStuff.searchByCompletion();
+						break;
+				}
+				
+				break;
+			case 7:
+				// sort by priority
+				break;
+			case 8:
+				// print
+				break;
+			case 9:
+				// exit
+				break;	
+		}
 		
 		do{
 			Task stuff = new Task();

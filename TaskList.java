@@ -40,17 +40,18 @@ public class TaskList {
 
 	
 	//* write methods to search tasks, should all return a type task
-	public TaskList searchByDescription( String d ){
-		TaskList search = new TaskList();
+	
+	//public TaskList searchByDescription( String d ){
+	//	TaskList search = new TaskList();
 		
-		for( int i = 0; i < taskList.size(); i++ ){
-			if( taskList.get(i).getDescription().equals(d)) {
-				search.addTask( taskList.get(i) );
-			}
-		}
-		
-		return search;
-	}
+	//	for( int i = 0; i < taskList.size(); i++ ){
+	//		if( taskList.get(i).getDescription().equals(d)) {
+	//			search.addTask( taskList.get(i) );
+	//		}
+	//	}
+	//	
+	//	return search;
+	//}
 	
 	/**
 	 * 
