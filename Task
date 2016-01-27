@@ -10,6 +10,7 @@ import java.util.Scanner;       //allows user to enter data
 *fourth: create the file creator                          //unsure
 *5th:Format the variable entries                          //need help(My attempt is on lines 37-51)
 *6th:write to file                                        //need help(I tried reading the book and watching tutorials online)
+*7th: Write switch Statements for nessicary variables     //complete
 */
 public class task
 {
@@ -21,6 +22,8 @@ public class task
   private short Time;
   private short Date;
   private int Priority;
+  private int Category;
+  private String CategoryS;
   
   //Name setter
   public static set.Name(String n)
@@ -92,6 +95,33 @@ public class task
       default: priority = "Invalid Priority";
       break;
   }//SwitchPrio end
+  
+  public static set.Category(int c)
+  {
+    System.out.println("Please enter the category number from below");
+    System.out.println("\t1.School\n2.Chores\n3.Work\n4.Social");
+    c=SC.nextInt();
+  }//setCategory end
+  
+  public static get.Category(int c)
+  {
+    return c;
+  }//getCategory end
+  
+  public static CategorySwitch(int c)
+  {
+    switch(c) {
+    case1: CategoryS = "School";
+    break;
+    case2: CategoryS = "Chores";
+    break
+    case3: CategoryS = "Work";
+    break;
+    case4: CategoryS = "Social";
+    break;
+    default: CategoryS = "Invalid Category";
+    break;
+  }//CategorySwitch end
   
   //file class below
   public static void File(String[]args)
