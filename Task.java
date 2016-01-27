@@ -270,9 +270,9 @@ public class Task {
 		
 		results =  line.split("\t");
 		
-		for(int ctr = 0; ctr < results.length; ctr ++) {
-			System.out.println("DBG: results[" + ctr + "]: \"" + results[ctr] + "\"");
-		}
+//		for(int ctr = 0; ctr < results.length; ctr ++) {
+//			System.out.println("DBG: results[" + ctr + "]: \"" + results[ctr] + "\"");
+//		}
 		
 		/*
 			private short priority;

@@ -52,6 +52,7 @@ public class TaskList {
 	 * @param filename String filename
 	 */
 	public TaskList(String filename) throws FileNotFoundException {
+		taskList = new ArrayList<Task>();
 		readFile(filename);
 	}
 	
