@@ -309,13 +309,4 @@ public class Task {
 		
 		return;
 	}
-	
-	/*
-	 * Methods:
-	 * - empty constructor
-	 * - accessors/mutators for all fields
-	 * - toString
-	 * - string.equals to compare tasks
-	 */
-
 }

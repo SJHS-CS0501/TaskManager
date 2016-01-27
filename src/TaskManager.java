@@ -38,17 +38,62 @@ public class TaskManager {
 		short set;
 		boolean TrueFalse;
 		
-		System.out.println( "Welcome to the Task Manager!" );
+		System.out.print( "Welcome to the Task Manager! Would you like to...\n1. read your tasks\n2. create a new task\n"
+				+ "3. search for a specific task\n(enter number) " );
+		set = keyboard.nextShort();
+		
+		switch( set ) {
+		case 1:
+			System.out.print( "Enter the name of the file you want to read from: " );
+			input = keyboard.nextLine();
+			//method
+			break;
+		case 2:
+			//jumping out
+			break;
+		case 3:
+			System.out.print( "Do you want to search by...\n1. priority\n2. category\n3. description\n4. location\n5. "
+					+ "state of completion\n(enter number) " );
+			set = keyboard.nextShort();
+			switch( set ) {
+			case 1:
+				System.out.print( "Of priority...\n0. Undefined\n1. High\n2. Medium\n3. Low\n(enter number) " );
+				set = keyboard.nextShort();
+				set.searchPriority();
+				break;
+			case 2:
+				System.out.print( "In category...\n0. Undefined\n1. Other\n2. School\n3. Personal\n4. Chore\n5. Work\n(enter number) " );
+				set = keyboard.nextShort();
+				set.searchCategory();
+				break;
+			case 3:
+				System.out.print( "With description...\n(enter description) " );
+				input = keyboard.nextLine();
+				input.searchDescription();
+				break;
+			case 4:
+				System.out.print( "With location...\n(enter location) " );
+				input = keyboard.nextLine();
+				input.searchLocation();
+				break;
+			case 5:
+				System.out.print( "That are...\n1. Completed\n2. Incomplete\n(enter number) " );
+				set = keyboard.nextShort();
+				set.searchCompletion();
+				break;
+			}
+			break;
+		}
 		
 		/*
 		 * menu:
 		 * 
 		 * read..
-		 * write..
+		 * write..confused here
 		 * add..
-		 * save..
+		 * save..confused
 		 * add tasks..after they read from file
-		 * can ask for file name...not much validation..if file already exists ask if they want to overwrite  
+		 * can ask for file name...not much validation..if file already exists ask if they want to overwrite..confused  
 		 * allow to search
 		 * 
 		 * hard part:

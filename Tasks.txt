@@ -1,1 +1,2 @@
-2		2	g	g	true
+2		1	basketball	sj	false
+1		1	homework	sj	true
