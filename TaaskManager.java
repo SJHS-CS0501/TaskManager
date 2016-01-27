@@ -1,5 +1,9 @@
 import java.io.FileNotFoundException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -42,7 +46,7 @@ public class TaaskManager {
 		 * 
 		 * menu
 		 * read tasks or add tasks
-		 * add task
+		 * display task
 		 * save file
 		 * create a new task list and add to the file
 		 * you could ask for file name, ask for over ride 
@@ -55,14 +59,24 @@ public class TaaskManager {
 		short p;
 		boolean b = false;
 		Date dDate = new Date();
+		DateFormat format = new SimpleDateFormat("MMMM dd, yyyy", Locale.ENGLISH);
 		Task t = new Task();
 		Scanner keyboard = new Scanner(System.in);
 		String filename = "Task file";
 		TaskList tL = new TaskList();
 		System.out.println( "Welcome to Task Manager! " );
+		int selection = 0;
+		menuDisplay(selection);
 		
 		do{
 			
+			switch( selection ){
+			case 0: 
+				tL.printTasks();
+				break;
+			case 1:
+				
+			}
 			
 			System.out.print( " Please enter a desciption for your task " );
 			d = keyboard.nextLine();
@@ -74,8 +88,16 @@ public class TaaskManager {
 			p = keyboard.nextShort();
 			t.setCatagory(p);
 			keyboard.nextLine();
-			System.out.println( "Please enter a due date for your task " );
-			d = keyboard.
+			System.out.println( "Please enter a due date for your task should in month date, year " );
+			d = keyboard.nextLine();
+			try {
+				dDate = format.parse(d);
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				System.out.println("Cannot parse date" );
+				e.printStackTrace();
+			}
+			t.setDate( dDate );
 			//not sure how to do this, parse doesn't seem to be working, or at least i can't figure it out
 			
 			System.out.print( "Please enter a location for your task " );
@@ -116,7 +138,21 @@ public class TaaskManager {
 			}
 			System.exit(0);
 }
-		
+		public static int menuDisplay( int selection ){
+			
+			Scanner keyboard = new Scanner(System.in);
+			
+			System.out.println( "Would you like to: " );
+			System.out.println( "1. Read the tasks from the file" );
+			System.out.println( "2. Add task to existing file" );
+			System.out.println( "3. Create new task list on existing file" );
+			System.out.println( "4. Load new file" );
+			System.out.println( "5. Search for specific tasks" );
+			System.out.println( "To select your option, press the number associated with your selection" );
+			selection = keyboard.nextInt();
+			
+			return selection;
+		}
 }
 
 
