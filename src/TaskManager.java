@@ -1,5 +1,8 @@
 import java.io.*;
-import java.util.Scanner;
+import java.util.*;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 /*
  * do these things:
@@ -19,153 +22,173 @@ import java.util.Scanner;
  */
 
 /**
- * This program will assist the user to manage their tasks. (organize, sort, delete, add).
+ * This program will assist the user to manage their tasks. (organize, sort,
+ * delete, add).
+ * 
  * @author Julianna Nichols
  */
 
 public class TaskManager {
-	
+
 	/**
 	 * This is the main method for the TaskManager program.
+	 * 
 	 * @param args
 	 */
 
 	public static void main(String[] args) {
-		Scanner keyboard = new Scanner( System.in );
+		DateFormat format = new SimpleDateFormat("mm dd, yyyy", Locale.ENGLISH);
+		Scanner keyboard = new Scanner(System.in);
 		TaskList newTaskList = new TaskList();
 		String fileName = "Tasks.txt";
+		Date date = new Date();
+		boolean TrueFalse;
 		String input;
 		short set;
-		boolean TrueFalse;
+		int ctr;
 		
-		System.out.print( "Welcome to the Task Manager! Would you like to...\n1. read your tasks\n2. create a new task\n"
-				+ "3. search for a specific task\n(enter number) " );
+		System.out.print("Welcome to the Task Manager! Would you like to...\n1. read your tasks\n2. create a new task\n"
+				+ "3. search for a specific task\n(enter number) ");
 		set = keyboard.nextShort();
 		
-		switch( set ) {
+		switch (set) {
 		case 1:
-			System.out.print( "Enter the name of the file you want to read from: " );
+			System.out.print("Enter the name of the file you want to read from: ");
 			input = keyboard.nextLine();
-			//method
+			do {
+				ctr = 0;
+				try {
+					newTaskList.readFile(input);
+				} catch (FileNotFoundException e) {
+					System.out.print("The file " + input + " does not exist. Please enter a new file name: ");
+					ctr++;
+				}
+			} while (ctr > 0);
+
 			break;
 		case 2:
-			//jumping out
+			// jumping out
 			break;
 		case 3:
-			System.out.print( "Do you want to search by...\n1. priority\n2. category\n3. description\n4. location\n5. "
-					+ "state of completion\n(enter number) " );
+			System.out.print("Do you want to search by...\n1. priority\n2. category\n3. description\n4. location\n5. "
+					+ "state of completion\n(enter number) ");
 			set = keyboard.nextShort();
-			switch( set ) {
+			switch (set) {
 			case 1:
-				System.out.print( "Of priority...\n0. Undefined\n1. High\n2. Medium\n3. Low\n(enter number) " );
+				System.out.print("Of priority...\n0. Undefined\n1. High\n2. Medium\n3. Low\n(enter number) ");
 				set = keyboard.nextShort();
-				set.searchPriority();
+				newTaskList.searchPriority(set);
 				break;
 			case 2:
-				System.out.print( "In category...\n0. Undefined\n1. Other\n2. School\n3. Personal\n4. Chore\n5. Work\n(enter number) " );
+				System.out.print(
+						"In category...\n0. Undefined\n1. Other\n2. School\n3. Personal\n4. Chore\n5. Work\n(enter number) ");
 				set = keyboard.nextShort();
-				set.searchCategory();
+				newTaskList.searchCategory(set);
 				break;
 			case 3:
-				System.out.print( "With description...\n(enter description) " );
+				System.out.print("With description...\n(enter description) ");
 				input = keyboard.nextLine();
-				input.searchDescription();
+				newTaskList.searchDescription(input);
 				break;
 			case 4:
-				System.out.print( "With location...\n(enter location) " );
+				System.out.print("With location...\n(enter location) ");
 				input = keyboard.nextLine();
-				input.searchLocation();
+				newTaskList.searchLocation(input);
 				break;
 			case 5:
-				System.out.print( "That are...\n1. Completed\n2. Incomplete\n(enter number) " );
-				set = keyboard.nextShort();
-				set.searchCompletion();
+				System.out.print("That are...\nY. Completed\nN. Incomplete\n(enter letter) ");
+				input = keyboard.nextLine().toLowerCase();
+				newTaskList.searchCompleted(input);
 				break;
 			}
 			break;
 		}
-		
+
 		/*
 		 * menu:
 		 * 
-		 * read..
-		 * write..confused here
-		 * add..
-		 * save..confused
-		 * add tasks..after they read from file
-		 * can ask for file name...not much validation..if file already exists ask if they want to overwrite..confused  
-		 * allow to search
+		 * read.. write..confused here save..confused add tasks..after they read
+		 * from file can ask for file name...not much validation..if file
+		 * already exists ask if they want to overwrite..confused allow to
+		 * search
 		 * 
-		 * hard part:
-		 * sort by priority so they can print tasks in priority order
+		 * hard part: sort by priority so they can print tasks in priority order
 		 * 
-		 * add date..
+		 * fix date format..
 		 */
-		
+
 		do {
 			Task newTask = new Task();
-			
-			 System.out.print( "Enter priority (1-3): " );
-			 set = keyboard.nextShort();
-			 newTask.setPriority( set );
-			 
-			 keyboard.nextLine();
-			 
-			 System.out.print( "Enter category (1-5): " );
-			 set = keyboard.nextShort();
-			 newTask.setCategory( set );
-			 
-			 keyboard.nextLine();
-			 
-			 System.out.print( "Enter description: " );
-			 input = keyboard.nextLine();
-			 newTask.setDescription( input );
-			 
-			 System.out.print( "Enter location (return for none): " );
-			 input = keyboard.nextLine();
-			 newTask.setLocation( input );
-			 
-			 System.out.print( "Enter state of completion (type true or false): " );
-			 TrueFalse = keyboard.nextBoolean();
-			 newTask.setCompleted( TrueFalse );
-			 
+
+			System.out.print("Enter priority (1-3): ");
+			set = keyboard.nextShort();
+			newTask.setPriority(set);
+
 			keyboard.nextLine();
-			 
-			 newTaskList.addTask( newTask );
-			 
-			 System.out.print( "Do you want to enter another task? (yes/no): " );
-			 input = keyboard.nextLine().toLowerCase();
-			 			 
-		} while (input.charAt(0) == 'y' );
-		
-		
+
+			System.out.print("Enter due date (mm dd, yyyy): ");
+			input = keyboard.nextLine();
+			try {
+				date = format.parse(input);
+			} catch (ParseException e) {
+				System.out.print("Could not parse date.");
+			}
+			newTask.setDueDate(date);
+
+			System.out.print("Enter category (1-5): ");
+			set = keyboard.nextShort();
+			newTask.setCategory(set);
+
+			keyboard.nextLine();
+
+			System.out.print("Enter description: ");
+			input = keyboard.nextLine();
+			newTask.setDescription(input);
+
+			System.out.print("Enter location (return for none): ");
+			input = keyboard.nextLine();
+			newTask.setLocation(input);
+
+			System.out.print("Enter state of completion (type true or false): ");
+			TrueFalse = keyboard.nextBoolean();
+			newTask.setCompleted(TrueFalse);
+
+			keyboard.nextLine();
+
+			newTaskList.addTask(newTask);
+
+			System.out.print("Do you want to enter another task? (yes/no): ");
+			input = keyboard.nextLine().toLowerCase();
+
+		} while (input.charAt(0) == 'y');
+
 		newTaskList.printTasks();
-		
+
 		try {
-			newTaskList.writeFile( fileName );
-		} catch( FileNotFoundException e ) {
-			System.out.println( "File \"" + fileName + "\" not found");
-			System.out.println( "Dying..." );
+			newTaskList.writeFile(fileName);
+		} catch (FileNotFoundException e) {
+			System.out.println("File \"" + fileName + "\" not found");
+			System.out.println("Dying...");
 			e.printStackTrace();
 			System.exit(-1);
 		}
-		
+
 		newTaskList = new TaskList();
-		
-		System.out.println( "Before read: " );
+
+		System.out.println("Before read: ");
 		newTaskList.printTasks();
-		
+
 		try {
-			newTaskList.readFile( fileName );
-		} catch( FileNotFoundException e ) {
-			System.out.println( "File \"" + fileName + "\" not found");
-			System.out.println( "Dying..." );
+			newTaskList.readFile(fileName);
+		} catch (FileNotFoundException e) {
+			System.out.println("File \"" + fileName + "\" not found");
+			System.out.println("Dying...");
 			e.printStackTrace();
 			System.exit(-1);
 		}
-		
+
 		keyboard.close();
-		
+
 		System.exit(0);
 
 	}

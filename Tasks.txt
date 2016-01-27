@@ -1,2 +1,1 @@
-2		1	basketball	sj	false
-1		1	homework	sj	true
+2	Sat Jan 29 00:02:00 EST 2011	5	calc	school	true
