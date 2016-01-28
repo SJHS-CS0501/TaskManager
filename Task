@@ -64,7 +64,7 @@ public class task
     boolean flag2 = true;
     while(flag2==true)
     {
-      System.out.println("Please enter the month of task of the task");
+      System.out.println("Please enter the month of the task");
       d1= SC.nextShort();
       if(d1>12)
       {
@@ -89,6 +89,7 @@ public static get.Date(short d1, short d2)
   //set Priority below
   public static set.Priority( int p)
   {
+    System.out.println("Please enetr the priority level of 1-5");
     p = SC.NextShort();
   }//setPriority end
   public static get.Priority( int p)
