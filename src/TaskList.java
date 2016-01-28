@@ -93,6 +93,32 @@ public class TaskList {
 	}
 	
 	/**
+	 * Write list of tasks from filename provided
+	 * @param filename Filename to read
+	 */
+	public void writeFile( String filename ) throws FileNotFoundException {
+		PrintWriter writer = new PrintWriter( filename );
+		
+		for( int i = 0; i < taskList.size(); i++ ) {
+			taskList.get(i).write( writer );
+		}
+		writer.close();
+	}
+	
+	/**
+	 * Print all tasks in the task list
+	 * @param
+	 */
+	public void printTasks() {
+		System.out.println( "Tasks:" );
+		for( int i = 0; i < taskList.size(); i++ ) {
+			System.out.println( taskList.get(i).toString() );
+			System.out.println( "-----" );
+		}
+		System.out.println( "EOL" );
+	}
+	
+	/**
 	 * Search through tasks based on their description
 	 * @param d
 	 * @return match
@@ -171,30 +197,24 @@ public class TaskList {
 		}
 		return match;
 	}	
-		
-	/**
-	 * Write list of tasks from filename provided
-	 * @param filename Filename to read
-	 */
-	public void writeFile( String filename ) throws FileNotFoundException {
-		PrintWriter writer = new PrintWriter( filename );
-		
-		for( int i = 0; i < taskList.size(); i++ ) {
-			taskList.get(i).write( writer );
-		}
-		writer.close();
-	}
+	
 	
 	/**
-	 * Print all tasks in the task list
-	 * @param
+	 * Sort through tasks based on their priority
+	 * @param 
 	 */
-	public void printTasks() {
-		System.out.println( "Tasks:" );
-		for( int i = 0; i < taskList.size(); i++ ) {
-			System.out.println( taskList.get(i).toString() );
-			System.out.println( "-----" );
+	public static void sortPriority() {
+		int startScan, index, minIndex, minValue;
+		for( startScan = 0; startScan < ( .length); index++ ) {
+		minIndex = startScan;
+		minValue = [startScan];
+		for( index = startScan < ( .length-1); startScan++ ) {
+			if( [index] < minValue ) {
+				minvalue = [index];
+				minIndex = index;
+			}
 		}
-		System.out.println( "EOL" );
-	}
+		[minIndex] = [startScan];
+		[startScan] = minValue;
+	}	
 }
