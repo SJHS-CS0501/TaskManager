@@ -60,6 +60,7 @@ public class TaskManager {
 		boolean truth, tempB;
 		Date date = new Date();
 		DateFormat format = new SimpleDateFormat("MMM dd, yyyy", Locale.ENGLISH);
+		DateFormat printFormat = new SimpleDateFormat("EEE MMM dd, yyyy", Locale.ENGLISH);
 		Scanner keyboard = new Scanner(System.in);
 		
 		do{
@@ -67,9 +68,7 @@ public class TaskManager {
 					+ " Create a new task and add to file\n\t3 - Search by priority\n\t4 - Load existing file\n\t5 - Exit");
 			choice = keyboard.nextShort();
 
-			switch (choice) {
-				
-			}
+			
 			Task task = new Task();
 			decide = null;		
 			String input = null;
@@ -77,6 +76,7 @@ public class TaskManager {
 			System.out.println( "Descrption: ");
 			input = keyboard.nextLine();
 			task.setDescription(input);
+			keyboard.nextLine();
 			
 			System.out.println( "Location: " );
 			input = keyboard.nextLine();
@@ -103,13 +103,13 @@ public class TaskManager {
 			
 			System.out.println( "Due Date: ");
 			input = keyboard.nextLine();
-			try {
-				date = format.parse(input);
-			} catch (ParseException e) {
-				System.out.println( "Bro..... that's broke now" );
+			task.setDateFormat( printFormat );
+			try{
+				task.setDueDate( format.parse(input) );
+			} catch(ParseException e) {
+				System.out.println( "Die" );
 			}
 			
-			task.setDueDate( date );
 
 			taskList.addTask(task);
 			
@@ -137,7 +137,7 @@ public class TaskManager {
 		taskList.printTasks();
 		
 		try {
-			taskList.readFile( filename );
+			taskList.readFile( filename, printFormat );
 		} catch( FileNotFoundException e ) {
 			System.out.println( "file \"" + filename + "\" not found!" );
 			System.out.println( "Dying..." );

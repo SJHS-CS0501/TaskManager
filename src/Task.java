@@ -15,7 +15,7 @@ import java.text.DateFormat;
  *
  */
 public class Task {
-	DateFormat format = new SimpleDateFormat("DDD MMM dd, yyyy", Locale.ENGLISH);
+	DateFormat format;
 	/*
 	 * Data fields:
 	 * - Priority
@@ -25,9 +25,9 @@ public class Task {
 	 * - Location
 	 * - Completed
 	 */
-	private short priority;//
+	private short priority;
 	private Date dueDate;
-	private short category;//
+	private short category;
 	private String description;
 	private String location;
 	private boolean completed;
@@ -72,7 +72,7 @@ public class Task {
 		s.append( "Priority: " + getPriorityName() + "\n" );
 		s.append( "Category: " + getCategoryName() + "\n" );
   		if( dueDate != null ) {
-    			s.append( "Due Date: " + dueDate.toString() + "\n" );
+    			s.append( "Due Date: " + format.format(dueDate) + "\n" );
   		}
   		s.append( "Location: " + location + "\n" );
   		s.append( "Completed? " + (completed?"Y":"N") + "\n" );
@@ -113,8 +113,17 @@ public class Task {
 		return pName;
 	}
 	
+	public void setDateFormat( DateFormat userFormat ) {
+		format = userFormat;
+	}
+	
+	public DateFormat getDateFormat() {
+		return format;
+	}
+	
+	
 	public void setDueDate(Date userDate) {
-		dueDate = format.(userDate);
+		dueDate = userDate;
 	}
 	
 	public Date getDueDate() {

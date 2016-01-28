@@ -3,6 +3,7 @@
  */
 import java.util.*;
 import java.io.*;
+import java.text.DateFormat;
 /**
  * @author Jack Protivnak
  * TaskList contains a list of tasks and operations for that list.
@@ -132,7 +133,7 @@ public class TaskList {
 	  * Read list of tasks from filename provided.
 	  * @param filename Filename to read
 	  */
-	public void readFile( String filename ) throws FileNotFoundException {
+	public void readFile( String filename, DateFormat format ) throws FileNotFoundException {
 		Task t;
 		// asssume that taskList is initialized
 		taskList.clear(); // remove all old tasks
@@ -145,6 +146,7 @@ public class TaskList {
 			while( reader.ready() ) {
 				t = new Task();
 				t.read( reader );
+				t.setDateFormat(format);
 				if( t != null ) {
 					taskList.add( t );
 				}
