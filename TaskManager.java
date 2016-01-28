@@ -1,4 +1,5 @@
 import java.io.FileNotFoundException;
+import java.util.Date;
 import java.util.Scanner;
 
 /*
@@ -45,7 +46,10 @@ public class TaskManager {
 		Scanner keyboard = new Scanner(System.in);
 		String input;
 		String fileName = "Tasks.txt";
-		int menu = 0;
+		short menu = 0;
+		Date date = new Date();
+		String searching = null;
+		//boolean thing;
 		int numTasks = 0;
 		TaskList otherStuff = new TaskList();
 		
@@ -67,14 +71,52 @@ public class TaskManager {
 			case 1:
 				// load
 				break;
+			
+			
 			case 2:
 				// save
+				
 				break;
+			
+			
 			case 3:
 				// add
+				Task stuff = new Task();
+
+				System.out.print( "Description: " );
+				input = keyboard.nextLine();
+				stuff.setDescription( input);
+				
+				System.out.print( "Priority(1-3): " );
+				input = keyboard.nextLine();
+				stuff.setPriority( Short.parseShort( input ) );
+				
+				System.out.print( "Category(1-5): " );
+				input = keyboard.nextLine();
+				stuff.setCategory( Short.parseShort( input ) );
+				
+				System.out.print( "Location: " );
+				input = keyboard.nextLine();
+				stuff.setLocation( input );
+				
+				System.out.println( "Due Date: ");
+				input = keyboard.nextLine();
+				stuff.setDate( date ); // THIS SHOULD NOT WORK REMEMEBER TO LOOK HERE AGAIN!!!!!
+				
+				System.out.print( "Completed? : " );
+				input = keyboard.nextLine().toLowerCase();
+				stuff.setCompleted( Boolean.parseBoolean( input ) );
+
+				otherStuff.addTask( stuff );
+				
+				numTasks++;
+	
 				break;
 			case 4:
 				// remove
+				System.out.println( "Which task would you like to remove?" );
+				input = keyboard.nextLine();
+				otherStuff.removeTask();
 				break;
 			case 5:
 				// edit
@@ -87,27 +129,29 @@ public class TaskManager {
 				System.out.println( "3. Due date" );
 				System.out.println( "4. Location" );
 				System.out.println( "5. Completion" );
-				menu = keyboard.nextInt();
+				menu = keyboard.nextShort();
 				
 				switch( menu ){
 					case 1:
-						otherStuff.searchByCategory();
+						otherStuff.searchByCategory( menu );
 						break;
 					case 2:
-						otherStuff.searchByPriority();
+						otherStuff.searchByPriority( menu );
 						break;
 					case 3:
-						otherStuff.searchByDate();
+						otherStuff.searchByDueDate( date );
 						break;
 					case 4:
-						otherStuff.searchByLocation();
+						otherStuff.searchByLocation( searching );
 						break;
 					case 5:
-						otherStuff.searchByCompletion();
+						otherStuff.searchByCompleted( searching );
 						break;
 				}
 				
 				break;
+			
+			
 			case 7:
 				// sort by priority
 				break;
@@ -116,7 +160,8 @@ public class TaskManager {
 				break;
 			case 9:
 				// exit
-				break;	
+				System.out.println( "GOODBYE!" );
+				System.exit(0);
 		}
 		
 		do{
@@ -137,6 +182,10 @@ public class TaskManager {
 			System.out.print( "Location: " );
 			input = keyboard.nextLine();
 			stuff.setLocation( input );
+			
+			System.out.println( "Due Date: " );
+			input = keyboard.nextLine();
+			stuff.setDate( date ); // THIS TOOOOOOOOOOOOOOOOOOOOOOOOOO
 			
 			System.out.print( "Completed? : " );
 			input = keyboard.nextLine().toLowerCase();
