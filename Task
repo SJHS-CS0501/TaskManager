@@ -11,6 +11,7 @@ import java.util.Scanner;       //allows user to enter data
 *5th:Format the variable entries                          //need help(My attempt is on lines 41-58)
 *6th:write to file                                        //need help(I tried reading the book and watching tutorials online)
 *7th: Write switch Statements for nessicary variables     //complete(category and priority)
+*8th: add file reader                                     //unsure if done correctly
 */
 public class task
 {
@@ -117,7 +118,7 @@ public static get.Date(short d1, short d2)
   
   public static set.Category(int c)
   {
-    System.out.println("Please enter the category number from below");
+    System.out.println("Please enter the category number from below:");
     System.out.println("\t1.School\n2.Chores\n3.Work\n4.Social");
     c=SC.nextInt();
   }//setCategory end
@@ -160,8 +161,17 @@ public static get.Date(short d1, short d2)
     
     
     //fileWriter below
-    fileWriter Fiwr =new fileWriter();
+    fileWriter Fiwr =new fileWriter(task.txt);
+    Fiwr.write(Name);
+    Fiwr.write(Date);
+    Fiwr.write(Time);
+    Fiwr.write(Category);
+    Fiwr.write(Priority);
+    fiwr.close();
     
+    //file reader below
+    fileReader FR = new fileReader(task.txt);
+    BufferedReader BR = new BufferedReader(FR);
     
     
    }//File end
