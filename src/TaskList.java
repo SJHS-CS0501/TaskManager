@@ -203,6 +203,7 @@ public class TaskList {
 	 * Sort through tasks based on their priority
 	 * @param 
 	 */
+	/*
 	public static void sortPriority() {
 		int startScan, index, minIndex, minValue;
 		for( startScan = 0; startScan < ( .length); index++ ) {
@@ -216,5 +217,6 @@ public class TaskList {
 		}
 		[minIndex] = [startScan];
 		[startScan] = minValue;
-	}	
+	}
+	*/
 }
