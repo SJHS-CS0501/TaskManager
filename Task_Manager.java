@@ -69,21 +69,24 @@ public class Task_Manager {
 		Task_List list;
 		Exception t;
 		int c = 0;
+		
+		Task that = new Task();
 	
-		System.out.println("Welcome to Task Manager \n\n"
-							+ "Do you want to load a previously written task list (press 1) "
-				            + "\nDo You want to start a new task list from scratch (press 2)");
+		System.out.println("Welcome to Task Manager \n\n");
+							
 		do{
+		
+		System.out.println( "Do you want to load a previously written task list (press 1) \n"
+							+ "Do You want to start a new task list from scratch (press 2)");
 		try{
 		c = k.nextInt();
 		}catch(Exception e){
-			
-		}
+			System.out.println("Invalid character");
+			k.next();
 		}
 		
-		while(c != 1 || c != 2){
-			System.out.println("You input the wrong thing. Try again");
-		}
+		}while(c!= 1 && c!= 2 );
+		
 		
 		if(c == 1){
 			System.out.println("hello");
@@ -91,16 +94,18 @@ public class Task_Manager {
 			System.out.println("Hello 2");
 		}
 	
-	
-	
+	that.getDate();
+		
+		
 	
 	
 	
 		System.exit(0);// exit program 
 	
-	}
 	
-
+	
+	}
+}
 	
 	
 	
@@ -198,4 +203,4 @@ public class Task_Manager {
 		
 	}
 */
-}
+

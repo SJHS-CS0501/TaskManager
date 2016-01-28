@@ -3,7 +3,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Scanner;
 /**
  * Task object containing information on a single task
@@ -29,6 +31,7 @@ public class Task {
 	 private static String descrition;
 	 private static String location;
 	 private static boolean completed;
+	 private static SimpleDateFormat format;
 	 
 	 /*
 	  * Priorities:
@@ -122,14 +125,26 @@ public class Task {
 	 
 	 /**
 	  * Set due date 
+	 * 
 	  */
-	 public static void setDate(Date d){
+	 public static void setDate(String s) {
+		
+	
+		 DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
+		 try {
+			Date dueDate = format.parse(s);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			System.out.println(e.getMessage());
+		}
+		
 		 
-		dueDate = d;
+		 
 	 }
 	 
 	 /**
 	  * get due date
+	 * @return 
 	 * @return 
 	  */
 	 public static Date getDate(){
@@ -218,9 +233,9 @@ public class Task {
 		 s.append(priority);
 		 s.append("\t");
 		
-		 if(dueDate != null){
-		 s.append(dueDate.toString());
-		 }
+		
+		 s.append(format.format(dueDate));
+		 
 		 
 		 s.append("\t");
 		 s.append(catagory);
@@ -247,7 +262,7 @@ public class Task {
 		  s.append( "Priority: " + getPrority() + "\n" );
 		  s.append( "Category: " + getCatagory() + "\n" );
 		  if( dueDate != null ) {
-		    s.append( "Due Date: " + dueDate.toString() + "\n" );
+		    s.append( "Due Date: " + format.format(dueDate) + "\n" );
 		  }
 		  s.append( "Location: " + location + "\n" );
 		  s.append( "Completed? " + (completed?"Y":"N") + "\n" );
@@ -295,12 +310,8 @@ public class Task {
 		 
 		 
 		 
-		 try {
-			setDate(DateFormat.getDateInstance().parse(results[1]));
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			System.out.println("Could not parse date: " + e.getMessage());
-		}
+		 
+		setDate((results[1]));
 		setCatagory(Short.parseShort(results[2]));
 		setDescription(results[3]); 
 		setLocation(results[4]);
