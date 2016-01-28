@@ -163,8 +163,23 @@ public class TaskList {
 		return search;
 	}
 	
+	/**
+	 * Sorts the list from highest to lowest priority via insertion sort 
+	 */
 	public void sortByPriority() {
+		//This is an adaptation of the insertion sort pseudo-code found on wikipedia
 		
+		int j = 0;
+		Task t;
+		for(int i = 1; i < taskList.size(); i++) {
+			j = i;
+			while(j > 0 && taskList.get(j-1).getPriority() > taskList.get(j).getPriority()) {
+				t = taskList.get(j);
+				taskList.set(j, taskList.get(j-1));
+				taskList.set(j-1, t);
+				j--;
+			}
+		}
 	}
 	
 	/**

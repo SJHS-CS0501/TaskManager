@@ -16,6 +16,9 @@ public abstract class CommandHelp {
 	public static final short CMD_SAVE = 3;
 	public static final short CMD_ADD = 4;
 	public static final short CMD_PRINT = 5;
+	public static final short CMD_SEARCH = 6;
+	public static final short CMD_SORT = 7;
+	
 	
 	public static final String[] commands = {
 			"exit: closes the program\n",
@@ -24,6 +27,8 @@ public abstract class CommandHelp {
 			"save: save a file\nEnter \"save [file name]\" to save to a specific file\nnew files are created automatically\nEnter \"save\" to save the open file\n",
 			"add: creates a new task from user input and adds it to the open file\n",
 			"print: displays list of tasks in open file\n",
+			"search: \n",
+			"sort: sorts list of tasks from highest to owest priority\n"
 	};
 	
 	/**
@@ -43,6 +48,8 @@ public abstract class CommandHelp {
 				return commands[CMD_SAVE];
 			case "print":
 				return commands[CMD_PRINT];
+			case "sort":
+				return commands[CMD_SORT];
 			case "me":
 				return "I'm sorry... there's nothing I can do for you...\n";
 			default:

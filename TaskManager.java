@@ -145,12 +145,15 @@ public class TaskManager {
 								}
 							} else {
 								// if file does not exist, make it
-								try {
-									tasks.writeFile(command[1]);
-									System.out.printf("\"%s\" has been created and saved\n", command[1]);
-									System.out.printf("Enter \"open %s\" to open the new file\n", command[1]);
-								} catch(FileNotFoundException e) {
-									System.out.printf("File \"%s\" could not be found\n", command[1]);
+								System.out.print("That file does not exist\nDo you want to create it?\n");
+								if(confirmed(scan)) {
+									try {
+										tasks.writeFile(command[1]);
+										System.out.printf("\"%s\" has been created and saved\n", command[1]);
+										System.out.printf("Enter \"open %s\" to open the new file\n", command[1]);
+									} catch(FileNotFoundException e) {
+										System.out.printf("File \"%s\" could not be found\n", command[1]);
+									}
 								}
 							}
 						// if not use the name of the open file
@@ -184,6 +187,37 @@ public class TaskManager {
 					
 				case "search":
 					break;
+					
+				case "sort":
+					if(tasks == null) {
+						System.out.print("There is no file open\n");
+					} else {
+						tasks.sortByPriority();
+						System.out.print("The tasks have been sorted from highest to lowest priority\n");
+					}
+					break;
+					
+				case "mark":
+					if(tasks == null) {
+						System.out.print("there is no file open\n");
+					} else {
+						if(command.length > 1) {
+							if(command[1].matches("(?:[0-9]*)?[0-9]+")) {
+							} else {
+								System.out.print("Input must be a positive integer");
+							}
+						} else {
+							System.out.print("Search by name: ");
+							String name = scan.nextLine();
+							Task task = tasks.searchByDescription(name);
+							if(task == null) {
+								System.out.printf("Task \"%s\" could not be found", name);
+							} else {
+								task.setCompleted(true);
+								System.out.printf("Task \"%s\" has been marked as complete", name);
+							}
+						}
+					}
 					
 				default:
 					System.out.printf("Operation %s not supported. Enter \"help\" for a list of commands\n", command[0]);
