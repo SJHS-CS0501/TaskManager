@@ -185,7 +185,6 @@ public class TaskManager {
 	}
 	
 	public static void menu(int option) {
-		Scanner keyboard = new Scanner(System.in);
 		
 		System.out.println("If you want to: ");
 		System.out.println("Read a task from disk, press 1 ");
