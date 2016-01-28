@@ -284,6 +284,12 @@ public class Task {
 	 * @param writer
 	 */
 	
+	public void setUserDate( Date userDate ){
+		dueDate = userDate;
+	}
+	public Date getUserDate(){
+		return dueDate;
+	}
 	public void write( PrintWriter writer ){
 		// write data separated by tabs
 		StringBuilder s = new StringBuilder();
