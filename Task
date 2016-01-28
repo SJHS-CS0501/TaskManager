@@ -129,17 +129,19 @@ public static get.Date(short d1, short d2)
   
   public static CategorySwitch(int c)
   {
-    switch(c) {
-    case1: CategoryS = "School";
-    break;
-    case2: CategoryS = "Chores";
-    break
-    case3: CategoryS = "Work";
-    break;
-    case4: CategoryS = "Social";
-    break;
-    default: CategoryS = "Invalid Category";
-    break;
+    switch(c) 
+    {
+      case1: CategoryS = "School";
+      break;
+      case2: CategoryS = "Chores";
+      break
+      case3: CategoryS = "Work";
+      break;
+      case4: CategoryS = "Social";
+      break;
+      default: CategoryS = "Invalid Category";
+      break;
+    }//switch end
   }//CategorySwitch end
   
   //file class below
