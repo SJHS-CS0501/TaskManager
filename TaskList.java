@@ -163,6 +163,10 @@ public class TaskList {
 		return search;
 	}
 	
+	public void sortByPriority() {
+		
+	}
+	
 	/**
 	 * Read list of tasks from filename provided.
 	 * @param filename Filename to read
@@ -200,7 +204,7 @@ public class TaskList {
 	/**
 	 * Prints TaskList to screen
 	 */
-	public void print() {
+	public void printTasks() {
 		for( int i = 0; i < taskList.size(); i++) {
 			System.out.print(taskList.get(i).toString());
 		} 

@@ -8,7 +8,7 @@
  * @author Ryan Luchs
  *
  */
-public final class CommandHelp {
+public abstract class CommandHelp {
 	
 	public static final short CMD_EXIT = 0;
 	public static final short CMD_HELP = 1;
@@ -21,8 +21,8 @@ public final class CommandHelp {
 			"exit: closes the program\n",
 			"help: provides information on how to operate Task Manager\nEnter \"help [command name]\" for information on specific commands\n",
 			"open: loads a file\nEnter \"open [file name]\" to open a specific file\nEnter \"open\" to open the most recent file viewed\n",
-			"save: \n",
-			"add: \n",
+			"save: save a file\nEnter \"save [file name]\" to save to a specific file\nnew files are created automatically\nEnter \"save\" to save the open file\n",
+			"add: creates a new task from user input and adds it to the open file\n",
 			"print: displays list of tasks in open file\n",
 	};
 	
@@ -39,6 +39,8 @@ public final class CommandHelp {
 				return commands[CMD_HELP];
 			case "open":
 				return commands[CMD_OPEN];
+			case "save":
+				return commands[CMD_SAVE];
 			case "print":
 				return commands[CMD_PRINT];
 			case "me":

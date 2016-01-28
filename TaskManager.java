@@ -165,14 +165,24 @@ public class TaskManager {
 					}
 					break;
 					
+				case "add": // add a new task to the list
+					if(tasks == null) {
+						System.out.print("There is no file open\n");
+					} else {
+						tasks.addTask(makeTask(scan));
+					}
+					break;
 					
 				case "print": // display tasks to screen
-					if(tasks != null) {
-						System.out.print('\n');
-						tasks.print();
-					} else {
+					if(tasks == null) {
 						System.out.print("There is no file open\n");
+					} else {
+						System.out.print('\n');
+						tasks.printTasks();
 					}
+					break;
+					
+				case "search":
 					break;
 					
 				default:
@@ -278,6 +288,54 @@ public class TaskManager {
 	public static boolean confirmed(Scanner scan) {
 		System.out.print("Enter y to confirm: ");
 		return scan.nextLine().toLowerCase().equals("y");
+	}
+	
+	public static Task makeTask(Scanner scan) {
+		int y = 0;
+		int m = 0;
+		int d = 0;
+		
+		// New Task
+		Task task = new Task();
+		System.out.println("Create a new task");
+		
+		// Get Description
+		System.out.print("Description: ");
+		task.setDescription(scan.nextLine());
+		
+		// Get Priority
+		System.out.print("Priority (1-3): ");
+		task.setPriority(scan.nextShort());
+		
+		// Get Date
+		System.out.println("Due Date:");
+		System.out.print("Year: ");
+		y = scan.nextInt();
+		System.out.print("Month: ");
+		m = scan.nextInt();
+		System.out.print("Date: ");
+		d = scan.nextInt();
+		
+		task.setDueDate(new Date(y - 1900, m, d));
+		
+		// Get Category
+		System.out.print("Category (1-5): ");
+		task.setCategory(scan.nextShort());
+		scan.nextLine();
+		
+		// Get Location	
+		System.out.print("Location: ");
+		task.setLocation(scan.nextLine());
+		
+		// Get Completed
+		System.out.print("Is this task completed? (y/n): ");
+		if(scan.nextLine().toLowerCase().equals("y")){
+			task.setCompleted(true);
+		} else {
+			task.setCompleted(false);
+		}
+		
+		return task;
 	}
 
 }
