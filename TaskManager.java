@@ -48,7 +48,7 @@ public class TaskManager {
 		String fileName = "Tasks.txt";
 		short menu = 0;
 		Date date = new Date();
-		String searching = null;
+		int modTask = 0;
 		//boolean thing;
 		int numTasks = 0;
 		TaskList otherStuff = new TaskList();
@@ -99,7 +99,7 @@ public class TaskManager {
 				input = keyboard.nextLine();
 				stuff.setLocation( input );
 				
-				System.out.println( "Due Date: ");
+				System.out.print( "Due Date: ");
 				input = keyboard.nextLine();
 				stuff.setDate( date ); // THIS SHOULD NOT WORK REMEMEBER TO LOOK HERE AGAIN!!!!!
 				
@@ -114,12 +114,67 @@ public class TaskManager {
 				break;
 			case 4:
 				// remove
-				System.out.println( "Which task would you like to remove?" );
-				input = keyboard.nextLine();
-				otherStuff.removeTask();
+				otherStuff.printTasks();
+				
+				System.out.println( "Which task would you like to remove? (Enter an interger starting with 0)" );
+				modTask = keyboard.nextInt();
+				otherStuff.removeTask( modTask );
+				
 				break;
+			
+			
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			
 			case 5:
 				// edit
+				otherStuff.printTasks();
+				
+				System.out.println( "Which task would you like to edit?" );
+				modTask = keyboard.nextInt();
+				
+				Task task = otherStuff.getTask( modTask );
+				
+				System.out.println( "What would you like to edit?" );
+				System.out.println( "1. Description" );
+				System.out.println( "2. Priority" );
+				System.out.println( "3. Category" );
+				System.out.println( "4. Location" );
+				System.out.println( "5. Due Date" );
+				System.out.println( "6. Completed?" );
+				modTask = keyboard.nextInt();
+				
+				switch( modTask ){
+					case 1:
+						System.out.print( "Description: " );
+						task.setDescription( input );
+					case 2: 
+						System.out.print( "Priority: " );
+						task.setPriority( menu );
+					
+				
+				
+						
+						
+						
+						
+						
+						
+						
+						
+						
+				
+				}
 				break;
 			case 6:
 				// search
@@ -142,21 +197,22 @@ public class TaskManager {
 						otherStuff.searchByDueDate( date );
 						break;
 					case 4:
-						otherStuff.searchByLocation( searching );
+						otherStuff.searchByLocation( input );
 						break;
 					case 5:
-						otherStuff.searchByCompleted( searching );
+						otherStuff.searchByCompleted( input );
 						break;
 				}
 				
 				break;
-			
-			
 			case 7:
 				// sort by priority
+				
+				
 				break;
 			case 8:
 				// print
+				otherStuff.printTasks();
 				break;
 			case 9:
 				// exit
