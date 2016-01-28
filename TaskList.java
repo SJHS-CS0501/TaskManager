@@ -164,6 +164,23 @@ public class TaskList {
 		taskList.remove(i);
 	}
 
+	
+	
+	
+	
+	
+	public Task editTask( int i ){
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 	/**
 	 * Read list of tasks from file name provided.
 	 * @param fileName File name to read
