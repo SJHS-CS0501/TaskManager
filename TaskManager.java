@@ -64,12 +64,12 @@ public class TaskManager {
 				reader.close();
 			} catch(IOException e){
 				System.out.println("Cannot read file: " + e.getMessage());
-				System.out.print("Setting most recent file to \"" + DEFAULT_FILENAME + "\"\n");
+				System.out.printf("Setting most recent file to \"%s\"\n", DEFAULT_FILENAME);
 				mostRecentFile = DEFAULT_FILENAME;
 			}
 		} catch (FileNotFoundException e) {
-			System.out.print("\"" + FILENAME_HISTORY + "\" is missing, the folder has been compromised\n");
-			System.out.print("Setting most recent file to \"" + DEFAULT_FILENAME + "\"\n");
+			System.out.printf("\"%s\" is missing, the folder has been compromised\n", FILENAME_HISTORY);
+			System.out.printf("Setting most recent file to \"%s\"\n", DEFAULT_FILENAME);
 			mostRecentFile = DEFAULT_FILENAME;
 		}
 		
@@ -119,7 +119,7 @@ public class TaskManager {
 						}
 					} else {
 						// if there is, ask the user it they are sure that they want to open a new one and erase any unsaved changes
-						System.out.printf("Opening a new file will erase any changes made since the last save\nAre you sure you want to open a new file?\n");
+						System.out.print("Opening a new file will erase any changes made since the last save\nAre you sure you want to open a new file?\n");
 						if(confirmed(scan)){
 							// if a filename is given try to open that
 							if(command.length > 1) {			
@@ -152,32 +152,40 @@ public class TaskManager {
 					if(tasks == null) {
 						System.out.print("There is no file open\n");
 					} else {
-						// if user enters a filename, use that
+						// if user enters a filename, use that after checking to prevent illegal names and characters
 						if(command.length > 1) {
-							File file = new File(command[1]);
-							// check if a file exists
-							if(file.exists()) {
-								// confirm that the user wants to overwrite it
-								System.out.print("That file already exists\nDo you want to overwrite it?\n");
-								if(confirmed(scan)) {
-									try {
-										tasks.writeFile(command[1]);
-										System.out.printf("\"%s\" has been saved\n", command[1]);
-										System.out.printf("Enter \"open %s\" to open the file\n", command[1]);
-									} catch(FileNotFoundException e) {
-										System.out.printf("File \"%s\" could not be found\n", command[1]);
-									}
-								}
+							if(command[1].contains("/")) {
+								System.out.print("Filename cannot contain \"/\"\n");
+							} else if(command[1].contains("\\")) {
+								System.out.print("Filename cannot contain \"\\\"\n");
+							} else if(command[1].equals(FILENAME_HISTORY)) {
+								System.out.printf("\"%s\" cannot be written to\n", FILENAME_HISTORY);
 							} else {
-								// if file does not exist, make it
-								System.out.print("That file does not exist\nDo you want to create it?\n");
-								if(confirmed(scan)) {
-									try {
-										tasks.writeFile(command[1]);
-										System.out.printf("\"%s\" has been created and saved\n", command[1]);
-										System.out.printf("Enter \"open %s\" to open the new file\n", command[1]);
-									} catch(FileNotFoundException e) {
-										System.out.printf("File \"%s\" could not be found\n", command[1]);
+								File file = new File(command[1]);
+								// check if a file exists
+								if(file.exists()) {
+									// confirm that the user wants to overwrite it
+									System.out.printf("File \"%s\" already exists\nDo you want to overwrite it?\n", command[1]);
+									if(confirmed(scan)) {
+										try {
+											tasks.writeFile(command[1]);
+											System.out.printf("\"%s\" has been saved\n", command[1]);
+											System.out.printf("Enter \"open %s\" to open the file\n", command[1]);
+										} catch(FileNotFoundException e) {
+											System.out.printf("File \"%s\" could not be found\n", command[1]);
+										}
+									}
+								} else {
+									// if file does not exist, make it
+									System.out.printf("File \"%s\" does not exist\nDo you want to create it?\n", command[1]);
+									if(confirmed(scan)) {
+										try {
+											tasks.writeFile(command[1]);
+											System.out.printf("\"%s\" has been created and saved\n", command[1]);
+											System.out.printf("Enter \"open %s\" to open the new file\n", command[1]);
+										} catch(FileNotFoundException e) {
+											System.out.printf("File \"%s\" could not be found\n", command[1]);
+										}
 									}
 								}
 							}
@@ -459,6 +467,38 @@ public class TaskManager {
 					break;
 					
 				case "create":
+					if(tasks == null) {
+						if(command.length > 1) {
+							if(command[1].contains("/")) {
+								System.out.print("Filename cannot contain \"/\"\n");
+							} else if(command[1].contains("\\")) {
+								System.out.print("Filename cannot contain \"\\\"\n");
+							} else if(command[1].equals(FILENAME_HISTORY)) {
+								System.out.printf("\"%s\" is illegal\n", FILENAME_HISTORY);
+							} else {
+								System.out.print("Creating a new file will erase any changes made since the last save\nAre you sure you want to create a new file?\n");
+								if(confirmed(scan)) {
+									File file = new File(command[1]);
+									// check if a file exists
+									if(file.exists()) {
+										System.out.printf("File \"%s\" already exists\nDo you want to overwrite it?\n", command[1]);
+										if(confirmed(scan)) {
+											boolean addNewTask;
+											do {
+												
+											} while(addNewTask);
+										}	
+									} else {
+										
+									}
+								}
+							}
+						} else {
+							System.out.print("A name must be specified to create a file\n");
+						}
+					} else {
+						
+					}
 					break;
 					
 				default:
@@ -600,6 +640,7 @@ public class TaskManager {
 		int y = 0;
 		int m = 0;
 		int d = 0;
+		String line;
 		boolean invalid = false;
 		
 		// New Task
@@ -607,8 +648,17 @@ public class TaskManager {
 		System.out.println("Create a new task");
 		
 		// Get Description
-		System.out.print("Description: ");
-		task.setDescription(scan.nextLine());
+		do {
+			System.out.print("Description: ");
+			line = scan.nextLine();
+			
+			if(!line.contains("\t")) {
+				task.setDescription(line);
+			} else {
+				System.out.print("Description cannot contain tabs\n");
+			}
+			
+		} while(line.contains("\t"));
 		
 		// Get Priority
 		do{
@@ -712,8 +762,16 @@ public class TaskManager {
 		
 		
 		// Get Location	
-		System.out.print("Location: ");
-		task.setLocation(scan.nextLine());
+		do {
+			System.out.print("Location: ");
+			line = scan.nextLine();
+			
+			if(!line.contains("\t")) {
+				task.setLocation(line);
+			} else {
+				System.out.print("Location cannot contain tabs\n");
+			}
+		} while(line.contains("\t"));
 		
 		// Get Completed
 		System.out.print("Is this task completed?\n");

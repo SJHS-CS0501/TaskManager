@@ -242,12 +242,16 @@ public class TaskList {
 	 * @param printNumbers True to print list with numbering, false to print list without
 	 */
 	public void printTasks(boolean printNumbers) {
-		for( int i = 0; i < taskList.size(); i++) {
-			if(printNumbers) {
-			System.out.println("#" + (i + 1));
-			}
-			System.out.print(taskList.get(i).toString());
-		} 
+		if(taskList.size() == 0) {
+			System.out.print("There are no tasks\n");
+		} else {
+			for( int i = 0; i < taskList.size(); i++) {
+				if(printNumbers) {
+				System.out.println("#" + (i + 1));
+				}
+				System.out.print(taskList.get(i).toString());
+			} 
+		}
 	}
 	
 }

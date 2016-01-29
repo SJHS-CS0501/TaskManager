@@ -31,12 +31,12 @@ public abstract class CommandHelp {
 			"save: save a file\nEnter \"save [file name]\" to save to a specific file\nnew files are created automatically\nEnter \"save\" to save the open file\n",
 			"add: creates a new task from user input and adds it to the open file\n",
 			"print: displays list of tasks in open file\n",
-			"search: \n",
+			"search: WRITE ME\n",
 			"sort: sorts list of tasks from highest to owest priority\n",
 			"mark: marks a task as completed\nEnter \"mark [number]\" to mark the task with that number in the list\nEnter \"mark\" to find the task by name\n",
 			"unmark: removes the \"complete\" mark from a task\nEnter \"unmark [number]\" to unmark the task with that number in the list\nEnter \"unmark\" to find the task by name\n",
 			"delete: removes a task from the file\nEnter \"delete [number]\" to delete the task with that number in the list\nEnter \"delete\" to find the task by name\n",
-			"create: creates a new file"
+			"create: creates a new file\nEnter \"create [file name]\" to create a new file with that name\n"
 	};
 	
 	/**
