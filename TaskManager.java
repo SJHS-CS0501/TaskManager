@@ -44,8 +44,11 @@ public class TaskManager {
 	public static void main(String[] args) {
 		boolean run = true;
 		
-		final String DEFAULT_FILENAME = "tasklist.txt";
-		String openFile = "tasklist.txt";
+		final String DEFAULT_FILENAME = "default.savefile";
+		final String FILENAME_HISTORY = "last.savefile";
+		
+		String openFile = null;
+		String mostRecentFile;
 		
 		TaskList tasks = null;
 		String[] command;
@@ -53,11 +56,29 @@ public class TaskManager {
 		// Scanner for keyboard input
 		Scanner scan = new Scanner(System.in);
 		
+		// get the name of the last opened file
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader("last.savefile"));
+			try {
+				mostRecentFile = reader.readLine();
+				reader.close();
+			} catch(IOException e){
+				System.out.println("Cannot read file: " + e.getMessage());
+				System.out.print("Setting most recent file to \"" + DEFAULT_FILENAME + "\"\n");
+				mostRecentFile = DEFAULT_FILENAME;
+			}
+		} catch (FileNotFoundException e) {
+			System.out.print("\"" + FILENAME_HISTORY + "\" is missing, the folder has been compromised\n");
+			System.out.print("Setting most recent file to \"" + DEFAULT_FILENAME + "\"\n");
+			mostRecentFile = DEFAULT_FILENAME;
+		}
+		
 		System.out.print("Welcome to Task Manager\nEnter \"help\" for a list of commands\n");
 		
 		while(run) {
 			System.out.print("> ");
 			command = scan.nextLine().toLowerCase().split(" ");
+			System.out.print('\n');
 			
 			if(command.length != 0)
 			switch(command[0]) {
@@ -85,14 +106,15 @@ public class TaskManager {
 							} catch(FileNotFoundException e) {
 								System.out.printf("File \"%s\" could not be found\n", command[1]);
 							}
-						// if not, default to the most recent file
+						// if not, default to the previous
 						} else {
-							System.out.print("No file specified, defaulting...\n");
+							System.out.print("No file specified, opening previous file...\n");
 							try {
-								tasks = new TaskList(DEFAULT_FILENAME);
-								System.out.print("Opened default file\n");
+								tasks = new TaskList(mostRecentFile);
+								openFile = mostRecentFile;
+								System.out.printf("File \"%s\" was successfully opened\n", openFile);
 							} catch(FileNotFoundException e) {
-								System.out.print("Default file could not be found, someone's been tampering with my program...\n");
+								System.out.printf("File \"%s\" could not be found\n", mostRecentFile);
 							}
 						}
 					} else {
@@ -108,14 +130,17 @@ public class TaskManager {
 								} catch(FileNotFoundException e) {
 									System.out.printf("File \"%s\" could not be found\n", command[1]);
 								}
-							// if not, default to the most recent file
+							// if not, default to the previous
 							} else {
-								System.out.print("No file specified, defaulting...\n");
+								System.out.print("No file specified, opening previous file...\n");
 								try {
-									tasks = new TaskList(DEFAULT_FILENAME);
-									System.out.print("Opened default file\n");
+									tasks = new TaskList(mostRecentFile);
+									String temp = openFile;
+									openFile = mostRecentFile;
+									mostRecentFile = temp;
+									System.out.printf("File \"%s\" was successfully opened\n", openFile);
 								} catch(FileNotFoundException e) {
-									System.out.print("Default file could not be found, someone's been tampering with my program...\n");
+									System.out.printf("File \"%s\" could not be found\n", mostRecentFile);
 								}
 							}
 						}
@@ -180,15 +205,149 @@ public class TaskManager {
 					if(tasks == null) {
 						System.out.print("There is no file open\n");
 					} else {
-						System.out.print('\n');
-						tasks.printTasks();
+						tasks.printTasks(true);
 					}
 					break;
 					
-				case "search":
+				case "search": // searches for and prints out specific tasks
+					if(tasks == null) {
+						System.out.print("There is no file open\n");
+					} else {
+						if(command.length > 1) {
+							switch(command[1]) {
+								case "priority": // search by priority
+									if (command.length > 2) {
+										switch(command[2]) {
+											case "1":
+											case "high":
+												tasks.searchByPriority(Task.PRIO_HIGH).printTasks(false);
+												break;
+											case "2":
+											case "medium":
+												tasks.searchByPriority(Task.PRIO_MED).printTasks(false);
+												break;
+											case "3":
+											case "low":
+												tasks.searchByPriority(Task.PRIO_LOW).printTasks(false);
+												break;
+											default:
+												System.out.printf("Value \"%s\" undefined for priority\n", command[2]);
+												break;
+										}
+									} else {
+										System.out.print("No priority value was specified\nEnter \"help search\" to view a list of options\n");
+									}
+									break;
+									
+								case "date": // search by date
+									int y;
+									int m;
+									int d;
+									
+									// Get Date
+									System.out.println("Date");
+									
+									// Get year
+									do {
+									System.out.print("Year: ");
+									while(!scan.hasNextInt()) {
+										scan.next();
+										System.out.print("Year must be a whole number: ");
+									}
+									y = scan.nextInt();
+									} while(y < 0);
+									
+									// Get Month
+									do {
+										System.out.print("Month: ");
+										while(!scan.hasNextInt()) {
+											scan.next();
+											System.out.print("Month must be a whole number: ");
+										}
+										m = scan.nextInt();
+										} while(m < 1 || m > 12);
+									
+									// Get date
+									do {
+										System.out.print("Date: ");
+										while(!scan.hasNextInt()) {
+											scan.next();
+											System.out.print("Date must be a whole number: ");
+										}
+										d = scan.nextInt();
+									} while(d < 1);
+									
+									// Eat newline
+									scan.nextLine();
+									
+									tasks.searchByDueDate(new Date(y - 1900, m - 1, d)).printTasks(false);
+									break;
+									
+								case "category": // search by category
+									if (command.length > 2) {
+										switch(command[2]) {
+											case "1":
+											case "other":
+												tasks.searchByCategory(Task.CAT_OTHER).printTasks(false);
+												break;
+											case "2":
+											case "school":
+												tasks.searchByCategory(Task.CAT_SCHOOL).printTasks(false);
+												break;
+											case "3":
+											case "personal":
+												tasks.searchByCategory(Task.CAT_PERSONAL).printTasks(false);
+												break;
+											case "4":
+											case "chore":
+												tasks.searchByCategory(Task.CAT_CHORE).printTasks(false);
+												break;
+											case "5":
+											case "work":
+												tasks.searchByCategory(Task.CAT_WORK).printTasks(false);
+												break;
+											default:
+												System.out.printf("Value \"%s\" undefined for category\n", command[2]);
+												break;
+										}
+									} else {
+										System.out.print("No category value was specified\nEnter \"help search\" to view a list of options\n");
+									}
+									break;
+									
+								case "complete": // search for completed tasks
+									tasks.searchByCompleted(true).printTasks(false);
+									break;
+									
+								case "incomplete": // search for incomplete tasks
+									tasks.searchByCompleted(false).printTasks(false);
+									break;
+									
+								case "droids":
+									System.out.print("These are not the droids you're looking for\n");
+									break;
+									
+								default:
+									System.out.printf("Searches cannot be made by the criteria \"%s\"\nEnter \"help search\" to view a list of options\n", command[1]);
+									break;
+							}
+						} else {
+							// search by task name
+							System.out.print("Search by name: ");
+							String name = scan.nextLine();
+							Task task = tasks.searchByDescription(name);
+							// if not found say so
+							if(task == null) {
+								System.out.printf("Task \"%s\" could not be found\n", name);
+							} else {
+								System.out.print('\n' + task.toString());
+							}
+						}
+					}
 					break;
 					
 				case "sort":
+					// ensure there is a file open
 					if(tasks == null) {
 						System.out.print("There is no file open\n");
 					} else {
@@ -197,30 +356,114 @@ public class TaskManager {
 					}
 					break;
 					
-				case "mark":
+				case "mark": // marks tasks as completed
+					// ensure there is a file open
 					if(tasks == null) {
-						System.out.print("there is no file open\n");
+						System.out.print("There is no file open\n");
 					} else {
+						// if the user enters a number, mark the item with that number
 						if(command.length > 1) {
-							if(command[1].matches("(?:[0-9]*)?[0-9]+")) {
-							} else {
-								System.out.print("Input must be a positive integer");
+							// ensure entered number is valid
+							try {
+								if(isNumberInRange(command[1], 1, tasks.size())) {
+									tasks.getTask(Integer.parseInt(command[1]) - 1).setCompleted(true);
+									System.out.printf("Task #%s has been marked as complete\n", Integer.parseInt(command[1]));
+								}
+							} catch(NumberFormatException e) {
+								System.out.print("That number is much too large\n");
 							}
 						} else {
+							// search by task name
 							System.out.print("Search by name: ");
 							String name = scan.nextLine();
 							Task task = tasks.searchByDescription(name);
+							// if not found say so
 							if(task == null) {
-								System.out.printf("Task \"%s\" could not be found", name);
+								System.out.printf("Task \"%s\" could not be found\n", name);
 							} else {
 								task.setCompleted(true);
-								System.out.printf("Task \"%s\" has been marked as complete", name);
+								System.out.printf("Task \"%s\" has been marked as complete\n", name);
 							}
 						}
 					}
+					break;
+					
+				case "unmark": // unmarks completed tasks
+					// ensure there is a file open
+					if(tasks == null) {
+						System.out.print("There is no file open\n");
+					} else {
+						// if the user enters a number, mark the item with that number
+						if(command.length > 1) {
+							// ensure entered number is valid
+							try {
+								if(isNumberInRange(command[1], 1, tasks.size())) {
+									tasks.getTask(Integer.parseInt(command[1]) - 1).setCompleted(false);
+									System.out.printf("Task #%s has been unmarked\n", Integer.parseInt(command[1]));
+								}
+							} catch(NumberFormatException e) {
+								System.out.print("That number is much too large\n");
+							}
+						} else {
+							// search by task name
+							System.out.print("Search by name: ");
+							String name = scan.nextLine();
+							Task task = tasks.searchByDescription(name);
+							// if not found say so
+							if(task == null) {
+								System.out.printf("Task \"%s\" could not be found\n", name);
+							} else {
+								task.setCompleted(false);
+								System.out.printf("Task \"%s\" has been unmarked\n", name);
+							}
+						}
+					}
+					break;
+					
+				case "delete": // removes tasks from list
+					// ensure there is a file open
+					if(tasks == null) {
+						System.out.print("There is no file open\n");
+					} else {
+						// if the user enters a number, mark the item with that number
+						if(command.length > 1) {
+							// ensure entered number is valid
+							try {
+								if(isNumberInRange(command[1], 1, tasks.size())) {
+									System.out.printf("Are you sure you want to delete task #%s \"%s\"?\n", command[1], tasks.getTask(Integer.parseInt(command[1]) - 1).getDescription());
+									if(confirmed(scan)) {
+										tasks.removeTask(Integer.parseInt(command[1]) - 1);
+										System.out.printf("The task has been deleted\n");
+									}
+								}
+							} catch(NumberFormatException e) {
+								System.out.print("That number is much too large\n");
+							}
+						} else {
+							// search by task name
+							System.out.print("Search by name: ");
+							String name = scan.nextLine();
+							Task task = tasks.searchByDescription(name);
+							// if not found say so
+							if(task == null) {
+								System.out.printf("Task \"%s\" could not be found\n", name);
+							} else {
+								System.out.printf("Are you sure you want to delete \"%s\"?\n", name);
+								if(confirmed(scan)) {
+									tasks.removeTask(task);
+									System.out.printf("The task has been deleted\n");
+								}
+							}
+						}
+					}
+					break;
+					
+				case "create":
+					break;
 					
 				default:
-					System.out.printf("Operation %s not supported. Enter \"help\" for a list of commands\n", command[0]);
+					System.out.printf("Operation \"%s\" not supported. Enter \"help\" for a list of commands\n", command[0]);
+					break;
 			}
 		}
 		
@@ -311,6 +554,17 @@ public class TaskManager {
 //		
 //		tasks.print();
 		
+		// write name of opened file to most recently opened file space
+		if(tasks != null) {
+			try {
+				PrintWriter writer = new PrintWriter(FILENAME_HISTORY);
+				writer.println(openFile);
+				writer.close();
+			} catch(FileNotFoundException e) {
+				System.out.print("Could not write to \"" + FILENAME_HISTORY + "\": " + e.getMessage());
+			}
+		}
+		
 		System.exit(0);
 	}
 	
@@ -324,10 +578,29 @@ public class TaskManager {
 		return scan.nextLine().toLowerCase().equals("y");
 	}
 	
+	public static boolean isNumberInRange(String s, long min, long max ) {
+		if(s.matches("(?:[0-9]*)?[0-9]+")) {
+			long n = Long.parseLong(s);
+			if( n < min) {
+				System.out.printf("The number %d is below range\nInput must be at least %d\n", n, min);
+				return false;
+			} else if( n > max) {
+				System.out.printf("The number %d is above range\nInput must be at most %d\n", n, max);
+				return false;
+			} else {
+				return true;
+			}
+		} else {
+			System.out.print("Number must be a positive integer\n");
+			return false;
+		}
+	}
+	
 	public static Task makeTask(Scanner scan) {
 		int y = 0;
 		int m = 0;
 		int d = 0;
+		boolean invalid = false;
 		
 		// New Task
 		Task task = new Task();
@@ -338,32 +611,113 @@ public class TaskManager {
 		task.setDescription(scan.nextLine());
 		
 		// Get Priority
-		System.out.print("Priority (1-3): ");
-		task.setPriority(scan.nextShort());
+		do{
+			System.out.print("Priority (1-3) or\none of high/medium/low: ");
+			switch(scan.nextLine()) {
+				case "1":
+				case "high":
+					task.setPriority(Task.PRIO_HIGH);
+					invalid = false;
+					break;
+				case "2":
+				case "medium":
+					task.setPriority(Task.PRIO_MED);
+					invalid = false;
+					break;
+				case "3":
+				case "low":
+					task.setPriority(Task.PRIO_LOW);
+					invalid = false;
+					break;
+				default:
+					System.out.print("Value undefined for priority\n");
+					invalid = true;
+					break;
+			}
+		}while(invalid);
 		
 		// Get Date
-		System.out.println("Due Date:");
-		System.out.print("Year: ");
-		y = scan.nextInt();
-		System.out.print("Month: ");
-		m = scan.nextInt();
-		System.out.print("Date: ");
-		d = scan.nextInt();
+		System.out.println("Due Date");
 		
-		task.setDueDate(new Date(y - 1900, m, d));
+		// Get year
+		do {
+		System.out.print("Year: ");
+		while(!scan.hasNextInt()) {
+			scan.next();
+			System.out.print("Year must be a whole number: ");
+		}
+		y = scan.nextInt();
+		} while(y < 0);
+		
+		// Get Month
+		do {
+			System.out.print("Month: ");
+			while(!scan.hasNextInt()) {
+				scan.next();
+				System.out.print("Month must be a whole number: ");
+			}
+			m = scan.nextInt();
+			} while(m < 1 || m > 12);
+		
+		// Get date
+		do {
+			System.out.print("Date: ");
+			while(!scan.hasNextInt()) {
+				scan.next();
+				System.out.print("Date must be a whole number: ");
+			}
+			d = scan.nextInt();
+		} while(d < 1);
+		
+		// Eat newline
+		scan.nextLine();
+		
+		task.setDueDate(new Date(y - 1900, m - 1, d));
 		
 		// Get Category
-		System.out.print("Category (1-5): ");
-		task.setCategory(scan.nextShort());
-		scan.nextLine();
+		do{
+			System.out.print("Priority (1-5) or\none of other/school/personal/chore/work: ");
+			switch(scan.nextLine()) {
+				case "1":
+				case "other":
+					task.setCategory(Task.CAT_OTHER);
+					invalid = false;
+					break;
+				case "2":
+				case "school":
+					task.setCategory(Task.CAT_SCHOOL);
+					invalid = false;
+					break;
+				case "3":
+				case "personal":
+					task.setCategory(Task.CAT_PERSONAL);
+					invalid = false;
+					break;
+				case "4":
+				case "chore":
+					task.setCategory(Task.CAT_CHORE);
+					invalid = false;
+					break;
+				case "5":
+				case "work":
+					task.setCategory(Task.CAT_WORK);
+					invalid = false;
+					break;
+				default:
+					System.out.print("Value undefined for category\n");
+					invalid = true;
+					break;
+			}
+		}while(invalid);
+		
 		
 		// Get Location	
 		System.out.print("Location: ");
 		task.setLocation(scan.nextLine());
 		
 		// Get Completed
-		System.out.print("Is this task completed? (y/n): ");
-		if(scan.nextLine().toLowerCase().equals("y")){
+		System.out.print("Is this task completed?\n");
+		if(confirmed(scan)){
 			task.setCompleted(true);
 		} else {
 			task.setCompleted(false);

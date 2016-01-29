@@ -57,6 +57,14 @@ public class TaskList {
 	}
 	
 	/**
+	 * Returns length of the TaskList
+	 * @return Length of the TaskList
+	 */
+	public int size() {
+		return taskList.size();
+	}
+	
+	/**
 	 * Add the provided task.
 	 * @param t
 	 * @return true if add succeeded
@@ -80,6 +88,19 @@ public class TaskList {
 	 */
 	public void removeTask(int i) {
 		taskList.remove(i);
+	}
+	
+	/**
+	 * Remove the specified task. Reference to task should be obtained via searchByDescription() first.
+	 * @param t task to remove
+	 */
+	public void removeTask(Task t) {
+		for( int i = 0; i < taskList.size(); i++) {
+			if (taskList.get(i) == t) {
+				taskList.remove(i);
+				break;
+			}
+		}
 	}
 	
 	/**
@@ -218,9 +239,13 @@ public class TaskList {
 	
 	/**
 	 * Prints TaskList to screen
+	 * @param printNumbers True to print list with numbering, false to print list without
 	 */
-	public void printTasks() {
+	public void printTasks(boolean printNumbers) {
 		for( int i = 0; i < taskList.size(); i++) {
+			if(printNumbers) {
+			System.out.println("#" + (i + 1));
+			}
 			System.out.print(taskList.get(i).toString());
 		} 
 	}

@@ -18,17 +18,25 @@ public abstract class CommandHelp {
 	public static final short CMD_PRINT = 5;
 	public static final short CMD_SEARCH = 6;
 	public static final short CMD_SORT = 7;
+	public static final short CMD_MARK = 8;
+	public static final short CMD_UNMARK = 9;
+	public static final short CMD_DELETE = 10;
+	public static final short CMD_CREATE = 11;
 	
 	
-	public static final String[] commands = {
+	public static final String[] COMMANDS = {
 			"exit: closes the program\n",
 			"help: provides information on how to operate Task Manager\nEnter \"help [command name]\" for information on specific commands\n",
-			"open: loads a file\nEnter \"open [file name]\" to open a specific file\nEnter \"open\" to open the most recent file viewed\n",
+			"open: loads a file\nEnter \"open [file name]\" to open a specific file\nEnter \"open\" to open the last file viewed\n",
 			"save: save a file\nEnter \"save [file name]\" to save to a specific file\nnew files are created automatically\nEnter \"save\" to save the open file\n",
 			"add: creates a new task from user input and adds it to the open file\n",
 			"print: displays list of tasks in open file\n",
 			"search: \n",
-			"sort: sorts list of tasks from highest to owest priority\n"
+			"sort: sorts list of tasks from highest to owest priority\n",
+			"mark: marks a task as completed\nEnter \"mark [number]\" to mark the task with that number in the list\nEnter \"mark\" to find the task by name\n",
+			"unmark: removes the \"complete\" mark from a task\nEnter \"unmark [number]\" to unmark the task with that number in the list\nEnter \"unmark\" to find the task by name\n",
+			"delete: removes a task from the file\nEnter \"delete [number]\" to delete the task with that number in the list\nEnter \"delete\" to find the task by name\n",
+			"create: creates a new file"
 	};
 	
 	/**
@@ -39,17 +47,25 @@ public abstract class CommandHelp {
 	public static String getCommandText(String s) {
 		switch(s) {
 			case "exit":
-				return commands[CMD_EXIT];
+				return COMMANDS[CMD_EXIT];
 			case "help":
-				return commands[CMD_HELP];
+				return COMMANDS[CMD_HELP];
 			case "open":
-				return commands[CMD_OPEN];
+				return COMMANDS[CMD_OPEN];
 			case "save":
-				return commands[CMD_SAVE];
+				return COMMANDS[CMD_SAVE];
 			case "print":
-				return commands[CMD_PRINT];
+				return COMMANDS[CMD_PRINT];
 			case "sort":
-				return commands[CMD_SORT];
+				return COMMANDS[CMD_SORT];
+			case "mark":
+				return COMMANDS[CMD_MARK];
+			case "unmark":
+				return COMMANDS[CMD_UNMARK];
+			case "delete":
+				return COMMANDS[CMD_DELETE];
+			case "create":
+				return COMMANDS[CMD_CREATE];
 			case "me":
 				return "I'm sorry... there's nothing I can do for you...\n";
 			default:
@@ -63,8 +79,8 @@ public abstract class CommandHelp {
 	 */
 	public static String getHelpText() {
 		StringBuilder s = new StringBuilder("\n--Commands--\n");
-		for(int i = 0; i < commands.length; i++) {
-			s.append(commands[i]);
+		for(int i = 0; i < COMMANDS.length; i++) {
+			s.append(COMMANDS[i]);
 			s.append('\n');
 		}
 		return s.toString();
