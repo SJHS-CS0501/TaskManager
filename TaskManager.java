@@ -156,12 +156,23 @@ public class TaskManager {
 				
 				switch( modTask ){
 					case 1:
-						System.out.print( "Description: " );
+						System.out.print( "New Description: " );
 						task.setDescription( input );
 					case 2: 
-						System.out.print( "Priority: " );
+						System.out.print( "New Priority: " );
 						task.setPriority( menu );
-					
+					case 3:
+						System.out.print( "New Category: " );
+						task.setCategory( menu );
+					case 4:
+						System.out.print( "New Location: " );
+						task.setLocation( input );
+					case 5:
+						System.out.print( "New Due Date: " );
+						task.setDate( date );
+					case 6:
+						System.out.print( "Completed? " );
+						task.setCompleted( Boolean.parseBoolean( input ) );
 				
 				
 						

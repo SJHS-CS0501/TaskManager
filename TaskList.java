@@ -147,6 +147,7 @@ public class TaskList {
 		return taskList.add(t);
 	}
 	
+	
 	/**
 	 * Return task at index i. Throws exception if index is illegal.
 	 * @param i index of class
@@ -156,7 +157,8 @@ public class TaskList {
 		return taskList.get(i);
 	}
 
-	/**
+	
+	 /**
 	 * Remove the specified task at index i. Throws and exception if index is illegal.
 	 * @param i index of task to remove
 	 */
@@ -164,22 +166,6 @@ public class TaskList {
 		taskList.remove(i);
 	}
 
-	
-	
-	
-	
-	
-	public Task editTask( int i ){
-		
-		
-	}
-	
-	
-	
-	
-	
-	
-	
 	
 	/**
 	 * Read list of tasks from file name provided.
