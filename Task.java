@@ -304,10 +304,10 @@ public class Task {
 	public String toString() {
 		StringBuilder s = new StringBuilder();
 		
-		s.append("\tTask: " + description + "\n");
+		s.append("\tName: " + description + "\n");
 		s.append("\t\tPriority: " + getPriorityName() + "\n");
 		if(dueDate != null)
-			s.append("\t\tDue Date: " + dueDate.toString() + "\n");
+			s.append("\t\tDue Date: " + dueDate.toLocaleString() +"\n");
 		s.append("\t\tCategory: " + getCategoryName() + "\n");
 		s.append("\t\tLocation: " +  location + "\n");
 		if(completed) {
