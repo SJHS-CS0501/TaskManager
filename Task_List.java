@@ -51,8 +51,9 @@ public class Task_List {
 	/**
 	 * New file from disk
 	 * @param fileName
+	 * @throws IOException 
 	 */
-	public Task_List(String fileName) throws FileNotFoundException{
+	public Task_List(String fileName) throws IOException{
 	readFile(fileName);
 	}
 	
@@ -100,6 +101,8 @@ public class Task_List {
 		
 				try{
 		while(reader.ready()){
+			
+			
 			t= new Task();
 			t.read(reader);
 			if(t!= null){
