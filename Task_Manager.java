@@ -65,7 +65,7 @@ public class Task_Manager {
 	public static void main(String[] args) throws Exception {
 		
 		Scanner k = new Scanner(System.in);// new scanner object	
-		File myFile = new File("tasks.csv");
+		
 		Task_List list;
 		Exception t;
 		int c = 0;
@@ -102,10 +102,14 @@ public class Task_Manager {
 		
 		if(c == 1){
 			
+			try{
 			list.readFile(fileName);
-			
-			System.out.println("This what was contained in that file");
-			list.printTasks();
+			}catch( FileNotFoundException e){
+					System.out.println("No file has been created yet.\n Restart and try option 2");
+					System.exit(0);
+				}
+			//System.out.println("This what was contained in that file");
+			//list.printTasks();
 			
 			do{
 				System.out.println("Choose the action you want to take based on the indicated number:\n"
@@ -151,7 +155,9 @@ public class Task_Manager {
 					that.setCatagory(cat);
 					
 					System.out.println("\nWhat is the date it is due?\n"
-							+ "Use this format: (month day , year)");
+					+ "Use this format: (month/day/year) \n"
+					+ "ex. 01/05/2005");
+					k.nextLine();
 					d = k.nextLine();
 					that.setDate(d);
 					
@@ -188,8 +194,6 @@ public class Task_Manager {
 					break; 
 					
 			case 2:
-				break;
-			case 3:
 						int i =100000;
 					do{	
 						System.out.println("\n Which task would you like removed? "
@@ -210,12 +214,12 @@ public class Task_Manager {
 					while(i != 0);
 					break;
 					
-			case 4:
+			case 3:
 				System.out.println("Here are the Tasks contained in your file/n");
 				list.printTasks();
 				break;
 				
-			case 5:
+			case 4:
 				
 				int s = 10;
 				
@@ -228,6 +232,8 @@ public class Task_Manager {
 						+ "(4)Catagory\n"
 						+ "(5)Description\n"
 						+ "(6)Completion\n ");
+				
+				s = k.nextInt();
 				
 				switch(s){
 				
@@ -350,6 +356,11 @@ public class Task_Manager {
 			
 		}else if(c == 2){
 		
+			File myFile = new File(fileName);
+			
+		do{
+			
+			
 			list = new Task_List();
 			
 			System.out.println("What is the priorety of this task 0-3");
@@ -368,6 +379,7 @@ public class Task_Manager {
 			
 			System.out.println("What is the date it is due?\n"
 								+ "Use this format: (month day , year)");
+			k.nextLine();
 			d = k.nextLine();
 			that.setDate(d);
 			
@@ -391,7 +403,7 @@ public class Task_Manager {
 			choice = k.nextLine().toLowerCase().charAt(0);
 			
 		}
-		while(choice != 'y');
+		while(choice == 'y');
 			
 		try{	
 			list.writeFile(fileName);
@@ -404,8 +416,9 @@ public class Task_Manager {
 		
 		}
 		
-		
 	}
+		
+}
 	
 	
 	

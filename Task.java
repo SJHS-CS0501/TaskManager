@@ -32,6 +32,7 @@ public class Task {
 	 private static String location;
 	 private static boolean completed;
 	 private static SimpleDateFormat format;
+	 private static  StringBuilder s = new StringBuilder();
 	 
 	 /*
 	  * Priorities:
@@ -129,16 +130,17 @@ public class Task {
 	  */
 	 public static void setDate(String s) {
 		
-		 //, Locale.ENGLISH
-		 SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+		 
+		 DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 		 try {
-			Date dueDate = format.parse(s);
+			 dueDate = format.parse(s);
+			System.out.println(format.format(dueDate));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			System.out.println(e.getMessage());
 		}
 		
-		 
+		// System.out.println(format.format(dueDate));
 		 
 	 }
 	 
@@ -234,15 +236,18 @@ public class Task {
 	  */
 	 public void write(PrintWriter writer){
 		 // write data separated by tabs
-		 StringBuilder s = new StringBuilder();
+		// StringBuilder s = new StringBuilder();
 		 
 		 
 		 s.append(priority);
 		 s.append("\t");
 		
-		
-		 s.append(format.format(dueDate));
-		 
+		try{
+		 s.append(getDate());
+		}catch (NullPointerException e)
+		{
+			e.printStackTrace();
+		}
 		 
 		 s.append("\t");
 		 s.append(catagory);
@@ -269,7 +274,7 @@ public class Task {
 		  s.append( "Priority: " + getPrority() + "\n" );
 		  s.append( "Category: " + getCatagory() + "\n" );
 		  if( dueDate != null ) {
-		    s.append( "Due Date: " + format.format(dueDate) + "\n" );
+		    s.append( "Due Date: " + /*format.format(dueDate)*/ dueDate + "\n" );
 		  }
 		  s.append( "Location: " + location + "\n" );
 		  s.append( "Completed? " + (completed?"Y":"N") + "\n" );

@@ -1,7 +1,9 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
@@ -21,6 +23,7 @@ import java.util.*;
 
 public class Task_List {
 
+	PrintWriter writer;
 	/*
 	 * Data:
 	 * -list of tasks
@@ -105,9 +108,12 @@ public class Task_List {
 		Task t;
 		tasklist.clear();// clears task list
 		
+		
 		// assumes that the task list is initialized
 		BufferedReader reader = new BufferedReader( new FileReader(filename));
-		
+		//}catch( FileNotFoundException e){
+		//	System.out.println("No file has been created yet.\n Restart and try option 2");
+		//}
 				try{
 		while(reader.ready()){
 			
@@ -129,10 +135,10 @@ public class Task_List {
 	/**
 	 * Writes to file
 	 * @param filename
-	 * @throws FileNotFoundException
+	 * @throws IOException 
 	 */
-	public void writeFile( String filename)throws FileNotFoundException{
-		PrintWriter writer = new PrintWriter(filename);
+	public void writeFile( String filename)throws IOException{
+		writer = new PrintWriter( new BufferedWriter(new FileWriter(filename, true)));;
 		
 		for(int i = 0; i< tasklist.size(); i++) {
 			tasklist.get(i).write(writer);
