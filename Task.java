@@ -8,7 +8,7 @@ import java.text.ParseException;
  * @author Isabelle Schroeder
  *
  */
-public class Task {
+public class Task implements Comparable<Task> {
 	/*
 	 * Data fields:
 	 *  -Priority
@@ -157,7 +157,6 @@ public class Task {
 	 }
 	 
 	 
-	 
 	 public void setDate( Date date ){
 		 dueDate = date;
 	 }
@@ -268,6 +267,16 @@ public class Task {
 	
 	public static short CatW(  ){
 		return CAT_WORK;
+	}
+
+	@Override //implementing custom version
+	public int compareTo(Task arg0) {
+		short myPriority = this.getPriority();
+		short yourPriority = arg0.getPriority();
+		
+		int result = myPriority - yourPriority;
+		
+		return result;
 	}
 
 	

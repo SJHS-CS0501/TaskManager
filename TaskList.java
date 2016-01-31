@@ -139,29 +139,10 @@ public class TaskList {
 		return search;
 	}
 	
-	public static void selectionSort( ArrayList<Task> t ){
-		int startScan, i, minIndex, minValue;
-		
-		if ( t.size() == 0 || t.size() == 1)
-			return;
-		
-		for( startScan = 0; startScan < t.size() - 1; startScan++ ){
-			for (i = startScan + 1; i < t.size(); i++) {
-				if ( minIndex > t.get(i)) {
-					// update smallest
-					minIndex = t.get(i);
-					minValue = i;
-				}
-			}
-			
-			if ( minValue == startScan);
-			else {
-				Task hold = t.get( startScan );
-				t.set( startScan, t.get( minValue ));
-				t.set( minValue, hold );
-			}
-		}
+	public void orderByPrio(){
+		Collections.sort( taskList );
 	}
+	
 	
 	/**
 	 * Create a new TaskList from scratch

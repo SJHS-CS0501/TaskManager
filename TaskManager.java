@@ -1,40 +1,9 @@
-import java.io.FileNotFoundException;
+import java.io.*;
+//import java.io.FileNotFoundException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.Scanner;
-
-/*
- * text menu
- * add new task?
- * save file
- * read from file?
- * create new task list
- * can have user enter file name or use own
- * add searching stuff for program
- * implement sort by priority so user can print out the list of tasks in priority order
- */
-
-
-/*
- * Task Manager Program 
- * 
- * DO These Things:
- * -Keep a list of tasks
- * -Allow user to add and remove tasks
- * -Allow user to reprioratize tasks
- * -Print out lists of tasks
- * 
- * List of tasks
- * -Read and store on disk
- * -Sort
- * -Search
- * 
- * Reports:
- * -List high priority
- * -List due today/soon
- * - List all (by date OR by priority)
- */
 
 /**
  * This is the main class for the TastManager program. All the attention, none of the work.
@@ -46,21 +15,19 @@ public class TaskManager {
 	public static void main(String[] args) {
 
 		Scanner keyboard = new Scanner(System.in);
-		String input;
-		String fileName = "Tasks.txt";
-		short menu = 0;
-		Date date = new Date();
-		int modTask = 0;
-		//boolean thing;
-		int numTasks = 0;
-		SimpleDateFormat ft = new SimpleDateFormat ("MM-dd-yyyy hh:mm");
-		TaskList otherStuff = new TaskList();
+		String input = null; // for most of the input
+		String fileName = "Tasks.txt"; // file were stuff is written to
+		short menu = 0; // for the short input
+		Date date = new Date(); // for the stupid date
+		int modTask = 0; // for getting a task's position in the array
+		int numTasks = 0; // keeps count of number of tasks added to task list
+		TaskList otherStuff = new TaskList(); // TASK LIST!!
 		
 		System.out.println( "Welcome to the Task Manager!" );
-		
+		// A spiff little menu
 		System.out.println( "Would you like to: " );
 		System.out.println( "1. Load a task list from file" );
-		System.out.println( "2. Save task list" );
+		System.out.println( "2. Save a new task list" );
 		System.out.println( "3. Add a task" );
 		System.out.println( "4. Remove a task" );
 		System.out.println( "5. Edit a task" );
@@ -68,31 +35,99 @@ public class TaskManager {
 		System.out.println( "7. Sort tasks by priority" );
 		System.out.println( "8. Print task list" );
 		System.out.println( "9. Exit program" );
-		input = keyboard.nextLine();
+		menu = keyboard.nextShort();
 	
-		
-		switch( menu ){
-			case 1:
-				// load
-				break;
-			
-			
-				
-				
-				
-				
-				
-				
-				
-			case 2:
-				// save
+		switch( menu ){ // Switch, switch, switch!
+			case 1: // to load the file
 				try{
-					otherStuff.writeFile( fileName);
+					otherStuff.readFile( fileName );
+				} catch( FileNotFoundException e ){
+					System.out.println( "File \"" + fileName + "\" not found!" );
+					System.out.println( "Dying...." );
+					e.printStackTrace();
+					System.exit(-1);
+				}
+				break;
+			case 2: // for making a new Task list and then saving it to disk
+				
+				do{
+					Task stuff = new Task(); // creating a new task
+
+					System.out.print( "Description: " );
+					input = keyboard.nextLine();
+					stuff.setDescription( input); // setting description
+					
+					
+					System.out.print( "Priority(1-3): " );
+					input = keyboard.nextLine();
+					// setting priority by converting string to short
+					stuff.setPriority( Short.parseShort( input ) ); 
+					
+					System.out.print( "Category(1-5): " );
+					System.out.println( "1. Other\n2. School\n3. Personal\n4. Chore\n5. Work" );
+					input = keyboard.nextLine();
+					// setting priority by converting string to short
+					stuff.setCategory( Short.parseShort( input ) ); 
+					
+					
+					System.out.print( "Location: " );
+					input = keyboard.nextLine();
+					stuff.setLocation( input ); // setting location
+					
+					System.out.print( "Due Date (ex. 01/12/2015): " );
+					input = keyboard.nextLine();
+					// now things get a little weird...
+					// splitting the string where character "/" appears
+					// This needs a string array to hold the three strings
+					String [] dateParts = input.split( "/" ); 
+					// setting first part of split string (which is month in America)
+					int month = Integer.parseInt( dateParts[0] );
+					// setting second part of string to day (America and stuff)
+					int day = Integer.parseInt( dateParts[1] );
+					// setting the third part of the string to year
+					int year = Integer.parseInt( dateParts[2] );
+					
+					
+					GregorianCalendar gCal = new GregorianCalendar( year, month, day );
+					// plugging 
+					date = gCal.getTime();
+					stuff.setDate( date );
+					// finally, finally sets the date
+					
+					System.out.print( "Completed? : " );
+					input = keyboard.nextLine().toLowerCase();
+					stuff.setCompleted( Boolean.parseBoolean( input ) );
+					
+					System.out.print( "Add new task?" );
+					input = keyboard.nextLine().toLowerCase();
+					
+					
+					otherStuff.addTask( stuff );
+					
+					numTasks++;
+				
+				} while( input.equalsIgnoreCase("y") );
+
+
+				System.out.println( "Before read: ");
+				otherStuff.printTasks();
+				
+				try{
+					otherStuff.writeFile( fileName );
 				} catch( FileNotFoundException e ){
 					System.out.println("File \"" + fileName + "\" not found!");
 					System.out.println( "Dying..." );
 					e.printStackTrace();
 					System.exit( -1 );
+				}
+				
+				try{
+					otherStuff.readFile( fileName );
+				} catch( FileNotFoundException e ){
+					System.out.println( "File \"" + fileName + "\" not found!" );
+					System.out.println( "Dying...." );
+					e.printStackTrace();
+					System.exit(-1);
 				}
 				break;
 			case 3:
@@ -115,20 +150,15 @@ public class TaskManager {
 				input = keyboard.nextLine();
 				stuff.setLocation( input );
 				
-				System.out.print( "Due Date: ");
+				System.out.print( "Due Date (ex. 01/12/2015): " );
 				input = keyboard.nextLine();
-				stuff.setDate( date ); // THIS SHOULD NOT WORK REMEMEBER TO LOOK HERE AGAIN!!!!!
-				
-				try { 
-			          date = ft.parse(input); 
-			          System.out.println(date); 
-			      } catch (ParseException e) { 
-			          System.out.println("Unparseable using " + ft); 
-			      } 
-				
-				
-				
-				
+				String [] dateParts = input.split( "/" );
+				int month = Integer.parseInt( dateParts[0] );
+				int day = Integer.parseInt( dateParts[1] );
+				int year = Integer.parseInt( dateParts[2] );
+				GregorianCalendar gCal = new GregorianCalendar( year, month, day );
+				date = gCal.getTime();
+				stuff.setDate( date );
 				
 				System.out.print( "Completed? : " );
 				input = keyboard.nextLine().toLowerCase();
@@ -222,24 +252,11 @@ public class TaskManager {
 				}
 				
 				break;
-			
-			
-			
-			
-			
-			
 			case 7:
-				
-				
-				
+
+				otherStuff.orderByPrio();
 				// sort by priority
-				
-				
 				break;
-			
-			
-			
-			
 			
 			case 8:
 				// print
@@ -248,70 +265,8 @@ public class TaskManager {
 			case 9:
 				// exit
 				System.out.println( "GOODBYE!" );
+				keyboard.close();
 				System.exit(0);
 		}
-		
-		do{
-			Task stuff = new Task();
-
-			System.out.print( "Description: " );
-			input = keyboard.nextLine();
-			stuff.setDescription( input);
-			
-			System.out.print( "Priority(1-3): " );
-			input = keyboard.nextLine();
-			stuff.setPriority( Short.parseShort( input ) );
-			
-			System.out.print( "Category(1-5): " );
-			input = keyboard.nextLine();
-			stuff.setCategory( Short.parseShort( input ) );
-			
-			System.out.print( "Location: " );
-			input = keyboard.nextLine();
-			stuff.setLocation( input );
-			
-			System.out.println( "Due Date: " );
-			input = keyboard.nextLine();
-			stuff.setDate( date ); // THIS TOOOOOOOOOOOOOOOOOOOOOOOOOO
-			
-			System.out.print( "Completed? : " );
-			input = keyboard.nextLine().toLowerCase();
-			stuff.setCompleted( Boolean.parseBoolean( input ) );
-			
-			System.out.print( "Add new task?" );
-			input = keyboard.nextLine().toLowerCase();
-			
-			
-			otherStuff.addTask( stuff );
-			
-			numTasks++;
-		
-		} while( input.equalsIgnoreCase("y") );
-
-
-		System.out.println( "Before read: ");
-		otherStuff.printTasks();
-		
-		try{
-			otherStuff.writeFile( fileName);
-		} catch( FileNotFoundException e ){
-			System.out.println("File \"" + fileName + "\" not found!");
-			System.out.println( "Dying..." );
-			e.printStackTrace();
-			System.exit( -1 );
-		}
-		
-		try{
-			otherStuff.readFile( fileName );
-		} catch( FileNotFoundException e ){
-			System.out.println( "File \"" + fileName + "\" not found!" );
-			System.out.println( "Dying...." );
-			e.printStackTrace();
-			System.exit(-1);
-		}
-		
-		keyboard.close();
-		System.exit(0);
 	}
-
 }
