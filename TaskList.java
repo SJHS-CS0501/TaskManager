@@ -70,6 +70,11 @@ public class TaskList {
 		return search;
 	}
 	
+	/**
+	 * 
+	 * @param p
+	 * @return returns type TaskList
+	 */
 	public TaskList searchByPriority( short p ){
 		TaskList search = new TaskList();
 		
@@ -82,6 +87,11 @@ public class TaskList {
 		return search;
 	}
 	
+	/**
+	 * 
+	 * @param dD
+	 * @return returns type TaskList
+	 */
 	public TaskList searchByDueDate( Date dD ){
 		TaskList search = new TaskList();
 		
@@ -94,6 +104,11 @@ public class TaskList {
 		return search;
 	}
 	
+	/**
+	 * 
+	 * @param l
+	 * @return also returns type TaskList
+	 */
 	public TaskList searchByLocation( String l ){
 		TaskList search = new TaskList();
 		
@@ -106,6 +121,11 @@ public class TaskList {
 		return search;
 	}
 	
+	/**
+	 * 
+	 * @param cP
+	 * @return love to return a TaskList
+	 */
 	public TaskList searchByCompleted( String cP ){
 		TaskList search = new TaskList();
 		
@@ -119,7 +139,29 @@ public class TaskList {
 		return search;
 	}
 	
-	
+	public static void selectionSort( ArrayList<Task> t ){
+		int startScan, i, minIndex, minValue;
+		
+		if ( t.size() == 0 || t.size() == 1)
+			return;
+		
+		for( startScan = 0; startScan < t.size() - 1; startScan++ ){
+			for (i = startScan + 1; i < t.size(); i++) {
+				if ( minIndex > t.get(i)) {
+					// update smallest
+					minIndex = t.get(i);
+					minValue = i;
+				}
+			}
+			
+			if ( minValue == startScan);
+			else {
+				Task hold = t.get( startScan );
+				t.set( startScan, t.get( minValue ));
+				t.set( minValue, hold );
+			}
+		}
+	}
 	
 	/**
 	 * Create a new TaskList from scratch
@@ -196,6 +238,11 @@ public class TaskList {
 		
 	}
 	
+	/**
+	 * 
+	 * @param fileName
+	 * @throws FileNotFoundException
+	 */
 	public void writeFile( String fileName ) throws FileNotFoundException {
 		PrintWriter writer = new PrintWriter( fileName );
 		for( int i = 0; i < taskList.size(); i++ ){

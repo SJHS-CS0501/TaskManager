@@ -1,4 +1,6 @@
 import java.io.FileNotFoundException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -51,6 +53,7 @@ public class TaskManager {
 		int modTask = 0;
 		//boolean thing;
 		int numTasks = 0;
+		SimpleDateFormat ft = new SimpleDateFormat ("MM-dd-yyyy hh:mm");
 		TaskList otherStuff = new TaskList();
 		
 		System.out.println( "Welcome to the Task Manager!" );
@@ -66,6 +69,7 @@ public class TaskManager {
 		System.out.println( "8. Print task list" );
 		System.out.println( "9. Exit program" );
 		input = keyboard.nextLine();
+	
 		
 		switch( menu ){
 			case 1:
@@ -73,12 +77,24 @@ public class TaskManager {
 				break;
 			
 			
+				
+				
+				
+				
+				
+				
+				
 			case 2:
 				// save
-				
+				try{
+					otherStuff.writeFile( fileName);
+				} catch( FileNotFoundException e ){
+					System.out.println("File \"" + fileName + "\" not found!");
+					System.out.println( "Dying..." );
+					e.printStackTrace();
+					System.exit( -1 );
+				}
 				break;
-			
-			
 			case 3:
 				// add
 				Task stuff = new Task();
@@ -103,6 +119,17 @@ public class TaskManager {
 				input = keyboard.nextLine();
 				stuff.setDate( date ); // THIS SHOULD NOT WORK REMEMEBER TO LOOK HERE AGAIN!!!!!
 				
+				try { 
+			          date = ft.parse(input); 
+			          System.out.println(date); 
+			      } catch (ParseException e) { 
+			          System.out.println("Unparseable using " + ft); 
+			      } 
+				
+				
+				
+				
+				
 				System.out.print( "Completed? : " );
 				input = keyboard.nextLine().toLowerCase();
 				stuff.setCompleted( Boolean.parseBoolean( input ) );
@@ -121,21 +148,6 @@ public class TaskManager {
 				otherStuff.removeTask( modTask );
 				
 				break;
-			
-			
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-			
 			case 5:
 				// edit
 				otherStuff.printTasks();
@@ -158,33 +170,27 @@ public class TaskManager {
 					case 1:
 						System.out.print( "New Description: " );
 						task.setDescription( input );
+						break;
 					case 2: 
 						System.out.print( "New Priority: " );
 						task.setPriority( menu );
+						break;
 					case 3:
 						System.out.print( "New Category: " );
 						task.setCategory( menu );
+						break;
 					case 4:
 						System.out.print( "New Location: " );
 						task.setLocation( input );
+						break;
 					case 5:
 						System.out.print( "New Due Date: " );
 						task.setDate( date );
+						break;
 					case 6:
 						System.out.print( "Completed? " );
 						task.setCompleted( Boolean.parseBoolean( input ) );
-				
-				
-						
-						
-						
-						
-						
-						
-						
-						
-						
-				
+						break;
 				}
 				break;
 			case 6:
@@ -216,11 +222,25 @@ public class TaskManager {
 				}
 				
 				break;
+			
+			
+			
+			
+			
+			
 			case 7:
+				
+				
+				
 				// sort by priority
 				
 				
 				break;
+			
+			
+			
+			
+			
 			case 8:
 				// print
 				otherStuff.printTasks();
