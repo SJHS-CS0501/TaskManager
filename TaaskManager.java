@@ -96,10 +96,11 @@ public class TaaskManager {
 				System.out.print( " Please enter a desciption for your task " );
 				d = keyboard.nextLine();
 				t.setDescription(d);
-				System.out.print( "Please enter a priority for your task between 1-3 " );
+				System.out.print( "Please enter a priority for your task between 1-3 (1 being high, 2 medium, and 3 low) " );
 				p = keyboard.nextShort();
 				t.setPriority(p);
-				System.out.print( "Please enter a category for your task between 1-5" );
+				System.out.print( "Please enter a category for your task between 1-5 (1 being other, 2 school,"
+						+ " 3 personal, 4 chores, and 5 work )");
 				p = keyboard.nextShort();
 				t.setCatagory(p);
 				keyboard.nextLine();
@@ -144,14 +145,29 @@ public class TaaskManager {
 					break;
 				}
 			case 4:
+				System.out.println( " Would you like to save all previous tasks to new task list? (press y for yes " );
+				goOn = keyboard.nextLine().toLowerCase().charAt(0);
+				if( goOn == 'y' ){
+					TaskList tL2 = new TaskList();
+					tL2 = tL;
+					System.out.println( "New Task List has been created and all previous saves have been added");
+				}else{
+					TaskList tL2 = new TaskList();
+					System.out.println( "New Task List has been created ");
+					
+				}
+				break;
+			
+			case 5:
 				System.out.println( " Please enter the description of the task you would like to find " );
 				d = keyboard.nextLine();
 				
 				tL.serachByDescription(d);
 				System.out.println(t.toString());
+				break;
+			case 6:
 				
-			
-			case 5:
+			case 7:
 				System.exit(0);
 			}
 			/*
@@ -224,7 +240,8 @@ public class TaaskManager {
 			System.out.println( "3. Load new file" );
 			System.out.println( "4. Create new task list" );
 			System.out.println( "5. Search for specific tasks" );
-			System.out.println( "6. Exit " );
+			System.out.println( "6. Sort tasks by priority " );
+			System.out.println( "7. Exit " );
 		
 		}
 }

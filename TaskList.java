@@ -31,7 +31,7 @@ public class TaskList {
 	 * search tasks by due date - check
 	 * search tasks by category - check
 	 * search tasks by completion - check
-	 * sort by priority
+	 * sort by priority - do this, you kinda need to do this for homework, probably a good idea
 	 * sort by completion
 	 * sort by category
 	 * write list to disk - check
@@ -209,5 +209,22 @@ public class TaskList {
 		}
 		System.out.println( "EOL" );
 	}
+	/**
+	 * This method sorts the task list by the short associated with it's priority
+	 * @param t
+	 * @param s
+	 */
+	public void sortByPriority(Task t){
+		/*
+		int startScan, minIndex, minValue, index;
+		
+		for( startScan = 0; startScan < (taskList.size() -1); startScan ++){
+			
+			minIndex = startScan;
+			minValue = taskList[index];
+			*/
+		taskList.sort(t.getPriority() < (t.getPriority() + 1 )); // this is the problem, the code up top is incase this isn't what i'm supposed to do
+		//;sort(Comparator<? super E> c)
+		
 	
-}
+	}
