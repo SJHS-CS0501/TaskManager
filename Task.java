@@ -129,8 +129,8 @@ public class Task {
 	  */
 	 public static void setDate(String s) {
 		
-	
-		 DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
+		 //, Locale.ENGLISH
+		 SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 		 try {
 			Date dueDate = format.parse(s);
 		} catch (ParseException e) {
@@ -211,10 +211,17 @@ public class Task {
 	 * @param b 
 	  * @return
 	  */
-	 public static void complete(boolean b){
+	 public static void complete(char comp){
 		 
-		 completed = false;
+		 if(comp == 'n'){
+			 completed = false;
+		 }else if(comp == 'y'){
+			 completed = true;
+		 }else{
+			 completed = false;
+		 }
 	 }
+	 
 	 
 	 public static boolean getComplete(){
 		 
@@ -315,7 +322,7 @@ public class Task {
 		setCatagory(Short.parseShort(results[2]));
 		setDescription(results[3]); 
 		setLocation(results[4]);
-		complete(Boolean.parseBoolean(results[4]));
+		complete((results[5]).charAt(0));
 		 
 	 }
 

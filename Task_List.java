@@ -4,6 +4,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -124,7 +127,7 @@ public class Task_List {
 	}
 	
 	/**
-	 * 
+	 * Writes to file
 	 * @param filename
 	 * @throws FileNotFoundException
 	 */
@@ -151,6 +154,32 @@ public class Task_List {
 			if(tasklist.get(i).getDescrition().equals(d) ){
 				foo = tasklist.get(i);
 			}break;
+		}
+		
+		if(foo == null){
+			System.out.println("\nSORRY, NO TASK WAS FOUND WITH THAT DEASCRIPTION");
+		}
+		
+		return foo;
+		//Replace or fail
+	}
+	
+	/**
+	 * Search by location
+	 * @param d
+	 * @return
+	 */
+	public Task searchByLocation(String d){
+		Task foo= null;
+		
+		for(int i = 0; i<tasklist.size(); i++){
+			if(tasklist.get(i).getLocation().equals(d) ){
+				foo = tasklist.get(i);
+			}break;
+		}
+		
+		if(foo == null){
+			System.out.println("\nSORRY, NO TASK WAS FOUND WITH THAT DEASCRIPTION");
 		}
 		
 		return foo;
@@ -180,17 +209,23 @@ public class Task_List {
 	 * Search by Date
 	 * @param d
 	 * @return
+	 * @throws ParseException 
 	 */
-	public Task searchByDate( Date d){
+	public Task searchByDate( String d) throws ParseException{
 		
 		Task foo = null;
 		
+		DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
+		
 		for(int i = 0; i<tasklist.size(); i++){
-			if(tasklist.get(i).getDate().equals(d) ){
+			if(tasklist.get(i).getDate().equals(format.parse(d)) ){
 				foo = tasklist.get(i);
 			}break;
 		}
 		
+		if(foo == null){
+			System.out.println("\nNO RESULTS FOUND ");
+		}
 		
 		return foo;
 	}
@@ -246,5 +281,14 @@ public class Task_List {
 		System.out.println( "EOL" );
 
 	}
+	
+	public void sortByPriority(){
+		
+		for(int l = 0; l < tasklist.size(); l++){
+			
+		}
+	}
 }
+
+
 

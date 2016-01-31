@@ -65,12 +65,24 @@ public class Task_Manager {
 	public static void main(String[] args) throws Exception {
 		
 		Scanner k = new Scanner(System.in);// new scanner object	
-		File myFile = new File("Task Thing");
+		File myFile = new File("tasks.csv");
 		Task_List list;
 		Exception t;
 		int c = 0;
-		
 		Task that = new Task();
+		list = new Task_List();
+		String fileName = "tasks.csv";
+		short prio;
+		short cat;
+		short a = 7;
+		char choice = 'n';
+		char comp = 'n';
+		char search = 'n';
+		boolean searc = false;
+		String loc;
+		String des;
+		String desc;
+		String d;
 	
 		System.out.println("Welcome to Task Manager \n\n");
 							
@@ -89,23 +101,343 @@ public class Task_Manager {
 		
 		
 		if(c == 1){
-			System.out.println("hello");
+			
+			list.readFile(fileName);
+			
+			System.out.println("This what was contained in that file");
+			list.printTasks();
+			
+			do{
+				System.out.println("Choose the action you want to take based on the indicated number:\n"
+						+ "(0)Exit Task Manager\n"
+						+ "(1)Add Task\n"
+						+ "(2)Remove Task\n"
+						+ "(3)Print Stored Tasks\n"
+						+ "(4)Search Task\n"
+						+ "(5)");
+				c = k.nextInt();
+				
+				switch(c){
+				
+				default:
+					System.out.println("\n\nGoodbye");
+					System.exit(0);
+					break;
+					
+				case 0:
+					System.out.println("\n\nGoodbye");
+					System.exit(0);
+					break;
+					
+				case 1:
+				
+					do{	
+					list.addTask(that);
+					
+					System.out.println("\nWhat is the priorety of this task 0-3");
+					prio = k.nextShort();
+					
+					try{
+					that.setPriority(prio);
+					}catch(IllegalArgumentException e ){
+						
+						System.out.println("Why have you done this to me, I am now dead..........");
+						System.exit(-1);
+					}
+					
+					System.out.println("\nCatagory\nundefined = 0,\nother = 1,\nschool = 2,"
+										+ "\nchore = 3,\nwork = 4 ");
+					cat = k.nextShort();
+					that.setCatagory(cat);
+					
+					System.out.println("\nWhat is the date it is due?\n"
+							+ "Use this format: (month day , year)");
+					d = k.nextLine();
+					that.setDate(d);
+					
+					System.out.println("\nthe location");
+					loc = k.nextLine();
+					that.setLocation(loc);
+					
+					System.out.println("\nDescription of the task");
+					des = k.nextLine();
+					that.setDescription(des);
+					
+					System.out.println("\nHas this task been completed\n"
+							+ "(y)yes"
+							+ "(n)no");
+					comp = k.nextLine().toLowerCase().charAt(0);
+					that.complete(comp);
+					
+					that.toString();
+					
+					System.out.println("\nWould you like to add another task? \ny (for yes)\nn (for no)");
+					choice = k.nextLine().toLowerCase().charAt(0);
+					
+					}
+					while(choice == 'y');
+					
+					try{	
+						list.writeFile(fileName);
+						}catch(FileNotFoundException e) {
+							System.out.println("File \"" + fileName + "\" not found!");
+							System.out.println("Dying....");
+							e.printStackTrace();
+							System.exit(-1);
+						}
+					break; 
+					
+			case 2:
+				break;
+			case 3:
+						int i =100000;
+					do{	
+						System.out.println("\n Which task would you like removed? "
+								     		+ "\nType the number of the task"
+								     		+ " or type 0 to exit");
+						try{
+						i = k.nextInt();
+						}catch(Exception e){
+							System.out.println("Why did you put in the incorrect input"
+									+ " Try Again!!!!!");
+							k.nextLine();
+							
+						}
+						
+						list.reamoveTask(i);
+						
+					}
+					while(i != 0);
+					break;
+					
+			case 4:
+				System.out.println("Here are the Tasks contained in your file/n");
+				list.printTasks();
+				break;
+				
+			case 5:
+				
+				int s = 10;
+				
+				do{
+				System.out.println("What do you want to search for:\n"
+						+ "(0)Exit\n"
+						+ "(1)Priority\n"
+						+ "(2)Date\n"
+						+ "(3)Location\n"
+						+ "(4)Catagory\n"
+						+ "(5)Description\n"
+						+ "(6)Completion\n ");
+				
+				switch(s){
+				
+				default:
+					s = 0;
+					break;
+				
+				case 0:
+					break;
+					
+				case 1:
+					
+					do{
+					System.out.println("What priority level are you looking for: (0-3) "
+							+ "or press 4 to exit");
+					
+					try{
+						a = k.nextShort();
+						}catch(Exception e){
+							System.out.println("Why did you put in the incorrect input"
+									+ " Try again!!!!!");
+							k.nextLine();
+							
+						}
+					
+					list.searchByPriority(a);
+					}
+					while(a != 7);
+					break;
+		
+				case 2:
+					System.out.println("\nWhat is the date for the task you are looking for"
+							+ " Use the format: (month day, year)");
+					
+					desc = k.nextLine();
+					
+					list.searchByDate(desc);
+					
+					break;
+					
+				case 3:
+					
+					System.out.println("\nType the location for the task you are looking for");
+					
+					desc = k.nextLine();
+					
+					list.searchByLocation(desc);
+					
+					break;
+					
+					
+				case 4:
+					
+					do{
+					System.out.println("What catagory level are you looking for: (0-5) "
+							+ "or press 7 to exit");
+					
+					try{
+						a = k.nextShort();
+						}catch(Exception e){
+							System.out.println("Why did you put in the incorrect input"
+									+ " Try again!!!!!");
+							k.nextLine();
+							
+						}
+					
+					list.searchByPriority(a);
+					}
+					while(a != 7);
+					 break;
+				
+				case 5:
+					
+					System.out.println("\nType the decriction for the task you are looking for");
+					
+					desc = k.nextLine();
+					
+					list.searchByDescription(desc);
+					
+					break;
+					
+				case 6:
+					
+					do{
+					System.out.println("\nWhat copleted condition are you looking for?\n"
+							+ "(y)True\n"
+							+ "(n)False\n");
+					search = k.nextLine().toLowerCase().charAt(0);
+					}
+					while(search!= 'y' && search != 'n');
+					
+					if(search == 'y'){
+						searc = true;
+					}else if(search == 'n')
+						searc = false;
+					
+					list.searchByCompletion(searc);
+					
+					break;
+					
+				}
+				
+			
+			}
+			while(s != 0);
+				
+		case 6:
+			break;
+				}
+				
+			
+			
+			//Sort Tasks by priority
+				list.sortByPriority();
+			
+			}while(c != 0);
+			
+			
+				
+			
 		}else if(c == 2){
-			System.out.println("Hello 2");
+		
+			list = new Task_List();
+			
+			System.out.println("What is the priorety of this task 0-3");
+			prio = k.nextShort();
+			try{
+			that.setPriority(prio);
+			}catch(IllegalArgumentException e ){
+				
+				System.out.println("Why have you done this to me, I am now dead..........");
+				System.exit(-1);
+			}
+			
+			System.out.println("undefined = 0, other = 1, school = 2, chore = 3, work = 4 ");
+			cat = k.nextShort();
+			that.setCatagory(cat);
+			
+			System.out.println("What is the date it is due?\n"
+								+ "Use this format: (month day , year)");
+			d = k.nextLine();
+			that.setDate(d);
+			
+			System.out.println("the location");
+			loc = k.nextLine();
+			that.setLocation(loc);
+			
+			System.out.println("Description of the task");
+			des = k.nextLine();
+			that.setDescription(des);
+			
+			System.out.println("Has this task been completed\n"
+					+ "(y)yes"
+					+ "(n)no");
+			comp = k.nextLine().toLowerCase().charAt(0);
+			that.complete(comp);
+			
+			that.toString();
+			
+			System.out.println("Would you like to add another task? \ny (for yes)\nn (for no)");
+			choice = k.nextLine().toLowerCase().charAt(0);
+			
 		}
-	
-	that.getDate();
+		while(choice != 'y');
+			
+		try{	
+			list.writeFile(fileName);
+			}catch(FileNotFoundException e) {
+				System.out.println("File \"" + fileName + "\" not found!");
+				System.out.println("Dying....");
+				e.printStackTrace();
+				System.exit(-1);
+			}
+		
+		}
 		
 		
-	
-	
-	
-		System.exit(0);// exit program 
-	
-	
-	
 	}
-}
+	
+	
+	
+	
+		/*
+		*A menu system that displays on execution. 
+		 The menu should offer the user:
+		-the chance to load the task list from a file,
+		-save the task list in memory to a file, 
+		-add tasks to the task list, print the task list, 
+		-search for tasks using the searching functions already created, 
+		-sort a list of tasks by priority, and mark a task as completed. 
+		
+		*You will need to write the sort by priority method yourself! 
+		 The menu should also have an option to exit the program.
+		- Write a sort function to sort a list of tasks by priority.
+		- Add the necessary logic and code to correctly ask the user for due dates, 
+		- and make sure the code to read and write those works correctly.
+		- Run through the program with the menu to be sure that all of your
+		 listed options work the way you intend.
+		
+		*Extra details: Provide the abilities to delete and edit tasks! Fun!
+		
+		*Extra extra details: Add features. Make it fancy. Think about ways you might want to use a program like this and incorporate those ideas into your code.
+		
+		********This assignment is due on SUNDAY, January 31st at midnight!
+		*
+		*ask Task to print information
+	*/
+	
+	
+
 	
 	
 	
