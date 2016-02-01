@@ -158,7 +158,7 @@ public class TaskManager {
 					System.out.println(
 							"Please enter which priority you would like to search by:\n\t1 - High\n\t2 - Medium\n\t3 - Low\n\t4 - Undefined");
 					temp = keyboard.nextShort();
-					taskList.searchByPriority(temp);
+					System.out.println(taskList.searchByPriority(temp));
 					break;
 				case 2:
 					System.out.println("Please enter the date you would like to search for (MMM DD, YYYY): ");
@@ -169,7 +169,7 @@ public class TaskManager {
 							System.out.println("date is null");
 							break;
 						} else {
-							taskList.searchByDueDate(d);
+							System.out.println(taskList.searchByDueDate(d));
 						}
 					} catch (ParseException e) {
 						System.out.println("Unacceptable date! You loose!");
@@ -179,28 +179,28 @@ public class TaskManager {
 					System.out.println("Please enter the category you'd like to search by:\n\t0 - Undefined"
 							+ "\n\t1 - Other\n\t2 - School\n\t3 - Personal\n\t4 - Chore\n\t5 - Work");
 					temp = keyboard.nextShort();
-					taskList.searchByCategory(temp);
+					System.out.println(taskList.searchByCategory(temp));
 					break;
 				case 4:
 					System.out.println("Please enter the description you'd like to search for: ");
 					input = keyboard.nextLine();
 					keyboard.nextLine();
-					taskList.searchByDescription(input);
+					System.out.println(taskList.searchByDescription(input));
 					break;
 				case 5:
 					System.out.println("Please enter the location you'd like to search for: ");
 					input = keyboard.nextLine();
 					keyboard.nextLine();
-					taskList.searchByLocation(input);
+					System.out.println(taskList.searchByLocation(input));
 					break;
 				case 6:
 					System.out.println("Would you like to search for completed or uncompleted tasks? (y/n): ");
 					input = keyboard.nextLine();
 					keyboard.nextLine();
 					if (input.equals('y')) {
-						taskList.searchByCompleted(true);
+						System.out.println(taskList.searchByCompleted(true));
 					} else {
-						taskList.searchByCompleted(false);
+						System.out.println(taskList.searchByCompleted(false));
 					}
 					break;
 				}
