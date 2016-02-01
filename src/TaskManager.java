@@ -43,7 +43,7 @@ import java.util.Scanner;
  *
  */
 public class TaskManager {
-	
+
 	/**
 	 * @param args
 	 */
@@ -114,11 +114,10 @@ public class TaskManager {
 				}
 				break;
 
-                        case 3:
-                                File newFile = new File(newFile.txt); //creating new file
-                                System.out.println("Enter file name for new file: ");
-                                newFile = keyboard.nextLine();
-                                tL.addTask(t);
+                case 3:
+                System.out.println("Enter file name for new file: ");
+                filename = keyboard.nextLine();
+                tL.addTask(t);
 				System.out.println("Please enter a description for new task: ");
 				d = keyboard.nextLine();
 				t.setDescription(d);
@@ -131,9 +130,9 @@ public class TaskManager {
 				t.setCategory(p);
 				System.out.println("When is your task due? (MMM dd, yyyy) ");
 				d = keyboard.nextLine();
-                                tL.printTasks();
+                tL.printTasks();
 				try {
-					tL.writeFile(newFile);
+					tL.writeFile(filename);
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -153,14 +152,16 @@ public class TaskManager {
 					next = keyboard.nextLine().toLowerCase().charAt(0);
 					if(next != 'y') {
 						System.out.println("File not overwritten. Have a nice day!");
-						break;
-                        case 6:
-                                //sortByPriority(p);
-                                break:
 					}
+					
+				}
+				break;
+            case 6:
+                //sortByPriority(t);
+                break;
 					}
-				
-			}
+			
+			
 			/*tL.addTask(t);
 			System.out.println("Please enter a description for new task: ");
 			d = keyboard.nextLine();
@@ -214,16 +215,18 @@ public class TaskManager {
 		
 		System.exit(0);
 	}
-	
+
 	public static void menu(int option) {
-		
+
 		System.out.println("If you want to: ");
 		System.out.println("Read a task from disk, press 1 ");
 		System.out.println("Add a new task to file, press 2 ");
-		System.out.println("Create a new task list, press 3 ");
+		System.out.println("Create a new task list for new file, press 3 ");
 		System.out.println("Search for tasks by description, press 4 ");
 		System.out.println("Load new file, press 5 ");
-		System.out.println("Sort by priority, press 6 "); //still trying to figure out how to do this.
+		System.out.println("Sort by priority, press 6 "); // still trying to
+															// figure out how to
+															// do this.
 		System.out.println("Quit, press 0 ");
 	}
 

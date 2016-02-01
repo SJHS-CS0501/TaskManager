@@ -97,6 +97,17 @@ public class Task {
 		return pName;
 	}
 	
+	public int compareTo(Task t) {
+		if(priority < t.getPriority() ) {
+			return 1;
+		} else if(priority > t.getPriority()) {
+			return -1;
+		} else {
+			return 0;
+		}
+	}
+
+	
 	public void setDueDate(Date n) {
 		dueDate = n;
 	}

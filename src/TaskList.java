@@ -99,6 +99,11 @@ public class TaskList {
 
 		return foo;
 	}
+	
+	public void sortByPriority(Task t) {
+		
+	}
+	
 
 	/**
 	 * Read list of tasks from filename provided.
