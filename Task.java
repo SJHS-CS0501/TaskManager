@@ -31,7 +31,7 @@ public class Task implements Comparable<Task> {
 		 String pName = "NAME";
 		 switch( priority ){
 		 case 0:
-			 pName = "Undefined";
+			 pName = "Undefined"; // so important you broke it
 			 break;
 		 case 1:
 			 pName = "High"; // super important
@@ -257,17 +257,17 @@ public class Task implements Comparable<Task> {
 	}
 
 	/**
-	 * compareTo returns a postive, negative, or zero value.
+	 * compareTo returns a positive, negative, or zero value.
 	 * zero -- priorities of the tasks are the same
 	 * positive int -- priority of my task is greater than priority of your task
 	 * negative int -- priority of my task is less than priority of your task
 	 */
-	@Override //implementing custom version
+	@Override // implementing custom version
 	public int compareTo(Task arg0) {
-		short myPriority = this.getPriority(); // using this because calling task from task #rebel
+		short myPriority = this.getPriority(); // using this because calling task from task
 		short yourPriority = arg0.getPriority(); // other task for comparing my task's priority
 		
-		int result = myPriority - yourPriority; // coolnes B)
+		int result = myPriority - yourPriority; // coolness B)
 		
 		return result; // returning the positive, negative, or zero int result
 	}
