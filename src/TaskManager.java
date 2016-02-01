@@ -33,23 +33,11 @@ import java.text.SimpleDateFormat;
  *
  */
 public class TaskManager {
-	/*
-	 * Menu (text)
-	 * 
-	 * read from file -add task to existing after reading -create new tasks and
-	 * add to file -can ask user for task file name -ask if they want to
-	 * overwrite -save file?
-	 * 
-	 * start task list
-	 * 
-	 * search from tasks
-	 * 
-	 * implement sort by priority -can sort class by priority
-	 */
 	public static void main(String[] args) {
 		// main stuff goes here, yo
 		System.out.println("Welcome to the Task Manager!");
 
+		// All objects are defined
 		TaskList taskList = new TaskList();
 		String name = null, y = "y", description = null, decide = null, filename = "Task.txt", saveOrNaw = null,
 				t = null, input = null;
@@ -62,6 +50,8 @@ public class TaskManager {
 		DateFormat printFormat = new SimpleDateFormat("EEE MMM dd, yyyy", Locale.ENGLISH);
 		Scanner keyboard = new Scanner(System.in);
 
+		// This do-while loop will control the entire program and allowes the menu
+		// to be possible and repeat for the user.
 		do {
 			System.out.println("\nPlease select your function: \n\t1 - Load the task list from file\n\t2 -"
 					+ " Save task list to file\n\t3 - Add task to Task List\n\t4 - Print task list\n\t5 - "
@@ -277,59 +267,7 @@ public class TaskManager {
 			}
 		} while (choice != ten);
 
-		/*
-		 * System.out.println(
-		 * "Please enter the name of your new file ending with .txt: " );
-		 * tempFileName = keyboard.nextLine(); if( tempFileName.equals(filename)
-		 * ) { System.out.println(
-		 * "The file name you have entered is already taken. Are you sure you'd like to continue? (y/n): "
-		 * ); }
-		 * 
-		 * do{ for( int ctr = 0; ctr < tempFileName.length(); ctr++ ) { while(
-		 * tempFileName.charAt(ctr) == filename.charAt(ctr) ) { i++; } } }
-		 * while(compairson == true);
-		 */
-		/*
-		 * taskList.printTasks();
-		 * 
-		 * 
-		 * try{ taskList.writeFile(filename); } catch( FileNotFoundException e )
-		 * { System.out.println( "File \"" + filename + "\" not found!" );
-		 * System.out.println( "Dying..." ); e.printStackTrace();
-		 * System.exit(-1); }
-		 * 
-		 * taskList = new TaskList();
-		 * 
-		 * System.out.println( "Before read: " ); taskList.printTasks();
-		 * 
-		 * try { taskList.readFile( filename, printFormat ); } catch(
-		 * FileNotFoundException e ) { System.out.println( "file \"" + filename
-		 * + "\" not found!" ); System.out.println( "Dying..." );
-		 * e.printStackTrace(); }
-		 * 
-		 */
 		keyboard.close();
 		System.exit(0);
 	}
 }
-
-/*
- * ERASE FROM HERE TO THERE WHEN DONE TESTING TASK
- * 
- * Task foo = new Task(); foo.setDescription( "Test Task" ); try { // What we
- * want to try that might throw an exception foo.setPriority( (short)12 ); }
- * catch( Exception e ) { // What to do if we catch the exception
- * System.out.println( "Error setting priority: " + e.getMessage() );
- * //System.exit(-1); }
- * 
- * // time passes...
- * 
- * System.out.println( "Task info: " ); System.out.println( "\tTask: " +
- * foo.getDescription() ); System.out.println( "\t\tPriority: " +
- * foo.getPriorityName() );
- * 
- * 
- * THERE
- */
-
-// Allow user to make 4 tasks
