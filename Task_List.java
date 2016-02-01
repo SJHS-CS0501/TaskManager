@@ -138,7 +138,7 @@ public class Task_List {
 	 * @throws IOException 
 	 */
 	public void writeFile( String filename)throws IOException{
-		writer = new PrintWriter( new BufferedWriter(new FileWriter(filename, true)));;
+		writer = new PrintWriter( new BufferedWriter(new FileWriter(filename, true)));
 		
 		for(int i = 0; i< tasklist.size(); i++) {
 			tasklist.get(i).write(writer);
@@ -165,7 +165,7 @@ public class Task_List {
 		if(foo == null){
 			System.out.println("\nSORRY, NO TASK WAS FOUND WITH THAT DEASCRIPTION");
 		}
-		
+		System.out.println(foo);
 		return foo;
 		//Replace or fail
 	}
@@ -185,9 +185,9 @@ public class Task_List {
 		}
 		
 		if(foo == null){
-			System.out.println("\nSORRY, NO TASK WAS FOUND WITH THAT DEASCRIPTION");
+			System.out.println("\nSORRY, NO TASK WAS FOUND WITH THAT Location");
 		}
-		
+		System.out.println(foo);
 		return foo;
 		//Replace or fail
 	}
@@ -197,17 +197,20 @@ public class Task_List {
 	 * @param a
 	 * @return
 	 */
-	public Task_List searchByPriority(short a){
+	public Task searchByPriority(short a){
 		
-		Task_List foo = new Task_List();
+		//Task_List 
+		Task foo = null; 
+		//= new Task_List();
 		for(int i = 0; i< tasklist.size(); i++){
 			
 			if(tasklist.get(i).getPrority() == a ){
-				foo.addTask(tasklist.get((i)));
+				foo = tasklist.get(i);
+				//.addTask
 			}break;
 		}
 		
-		
+		System.out.println(foo);
 		return foo;
 	}
 	
@@ -224,7 +227,8 @@ public class Task_List {
 		DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
 		
 		for(int i = 0; i<tasklist.size(); i++){
-			if(tasklist.get(i).getDate().equals(format.parse(d)) ){
+			tasklist.get(i);
+			if(Task.dat.equals(d) ){
 				foo = tasklist.get(i);
 			}break;
 		}
@@ -233,6 +237,7 @@ public class Task_List {
 			System.out.println("\nNO RESULTS FOUND ");
 		}
 		
+		System.out.println(foo);
 		return foo;
 	}
 	
@@ -252,7 +257,7 @@ public class Task_List {
 		}
 		
 		
-		
+		System.out.println(foo);
 		return foo;
 	}
 	
@@ -271,6 +276,7 @@ public class Task_List {
 			}break;
 		}
 		
+		System.out.println(foo);
 		return foo;
 	}
 	

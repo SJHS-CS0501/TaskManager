@@ -135,7 +135,7 @@ public class Task_Manager {
 					
 				case 1:
 				
-					do{	
+					//do{	
 					list.addTask(that);
 					
 					System.out.println("\nWhat is the priorety of this task 0-3");
@@ -175,13 +175,12 @@ public class Task_Manager {
 					comp = k.nextLine().toLowerCase().charAt(0);
 					that.complete(comp);
 					
-					that.toString();
+					//that.toString();
 					
-					System.out.println("\nWould you like to add another task? \ny (for yes)\nn (for no)");
-					choice = k.nextLine().toLowerCase().charAt(0);
+					//System.out.println("\nWould you like to add another task? \ny (for yes)\nn (for no)");
+					//choice = k.nextLine().toLowerCase().charAt(0);
 					
-					}
-					while(choice == 'y');
+					
 					
 					try{	
 						list.writeFile(fileName);
@@ -191,6 +190,10 @@ public class Task_Manager {
 							e.printStackTrace();
 							System.exit(-1);
 						}
+					//}
+					//while(choice == 'y');
+					
+					
 					break; 
 					
 			case 2:
@@ -260,28 +263,71 @@ public class Task_Manager {
 						}
 					
 					list.searchByPriority(a);
+					
+					if(list.searchByPriority(a)!= null){
+						System.out.println("Would you like to edit this object's priority: y or n");
+						k.nextLine();
+						
+						choice = k.nextLine().toLowerCase().charAt(0);
+						if(choice == 'y'){
+							System.out.println("New Priority = ");
+							cat = k.nextShort();
+							that.setPriority(cat);
+							list.writeFile(fileName);
+						}
+						
 					}
-					while(a != 7);
+					
+					}
+					while(a != 4);
 					break;
 		
 				case 2:
 					System.out.println("\nWhat is the date for the task you are looking for"
 							+ " Use the format: (month day, year)");
 					
+					k.nextLine();
 					desc = k.nextLine();
 					
 					list.searchByDate(desc);
+					//System.out.println(list.searchByDate(desc));
 					
+					if(list.searchByDate(desc)!= null){
+						System.out.println("Would you like to edit this object's due date: y or n");
+						k.nextLine();
+						
+						choice = k.nextLine().toLowerCase().charAt(0);
+						if(choice == 'y'){
+							System.out.println("New Date = ");
+							d = k.nextLine();
+							that.setDate(d);
+							list.writeFile(fileName);
+						}
+					}
 					break;
 					
 				case 3:
 					
 					System.out.println("\nType the location for the task you are looking for");
 					
+					k.nextLine();
 					desc = k.nextLine();
 					
 					list.searchByLocation(desc);
+					//System.out.println(list.searchByLocation(desc));
 					
+					if(list.searchByLocation(desc)!= null){
+						System.out.println("Would you like to edit this object's location: y or n");
+						k.nextLine();
+						
+						choice = k.nextLine().toLowerCase().charAt(0);
+						if(choice == 'y'){
+							System.out.println("New Location = ");
+							d = k.nextLine();
+							that.setLocation(d);
+							list.writeFile(fileName);
+						}
+					}
 					break;
 					
 					
@@ -289,7 +335,7 @@ public class Task_Manager {
 					
 					do{
 					System.out.println("What catagory level are you looking for: (0-5) "
-							+ "or press 7 to exit");
+							+ "or press 6 to exit");
 					
 					try{
 						a = k.nextShort();
@@ -300,19 +346,47 @@ public class Task_Manager {
 							
 						}
 					
-					list.searchByPriority(a);
+					list.searchByCatagory(a);
+					//System.out.println(list.searchByPriority(a));
+					
+					if(list.searchByCatagory(a)!= null){
+						System.out.println("Would you like to edit this object's catagory: y or n");
+						k.nextLine();
+						
+						choice = k.nextLine().toLowerCase().charAt(0);
+						if(choice == 'y'){
+							System.out.println("New Catagory = ");
+							cat = k.nextShort();
+							that.setCatagory(cat);
+							list.writeFile(fileName);
+						}
+					  }
 					}
-					while(a != 7);
+					while(a != 6);
 					 break;
 				
 				case 5:
 					
-					System.out.println("\nType the decriction for the task you are looking for");
+					System.out.println("\nType the description for the task you are looking for");
 					
+					k.nextLine();
 					desc = k.nextLine();
 					
 					list.searchByDescription(desc);
+					//System.out.println(list.searchByDescription(desc));
 					
+					if(list.searchByDescription(desc)!= null){
+						System.out.println("Would you like to edit this object's description: y or n");
+						k.nextLine();
+						
+						choice = k.nextLine().toLowerCase().charAt(0);
+						if(choice == 'y'){
+							System.out.println("New Description = ");
+							d = k.nextLine();
+							that.setDescription(d);
+							list.writeFile(fileName);
+						}
+					}
 					break;
 					
 				case 6:
@@ -321,6 +395,7 @@ public class Task_Manager {
 					System.out.println("\nWhat copleted condition are you looking for?\n"
 							+ "(y)True\n"
 							+ "(n)False\n");
+					k.nextLine();
 					search = k.nextLine().toLowerCase().charAt(0);
 					}
 					while(search!= 'y' && search != 'n');
@@ -331,17 +406,32 @@ public class Task_Manager {
 						searc = false;
 					
 					list.searchByCompletion(searc);
-					
 					break;
 					
 				}
 				
-			
 			}
 			while(s != 0);
 				
 		case 6:
 			break;
+			
+		/*case 7:
+		
+		System.out.println("Which ")
+			
+		if(list.searchByCompletion(searc) != null){
+			System.out.println("Would you like to edit this object's completion: y or n");
+			k.nextLine();
+			choice = k.nextLine().toLowerCase().charAt(0);
+			if(choice == 'y'){
+				System.out.println("New Completion(y or n) = ");
+				comp = k.nextLine().toLowerCase().charAt(0);
+				that.complete(comp);;
+				list.writeFile(fileName);
+			}
+		}
+		*/
 				}
 				
 			
@@ -358,66 +448,71 @@ public class Task_Manager {
 		
 			File myFile = new File(fileName);
 			
-		do{
 			
-			
-			list = new Task_List();
-			
-			System.out.println("What is the priorety of this task 0-3");
-			prio = k.nextShort();
-			try{
-			that.setPriority(prio);
-			}catch(IllegalArgumentException e ){
+			//do{	
+				list.addTask(that);
 				
-				System.out.println("Why have you done this to me, I am now dead..........");
-				System.exit(-1);
-			}
-			
-			System.out.println("undefined = 0, other = 1, school = 2, chore = 3, work = 4 ");
-			cat = k.nextShort();
-			that.setCatagory(cat);
-			
-			System.out.println("What is the date it is due?\n"
-								+ "Use this format: (month day , year)");
-			k.nextLine();
-			d = k.nextLine();
-			that.setDate(d);
-			
-			System.out.println("the location");
-			loc = k.nextLine();
-			that.setLocation(loc);
-			
-			System.out.println("Description of the task");
-			des = k.nextLine();
-			that.setDescription(des);
-			
-			System.out.println("Has this task been completed\n"
-					+ "(y)yes"
-					+ "(n)no");
-			comp = k.nextLine().toLowerCase().charAt(0);
-			that.complete(comp);
-			
-			that.toString();
-			
-			System.out.println("Would you like to add another task? \ny (for yes)\nn (for no)");
-			choice = k.nextLine().toLowerCase().charAt(0);
-			
-		}
-		while(choice == 'y');
-			
-		try{	
-			list.writeFile(fileName);
-			}catch(FileNotFoundException e) {
-				System.out.println("File \"" + fileName + "\" not found!");
-				System.out.println("Dying....");
-				e.printStackTrace();
-				System.exit(-1);
-			}
+				System.out.println("\nWhat is the priorety of this task 0-3");
+				prio = k.nextShort();
+				
+				try{
+				that.setPriority(prio);
+				}catch(IllegalArgumentException e ){
+					
+					System.out.println("Why have you done this to me, I am now dead..........");
+					System.exit(-1);
+				}
+				
+				System.out.println("\nCatagory\nundefined = 0,\nother = 1,\nschool = 2,"
+									+ "\nchore = 3,\nwork = 4 ");
+				cat = k.nextShort();
+				that.setCatagory(cat);
+				
+				System.out.println("\nWhat is the date it is due?\n"
+				+ "Use this format: (month/day/year) \n"
+				+ "ex. 01/05/2005");
+				k.nextLine();
+				d = k.nextLine();
+				that.setDate(d);
+				
+				System.out.println("\nthe location");
+				loc = k.nextLine();
+				that.setLocation(loc);
+				
+				System.out.println("\nDescription of the task");
+				des = k.nextLine();
+				that.setDescription(des);
+				
+				System.out.println("\nHas this task been completed\n"
+						+ "(y)yes"
+						+ "(n)no");
+				comp = k.nextLine().toLowerCase().charAt(0);
+				that.complete(comp);
+				
+				that.toString();
+				
+				//System.out.println("\nWould you like to add another task? \ny (for yes)\nn (for no)");
+				//choice = k.nextLine().toLowerCase().charAt(0);
+				
+				
+				
+				try{	
+					list.writeFile(fileName);
+					}catch(FileNotFoundException e) {
+						System.out.println("File \"" + fileName + "\" not found!");
+						System.out.println("Dying....");
+						e.printStackTrace();
+						System.exit(-1);
+					}
+				//}
+				//while(choice == 'y');
+				
+				System.out.println("You sucessfully made the fisrst task for your new file.\n"
+						+ "Restart and try option 1 for the full range of optons for you new task list");
 		
 		}
 		
 	}
-		
 }
 	
 	

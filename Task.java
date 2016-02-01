@@ -34,6 +34,8 @@ public class Task {
 	 private static SimpleDateFormat format;
 	 private static  StringBuilder s = new StringBuilder();
 	 
+	 
+	 public static String dat;
 	 /*
 	  * Priorities:
 	  */
@@ -130,6 +132,7 @@ public class Task {
 	  */
 	 public static void setDate(String s) {
 		
+		 dat = s;
 		 
 		 DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
 		 try {
