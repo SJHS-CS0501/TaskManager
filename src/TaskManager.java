@@ -48,6 +48,7 @@ public class TaskManager {
 	 * @param args
 	 */
 	public static void main(String [] args) {
+                //declarations and initializations
 		Scanner keyboard = new Scanner(System.in);
 		String filename = "file.txt";
 		String d;
@@ -63,12 +64,13 @@ public class TaskManager {
 		
 		System.out.println("Welcome to the Task Manager!");
 		
-		menu(option);
+		menu(option); //calling method to display menu
 		
+                //do-while loop
 		do{
 			System.out.println("Enter your selection: ");
 			option = keyboard.nextInt();
-			switch (option) {
+			switch (option) { //switch statement for menu selections
 			case 0:
 				System.exit(0);
 				break;
@@ -131,7 +133,7 @@ public class TaskManager {
 				d = keyboard.nextLine();
                                 tL.printTasks();
 				try {
-					tL.writeFile(filename);
+					tL.writeFile(newFile);
 				} catch (FileNotFoundException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -153,6 +155,7 @@ public class TaskManager {
 						System.out.println("File not overwritten. Have a nice day!");
 						break;
                         case 6:
+                                //sortByPriority(p);
                                 break:
 					}
 					}
@@ -220,7 +223,7 @@ public class TaskManager {
 		System.out.println("Create a new task list, press 3 ");
 		System.out.println("Search for tasks by description, press 4 ");
 		System.out.println("Load new file, press 5 ");
-		System.out.println("Sort by priority, press 6 ");
+		System.out.println("Sort by priority, press 6 "); //still trying to figure out how to do this.
 		System.out.println("Quit, press 0 ");
 	}
 
