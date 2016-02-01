@@ -70,13 +70,22 @@ public class task
       {
        System.out.println("Invalid month");
       }//if not a valid month
+      if(d1<12)
+      {
+        System.out.println("Valid month");
+        flag2 =false;
+      }//if valid month
       System.out.println("Please enter the day number of the task");
       d2 =SC.nextShort();
       if(d2>31)
       {
         System.out.println("Invalid day");
       }//if invalid day
-      flag2 = false;
+      if(d2<31)
+      {
+        System.out.println("Valid day");
+        flag2 = false;
+      }//if valid day
     }//end of flag2 while true
   }//setDate end
 public static get.Date(short d1, short d2)
@@ -89,8 +98,21 @@ public static get.Date(short d1, short d2)
   //set Priority below
   public static set.Priority( int p)
   {
-    System.out.println("Please enetr the priority level of 1-5");
-    p = SC.NextShort();
+    boolean flag3 =true;
+    while(flag3==true)
+    {
+      System.out.println("Please enetr the priority level of 1-5");
+      p = SC.NextShort();
+      if(p>5)
+      {
+        System.out.println("Invalid priority");
+      }//invalid priority end
+      if(p<6)
+      {
+        System.out.println("Valid Priority entered");
+        flag3 = false;
+      }//if valid priority end
+    }//while flag3 = true end
   }//setPriority end
   public static get.Priority( int p)
   {
