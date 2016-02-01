@@ -55,7 +55,7 @@ public class TaskManager {
 				t = null, input = null;
 		short temp, choice = 0, temp2;
 		boolean truth, tempB, compairson = false, yesOrNo;
-		int i = 0, ten = 10;
+		int i = 0, ten = 10, foo;
 		Date d = new Date();
 		Date date = new Date();
 		DateFormat format = new SimpleDateFormat("MMM dd, yyyy", Locale.ENGLISH);
@@ -68,6 +68,7 @@ public class TaskManager {
 					+ "Search for tasks\n\t6 - Sort Task List by priority\n\t7 - Mark tasks as completed\n"
 					+ "\t8 - Remove a task from the list\n\t9 - Edit a task\n\t10 - Exit");
 			choice = keyboard.nextShort();
+			keyboard.nextLine();
 
 			switch (choice) {
 			case 1:
@@ -100,7 +101,6 @@ public class TaskManager {
 					System.out.println("Descrption: ");
 					input = keyboard.nextLine();
 					task.setDescription(input);
-					keyboard.nextLine();
 
 					System.out.println("Location: ");
 					input = keyboard.nextLine();
@@ -177,10 +177,15 @@ public class TaskManager {
 					input = keyboard.nextLine();
 					try {
 						d = format.parse(input);
+						if (d == null) {
+							System.out.println("date is null");
+							break;
+						} else {
+							taskList.searchByDueDate(d);
+						}
 					} catch (ParseException e) {
 						System.out.println("Unacceptable date! You loose!");
 					}
-					taskList.searchByDueDate(d);
 					break;
 				case 3:
 					System.out.println("Please enter the category you'd like to search by:\n\t0 - Undefined"
@@ -191,16 +196,19 @@ public class TaskManager {
 				case 4:
 					System.out.println("Please enter the description you'd like to search for: ");
 					input = keyboard.nextLine();
+					keyboard.nextLine();
 					taskList.searchByDescription(input);
 					break;
 				case 5:
 					System.out.println("Please enter the location you'd like to search for: ");
 					input = keyboard.nextLine();
+					keyboard.nextLine();
 					taskList.searchByLocation(input);
 					break;
 				case 6:
 					System.out.println("Would you like to search for completed or uncompleted tasks? (y/n): ");
 					input = keyboard.nextLine();
+					keyboard.nextLine();
 					if (input.equals('y')) {
 						taskList.searchByCompleted(true);
 					} else {
@@ -212,7 +220,7 @@ public class TaskManager {
 
 			case 6:
 				System.out.println("Task List has been sorted by: Undefined/High/Medium/Low");
-				taskList.equals(taskList.sortByPriority());
+				taskList.sortByPriority();
 				break;
 
 			case 7:
@@ -226,18 +234,42 @@ public class TaskManager {
 				i = keyboard.nextInt();
 				taskList.removeTask(i);
 				break;
-				
+
 			case 9:
-				System.out.println( "Please enter the number of the task you would like to edit: " );
-				temp = keyboard.nextShort();
-				System.out.println( "Please enter the number of what you would like to edit: \n\t1 - Priority\n\t"
+				System.out.println("Please enter the number of the task you would like to edit: ");
+				foo = keyboard.nextInt();
+				System.out.println("Please enter the number of what you would like to edit: \n\t1 - Priority\n\t"
 						+ "2 - Due Date\n\t3 - Category\n\t4 - Description\n\t5 - Location\n\t6 - Completed");
 				temp2 = keyboard.nextShort();
-				System.out.println( "Please enter what you would like to change this field to: ");
+				System.out.println("Please enter what you would like to change this field to: ");
 				input = keyboard.nextLine();
-				switch(temp2) {
-					case 1:
-						taskList.get(temp).setPriority(Short.parseShort(input));
+				keyboard.nextLine();
+				switch (temp2) {
+				case 1:
+					taskList.getTask(foo).setPriority(Short.parseShort(input));
+					break;
+				case 2:
+					try {
+						taskList.getTask(foo).setDueDate(format.parse(input));
+					} catch (ParseException e) {
+						System.out.println("Die");
+					}
+					break;
+				case 3:
+					taskList.getTask(foo).setCategory(Short.parseShort(input));
+					break;
+				case 4:
+					taskList.getTask(foo).setDescription(input);
+					break;
+				case 5:
+					taskList.getTask(foo).setLocation(input);
+					break;
+				case 6:
+					if (input == "y") {
+						taskList.getTask(foo).setCompleted(true);
+					} else {
+						taskList.getTask(foo).setCompleted(false);
+					}
 				}
 
 			default:

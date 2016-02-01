@@ -137,7 +137,7 @@ public class TaskList {
 
 		return foo;
 	}
-	
+
 	public Task searchByLocation(String l) {
 		Task foo = null;
 
@@ -150,7 +150,7 @@ public class TaskList {
 
 		return foo;
 	}
-	
+
 	public TaskList searchByCompleted(boolean c) {
 		TaskList foo = new TaskList();
 
@@ -161,31 +161,26 @@ public class TaskList {
 		}
 		return foo;
 	}
-	
-	public ArrayList<Task> sortByPriority() {
+
+	public TaskList sortByPriority() {
 		int startScan, index, minIndex, minValue;
-		Task minTask, tasks = null;
-		for( startScan = 0; startScan < (taskList.size()-1); startScan++ ){
+		for (startScan = 0; startScan < (taskList.size() - 1); startScan++) {
 			minIndex = startScan;
-			minTask = taskList.get(startScan);
-			for( index = startScan + 1; index < taskList.size(); index++) {
-				if( taskList.get(index).getPriority() < startScan ) {
-					tasks = taskList.get(index);
+			minValue = taskList.get(startScan).getPriority();
+			for (index = startScan + 1; index < taskList.size(); index++) {
+				if (taskList.get(index).getPriority() < minValue) {
+					minValue = taskList.get(index).getPriority();
 					minIndex = index;
 				}
-			
 			}
-			taskList.get(minIndex).equals( taskList.get(startScan) );
-			taskList.get(startScan).equals(tasks);
-			
+			Collections.swap(taskList, minIndex, startScan);
 		}
-		return taskList;
+		return this;
 	}
-	
+
 	public void setAsCompleted(short c) {
 		taskList.get(c).setCompleted(true);
 	}
-	
 
 	/**
 	 * Read list of tasks from filename provided.
@@ -225,8 +220,5 @@ public class TaskList {
 		}
 		writer.close();
 	}
-
-	
-	
 
 }
