@@ -111,6 +111,32 @@ public class TaskManager {
 					e.printStackTrace();
 				}
 				break;
+
+                        case 3:
+                                File newFile = new File(newFile.txt); //creating new file
+                                System.out.println("Enter file name for new file: ");
+                                newFile = keyboard.nextLine();
+                                tL.addTask(t);
+				System.out.println("Please enter a description for new task: ");
+				d = keyboard.nextLine();
+				t.setDescription(d);
+				System.out.println("Please enter a priority for this task (1-3): ");
+				p = keyboard.nextShort();
+				t.setPriority(p);
+				System.out.println("Please enter a category for this task (1-5): ");
+				p = keyboard.nextShort();
+				keyboard.nextLine();
+				t.setCategory(p);
+				System.out.println("When is your task due? (MMM dd, yyyy) ");
+				d = keyboard.nextLine();
+                                tL.printTasks();
+				try {
+					tL.writeFile(filename);
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				break;
 			case 4:
 				System.out.println("Enter descrioption of task: ");
 				d = keyboard.nextLine();
@@ -126,6 +152,8 @@ public class TaskManager {
 					if(next != 'y') {
 						System.out.println("File not overwritten. Have a nice day!");
 						break;
+                        case 6:
+                                break:
 					}
 					}
 				
@@ -192,7 +220,7 @@ public class TaskManager {
 		System.out.println("Create a new task list, press 3 ");
 		System.out.println("Search for tasks by description, press 4 ");
 		System.out.println("Load new file, press 5 ");
-		System.out.println("Save task list to file, press 6 ");
+		System.out.println("Sort by priority, press 6 ");
 		System.out.println("Quit, press 0 ");
 	}
 
