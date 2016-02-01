@@ -1,0 +1,16 @@
+/**Operations:
+*
+*Sort
+*Search
+*add task
+*Remove Task
+*Veiw task
+*/
+
+public class TaskList
+{
+  public static void main(String[] args)
+  {
+    
+  }//main end
+}//end of Tasklist Class
