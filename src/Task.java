@@ -68,13 +68,13 @@ public class Task {
 	
 	public String toString() {
 		StringBuilder s = new StringBuilder();
-  		s.append( "Description: " + description + "\n" );
+  		s.append( "Description: " + getDescription() + "\n" );
 		s.append( "Priority: " + getPriorityName() + "\n" );
 		s.append( "Category: " + getCategoryName() + "\n" );
   		if( dueDate != null ) {
     			s.append( "Due Date: " + format.format(dueDate) + "\n" );
   		}
-  		s.append( "Location: " + location + "\n" );
+  		s.append( "Location: " + getLocation() + "\n" );
   		s.append( "Completed? " + (completed?"Y":"N") + "\n" );
   		return s.toString();
 	}
