@@ -135,12 +135,12 @@ public class TaskList {
 	 * @param d
 	 * @return match
 	 */
-	public Task searchByDescription(String d) {
-		Task foo = null;
+	public TaskList searchByDescription(String d) {
+		TaskList foo = null;
 
 		for (int i = 0; i < taskList.size(); i++) {
 			if (taskList.get(i).getDescription().equals(d)) {
-				foo = taskList.get(i);
+				foo = taskList.getTask(i);
 				break;
 			}
 		}
@@ -153,12 +153,12 @@ public class TaskList {
 	 * @param l
 	 * @return match
 	 */
-	public Task searchByLocation(String l) {
-		Task foo = null;
+	public TaskList searchByLocation(String l) {
+		TaskList foo = null;
 
 		for (int i = 0; i < taskList.size(); i++) {
 			if (taskList.get(i).getLocation().equals(l)) {
-				foo = taskList.get(i);
+				foo = taskList.getTask(i);
 				break;
 			}
 		}

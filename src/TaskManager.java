@@ -158,11 +158,12 @@ public class TaskManager {
 					System.out.println(
 							"Please enter which priority you would like to search by:\n\t1 - High\n\t2 - Medium\n\t3 - Low\n\t4 - Undefined");
 					temp = keyboard.nextShort();
-					System.out.println(taskList.searchByPriority(temp));
+					taskList.searchByPriority(temp).printTasks();
 					break;
 				case 2:
 					System.out.println("Please enter the date you would like to search for (MMM DD, YYYY): ");
 					input = keyboard.nextLine();
+					keyboard.nextLine();
 					try {
 						d = format.parse(input);
 						if (d == null) {
@@ -179,28 +180,28 @@ public class TaskManager {
 					System.out.println("Please enter the category you'd like to search by:\n\t0 - Undefined"
 							+ "\n\t1 - Other\n\t2 - School\n\t3 - Personal\n\t4 - Chore\n\t5 - Work");
 					temp = keyboard.nextShort();
-					System.out.println(taskList.searchByCategory(temp));
+					taskList.searchByCategory(temp).printTasks();
 					break;
 				case 4:
 					System.out.println("Please enter the description you'd like to search for: ");
 					input = keyboard.nextLine();
 					keyboard.nextLine();
-					System.out.println(taskList.searchByDescription(input));
+					taskList.searchByDescription(input);
 					break;
 				case 5:
 					System.out.println("Please enter the location you'd like to search for: ");
 					input = keyboard.nextLine();
 					keyboard.nextLine();
-					System.out.println(taskList.searchByLocation(input));
+					taskList.searchByLocation(input);
 					break;
 				case 6:
 					System.out.println("Would you like to search for completed or uncompleted tasks? (y/n): ");
 					input = keyboard.nextLine();
 					keyboard.nextLine();
 					if (input.equals('y')) {
-						System.out.println(taskList.searchByCompleted(true));
+						taskList.searchByCompleted(true).printTasks();
 					} else {
-						System.out.println(taskList.searchByCompleted(false));
+						taskList.searchByCompleted(false).printTasks();
 					}
 					break;
 				}

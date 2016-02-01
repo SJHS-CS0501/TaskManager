@@ -61,6 +61,12 @@ public class Task {
 	 */
 	
 	/**
+	 * Constructor
+	 */
+	 public Task() {
+	 }
+	
+	/**
 	 * Set the priority of the task.
 	 * @param userPriority short priority value (found in Task)
 	 */
