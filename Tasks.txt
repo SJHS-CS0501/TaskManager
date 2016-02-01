@@ -1,3 +1,0 @@
-2	Wed Jan 27 17:29:10 EST 2016	3	hi	sj	true
-3	Wed Jan 27 17:29:10 EST 2016	3	sec		true
-2	Wed Jan 27 17:29:10 EST 2016	4	ko		false

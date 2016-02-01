@@ -7,7 +7,7 @@ import java.io.*;
  */
 public class TaskList {
 	
-	ArrayList<Task> taskList;
+	static ArrayList<Task> taskList;
 	
 	/*
 	 * operations:
@@ -71,7 +71,7 @@ public class TaskList {
 	 * Read list of tasks from filename provided
 	 * @param filename Filename to read
 	 */
-	public void readFile( String filename ) throws FileNotFoundException {
+	public TaskList readFile( String filename ) throws FileNotFoundException {
 		Task t;
 		//assume taskList is initialized
 		taskList.clear(); //remove all old tasks
@@ -90,6 +90,7 @@ public class TaskList {
 		} catch( IOException e ) {
 			System.out.println( "IO Exception Encountered: " + e.getMessage() );
 		}
+		return null;
 	}
 	
 	/**
@@ -196,27 +197,24 @@ public class TaskList {
 			}
 		}
 		return match;
-	}	
-	
+	}
 	
 	/**
-	 * Sort through tasks based on their priority
-	 * @param 
+	 * Set task as completed
+	 * @param
 	 */
-	/*
-	public static void sortPriority() {
-		int startScan, index, minIndex, minValue;
-		for( startScan = 0; startScan < ( .length); index++ ) {
-		minIndex = startScan;
-		minValue = [startScan];
-		for( index = startScan < ( .length-1); startScan++ ) {
-			if( [index] < minValue ) {
-				minvalue = [index];
-				minIndex = index;
-			}
-		}
-		[minIndex] = [startScan];
-		[startScan] = minValue;
+	public void completed( int number ) {
+		taskList.get(number).setCompleted(true);
 	}
-	*/
+	/**
+	 * Sort through tasks based on their priority
+	 * @param
+	 * @return
+	 */
+	public static void sortPriority(TaskList newTaskList) {
+		
+		Collections.sort( taskList );
+	
+	}
+	
 }

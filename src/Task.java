@@ -1,5 +1,5 @@
-import java.text.DateFormat;
-import java.text.ParseException;
+//import java.text.DateFormat;
+//import java.text.ParseException;
 import java.util.Date;
 import java.io.*;
 
@@ -261,22 +261,26 @@ public class Task {
 	 */
 	public String toString() {
 		StringBuilder s = new StringBuilder();
-		s.append( "Priority: " + getPriorityName() + "\n" );
-		s.append( "Category: " + getCategoryName() + "\n" );
-		s.append( "Description: " + description + "\n" );
-		s.append( "Location: " + location +"\n" );
-		s.append( "Completed? " + (completed?"y":"n") + "\n" );
+		s.append( "Priority: " + getPriority() + "\n" );
 		if( dueDate != null ) {
 			s.append( "Due Date: " + dueDate.toString() + "\n" );
 		}
+		s.append( "Category: " + getCategory() + "\n" );
+		s.append( "Description: " + description + "\n" );
+		s.append( "Location: " + location +"\n" );
+		s.append( "Completed? " + (completed?"y":"n") + "\n" );
 		return s.toString();
 	}
+	
+	
 	
 	/**
 	 * Read a task from disk using the provided BufferedReader
 	 * @param reader BufferedReader to read from disk 
 	 * @return read task or null if not read 
 	 */
+	
+	
 	public void read( BufferedReader reader ) {
 		String line = null;
 		String [] results;
@@ -287,6 +291,9 @@ public class Task {
 			System.out.println( "Cannot read file: " + e.getMessage() );
 			return;
 		}
+		
+		/*
+		debug stuff
 		
 		results = line.split( "\t" );
 		
@@ -306,7 +313,7 @@ public class Task {
 		setDescription( results[3] );
 		setLocation( results[4] );
 		setCompleted( Boolean.parseBoolean( results[5] ) );
-		
+		*/
 		return;
 	}
 }
