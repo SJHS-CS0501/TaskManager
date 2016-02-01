@@ -34,7 +34,7 @@ public class Task_List {
 	 * 
 	 */ 
 	
-	ArrayList<Task> tasklist;
+	private ArrayList<Task> tasklist;
 	
 	 /* 
 	 * Operations:
@@ -76,7 +76,11 @@ public class Task_List {
 	 */
 	public boolean addTask(Task t){
 		
+		
+		
 		return tasklist.add(t);
+		
+		
 	}
 	
 	/**
@@ -129,6 +133,7 @@ public class Task_List {
 				
 				}
 				
+				
 				reader.close();
 	}
 	
@@ -138,7 +143,7 @@ public class Task_List {
 	 * @throws IOException 
 	 */
 	public void writeFile( String filename)throws IOException{
-		writer = new PrintWriter( new BufferedWriter(new FileWriter(filename, true)));
+		writer = new PrintWriter( new BufferedWriter(new FileWriter(filename)));
 		
 		for(int i = 0; i< tasklist.size(); i++) {
 			tasklist.get(i).write(writer);
@@ -209,7 +214,6 @@ public class Task_List {
 				//.addTask
 			}break;
 		}
-		
 		System.out.println(foo);
 		return foo;
 	}
@@ -227,9 +231,9 @@ public class Task_List {
 		DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
 		
 		for(int i = 0; i<tasklist.size(); i++){
-			tasklist.get(i);
-			if(Task.dat.equals(d) ){
-				foo = tasklist.get(i);
+			foo = tasklist.get(i);
+			if(foo.getDate().equals(d) ){
+				return foo; 
 			}break;
 		}
 		
@@ -296,6 +300,14 @@ public class Task_List {
 	
 	public void sortByPriority(){
 		
+		
+		
+		
+		
+		
+		
+		
+		/*
 		//for(int l = 0; l < tasklist.size(); l++){
 			
 		//}
@@ -317,6 +329,8 @@ public class Task_List {
 			
 			
 		}
+	
+	*/
 	} 
 	
 }

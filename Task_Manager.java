@@ -446,7 +446,7 @@ public class Task_Manager {
 			}while(c != 0);
 			
 			
-				
+			
 			
 		}else if(c == 2){
 		
@@ -514,8 +514,10 @@ public class Task_Manager {
 				System.out.println("You sucessfully made the fisrst task for your new file.\n"
 						+ "Restart and try option 1 for the full range of optons for you new task list");
 		
+			
 		}
 		
+		System.exit(0);
 	}
 }
 	

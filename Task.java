@@ -25,17 +25,16 @@ public class Task {
 	 * -Location
 	 * -completion(checkbox{y/n})
 	 */
-	 private static short priority;
-	 private static Date dueDate;//odject
-	 private static short catagory;
-	 private static String descrition;
-	 private static String location;
-	 private static boolean completed;
-	 private static SimpleDateFormat format;
-	 private static  StringBuilder s = new StringBuilder();
+	 private  short priority;
+	 private  Date dueDate;//odject
+	 private  short catagory;
+	 private  String descrition;
+	 private  String location;
+	 private  boolean completed;
+	 private  SimpleDateFormat format;
 	 
 	 
-	 public static String dat;
+	 
 	 /*
 	  * Priorities:
 	  */
@@ -54,7 +53,7 @@ public class Task {
 	 public static final short CAT_CHORE = 4;
 	 public static final short CAT_WORK = 5;
 	 
-	 static Scanner k = new Scanner(System.in);
+	// static Scanner k = new Scanner(System.in);
 	 
 	 /*
 	 * 
@@ -74,7 +73,7 @@ public class Task {
 	 /**
 	  * Set priority level
 	  */
-	 public static void setPriority(short i) throws Exception{
+	 public  void setPriority(short i) throws Exception{
 		 
 		
 		 
@@ -96,7 +95,7 @@ public class Task {
 	 /**
 	  * Get priority
 	  */
-	 public static short getPrority(){
+	 public  short getPrority(){
 		
 		 
 		 return priority;
@@ -130,11 +129,11 @@ public class Task {
 	  * Set due date 
 	 * 
 	  */
-	 public static void setDate(String s) {
+	 public  void setDate(String s) {
 		
-		 dat = s;
+		// dat = s;
 		 
-		 DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
+		 DateFormat format = new SimpleDateFormat("MM/d/YYYY");
 		 try {
 			 dueDate = format.parse(s);
 			System.out.println(format.format(dueDate));
@@ -152,7 +151,7 @@ public class Task {
 	 * @return 
 	 * @return 
 	  */
-	 public static Date getDate(){
+	 public  Date getDate(){
 		 
 		 return dueDate;
 	 }
@@ -160,7 +159,7 @@ public class Task {
 	 /**
 	  * set catagory
 	  */
-	 public static void setCatagory(short i){
+	 public void setCatagory(short i){
 		 
 		 if(i < 0 || i > 5){
 			 throw new IllegalArgumentException("Invalid priority");
@@ -172,7 +171,7 @@ public class Task {
 	  * get catagory
 	 * @return 
 	  */
-	 public static short getCatagory(){
+	 public  short getCatagory(){
 		 
 		 return catagory;
 	 }
@@ -180,7 +179,7 @@ public class Task {
 	 /**
 	  * set description
 	  */
-	 public static void setDescription(String d){
+	 public  void setDescription(String d){
 		 
 		 descrition = d;
 	 }
@@ -189,7 +188,7 @@ public class Task {
 	  * get description
 	 * @return 
 	  */
-	 public static String getDescrition(){
+	 public  String getDescrition(){
 		 
 		 return descrition;
 	 }
@@ -197,7 +196,7 @@ public class Task {
 	 /**
 	  * set location
 	  */
-	 public static void setLocation(String l){
+	 public  void setLocation(String l){
 		 
 		 location = l;
 	 }
@@ -206,7 +205,7 @@ public class Task {
 	  * get location
 	 * @return 
 	  */
-	 public static String getLocation(){
+	 public  String getLocation(){
 		 
 		 return location;
 	 }
@@ -216,7 +215,7 @@ public class Task {
 	 * @param b 
 	  * @return
 	  */
-	 public static void complete(char comp){
+	 public  void complete(char comp){
 		 
 		 if(comp == 'n'){
 			 completed = false;
@@ -228,7 +227,7 @@ public class Task {
 	 }
 	 
 	 
-	 public static boolean getComplete(){
+	 public  boolean getComplete(){
 		 
 		 return completed;
 	 }
@@ -239,14 +238,14 @@ public class Task {
 	  */
 	 public void write(PrintWriter writer){
 		 // write data separated by tabs
-		// StringBuilder s = new StringBuilder();
-		 
+		StringBuilder s = new StringBuilder();
+		 DateFormat format = new SimpleDateFormat("MM/d/YYYY");
 		 
 		 s.append(priority);
 		 s.append("\t");
 		
 		try{
-		 s.append(getDate());
+		 s.append(format.format(getDate()));
 		}catch (NullPointerException e)
 		{
 			e.printStackTrace();
@@ -272,12 +271,13 @@ public class Task {
 	 }
 	 
 	 public String toString() {
-		  StringBuilder s = new StringBuilder();
+		 DateFormat format = new SimpleDateFormat("MM/d/YYYY");
+		 StringBuilder s = new StringBuilder();
 		  s.append( "Description: " + getDescrition() + "\n" );
 		  s.append( "Priority: " + getPrority() + "\n" );
 		  s.append( "Category: " + getCatagory() + "\n" );
 		  if( dueDate != null ) {
-		    s.append( "Due Date: " + /*format.format(dueDate)*/ dueDate + "\n" );
+		    s.append( "Due Date: " + format.format(getDate()) + "\n" );
 		  }
 		  s.append( "Location: " + location + "\n" );
 		  s.append( "Completed? " + (completed?"Y":"N") + "\n" );
