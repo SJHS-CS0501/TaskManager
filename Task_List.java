@@ -296,10 +296,29 @@ public class Task_List {
 	
 	public void sortByPriority(){
 		
-		for(int l = 0; l < tasklist.size(); l++){
+		//for(int l = 0; l < tasklist.size(); l++){
+			
+		//}
+		Comparator<Task> compare = new Comparator<Task>(){
+		public int compare(Task p1, Task p2){
+			return(p1.getPrority() - p2.getPrority());
+		}
+		
+		};
+		
+		Collections.sort(tasklist, compare);
+		
+		System.out.println("Sort by priority");
+		for(Task priority :tasklist){
+			System.out.println("Priority:"
+					+ priority.getDescrition() +
+					" " + priority.getPrority()+
+					" " + priority.getComplete());
+			
 			
 		}
-	}
+	} 
+	
 }
 
 

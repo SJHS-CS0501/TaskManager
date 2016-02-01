@@ -118,7 +118,7 @@ public class Task_Manager {
 						+ "(2)Remove Task\n"
 						+ "(3)Print Stored Tasks\n"
 						+ "(4)Search Task\n"
-						+ "(5)");
+						+ "(5)Sort By Priority");
 				c = k.nextInt();
 				
 				switch(c){
@@ -413,10 +413,14 @@ public class Task_Manager {
 			}
 			while(s != 0);
 				
-		case 6:
+		case 5:
+			
+			list.sortByPriority();
+			
+			
 			break;
 			
-		/*case 7:
+		/*case 6:
 		
 		System.out.println("Which ")
 			
