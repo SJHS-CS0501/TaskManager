@@ -236,20 +236,6 @@ public class Task {
 		setLocation( results[4] );
 		setCompleted( Boolean.parseBoolean( results[5] ) );	
 	}
-		
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	public void setDescription(String userDescription) {
 		description = userDescription;

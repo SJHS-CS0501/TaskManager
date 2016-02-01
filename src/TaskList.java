@@ -162,19 +162,24 @@ public class TaskList {
 		return foo;
 	}
 	
-	public TaskList sortByPriority() {
+	public ArrayList<Task> sortByPriority() {
 		int startScan, index, minIndex, minValue;
-		Task minTask;
+		Task minTask, tasks = null;
 		for( startScan = 0; startScan < (taskList.size()-1); startScan++ ){
 			minIndex = startScan;
 			minTask = taskList.get(startScan);
 			for( index = startScan + 1; index < taskList.size(); index++) {
-				if( taskList.get(index).getPriority() < minValue ) {
-					
+				if( taskList.get(index).getPriority() < startScan ) {
+					tasks = taskList.get(index);
+					minIndex = index;
 				}
 			
 			}
+			taskList.get(minIndex).equals( taskList.get(startScan) );
+			taskList.get(startScan).equals(tasks);
+			
 		}
+		return taskList;
 	}
 	
 	public void setAsCompleted(short c) {
@@ -220,5 +225,8 @@ public class TaskList {
 		}
 		writer.close();
 	}
+
+	
+	
 
 }

@@ -53,9 +53,9 @@ public class TaskManager {
 		TaskList taskList = new TaskList();
 		String name = null, y = "y", description = null, decide = null, filename = "Task.txt", saveOrNaw = null,
 				t = null, input = null;
-		short temp, choice = 0;
+		short temp, choice = 0, temp2;
 		boolean truth, tempB, compairson = false, yesOrNo;
-		int i = 0, nine = '9';
+		int i = 0, ten = 10;
 		Date d = new Date();
 		Date date = new Date();
 		DateFormat format = new SimpleDateFormat("MMM dd, yyyy", Locale.ENGLISH);
@@ -65,7 +65,8 @@ public class TaskManager {
 		do {
 			System.out.println("\nPlease select your function: \n\t1 - Load the task list from file\n\t2 -"
 					+ " Save task list to file\n\t3 - Add task to Task List\n\t4 - Print task list\n\t5 - "
-					+ "Search for tasks\n\t6 - Sort Task List by priority\n\t7 - Mark tasks as completed\n\t8 - Remove a task from the list\n\t9 - Exit");
+					+ "Search for tasks\n\t6 - Sort Task List by priority\n\t7 - Mark tasks as completed\n"
+					+ "\t8 - Remove a task from the list\n\t9 - Edit a task\n\t10 - Exit");
 			choice = keyboard.nextShort();
 
 			switch (choice) {
@@ -211,7 +212,7 @@ public class TaskManager {
 
 			case 6:
 				System.out.println("Task List has been sorted by: Undefined/High/Medium/Low");
-				// Collections.sort(taskList, new Comparator<TaskList>();
+				taskList.equals(taskList.sortByPriority());
 				break;
 
 			case 7:
@@ -225,11 +226,24 @@ public class TaskManager {
 				i = keyboard.nextInt();
 				taskList.removeTask(i);
 				break;
+				
+			case 9:
+				System.out.println( "Please enter the number of the task you would like to edit: " );
+				temp = keyboard.nextShort();
+				System.out.println( "Please enter the number of what you would like to edit: \n\t1 - Priority\n\t"
+						+ "2 - Due Date\n\t3 - Category\n\t4 - Description\n\t5 - Location\n\t6 - Completed");
+				temp2 = keyboard.nextShort();
+				System.out.println( "Please enter what you would like to change this field to: ");
+				input = keyboard.nextLine();
+				switch(temp2) {
+					case 1:
+						taskList.get(temp).setPriority(Short.parseShort(input));
+				}
 
 			default:
 				System.exit(0);
 			}
-		} while (choice != '9');
+		} while (choice != ten);
 
 		/*
 		 * System.out.println(
