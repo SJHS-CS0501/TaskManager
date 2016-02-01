@@ -7,10 +7,24 @@ import java.io.*;
  * Task object containing information on a single task.
  * @author SJHSStudent
  */
-public class Task {
+public class Task implements Comparable<Task> {
 	
 	public Task() {
 		
+	}
+	
+	/**
+	 * @param t
+	 * @return positive, negative, or zero
+	 */
+	public int compareTo( Task t ) {
+		if( priority < t.priority ) {
+			return -1;
+		} else if( priority > t.priority ) {
+			return 1;
+		} else {
+			return 0;
+		}
 	}
 	
 	/**
@@ -257,15 +271,17 @@ public class Task {
 	public static final short CAT_WORK = 5;
 	
 	/**
-	 * 
+	 * Putting all the information for one task into one string
+	 * @param
+	 * @return string
 	 */
 	public String toString() {
 		StringBuilder s = new StringBuilder();
-		s.append( "Priority: " + getPriority() + "\n" );
+		s.append( "Priority: " + getPriorityName() + "\n" );
 		if( dueDate != null ) {
 			s.append( "Due Date: " + dueDate.toString() + "\n" );
 		}
-		s.append( "Category: " + getCategory() + "\n" );
+		s.append( "Category: " + getCategoryName() + "\n" );
 		s.append( "Description: " + description + "\n" );
 		s.append( "Location: " + location +"\n" );
 		s.append( "Completed? " + (completed?"y":"n") + "\n" );
@@ -279,8 +295,6 @@ public class Task {
 	 * @param reader BufferedReader to read from disk 
 	 * @return read task or null if not read 
 	 */
-	
-	
 	public void read( BufferedReader reader ) {
 		String line = null;
 		String [] results;

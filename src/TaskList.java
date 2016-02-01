@@ -206,12 +206,13 @@ public class TaskList {
 	public void completed( int number ) {
 		taskList.get(number).setCompleted(true);
 	}
+	
 	/**
 	 * Sort through tasks based on their priority
 	 * @param
 	 * @return
 	 */
-	public static void sortPriority(TaskList newTaskList) {
+	public static void sortPriority() {
 		
 		Collections.sort( taskList );
 	

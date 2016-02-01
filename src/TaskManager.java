@@ -141,7 +141,7 @@ public class TaskManager {
 			System.exit(0);
 			
 		case 4: //if user wants to sort tasks by priority
-			//newTaskList.sortPriority();
+			TaskList.sortPriority();
 			break;
 			
 		case 5: //if user wants to mark a task as completed
@@ -183,7 +183,7 @@ public class TaskManager {
 		do {
 			Task newTask = new Task();
 
-			System.out.println("Enter priority (1-3)\nundefined (0), high (1), medium (2), low (3): ");
+			System.out.println("Enter priority (1-3) [undefined (0), high (1), medium (2), low (3)]: ");
 			set = keyboard.nextShort();
 			newTask.setPriority(set);
 			
@@ -203,7 +203,7 @@ public class TaskManager {
 				}
 			} while( !success );
 
-			System.out.println("Enter category (1-5)\nunderfined (0), other (1), school (2), personal (3), chore (4), work (5): ");
+			System.out.println("Enter category (1-5) [underfined (0), other (1), school (2), personal (3), chore (4), work (5)]: ");
 			set = keyboard.nextShort();
 			newTask.setCategory(set);
 
