@@ -1,3 +1,4 @@
+import java.util.Scanner;
 /*
  * Taskmanager program
  * 
@@ -26,10 +27,14 @@ public class Taskmanager {
 
 	public static void main(String[] args)
 	{
+		Scanner SC =new Scanner(System.in);
+		int menuO =0;
 		System.out.println("Welcome to the Task manager!");
-		
-		
+		System.out.println("Menu\n\t1.Veiw Tasks\n2.close program");
+		menuO1= SC.nextInt();
+		if(
 		System.exit(0);
+		
 		
 	}//main class end
 }//taskmanager class end
