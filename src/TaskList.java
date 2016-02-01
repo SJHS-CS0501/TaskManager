@@ -18,16 +18,6 @@ public class TaskList {
 	 */
 	ArrayList<Task> taskList;
 
-	/*
-	 * Operations:
-	 * 
-	 * - Add tasks - Remove tasks - Get task by index - Get task by some other
-	 * value? - Search tasks by name - Search tasks by priority - Search tasks
-	 * by due date - Search tasks by completion - Search tasks by category -
-	 * Sort by priority - Sort by due date - Sort by completion - Sort by
-	 * category - Write list to disk - Read list from disk
-	 */
-
 	/**
 	 * Create a new TaskList from scratch.
 	 */
@@ -90,6 +80,11 @@ public class TaskList {
 		taskList.remove(i);
 	}
 
+	/**
+	 * Search tasks by priority.
+	 * @param p
+	 * @return matches
+	 */
 	public TaskList searchByPriority(short p) {
 		TaskList foo = new TaskList();
 
@@ -101,6 +96,11 @@ public class TaskList {
 		return foo;
 	}
 
+	/**
+	 * Search tasks by Due Date.
+	 * @param d
+	 * @return matches
+	 */
 	public Task searchByDueDate(Date d) {
 		Task foo = null;
 
@@ -114,6 +114,11 @@ public class TaskList {
 		return foo;
 	}
 
+	/**
+	 * Search tasks by Category.
+	 * @param c
+	 * @return matches
+	 */
 	public TaskList searchByCategory(short c) {
 		TaskList foo = new TaskList();
 
@@ -125,6 +130,11 @@ public class TaskList {
 		return foo;
 	}
 
+	/**
+	 * Search tasks by Description.
+	 * @param d
+	 * @return match
+	 */
 	public Task searchByDescription(String d) {
 		Task foo = null;
 
@@ -138,6 +148,11 @@ public class TaskList {
 		return foo;
 	}
 
+	/**
+	 * Search tasks by Location.
+	 * @param l
+	 * @return match
+	 */
 	public Task searchByLocation(String l) {
 		Task foo = null;
 
@@ -151,6 +166,11 @@ public class TaskList {
 		return foo;
 	}
 
+	/**
+	 * Search tasks by if they were completed or not.
+	 * @param c
+	 * @return matches
+	 */
 	public TaskList searchByCompleted(boolean c) {
 		TaskList foo = new TaskList();
 
@@ -161,7 +181,11 @@ public class TaskList {
 		}
 		return foo;
 	}
-
+	
+	/**
+	 * Sorting taskList by priority from Undefined/High/Medium/Low.
+	 * @return
+	 */
 	public TaskList sortByPriority() {
 		int startScan, index, minIndex, minValue;
 		for (startScan = 0; startScan < (taskList.size() - 1); startScan++) {
@@ -178,6 +202,10 @@ public class TaskList {
 		return this;
 	}
 
+	/**
+	 * Setting task as completed.
+	 * @param c
+	 */
 	public void setAsCompleted(short c) {
 		taskList.get(c).setCompleted(true);
 	}
@@ -210,6 +238,11 @@ public class TaskList {
 		}
 	}
 
+	/**
+	 * Writing taskList to file.
+	 * @param filename
+	 * @throws FileNotFoundException
+	 */
 	public void writeFile(String filename) throws FileNotFoundException {
 		PrintWriter writer = new PrintWriter(filename);
 		for (int i = 0; i < taskList.size(); i++) {

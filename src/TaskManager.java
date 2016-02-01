@@ -39,13 +39,11 @@ public class TaskManager {
 
 		// All objects are defined
 		TaskList taskList = new TaskList();
-		String name = null, y = "y", description = null, decide = null, filename = "Task.txt", saveOrNaw = null,
-				t = null, input = null;
+		String decide = null, filename = "Task.txt", saveOrNaw = null, input = null;
 		short temp, choice = 0, temp2;
-		boolean truth, tempB, compairson = false, yesOrNo;
+		boolean tempB;
 		int i = 0, ten = 10, foo;
 		Date d = new Date();
-		Date date = new Date();
 		DateFormat format = new SimpleDateFormat("MMM dd, yyyy", Locale.ENGLISH);
 		DateFormat printFormat = new SimpleDateFormat("EEE MMM dd, yyyy", Locale.ENGLISH);
 		Scanner keyboard = new Scanner(System.in);
