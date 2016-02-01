@@ -6,60 +6,22 @@ import java.io.*;
  * TaskList contains a list of tasks and operations for that list.
  */
 public class TaskList {
-	/*
-	 * Data:
-	 * 
-	 * - lists of tasks
-	 * 
-	 */
 	
-	ArrayList<Task> taskList;
-	
-	
-	/*
-	 * Operations:
-	 * 
-	 * - add tasks
-	 * - remove tasks
-	 * - get task by index
-	 * - get task by some other value
-	 * - search tasks by name
-	 * - search tasks by priority
-	 * - search tasks by due date
-	 * - search by completion
-	 * - search by category
-	 * - sort by category
-	 * - sort by priority
-	 * - sort by due date
-	 * - sort by completion
-	 * - write list to disk
-	 * - read list from disk
-	 * 
-	 */
-
-
-	
-	//* write methods to search tasks, should all return a type task
-	
-	//public TaskList searchByDescription( String d ){
-	//	TaskList search = new TaskList();
-		
-	//	for( int i = 0; i < taskList.size(); i++ ){
-	//		if( taskList.get(i).getDescription().equals(d)) {
-	//			search.addTask( taskList.get(i) );
-	//		}
-	//	}
-	//	
-	//	return search;
-	//}
+	ArrayList<Task> taskList; // make a brand new taskList
+	 
 	
 	/**
-	 * 
-	 * @param c
-	 * @return
+	 * @param c takes a short c
+	 * @return returns a TaskList
 	 */
 	public TaskList searchByCategory( short c ){
-		TaskList search = new TaskList();
+		TaskList search = new TaskList(); // new TaskList
+		
+		/*
+		 * for loop says: Search through the taskList and find all tasks with
+		 * the category the user asked for.
+		 * Use these tasks to make a new TaskList.
+		 */
 		
 		for( int i = 0; i < taskList.size(); i++ ){
 			if( taskList.get(i).getCategory() == c ) {
@@ -67,17 +29,21 @@ public class TaskList {
 			}
 		}
 		
-		return search;
+		return search; // returning the new TaskList we just created
 	}
 	
 	/**
 	 * 
-	 * @param p
+	 * @param p takes a short p
 	 * @return returns type TaskList
 	 */
 	public TaskList searchByPriority( short p ){
-		TaskList search = new TaskList();
+		TaskList search = new TaskList(); // new TaskList
 		
+		/* 
+		 * basically same thing as above, makes a new task list of just the 
+		 * tasks with the priority the user asked for
+		 */
 		for( int i = 0; i < taskList.size(); i++ ){
 			if( taskList.get(i).getPriority() == p) {
 				search.addTask( taskList.get(i) );
@@ -89,12 +55,13 @@ public class TaskList {
 	
 	/**
 	 * 
-	 * @param dD
+	 * @param dD takes Date dD
 	 * @return returns type TaskList
 	 */
 	public TaskList searchByDueDate( Date dD ){
 		TaskList search = new TaskList();
 		
+		// all these searches are basically the same just differ in what they're splitting the tasks by
 		for( int i = 0; i < taskList.size(); i++ ){
 			if( taskList.get(i).getDate().equals(dD)) {
 				search.addTask( taskList.get(i) );
@@ -106,7 +73,7 @@ public class TaskList {
 	
 	/**
 	 * 
-	 * @param l
+	 * @param l taking String l
 	 * @return also returns type TaskList
 	 */
 	public TaskList searchByLocation( String l ){
@@ -123,7 +90,7 @@ public class TaskList {
 	
 	/**
 	 * 
-	 * @param cP
+	 * @param cP taking a String
 	 * @return love to return a TaskList
 	 */
 	public TaskList searchByCompleted( String cP ){
@@ -139,11 +106,13 @@ public class TaskList {
 		return search;
 	}
 	
+	/**
+	 * Sorting the tasks in the taskList array
+	 */
 	public void orderByPrio(){
 		Collections.sort( taskList );
 	}
-	
-	
+
 	/**
 	 * Create a new TaskList from scratch
 	 */
@@ -163,7 +132,7 @@ public class TaskList {
 	
 	/**
 	 * Add the provided task.
-	 * @param t
+	 * @param t takes a Task t
 	 * @return true if add succeeded
 	 */
 	public boolean addTask( Task t ){
@@ -188,7 +157,7 @@ public class TaskList {
 	public void removeTask( int i ){
 		taskList.remove(i);
 	}
-
+	
 	
 	/**
 	 * Read list of tasks from file name provided.
@@ -202,6 +171,7 @@ public class TaskList {
 		
 		BufferedReader reader = new BufferedReader( new FileReader( fileName) );
 		
+		// if the reader is ready then read the new task and add it to the TaskList
 		try{
 			while( reader.ready() ){
 				t = new Task();
@@ -235,16 +205,17 @@ public class TaskList {
 			 */
 			
 		}	
-		writer.close();
+		writer.close(); // closing like a responsible programmer
 	}
 	
 	/**
 	 * Print all tasks in the task list.
+	 * Printy, printy, printy...
 	 */
 	public void printTasks() {
 		System.out.println( "Tasks: " );
 		for( int i = 0; i < taskList.size(); i++ ) {
-			System.out.print( taskList.get(i).toString() );
+			System.out.print( taskList.get(i).toString() ); // printing each task individually
 			System.out.println( "-----" );
 		}
 		System.out.println( "EOL" );
