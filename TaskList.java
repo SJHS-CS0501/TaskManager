@@ -223,8 +223,10 @@ public class TaskList {
 			minIndex = startScan;
 			minValue = taskList[index];
 			*/
-		taskList.sort(t.getPriority() < (t.getPriority() + 1 )); // this is the problem, the code up top is incase this isn't what i'm supposed to do
+		taskList.sort(t.compareTo(t) < t.getPriority() super E > t.compareTo(t))); // this is the problem, the code up top is incase this isn't what i'm supposed to do
 		//;sort(Comparator<? super E> c)
 		
-	
 	}
+	
+	
+}

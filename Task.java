@@ -132,6 +132,16 @@ public class Task {
 		return pName;
 	}
 
+public int compareTo( Task t ){
+		
+		if( priority < t.getPriority() ){
+			return 1;
+	}else if(priority > t.getPriority()){
+		return -1;
+	} else {
+		return 0;
+	}
+}
 	/**
 	 * Sets the value of dueDate by using dDateStrng and .parse 
 	 * @param dueDate
