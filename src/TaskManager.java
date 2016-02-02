@@ -4,23 +4,6 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-/*
- * do these things:
- * - keep list of tasks
- * - allow user to add/remove tasks
- * - allow user to prioritize tasks
- * - print out lists of tasks
- * 
- * list of tasks:
- * - read and store on disk
- * - sort/search
- * 
- * reports:
- * - list high priority
- * - list due today/soon
- * - list all(by date OR by priority)
- */
-
 /**
  * This program will assist the user to manage their tasks. (organize, sort,
  * delete, add).
@@ -40,7 +23,7 @@ public class TaskManager {
 		DateFormat format = new SimpleDateFormat("mm dd, yyyy", Locale.ENGLISH);
 		Scanner keyboard = new Scanner(System.in);
 		TaskList newTaskList = new TaskList();
-		String input = null, fileName = "dog.txt";
+		String input = null, fileName = "tasks.txt";
 		boolean TrueFalse, success = false;
 		TaskList results = null;
 		Date date = new Date();
@@ -52,7 +35,8 @@ public class TaskManager {
 		// first menu
 		System.out.println(
 				"Welcome to the Task Manager! Would you like to...\n1. load your tasks\n2. add task to task list\n"
-						+ "3. search for a specific task\n4. sort your tasks\n5. save tasks to disk\n6. mark a task as completed\n7. exit program\n(enter number) ");
+						+ "3. search for a specific task\n4. sort your tasks\n5. save tasks to disk\n6. mark a task "
+						+ "as completed\n7. exit program\n(enter number) ");
 		set = keyboard.nextShort();
 
 		switch (set) {
@@ -91,8 +75,7 @@ public class TaskManager {
 					}
 				} while (!success);
 
-				System.out.println(
-						"Enter category (1-5) [underfined (0), other (1), school (2), personal (3), chore (4), work (5)]: ");
+				System.out.println("Enter category (1-5) [underfined (0), other (1), school (2), personal (3), chore (4), work (5)]: ");
 				set = keyboard.nextShort();
 				newTask.setCategory(set);
 
@@ -112,7 +95,7 @@ public class TaskManager {
 
 				keyboard.nextLine();
 
-				newTaskList.addTask(newTask);
+				newTaskList.addTask(newTask); //adding task to taskList
 
 				System.out.println("Do you want to enter another task? (yes/no): ");
 				input = keyboard.nextLine().toLowerCase();
@@ -120,7 +103,6 @@ public class TaskManager {
 			} while (input.charAt(0) == 'y');
 
 			newTaskList.printTasks();
-			
 			break;
 
 		case 3: // if user wants to search for a specific task
@@ -162,14 +144,14 @@ public class TaskManager {
 				break;
 			}
 			results.printTasks();
-			System.exit(0);
+			break;
 
 		case 4: // if user wants to sort tasks by priority
-			TaskList.sortPriority();
-			TaskList.printTasks();
+			TaskList.sortPriority(); //calling on method to sort tasks
+			TaskList.printTasks(); //printing sorted list
 			break;
 			
-		case 5:
+		case 5: //if user wants to save tasks to disk
 			try {
 				newTaskList.writeFile(fileName);
 			} catch(FileNotFoundException e) {
@@ -181,7 +163,7 @@ public class TaskManager {
 		case 6: // if user wants to mark a task as completed
 				System.out.println("Which task do you want to mark as completed? (enter number [1 = first, 2 = second, etc.]): ");
 				number = (keyboard.nextShort()-1);
-				newTaskList.getTask(number).setCompleted(true);
+				newTaskList.getTask(number).setCompleted(true); //calling method to set specified task to true (completed)
 				break;
 
 		default: // if user wants to exit program

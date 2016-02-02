@@ -10,15 +10,6 @@ public class TaskList {
 
 	static ArrayList<Task> taskList;
 
-	/*
-	 * operations:
-	 * 
-	 * - add/remove tasks - get task by index - get task by some other value? -
-	 * search by name - search by priority - search by due date - search by
-	 * completion - sort by priority - sort by category - sort by due date -
-	 * sort by completion - write/read list to/from disk
-	 */
-
 	/**
 	 * Create new TaskList from scratch
 	 */
@@ -28,9 +19,7 @@ public class TaskList {
 
 	/**
 	 * Create a new TaskList from disk, reading from provided filename
-	 * 
-	 * @param filename
-	 *            String filename
+	 * @param filename String filename
 	 */
 	public TaskList(String filename) throws FileNotFoundException {
 		readFile(filename);
@@ -38,7 +27,6 @@ public class TaskList {
 
 	/**
 	 * Add task to list
-	 * 
 	 * @param t
 	 * @return true if add succeeded
 	 */
@@ -48,9 +36,7 @@ public class TaskList {
 
 	/**
 	 * Return task at index i. Throws exception if index is illegal.
-	 * 
-	 * @param i,
-	 *            index of task
+	 * @param i, index of task
 	 * @return Task object at index, NULL if not found
 	 */
 	public Task getTask(int i) {
@@ -59,9 +45,7 @@ public class TaskList {
 
 	/**
 	 * Remove specified task at index i. Throws exception if index is illegal.
-	 * 
-	 * @param i,
-	 *            index of task to remove
+	 * @param i, index of task to remove
 	 */
 	public void removeTask(int i) {
 		taskList.remove(i);
@@ -69,9 +53,7 @@ public class TaskList {
 
 	/**
 	 * Read list of tasks from filename provided
-	 * 
-	 * @param filename
-	 *            Filename to read
+	 * @param filename Filename to read
 	 */
 	public TaskList readFile(String filename) throws FileNotFoundException {
 		Task t;
@@ -96,14 +78,11 @@ public class TaskList {
 	}
 
 	/**
-	 * Write list of tasks from filename provided
-	 * 
-	 * @param filename
-	 *            Filename to read
+	 * Write list of tasks to disk
+	 * @param filename Filename to read
 	 */
 	public void writeFile(String filename) throws FileNotFoundException {
 		PrintWriter writer = new PrintWriter(filename);
-
 		for (int i = 0; i < taskList.size(); i++) {
 			taskList.get(i).write(writer);
 		}
@@ -112,8 +91,6 @@ public class TaskList {
 
 	/**
 	 * Print all tasks in the task list
-	 * 
-	 * @param
 	 */
 	public static void printTasks() {
 		System.out.println("Tasks:");
@@ -126,13 +103,13 @@ public class TaskList {
 
 	/**
 	 * Search through tasks based on their description
-	 * 
 	 * @param d
 	 * @return match
 	 */
 	public TaskList searchDescription(String d) {
 		TaskList match = new TaskList();
 
+		//loop searching through tasks' descriptions
 		for (int i = 0; i < taskList.size(); i++) {
 			if (taskList.get(i).getDescription().equals(d)) {
 				match.addTask(taskList.get(i));
@@ -143,13 +120,13 @@ public class TaskList {
 
 	/**
 	 * Search through tasks based on their category
-	 * 
 	 * @param c
 	 * @return match
 	 */
 	public TaskList searchCategory(short c) {
 		TaskList match = new TaskList();
 
+		//loop searching through tasks' category
 		for (int i = 0; i < taskList.size(); i++) {
 			if (taskList.get(i).getCategory() == c) {
 				match.addTask(taskList.get(i));
@@ -160,13 +137,13 @@ public class TaskList {
 
 	/**
 	 * Search through tasks based on their priority
-	 * 
 	 * @param p
 	 * @return match
 	 */
 	public TaskList searchPriority(short p) {
 		TaskList match = new TaskList();
 
+		//loop searching through tasks' priority
 		for (int i = 0; i < taskList.size(); i++) {
 			if (taskList.get(i).getPriority() == p) {
 				match.addTask(taskList.get(i));
@@ -177,13 +154,13 @@ public class TaskList {
 
 	/**
 	 * Search through tasks based on their location
-	 * 
 	 * @param l
 	 * @return match
 	 */
 	public TaskList searchLocation(String l) {
 		TaskList match = new TaskList();
 
+		//loop searching through tasks' location
 		for (int i = 0; i < taskList.size(); i++) {
 			if (taskList.get(i).getDescription().equals(l)) {
 				match.addTask(taskList.get(i));
@@ -194,13 +171,13 @@ public class TaskList {
 
 	/**
 	 * Search through tasks based on their completed status
-	 * 
 	 * @param com
 	 * @return match
 	 */
 	public TaskList searchCompleted(String com) {
 		TaskList match = new TaskList();
-
+		
+		//loop searching through tasks' completion
 		for (int i = 0; i < taskList.size(); i++) {
 			if (taskList.get(i).getDescription().equals(com)) {
 				match.addTask(taskList.get(i));
@@ -211,8 +188,6 @@ public class TaskList {
 
 	/**
 	 * Set task as completed
-	 * 
-	 * @param
 	 */
 	public void completed(int number) {
 		taskList.get(number).setCompleted(true);
@@ -220,9 +195,6 @@ public class TaskList {
 
 	/**
 	 * Sort through tasks based on their priority
-	 * 
-	 * @param
-	 * @return
 	 */
 	public static void sortPriority() {
 

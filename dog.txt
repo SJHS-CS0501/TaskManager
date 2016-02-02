@@ -1,2 +1,0 @@
-2		2	dog	sj	true
-1		4	calc	sj	true

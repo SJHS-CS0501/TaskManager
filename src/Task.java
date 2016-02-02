@@ -1,14 +1,11 @@
 
-//import java.text.DateFormat;
-//import java.text.ParseException;
-import java.util.Date;
-import java.io.*;
 import java.text.DateFormat;
 import java.text.ParseException;
+import java.util.Date;
+import java.io.*;
 
 /**
  * Task object containing information on a single task.
- * 
  * @author SJHSStudent
  */
 public class Task implements Comparable<Task> {
@@ -18,6 +15,7 @@ public class Task implements Comparable<Task> {
 	}
 
 	/**
+	 * comparing priorities in order to sort them
 	 * @param t
 	 * @return positive, negative, or zero
 	 */
@@ -33,7 +31,6 @@ public class Task implements Comparable<Task> {
 
 	/**
 	 * set priority of task
-	 * 
 	 * @param userPriority
 	 */
 	public void setPriority(short userPriority) {
@@ -45,7 +42,6 @@ public class Task implements Comparable<Task> {
 
 	/**
 	 * set due date of task
-	 * 
 	 * @param userDueDate
 	 */
 	public void setDueDate(Date userDueDate) {
@@ -54,7 +50,6 @@ public class Task implements Comparable<Task> {
 
 	/**
 	 * set category of task
-	 * 
 	 * @param userCategory
 	 */
 	public void setCategory(short userCategory) {
@@ -66,7 +61,6 @@ public class Task implements Comparable<Task> {
 
 	/**
 	 * set description of task
-	 * 
 	 * @param userDescription
 	 */
 	public void setDescription(String userDescription) {
@@ -75,7 +69,6 @@ public class Task implements Comparable<Task> {
 
 	/**
 	 * set location of task
-	 * 
 	 * @param userLocation
 	 */
 	public void setLocation(String userLocation) {
@@ -84,7 +77,6 @@ public class Task implements Comparable<Task> {
 
 	/**
 	 * set if task is completed
-	 * 
 	 * @param userCompleted
 	 */
 	public void setCompleted(boolean userCompleted) {
@@ -93,7 +85,6 @@ public class Task implements Comparable<Task> {
 
 	/**
 	 * get priority of task
-	 * 
 	 * @return
 	 */
 	public short getPriority() {
@@ -102,7 +93,6 @@ public class Task implements Comparable<Task> {
 
 	/**
 	 * get due date of task
-	 * 
 	 * @return
 	 */
 	public Date getDueDate() {
@@ -111,7 +101,6 @@ public class Task implements Comparable<Task> {
 
 	/**
 	 * get category of task
-	 * 
 	 * @return
 	 */
 	public short getCategory() {
@@ -120,7 +109,6 @@ public class Task implements Comparable<Task> {
 
 	/**
 	 * get description of task
-	 * 
 	 * @return
 	 */
 	public String getDescription() {
@@ -129,7 +117,6 @@ public class Task implements Comparable<Task> {
 
 	/**
 	 * get location of task
-	 * 
 	 * @return
 	 */
 	public String getLocation() {
@@ -138,7 +125,6 @@ public class Task implements Comparable<Task> {
 
 	/**
 	 * get if task is completed
-	 * 
 	 * @return
 	 */
 	public boolean getCompleted() {
@@ -147,7 +133,6 @@ public class Task implements Comparable<Task> {
 
 	/**
 	 * tell user what priority a task is set at
-	 * 
 	 * @return pName
 	 */
 	public String getPriorityName() {
@@ -173,7 +158,6 @@ public class Task implements Comparable<Task> {
 
 	/**
 	 * Write a task to the provided PrintWriter object
-	 * 
 	 * @param writer
 	 */
 	public void write(PrintWriter writer) {
@@ -187,6 +171,7 @@ public class Task implements Comparable<Task> {
 			s.append(dueDate.toString());
 		}
 
+		// format the way the task will be written to disk
 		s.append("\t");
 		s.append(category);
 		s.append("\t");
@@ -200,8 +185,7 @@ public class Task implements Comparable<Task> {
 	}
 
 	/**
-	 * tell user what category a task is assigned to
-	 * 
+	 * tell user what category (in words) a task is assigned to
 	 * @return cName
 	 */
 	public String getCategoryName() {
@@ -236,23 +220,17 @@ public class Task implements Comparable<Task> {
 	private String description;
 	private String location;
 	private boolean completed;
-
-	/*
-	 * priorities
-	 */
-
+	
+	 //priorities
 	public static short getPrioH() {
 		return PRIO_HIGH;
 	}
-
 	public static short getPrioM() {
 		return PRIO_MED;
 	}
-
 	public static short getPrioL() {
 		return PRIO_LOW;
 	}
-
 	public static short getPrioU() {
 		return PRIO_UNDEF;
 	}
@@ -262,34 +240,25 @@ public class Task implements Comparable<Task> {
 	public static final short PRIO_LOW = 3;
 	public static final short PRIO_UNDEF = 0;
 
-	/*
-	 * categories
-	 */
-
+	 // categories
 	public static short getCatU() {
 		return CAT_UNDEF;
 	}
-
 	public static short getCatO() {
 		return CAT_OTHER;
 	}
-
 	public static short getCatS() {
 		return CAT_SCHOOL;
 	}
-
 	public static short getCatP() {
 		return CAT_PERSONAL;
 	}
-
 	public static short getCatC() {
 		return CAT_CHORE;
 	}
-
 	public static short getCatW() {
 		return CAT_WORK;
 	}
-
 	public static final short CAT_UNDEF = 0;
 	public static final short CAT_OTHER = 1;
 	public static final short CAT_SCHOOL = 2;
@@ -299,12 +268,12 @@ public class Task implements Comparable<Task> {
 
 	/**
 	 * Putting all the information for one task into one string
-	 * 
 	 * @param
 	 * @return string
 	 */
 	public String toString() {
 		StringBuilder s = new StringBuilder();
+		//setting up the format in which the task will be printed out
 		s.append("Priority: " + getPriorityName() + "\n");
 		if (dueDate != null) {
 			s.append("Due Date: " + dueDate.toString() + "\n");
@@ -318,9 +287,7 @@ public class Task implements Comparable<Task> {
 
 	/**
 	 * Read a task from disk using the provided BufferedReader
-	 * 
-	 * @param reader
-	 *            BufferedReader to read from disk
+	 * @param reader BufferedReader to read from disk
 	 * @return read task or null if not read
 	 */
 	public void read(BufferedReader reader) {
@@ -336,18 +303,19 @@ public class Task implements Comparable<Task> {
 
 		results = line.split("\t");
 
-		setPriority(Short.parseShort(results[0]));
+		setPriority(Short.parseShort(results[0])); //setting what is at index 0 to priority
 
+		//setting what is at index 1 to date
 		try {
 			setDueDate(DateFormat.getDateInstance().parse(results[1]));
 		} catch (ParseException e) {
 			System.out.println("Could not parse date. Setting to null");
 		}
 
-		setCategory(Short.parseShort(results[2]));
-		setDescription(results[3]);
-		setLocation(results[4]);
-		setCompleted(Boolean.parseBoolean(results[5]));
+		setCategory(Short.parseShort(results[2])); //setting what is at index 2 to category
+		setDescription(results[3]); //setting what is at index 3 to description
+		setLocation(results[4]); //setting what is at index 4 to location
+		setCompleted(Boolean.parseBoolean(results[5])); //setting what is at index 5 to completion
 
 		return;
 	}
