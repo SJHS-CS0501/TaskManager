@@ -88,7 +88,11 @@ public class TaskList {
 		}
 		return t;
 	}
-
+	/**
+	 * searches tasks by priority
+	 * @param p
+	 * @return foo
+	 */
 	public TaskList searchByPriority(short p) {
 		TaskList foo = new TaskList();
 		for (int i = 0; i < taskList.size(); i++) {
@@ -100,8 +104,14 @@ public class TaskList {
 		return foo;
 	}
 	
+	/**
+	 * Sorts tasks by priority
+	 * @param t
+	 */
 	public void sortByPriority(Task t) {
-		
+		int ctr = 0;
+		taskList.sort(Task::compareTo);
+		taskList.forEach(System.out::println);
 	}
 	
 
@@ -131,7 +141,11 @@ public class TaskList {
 			System.out.println("IO Exception encountered: " + e.getMessage());
 		}
 	}
-
+	/**
+	 * 
+	 * @param filename
+	 * @throws FileNotFoundException
+	 */
 	public void writeFile(String filename) throws FileNotFoundException {
 		PrintWriter writer = new PrintWriter(filename);
 		for (int i = 0; i < taskList.size(); i++) {

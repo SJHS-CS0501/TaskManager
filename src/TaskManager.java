@@ -68,6 +68,7 @@ public class TaskManager {
 		
                 //do-while loop
 		do{
+			t = new Task();
 			System.out.println("Enter your selection: ");
 			option = keyboard.nextInt();
 			switch (option) { //switch statement for menu selections
@@ -105,6 +106,7 @@ public class TaskManager {
 				System.out.println("Enter a location for this task: ");
 				d = keyboard.nextLine();
 				t.setLocation(d);
+				tL.addTask(t);
 				tL.printTasks();
 				try {
 					tL.writeFile(filename);
@@ -157,7 +159,7 @@ public class TaskManager {
 				}
 				break;
             case 6:
-                //sortByPriority(t);
+                sortByPriority(t);
                 break;
 					}
 			
