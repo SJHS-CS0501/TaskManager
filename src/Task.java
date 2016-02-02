@@ -225,16 +225,10 @@ public class Task {
 		
 		results = line.split("\t");
 		
-		for( int ctr = 0; ctr < results.length; ctr++ ) {
-			System.out.println( "DBG: resluts[" + ctr + "]: \"" + results[ctr] + "\"" );
-		}
-		
 		setPriority( Short.parseShort( results[0] ) );
 		try {
 			setDueDate( DateFormat.getDateInstance().parse( results [1] ) );
 		} catch( ParseException e ) {
-			System.out.println( "Could not parse date. Setting to null." );
-			// nothing to do here, move along...
 		}
 		setCategory( Short.parseShort( results[2] ) );
 		setDescription( results[3] );

@@ -52,6 +52,7 @@ public class TaskManager {
 					System.out.println("Dying...");
 					e.printStackTrace();
 				}
+				System.out.println( "Your Task List has been loaded!" );
 				break;
 			case 2:
 				try {
@@ -201,19 +202,19 @@ public class TaskManager {
 				break;
 
 			case 7:
-				System.out.println("Please enter the number of the task you would like to mark as completed: ");
+				System.out.println("Please enter the number of the task you would like to mark as completed (0-" + taskList.getSize() + "): ");
 				temp = keyboard.nextShort();
 				taskList.setAsCompleted(temp);
 				break;
 
 			case 8:
-				System.out.println("Please enter the number of the task you would like delete: ");
+				System.out.println("Please enter the number of the task you would like delete (0-" + taskList.getSize() + "): ");
 				i = keyboard.nextInt();
 				taskList.removeTask(i);
 				break;
 
 			case 9:
-				System.out.println("Please enter the number of the task you would like to edit: ");
+				System.out.println("Please enter the number of the task you would like to edit (0-" + taskList.getSize() + "): ");
 				foo = keyboard.nextInt();
 				System.out.println("Please enter the number of what you would like to edit: \n\t1 - Priority\n\t"
 						+ "2 - Due Date\n\t3 - Category\n\t4 - Description\n\t5 - Location\n\t6 - Completed");

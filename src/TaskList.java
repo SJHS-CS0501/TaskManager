@@ -61,8 +61,7 @@ public class TaskList {
 	/**
 	 * Return task at index i. Throws exception if index is illegal.
 	 * 
-	 * @param i
-	 *            index of task
+	 * @param i index of task
 	 * @return Task object at index.
 	 */
 	public Task getTask(int i) {
@@ -184,7 +183,7 @@ public class TaskList {
 	
 	/**
 	 * Sorting taskList by priority from Undefined/High/Medium/Low.
-	 * @return
+	 * @return taskList
 	 */
 	public TaskList sortByPriority() {
 		int startScan, index, minIndex, minValue;
@@ -210,6 +209,13 @@ public class TaskList {
 		taskList.get(c).setCompleted(true);
 	}
 
+	/**
+	 * Will return size of task list
+	 * @return size of taskList
+	 */
+	public int getSize() {
+		return taskList.size();
+	}
 	/**
 	 * Read list of tasks from filename provided.
 	 * 
