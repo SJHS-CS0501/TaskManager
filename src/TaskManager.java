@@ -32,7 +32,7 @@ public class TaskManager {
 		// This do-while loop will control the entire program and allows the menu
 		// to be possible and repeat for the user.
 		do {
-			System.out.println("\nPlease select your function: \n\t1 - Load the task list from file\n\t2 -"
+			System.out.println("\nPlease select your function (Remember to always save your work!): \n\t1 - Load the task list from file\n\t2 -"
 					+ " Save task list to file\n\t3 - Add task to Task List\n\t4 - Print task list\n\t5 - "
 					+ "Search for tasks\n\t6 - Sort Task List by priority\n\t7 - Mark tasks as completed\n"
 					+ "\t8 - Remove a task from the list\n\t9 - Edit a task\n\t10 - Exit");
@@ -107,7 +107,7 @@ public class TaskManager {
 					try {
 						task.setDueDate(format.parse(input));
 					} catch (ParseException e) {
-						System.out.println("Die");
+						System.out.println("Date format not accepeted");
 					}
 
 					taskList.addTask(task);

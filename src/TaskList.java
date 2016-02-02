@@ -7,8 +7,9 @@ import java.io.*;
 import java.text.DateFormat;
 
 /**
- * @author Jack Protivnak TaskList contains a list of tasks and operations for
- *         that list.
+ * @author Jack Protivnak
+ * TaskList contains a list of tasks and operations for
+ * that list.
  */
 public class TaskList {
 	/*

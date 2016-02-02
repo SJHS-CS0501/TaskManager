@@ -1,6 +1,0 @@
-0		0			false
-2		5	home	really at home	false
-1	Thu Mar 05 00:00:00 EST 2015	4	away	really away	false
-2		2	paps	paps place	false
-3		3	mom	her place	false
-1		1	dad	his place	false
