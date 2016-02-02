@@ -92,7 +92,7 @@ public class TaaskManager {
 				break;
 			case 2:
 				do{
-				tL.addTask(t);
+				t = new Task();
 				System.out.print( " Please enter a desciption for your task " );
 				d = keyboard.nextLine();
 				t.setDescription(d);

@@ -110,7 +110,6 @@ public class TaskList {
 		PrintWriter writer = new PrintWriter( filename );
 		// Basically this is totally useless, all it does is save the last task and destroys the rest... why...
 		for( int i = 0; i < taskList.size(); i++ ){
-			writer.println();
 			taskList.get(i).write( writer );
 		
 		}
