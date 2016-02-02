@@ -351,9 +351,10 @@ public int compareTo( Task t ){
 		results = line.split("\t");
 		
 		for( int ctr = 0; ctr< results.length; ctr++ ){
-			System.out.println( "DBG: results[" + ctr + "]: \"" + results[ctr] + "\"" );
+			System.out.println(  results[ctr] );
 			
 		}
+		
 		/*
 		private short priority; // variable for priority of the task
 		private static Date dueDate; // variable for due date of the task 

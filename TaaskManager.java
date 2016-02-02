@@ -166,7 +166,17 @@ public class TaaskManager {
 				System.out.println(t.toString());
 				break;
 			case 6:
-				
+				System.out.println( "Sorting tasks by priority");
+				tL.sortByPriority(t);
+				System.out.println("Tasks have been sorted, thank you!");
+				try {
+					tL.readFile(filename);
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					System.out.println("File not found, programmin is crashing" );
+					e1.printStackTrace();
+				}
+				break;
 			case 7:
 				System.exit(0);
 			}

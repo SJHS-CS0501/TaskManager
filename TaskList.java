@@ -102,23 +102,21 @@ public class TaskList {
 		
 	}
 	/**
-	 * Writes the data to the disk
+	 * Writes the data to the disk, does not work at all... so close... so close...
 	 * @param filename
 	 * @throws FileNotFoundException
 	 */
 	public void writeFile( String filename ) throws FileNotFoundException{
 		PrintWriter writer = new PrintWriter( filename );
-		
+		// Basically this is totally useless, all it does is save the last task and destroys the rest... why...
 		for( int i = 0; i < taskList.size(); i++ ){
+			writer.println();
 			taskList.get(i).write( writer );
-			/*
-			 * EQUIVALENT:
-			 * Task foo = taskList.get(i);
-			 * foo.write(writer);
-			 * 
-			 */
+		
 		}
+		
 		writer.close();
+	
 	}
 	/**
 	 * Searches by the description of a task
@@ -215,6 +213,7 @@ public class TaskList {
 	 * @param s
 	 */
 	public void sortByPriority(Task t){
+		int ctr = 0;
 		/*
 		int startScan, minIndex, minValue, index;
 		
@@ -223,9 +222,14 @@ public class TaskList {
 			minIndex = startScan;
 			minValue = taskList[index];
 			*/
-		taskList.sort(t.compareTo(t) < t.getPriority() super E > t.compareTo(t))); // this is the problem, the code up top is incase this isn't what i'm supposed to do
+		//taskList.sort(t.compareTo(t) < t.getPriority() super E > t.compareTo(t))); // this is the problem, the code up top is incase this isn't what i'm supposed to do
 		//;sort(Comparator<? super E> c)
+		//taskList.sort(t.compareTo < t.getPriority());
 		
+		//for( (taskList.size -1); ctr++; ){
+		taskList.sort(Task::compareTo);
+		taskList.forEach(System.out::println ); // Yeah I'm not gonna lie here, I understand the principles, 
+		//but i have no clue what those colons are and how they magically work.
 	}
 	
 	
