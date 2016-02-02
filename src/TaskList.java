@@ -136,11 +136,11 @@ public class TaskList {
 	 * @return match
 	 */
 	public TaskList searchByDescription(String d) {
-		TaskList foo = null;
+		TaskList foo = new TaskList();
 
 		for (int i = 0; i < taskList.size(); i++) {
 			if (taskList.get(i).getDescription().equals(d)) {
-				foo = taskList.getTask(i);
+				foo.addTask(taskList.get(i));
 				break;
 			}
 		}
@@ -154,11 +154,11 @@ public class TaskList {
 	 * @return match
 	 */
 	public TaskList searchByLocation(String l) {
-		TaskList foo = null;
+		TaskList foo = new TaskList();
 
 		for (int i = 0; i < taskList.size(); i++) {
 			if (taskList.get(i).getLocation().equals(l)) {
-				foo = taskList.getTask(i);
+				foo.addTask(taskList.get(i));
 				break;
 			}
 		}

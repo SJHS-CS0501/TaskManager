@@ -3,35 +3,16 @@ import java.io.*;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-/**
- * 
- */
-
-/*
- * Task Manager Program
- * 
- * Do these things
- * - Keep a list of tasks
- * - Allow user to add and remove tasks
- * - Allow user to reprioritze tasks
- * - Print out lists of tasks
- * 
- * List of tasks:
- * - Read and Store on disk
- * - Sort
- * - Search
- * 
- * Reports:
- * - List high priority
- * - List due today/soon
- * - List all (by date OR by priority)
- * 
- */
 
 /**
+ * This program is designed to allow
+ * a user to enter a set of tasks and
+ * then they have a choice of options
+ * to affect the actions.
+ * @param args
  * @author Jack Protivnak
- *
  */
+
 public class TaskManager {
 	public static void main(String[] args) {
 		// main stuff goes here, yo
@@ -48,7 +29,7 @@ public class TaskManager {
 		DateFormat printFormat = new SimpleDateFormat("EEE MMM dd, yyyy", Locale.ENGLISH);
 		Scanner keyboard = new Scanner(System.in);
 
-		// This do-while loop will control the entire program and allowes the menu
+		// This do-while loop will control the entire program and allows the menu
 		// to be possible and repeat for the user.
 		do {
 			System.out.println("\nPlease select your function: \n\t1 - Load the task list from file\n\t2 -"
@@ -58,6 +39,9 @@ public class TaskManager {
 			choice = keyboard.nextShort();
 			keyboard.nextLine();
 
+			// This switch will control the choices of 
+			// the user based on what they want to do to 
+			// their tasks and task list.
 			switch (choice) {
 			case 1:
 				taskList = new TaskList();
@@ -85,6 +69,8 @@ public class TaskManager {
 					Task task = new Task();
 					decide = null;
 					input = null;
+					System.out.println( "Please enter the following:" );
+					System.out.println();
 
 					System.out.println("Descrption: ");
 					input = keyboard.nextLine();
@@ -94,12 +80,13 @@ public class TaskManager {
 					input = keyboard.nextLine();
 					task.setLocation(input);
 
-					System.out.println("Priority (as number) [1-3]");
+					System.out.println("Priority (as number):\n\t0 - Undefined\n\t1 - High\n\t2 - Medium\n\t3 - Low");
 					input = keyboard.nextLine();
 					temp = Short.parseShort(input);
 					task.setPriority(temp);
 
-					System.out.println("Category [1-5]: ");
+					System.out.println("Category \n\t0 - Undefined"
+							+ "\n\t1 - Other\n\t2 - School\n\t3 - Personal\n\t4 - Chore\n\t5 - Work: ");
 					input = keyboard.nextLine();
 					temp = Short.parseShort(input);
 					task.setCategory(temp);
@@ -113,7 +100,7 @@ public class TaskManager {
 					}
 					task.setCompleted(tempB);
 
-					System.out.println("Due Date: ");
+					System.out.println("Due Date (MMM DD, YYYY): ");
 					input = keyboard.nextLine();
 					task.setDateFormat(printFormat);
 					try {
@@ -155,8 +142,8 @@ public class TaskManager {
 
 				switch (temp) {
 				case 1:
-					System.out.println(
-							"Please enter which priority you would like to search by:\n\t1 - High\n\t2 - Medium\n\t3 - Low\n\t4 - Undefined");
+					System.out.println( "Please enter which priority you would like to search by:"
+							+ "\n\t0 - Undefined\n\t1 - High\n\t2 - Medium\n\t3 - Low" );
 					temp = keyboard.nextShort();
 					taskList.searchByPriority(temp).printTasks();
 					break;
@@ -195,7 +182,8 @@ public class TaskManager {
 					taskList.searchByLocation(input);
 					break;
 				case 6:
-					System.out.println("Would you like to search for completed or uncompleted tasks? (y/n): ");
+					System.out.println("Would you like to search for completed or uncompleted tasks?"
+							+ " (y for completed and n for uncompleted): ");
 					input = keyboard.nextLine();
 					keyboard.nextLine();
 					if (input.equals('y')) {
