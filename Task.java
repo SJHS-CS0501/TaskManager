@@ -131,12 +131,11 @@ public class Task {
 	  */
 	 public  void setDate(String s) {
 		
-		// dat = s;
 		 
-		 DateFormat format = new SimpleDateFormat("MM/d/YYYY");
+		 DateFormat format = new SimpleDateFormat("M/d/yyyy");
 		 try {
 			 dueDate = format.parse(s);
-			System.out.println(format.format(dueDate));
+			System.out.println(format.format(getDate()));
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			System.out.println(e.getMessage());
@@ -239,7 +238,7 @@ public class Task {
 	 public void write(PrintWriter writer){
 		 // write data separated by tabs
 		StringBuilder s = new StringBuilder();
-		 DateFormat format = new SimpleDateFormat("MM/d/YYYY");
+		 DateFormat format = new SimpleDateFormat("M/d/yyyy"); 
 		 
 		 s.append(priority);
 		 s.append("\t");
@@ -266,12 +265,13 @@ public class Task {
 			 s.append("y");
 		 }
 		 
+		 
 		 writer.println(s);
 		
 	 }
 	 
 	 public String toString() {
-		 DateFormat format = new SimpleDateFormat("MM/d/YYYY");
+		 DateFormat format = new SimpleDateFormat("M/d/yyyy");
 		 StringBuilder s = new StringBuilder();
 		  s.append( "Description: " + getDescrition() + "\n" );
 		  s.append( "Priority: " + getPrority() + "\n" );

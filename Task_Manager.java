@@ -442,8 +442,7 @@ public class Task_Manager {
 				
 			
 			
-			//Sort Tasks by priority
-				list.sortByPriority();
+			
 			
 			}while(c != 0);
 			
