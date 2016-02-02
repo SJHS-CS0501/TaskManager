@@ -40,7 +40,7 @@ import java.util.Scanner;
 
 /**
  * @author Ryan Smith
- *
+ *This program allows the user to manage tasks from a menu of options.
  */
 public class TaskManager {
 
