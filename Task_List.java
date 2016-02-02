@@ -143,9 +143,7 @@ public class Task_List {
 	 * @throws IOException 
 	 */
 	public void writeFile( String filename)throws IOException{
-		writer = new PrintWriter(filename);
-		
-		// new BufferedWriter(new FileWriter(filename))
+		writer = new PrintWriter( new BufferedWriter(new FileWriter(filename)));
 		
 		for(int i = 0; i< tasklist.size(); i++) {
 			tasklist.get(i).write(writer);
@@ -204,26 +202,20 @@ public class Task_List {
 	 * @param a
 	 * @return
 	 */
-	public void searchByPriority(short a){
+	public Task searchByPriority(short a){
 		
 		//Task_List 
-	ArrayList<Task> foo2 = new ArrayList<Task>();
-	Task foo = null; 
+		Task foo = null; 
 		//= new Task_List();
 		for(int i = 0; i< tasklist.size(); i++){
-		
+			
 			if(tasklist.get(i).getPrority() == a ){
 				foo = tasklist.get(i);
-				if(foo!= null){
-				foo2.add(foo);
-				}
 				//.addTask
-			}
-			}
-			//break;
-		
-		System.out.println(foo2);
-		//return foo;
+			}break;
+		}
+		System.out.println(foo);
+		return foo;
 	}
 	
 	/**
@@ -309,17 +301,24 @@ public class Task_List {
 	public void sortByPriority(){
 		
 		
+		
+		
+		
+		
+		
+		
+		
 		//for(int l = 0; l < tasklist.size(); l++){
 			
 		//}
-		Comparator<Task> comparePriority = new Comparator<Task>(){
+		Comparator<Task> compare = new Comparator<Task>(){
 		public int compare(Task p1, Task p2){
 			return(p1.getPrority() - p2.getPrority());
 		}
 		
 		};
 		
-		Collections.sort(tasklist, comparePriority);
+		Collections.sort(tasklist, compare);
 		
 		System.out.println("Sort by priority");
 		for(Task priority :tasklist){
