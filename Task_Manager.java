@@ -69,6 +69,8 @@ public class Task_Manager {
 		Task_List list;
 		Exception t;
 		int c = 0;
+		int in;
+		int y;
 		Task that = new Task();
 		list = new Task_List();
 		String fileName = "tasks.csv";
@@ -112,13 +114,15 @@ public class Task_Manager {
 			//list.printTasks();
 			
 			do{
-				System.out.println("Choose the action you want to take based on the indicated number:\n"
+				System.out.println("\nChoose the action you want to take based on the indicated number:\n"
 						+ "(0)Exit Task Manager\n"
 						+ "(1)Add Task\n"
 						+ "(2)Remove Task\n"
 						+ "(3)Print Stored Tasks\n"
 						+ "(4)Search Task\n"
-						+ "(5)Sort By Priority");
+						+ "(5)Sort By Priority\n"
+						+ "(6)Edit Tasks\n");
+				
 				c = k.nextInt();
 				
 				switch(c){
@@ -238,15 +242,17 @@ public class Task_Manager {
 				
 				s = k.nextInt();
 				
+				//new switch
 				switch(s){
 				
+				//part case 4
 				default:
 					s = 0;
 					break;
-				
+				//part case 4
 				case 0:
 					break;
-					
+				//part case 4	
 				case 1:
 					
 					do{
@@ -264,7 +270,7 @@ public class Task_Manager {
 					
 					list.searchByPriority(a);
 					
-					if(list.searchByPriority(a)!= null){
+					/*if(list.searchByPriority(a)!= null){
 						System.out.println("Would you like to edit this object's priority: y or n");
 						k.nextLine();
 						
@@ -277,11 +283,14 @@ public class Task_Manager {
 						}
 						
 					}
+					*/
 					
 					}
 					while(a != 4);
 					break;
-		
+				
+					
+				//Part case 4	
 				case 2:
 					System.out.println("\nWhat is the date for the task you are looking for"
 							+ " Use the format: (month day, year)");
@@ -292,7 +301,7 @@ public class Task_Manager {
 					list.searchByDate(desc);
 					//System.out.println(list.searchByDate(desc));
 					
-					if(list.searchByDate(desc)!= null){
+					/*if(list.searchByDate(desc)!= null){
 						System.out.println("Would you like to edit this object's due date: y or n");
 						k.nextLine();
 						
@@ -303,9 +312,12 @@ public class Task_Manager {
 							that.setDate(d);
 							list.writeFile(fileName);
 						}
+						
 					}
+					*/
 					break;
 					
+				//part case 4	
 				case 3:
 					
 					System.out.println("\nType the location for the task you are looking for");
@@ -316,7 +328,7 @@ public class Task_Manager {
 					list.searchByLocation(desc);
 					//System.out.println(list.searchByLocation(desc));
 					
-					if(list.searchByLocation(desc)!= null){
+					/*if(list.searchByLocation(desc)!= null){
 						System.out.println("Would you like to edit this object's location: y or n");
 						k.nextLine();
 						
@@ -328,9 +340,10 @@ public class Task_Manager {
 							list.writeFile(fileName);
 						}
 					}
+					*/
 					break;
 					
-					
+				//part case 4	
 				case 4:
 					
 					do{
@@ -349,7 +362,7 @@ public class Task_Manager {
 					list.searchByCatagory(a);
 					//System.out.println(list.searchByPriority(a));
 					
-					if(list.searchByCatagory(a)!= null){
+					/*if(list.searchByCatagory(a)!= null){
 						System.out.println("Would you like to edit this object's catagory: y or n");
 						k.nextLine();
 						
@@ -361,10 +374,12 @@ public class Task_Manager {
 							list.writeFile(fileName);
 						}
 					  }
+					  */
 					}
 					while(a != 6);
 					 break;
-				
+					 
+				//part case 4
 				case 5:
 					
 					System.out.println("\nType the description for the task you are looking for");
@@ -373,9 +388,10 @@ public class Task_Manager {
 					desc = k.nextLine();
 					
 					list.searchByDescription(desc);
+					
 					//System.out.println(list.searchByDescription(desc));
 					
-					if(list.searchByDescription(desc)!= null){
+					/*if(list.searchByDescription(desc)!= null){
 						System.out.println("Would you like to edit this object's description: y or n");
 						k.nextLine();
 						
@@ -387,8 +403,10 @@ public class Task_Manager {
 							list.writeFile(fileName);
 						}
 					}
+					*/
 					break;
 					
+				//part case 4	
 				case 6:
 					
 					do{
@@ -413,6 +431,7 @@ public class Task_Manager {
 			}
 			while(s != 0);
 				
+		//new main case 		
 		case 5:
 			
 			list.sortByPriority();
@@ -420,8 +439,90 @@ public class Task_Manager {
 			
 			break;
 			
-		/*case 6:
-		
+		//new main case	
+		case 6:
+			
+		do{
+			System.out.println("\nWhich task do you want to edit (use numbers)\n 0 to exit");
+			
+			in = k.nextInt();
+			
+			list.getTask(in);
+			
+			System.out.println(list.getTask(in));
+			
+			do{
+			
+			System.out.println("\nWhat do you want to edit?\n"
+								+ "(0)Exit\n"
+								+ "(1)Priority\n"
+								+ "(2)Catagory\n"
+								+ "(3)Date\n"
+								+ "(4)Description\n"
+								+ "(5)Location\n"
+								+ "(6)Completion\n");
+			 y = k.nextInt();
+			
+			switch(y){
+			
+			default:
+				in = 0;
+				break;
+				
+			case 0:
+				in = 0;
+			break;
+			
+			case 1:
+				System.out.println("New Priority = ");
+				cat = k.nextShort();
+				list.getTask(in).setPriority(cat);;
+				break;
+				
+			case 2:
+				System.out.println("New Catagory = ");
+				cat = k.nextShort();
+				list.getTask(in).setCatagory(cat);;
+				break;
+				
+			case 3:
+				System.out.println("New Date (m/d/y) = ");
+				k.nextLine();
+				d = k.nextLine();
+				list.getTask(in).setDate(d);
+				break;
+				
+			case 4:
+				System.out.println("New description =");
+				k.nextLine();
+				d = k.nextLine();
+				list.getTask(in).setDescription(d);
+				break;
+				
+			case 5:
+				System.out.println("New Location =");
+				k.nextLine();
+				d = k.nextLine();
+				list.getTask(in).setLocation(d);
+				break;
+				
+			case 6:
+				System.out.println("Has this task been completed yet?\n (y)yes\n (n)no");
+				k.nextLine();
+				comp = k.nextLine().toLowerCase().charAt(0);
+				list.getTask(in).complete(comp);
+				break;
+			}
+			
+			list.writeFile(fileName);
+			
+			}
+			while(in != 0);
+			
+		}
+		while(in != 0);
+			
+		/*
 		System.out.println("Which ")
 			
 		if(list.searchByCompletion(searc) != null){
@@ -438,10 +539,6 @@ public class Task_Manager {
 		*/
 				}
 				
-			
-			
-			//Sort Tasks by priority
-				list.sortByPriority();
 			
 			}while(c != 0);
 			

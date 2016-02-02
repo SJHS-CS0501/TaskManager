@@ -133,7 +133,7 @@ public class Task {
 		
 		// dat = s;
 		 
-		 DateFormat format = new SimpleDateFormat("MM/d/YYYY");
+		 DateFormat format = new SimpleDateFormat("MM/d/yyyy");
 		 try {
 			 dueDate = format.parse(s);
 			System.out.println(format.format(dueDate));
@@ -239,7 +239,7 @@ public class Task {
 	 public void write(PrintWriter writer){
 		 // write data separated by tabs
 		StringBuilder s = new StringBuilder();
-		 DateFormat format = new SimpleDateFormat("MM/d/YYYY");
+		 DateFormat format = new SimpleDateFormat("MM/d/yyyy");
 		 
 		 s.append(priority);
 		 s.append("\t");
@@ -271,7 +271,7 @@ public class Task {
 	 }
 	 
 	 public String toString() {
-		 DateFormat format = new SimpleDateFormat("MM/d/YYYY");
+		 DateFormat format = new SimpleDateFormat("MM/d/yyyy");
 		 StringBuilder s = new StringBuilder();
 		  s.append( "Description: " + getDescrition() + "\n" );
 		  s.append( "Priority: " + getPrority() + "\n" );

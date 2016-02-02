@@ -24,6 +24,7 @@ import java.util.*;
 public class Task_List {
 
 	PrintWriter writer;
+	ArrayList<Task> foo2;
 	/*
 	 * Data:
 	 * -list of tasks
@@ -158,20 +159,24 @@ public class Task_List {
 			writer.close();
 			}
 	
-	public Task searchByDescription(String d){
+	public void searchByDescription(String d){
+		foo2 = new ArrayList<Task>();
 		Task foo= null;
 		
 		for(int i = 0; i<tasklist.size(); i++){
 			if(tasklist.get(i).getDescrition().equals(d) ){
 				foo = tasklist.get(i);
-			}break;
+				if(foo != null){
+					foo2.add(foo);
+				}
+			}//break;
 		}
 		
-		if(foo == null){
+		if(foo2 == null){
 			System.out.println("\nSORRY, NO TASK WAS FOUND WITH THAT DEASCRIPTION");
 		}
-		System.out.println(foo);
-		return foo;
+		System.out.println(foo2);
+		//return foo;
 		//Replace or fail
 	}
 	
@@ -180,20 +185,24 @@ public class Task_List {
 	 * @param d
 	 * @return
 	 */
-	public Task searchByLocation(String d){
+	public void searchByLocation(String d){
+		foo2 = new ArrayList<Task>();
 		Task foo= null;
 		
 		for(int i = 0; i<tasklist.size(); i++){
 			if(tasklist.get(i).getLocation().equals(d) ){
 				foo = tasklist.get(i);
-			}break;
+				if(foo != null){
+					foo2.add(foo);
+				}
+			}//break;
 		}
 		
-		if(foo == null){
+		if(foo2 == null){
 			System.out.println("\nSORRY, NO TASK WAS FOUND WITH THAT Location");
 		}
-		System.out.println(foo);
-		return foo;
+		System.out.println(foo2);
+		//return foo;
 		//Replace or fail
 	}
 	
@@ -202,8 +211,9 @@ public class Task_List {
 	 * @param a
 	 * @return
 	 */
-	public Task searchByPriority(short a){
+	public void searchByPriority(short a){
 		
+		foo2 = new ArrayList<Task>();
 		//Task_List 
 		Task foo = null; 
 		//= new Task_List();
@@ -212,10 +222,13 @@ public class Task_List {
 			if(tasklist.get(i).getPrority() == a ){
 				foo = tasklist.get(i);
 				//.addTask
-			}break;
+				if(foo!= null){
+				foo2.add(foo);
+				}
+			}//break;
 		}
-		System.out.println(foo);
-		return foo;
+		System.out.println(foo2);
+		//return foo;
 	}
 	
 	/**
@@ -224,25 +237,29 @@ public class Task_List {
 	 * @return
 	 * @throws ParseException 
 	 */
-	public Task searchByDate( String d) throws ParseException{
-		
+	public void searchByDate( String d) throws ParseException{
+		foo2 = new ArrayList<Task>();
 		Task foo = null;
 		
 		DateFormat format = new SimpleDateFormat("MMMM d, yyyy", Locale.ENGLISH);
 		
+		
 		for(int i = 0; i<tasklist.size(); i++){
-			foo = tasklist.get(i);
 			if(foo.getDate().equals(d) ){
-				return foo; 
-			}break;
+			foo = tasklist.get(i);
+			if(foo != null){
+				foo2.add(foo);
+			}
+				//return foo; 
+			}//break;
 		}
 		
-		if(foo == null){
+		if(foo2 == null){
 			System.out.println("\nNO RESULTS FOUND ");
 		}
 		
-		System.out.println(foo);
-		return foo;
+		System.out.println(foo2);
+		//return foo;
 	}
 	
 	/**
@@ -250,19 +267,22 @@ public class Task_List {
 	 * @param a
 	 * @return
 	 */
-	public Task searchByCatagory(short a ){
-		
+	public void searchByCatagory(short a ){
+		foo2 = new ArrayList<Task>();
 		Task foo = null;
 		
 		for(int i = 0; i<tasklist.size(); i++){
 			if(tasklist.get(i).getCatagory() == a ){
 				foo = tasklist.get(i);
-			}break;
+				if(foo != null){
+					foo2.add(foo);
+				}
+			}//break;
 		}
 		
 		
-		System.out.println(foo);
-		return foo;
+		System.out.println(foo2);
+		//return foo;
 	}
 	
 	/**
@@ -270,18 +290,21 @@ public class Task_List {
 	 * @param d
 	 * @return
 	 */
-	public Task searchByCompletion(boolean d){
-		
+	public void searchByCompletion(boolean d){
+		foo2 = new ArrayList<Task>();
 		Task foo = null;
 		
 		for(int i = 0; i<tasklist.size(); i++){
 			if(tasklist.get(i).getComplete() == d ){
 				foo = tasklist.get(i);
-			}break;
+				if(foo != null){
+					foo2.add(foo);
+				}
+			}//break;
 		}
 		
-		System.out.println(foo);
-		return foo;
+		System.out.println(foo2);
+		//return foo;
 	}
 	
 	/**
@@ -300,25 +323,14 @@ public class Task_List {
 	
 	public void sortByPriority(){
 		
-		
-		
-		
-		
-		
-		
-		
-		/*
-		//for(int l = 0; l < tasklist.size(); l++){
-			
-		//}
-		Comparator<Task> compare = new Comparator<Task>(){
+		Comparator<Task> comparePriority = new Comparator<Task>(){
 		public int compare(Task p1, Task p2){
 			return(p1.getPrority() - p2.getPrority());
 		}
 		
 		};
 		
-		Collections.sort(tasklist, compare);
+		Collections.sort(tasklist, comparePriority);
 		
 		System.out.println("Sort by priority");
 		for(Task priority :tasklist){
@@ -330,7 +342,7 @@ public class Task_List {
 			
 		}
 	
-	*/
+	
 	} 
 	
 }
