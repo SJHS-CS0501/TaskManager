@@ -10,8 +10,8 @@ import java.util.Scanner;
  * @author David Herr
  *
  */
-public class Task {
-
+public class Task implements Comparable {
+// can delete things 
 	/*
 	 * Data fields:
 	 * Priority - check
@@ -388,6 +388,11 @@ public int compareTo( Task t ){
 		  s.append( "Completed? " + (completed?"Y":"N") + "\n" );
 		  return s.toString();
 		}
+	@Override
+	public int compareTo(Object arg0) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 
 }
 	
