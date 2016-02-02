@@ -321,6 +321,9 @@ public class Task_List {
 
 	}
 	
+	/**
+	 * Sort by priority
+	 */
 	public void sortByPriority(){
 		
 		Comparator<Task> comparePriority = new Comparator<Task>(){
