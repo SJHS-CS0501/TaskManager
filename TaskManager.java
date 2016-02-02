@@ -11,7 +11,7 @@ import java.util.Scanner;
  */
 public class TaskManager {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException{
 
 		Scanner keyboard = new Scanner(System.in);
 		String input = null; // for most of the input
@@ -46,6 +46,7 @@ public class TaskManager {
 					e.printStackTrace();
 					System.exit(-1);
 				}
+				  
 				break;
 			case 2: // for making a new Task list and then saving it to disk
 				
@@ -62,7 +63,7 @@ public class TaskManager {
 					// setting priority by converting string to short
 					stuff.setPriority( Short.parseShort( input ) ); 
 					
-					System.out.print( "Category(1-5): " );
+					System.out.println( "Category(1-5): " );
 					System.out.println( "1. Other\n2. School\n3. Personal\n4. Chore\n5. Work" );
 					input = keyboard.nextLine();
 					// setting priority by converting string to short
