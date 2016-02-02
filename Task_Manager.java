@@ -112,8 +112,7 @@ public class Task_Manager {
 			//list.printTasks();
 			
 			do{
-				System.out.println("Choose the actio 1"
-						+ " you want to take based on the indicated number:\n"
+				System.out.println("Choose the action you want to take based on the indicated number:\n"
 						+ "(0)Exit Task Manager\n"
 						+ "(1)Add Task\n"
 						+ "(2)Remove Task\n"
@@ -265,7 +264,7 @@ public class Task_Manager {
 					
 					list.searchByPriority(a);
 					
-					/*if(list.searchByPriority(a)!= null){
+					if(list.searchByPriority(a)!= null){
 						System.out.println("Would you like to edit this object's priority: y or n");
 						k.nextLine();
 						
@@ -277,9 +276,8 @@ public class Task_Manager {
 							list.writeFile(fileName);
 						}
 						
-						
 					}
-					*/
+					
 					}
 					while(a != 4);
 					break;

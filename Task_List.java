@@ -307,7 +307,7 @@ public class Task_List {
 		
 		
 		
-		
+		/*
 		//for(int l = 0; l < tasklist.size(); l++){
 			
 		//}
@@ -327,10 +327,10 @@ public class Task_List {
 					" " + priority.getPrority()+
 					" " + priority.getComplete());
 			
-			//rename comparePriority
+			
 		}
 	
-	
+	*/
 	} 
 	
 }
