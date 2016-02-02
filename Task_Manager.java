@@ -443,7 +443,7 @@ public class Task_Manager {
 		case 6:
 			
 		do{
-			System.out.println("\nWhich task do you want to edit (use numbers)\n 0 to exit");
+			System.out.println("\nWhich task do you want to edit (use numbers)\n -1 to exit");
 			
 			in = k.nextInt();
 			
@@ -466,11 +466,11 @@ public class Task_Manager {
 			switch(y){
 			
 			default:
-				in = 0;
+				y = 0;
 				break;
 				
 			case 0:
-				in = 0;
+				y  = 0;
 			break;
 			
 			case 1:
@@ -517,10 +517,10 @@ public class Task_Manager {
 			list.writeFile(fileName);
 			
 			}
-			while(in != 0);
+			while(y != 0);
 			
 		}
-		while(in != 0);
+		while(in != -1);
 			
 		/*
 		System.out.println("Which ")
