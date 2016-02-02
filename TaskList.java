@@ -182,7 +182,7 @@ public class TaskList {
 			}
 			
 			reader.close();
-		} catch( IOException e ){
+		} catch( IOException e ){ // no file = sadness
 			System.out.println( "Cannot close file: " + e.getMessage() );
 		}
 		
@@ -190,7 +190,7 @@ public class TaskList {
 	}
 	
 	/**
-	 * 
+	 * Writing the tasks to disk
 	 * @param fileName
 	 * @throws FileNotFoundException
 	 */
