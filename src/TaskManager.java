@@ -218,6 +218,11 @@ public class TaskManager {
 		System.exit(0);
 	}
 
+	private static void sortByPriority(Task t) {
+		// TODO Auto-generated method stub
+		
+	}
+
 	public static void menu(int option) {
 
 		System.out.println("If you want to: ");
