@@ -38,6 +38,7 @@ public class TaaskManager {
 
 	*/
 	/**
+	 * This program adds the user interface, and uses the methods used in both the Task and TaskList classes.
 	 * @param args
 	 */
 	
@@ -55,59 +56,59 @@ public class TaaskManager {
 		 * FINALLY WARNING VERY HARD
 		 * implement the sort by priority so that the user can print out the lists of tasks in priority order
 		 */
-	    char goOn = 0;
-		String d;
-		short p;
-		boolean b = false;
-		Date dDate = new Date();
-		DateFormat format = new SimpleDateFormat("MMMM dd, yyyy", Locale.ENGLISH);
-		Task t = new Task();
-		Scanner keyboard = new Scanner(System.in);
-		String filename = "Task file";
-		File userFile = new File( filename );
-		TaskList tL = new TaskList();
-		int selection = 0;
-		Date userDate = new Date();
+	    char goOn = 0; // variable for determining whether the user wants to through with numerous options in the class, i.e adding tasks
+		String d; // variable to store strings
+		short p; // variable to store shorts
+		boolean b = false; // variable to store booleans
+		Date dDate = new Date(); // variable for storing dates
+		DateFormat format = new SimpleDateFormat("MMMM dd, yyyy", Locale.ENGLISH); // variable for the date format
+		Task t = new Task(); // variable for storing tasks
+		Scanner keyboard = new Scanner(System.in); // creates new scanner object 
+		String filename = "Task file"; // variable for the name of the default file
+		File userFile = new File( filename ); // variable for the default file used
+		TaskList tL = new TaskList(); // creates new task list
+		int selection = 0; // variable for the user's selection in the menu
+		Date userDate = new Date(); // creates a new date object
 		
 		
 		System.out.println( "Welcome to Task Manager! " );
-		menuDisplay(selection);
+		menuDisplay(selection); // displays the menu
 		
 		do{
 			System.out.println( " Please enter a selection " );
 			selection = keyboard.nextInt();
 			keyboard.nextLine();
-			switch( selection ){
+			switch( selection ){ // switches to the user's selection in the menu
 			case 0: 
-				tL.printTasks();
+				tL.printTasks(); // prints tasks
 				break;
 			case 1:
-				try {
-					tL.readFile(filename);
+				try { // tests the file to make sure the exists and can be found
+					tL.readFile(filename); // reads the file 
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
-					System.out.println("File not found, programmin is crashing" );
-					e1.printStackTrace();
+					System.out.println("File not found, program is crashing" );
+					e1.printStackTrace(); // prints the trace of the program if it does crash
 				}
 				break;
 			case 2:
 				do{
-				t = new Task();
+				t = new Task(); // creates a new task
 				System.out.print( " Please enter a desciption for your task " );
 				d = keyboard.nextLine();
-				t.setDescription(d);
+				t.setDescription(d); // sets the description for the task
 				System.out.print( "Please enter a priority for your task between 1-3 (1 being high, 2 medium, and 3 low) " );
-				p = keyboard.nextShort();
-				t.setPriority(p);
+				p = keyboard.nextShort(); 
+				t.setPriority(p);// sets the priority for the task
 				System.out.print( "Please enter a category for your task between 1-5 (1 being other, 2 school,"
 						+ " 3 personal, 4 chores, and 5 work )");
 				p = keyboard.nextShort();
-				t.setCatagory(p);
+				t.setCatagory(p); // sets the category for the task
 				keyboard.nextLine();
 				System.out.println( "Please enter a due date for your task should in month date, year " );
 				d = keyboard.nextLine();
-				try {
-					dDate = format.parse(d);
+				try { // tests to make sure the date can be parsed
+					dDate = format.parse(d); //  formats the date
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					System.out.println("Cannot parse date" );
@@ -116,17 +117,17 @@ public class TaaskManager {
 				t.setDate( dDate );
 				System.out.print( "Please enter a location for your task " );
 				d = keyboard.nextLine();
-				t.setLocation(d);
+				t.setLocation(d); // sets the location for the task
 				tL.addTask(t);
 				System.out.print( " Would you like to go on? Press 'y' to go on" );
-				goOn = keyboard.nextLine().toLowerCase().charAt(0);
-				tL.printTasks();
-				if( goOn != 'y'){
-					try {
-						tL.writeFile(filename);
+				goOn = keyboard.nextLine().toLowerCase().charAt(0); // takes the first character of the user's input and puts it in lower case
+				tL.printTasks(); // prints tasks
+				if( goOn != 'y'){ // if the user did not press y to continue... 
+					try { // tries to see if the tasks can be written to file
+						tL.writeFile(filename); // writes the tasks to file
 					} catch (FileNotFoundException e) {
 						// TODO Auto-generated catch block
-						e.printStackTrace();
+						e.printStackTrace();// if the program crashes, the trace of the program is printed
 					}
 				}
 				}while( goOn == 'y');
@@ -136,6 +137,7 @@ public class TaaskManager {
 				filename = keyboard.nextLine();
 				if( userFile.exists()){
 					System.out.println( "The file you entered DOES exist, are you sure you want to overwrite the file? Enter y to overwrite" );
+					// asks if the user DOES want to overwrite the file
 					goOn = keyboard.nextLine().toLowerCase().charAt(0);
 					if(goOn != 'y'){
 						 System.out.println( "Thank you, file will NOT be overwritten, goodbye" );
@@ -148,11 +150,11 @@ public class TaaskManager {
 				System.out.println( " Would you like to save all previous tasks to new task list? (press y for yes " );
 				goOn = keyboard.nextLine().toLowerCase().charAt(0);
 				if( goOn == 'y' ){
-					TaskList tL2 = new TaskList();
-					tL2 = tL;
+					TaskList tL2 = new TaskList(); // creates new task list
+					tL2 = tL; // sets task list one to task list two 
 					System.out.println( "New Task List has been created and all previous saves have been added");
 				}else{
-					TaskList tL2 = new TaskList();
+					TaskList tL2 = new TaskList(); // creates new task list
 					System.out.println( "New Task List has been created ");
 					
 				}
@@ -162,23 +164,23 @@ public class TaaskManager {
 				System.out.println( " Please enter the description of the task you would like to find " );
 				d = keyboard.nextLine();
 				
-				tL.serachByDescription(d);
-				System.out.println(t.toString());
+				tL.serachByDescription(d); // searches the program for a task with a specific description
+				System.out.println(t.toString()); // prints the results of the search
 				break;
 			case 6:
 				System.out.println( "Sorting tasks by priority");
-				tL.sortByPriority(t);
+				tL.sortByPriority(t); // sorts tasks by the short number associated with it's priority
 				System.out.println("Tasks have been sorted, thank you!");
 				try {
-					tL.readFile(filename);
+					tL.readFile(filename); // reads the file 
 				} catch (FileNotFoundException e1) {
 					// TODO Auto-generated catch block
-					System.out.println("File not found, programmin is crashing" );
-					e1.printStackTrace();
+					System.out.println("File not found, program is crashing" );
+					e1.printStackTrace(); // if the file is not found, the trace of the program is printed
 				}
 				break;
 			case 7:
-				System.exit(0);
+				System.exit(0); // exits the program
 			}
 			/*
 			System.out.print( " Please enter a desciption for your task " );
@@ -242,6 +244,10 @@ public class TaaskManager {
 			*/
 			System.exit(0);
 }
+	/**
+	 * This method displays the options for the program
+	 * @param selection
+	 */
 		public static void menuDisplay( int selection ){
 			
 			System.out.println( "Would you like to: " );

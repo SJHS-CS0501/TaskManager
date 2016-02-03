@@ -42,13 +42,13 @@ public class TaskList {
 	 * Create a new Task List from scratch
 	 */
 	public TaskList(){
-		taskList = new ArrayList<Task>();
+		taskList = new ArrayList<Task>(); // creates new array list of task object, a task list
 	}
 	/**
 	 * Create a new TaskList from disk, reading from provided filename
 	 */
 	public TaskList( String filename ) throws FileNotFoundException {
-		readFile( filename );
+		readFile( filename );// reads the file 
 		
 	}
 	/**
@@ -57,7 +57,7 @@ public class TaskList {
 	 * @return
 	 */
 	public boolean addTask( Task t ){
-		return taskList.add(t);
+		return taskList.add(t); // adds the task to the task list
 		
 	}
 	/**
@@ -66,7 +66,7 @@ public class TaskList {
 	 * @return Task object at index
 	 */
 	public Task getTask( int i ){
-		return taskList.get(i);
+		return taskList.get(i); // returns a task for a given index
 		
 	}
 	/**
@@ -74,7 +74,7 @@ public class TaskList {
 	 * @param i
 	 */
 	public void removeTask( int i ){
-		taskList.remove(i);
+		taskList.remove(i); // removes a task
 	}
 	/**
 	 * Read list of tasks from filename provided
@@ -83,38 +83,38 @@ public class TaskList {
 	 */
 	public void readFile( String filename ) throws FileNotFoundException{
 		// assume task list is initialized
-		Task t;
+		Task t; // variable for tasks 
 		taskList.clear(); // remove old tasks
-		BufferedReader reader = new BufferedReader( new FileReader(filename) ); 
+		BufferedReader reader = new BufferedReader( new FileReader(filename) ); // creates a new buffered reader
 		
 		try{
-			while( reader.ready() ){
-				t = new Task();
-				t.read(reader);
+			while( reader.ready() ){ // checks to see if the file is ready to be read 
+				t = new Task(); // creates a new task
+				t.read(reader); // reads a file 
 				if( t!= null ){
-					taskList.add(t);
+					taskList.add(t); // adds a task to the task list
 				}
 			}
-			reader.close();
+			reader.close(); // closes the readere
 		} catch( IOException e ){
-			System.out.println( " IO Exception Encountered: " + e.getMessage() );
+			System.out.println( " IO Exception Encountered: " + e.getMessage() ); // if the program crashes, prints this message of the error
 		}	
 		
 	}
 	/**
-	 * Writes the data to the disk, does not work at all... so close... so close...
+	 * Writes the data to the disk
 	 * @param filename
 	 * @throws FileNotFoundException
 	 */
 	public void writeFile( String filename ) throws FileNotFoundException{
-		PrintWriter writer = new PrintWriter( filename );
+		PrintWriter writer = new PrintWriter( filename ); // creates a new print writer
 		// Basically this is totally useless, all it does is save the last task and destroys the rest... why...
 		for( int i = 0; i < taskList.size(); i++ ){
-			taskList.get(i).write( writer );
+			taskList.get(i).write( writer ); // writes the task list to the file
 		
 		}
 		
-		writer.close();
+		writer.close();// closes to writer
 	
 	}
 	/**
@@ -123,11 +123,11 @@ public class TaskList {
 	 * @return
 	 */
 	public Task serachByDescription( String d ){
-		Task t = null;
+		Task t = null; // sets task to null
 		
 		for( int i = 0; i < taskList.size(); i++ ){
 			if( taskList.get(i).getDescription().equals(d) ){
-				t = taskList.get(i);
+				t = taskList.get(i);// sets t to a task for a given index
 				break;
 			}
 		}
@@ -137,14 +137,14 @@ public class TaskList {
 	/**
 	 * Searches by the Priority of a task
 	 * @param p
-	 * @return
+	 * @return tL
 	 */
 	public TaskList searchByPriority( short p ){
-		TaskList tL = new TaskList() ;
+		TaskList tL = new TaskList() ; //creates a new task list
 		
 		for( int i = 0; i < taskList.size(); i++ ){
 			if( taskList.get(i).getPriority() == p){
-				tL.addTask(taskList.get(i));
+				tL.addTask(taskList.get(i));// adds a task to the task list of a given index
 			}
 		}
 		return tL;
@@ -152,14 +152,14 @@ public class TaskList {
 	/**
 	 * Searches by the Due Date of a task
 	 * @param d
-	 * @return
+	 * @return tL
 	 */
 	public TaskList searchByDueDate( String d ){
-		TaskList tL = new TaskList();
+		TaskList tL = new TaskList(); // creates a new task list
 		
 		for( int i = 0; i < taskList.size(); i++){
 			if( taskList.get(i).getDate().equals(d) ){
-				tL.addTask(taskList.get(i));
+				tL.addTask(taskList.get(i)); // adds a task to the task list of a given index
 			}
 		}
 		return tL;
@@ -167,14 +167,14 @@ public class TaskList {
 	/**
 	 * Searches by the category of a task
 	 * @param p
-	 * @return
+	 * @returntL
 	 */
 	public TaskList seachByCategory( short p ){
-		TaskList tL = new TaskList();
+		TaskList tL = new TaskList(); // creates a new task list
 		
 		for( int i = 0; i < taskList.size(); i++){
 			if( taskList.get(i).getCatagory() == p){
-				tL.addTask(taskList.get(i));
+				tL.addTask(taskList.get(i)); // adds a task to the task list of a given index
 			}
 		}
 		return tL;
@@ -182,14 +182,14 @@ public class TaskList {
 	/**
 	 * Searches by whether a task is completed or not
 	 * @param b
-	 * @return
+	 * @return tL
 	 */
 	public TaskList searchByCompletion( boolean b ){
-		TaskList tL = new TaskList();
+		TaskList tL = new TaskList(); // creates a new task list 
 		
 		for( int i = 0; i < taskList.size(); i++ ){
 			if( taskList.get(i).getCompleted() == b ){
-				tL.addTask(taskList.get(i));
+				tL.addTask(taskList.get(i)); // adds a task to the task list of a given index
 			}
 		}
 		return tL;
@@ -226,10 +226,9 @@ public class TaskList {
 		//taskList.sort(t.compareTo < t.getPriority());
 		
 		//for( (taskList.size -1); ctr++; ){
-		taskList.sort(Task::compareTo);
-		taskList.forEach(System.out::println ); // Yeah I'm not gonna lie here, I understand the principles, 
-		//but i have no clue what those colons are and how they magically work.
-	}
+		taskList.sort(Task::compareTo); // calls the compareTo method 
+		taskList.forEach(System.out::println ); // prints the tasks in the task list
+		}
 	
 	
 }

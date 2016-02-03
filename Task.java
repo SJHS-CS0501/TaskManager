@@ -94,26 +94,29 @@ public class Task implements Comparable {
 		}
 		*/
 		if( p < 0|| p > 3){
-			throw new IllegalArgumentException( " Invalid priority " );
+			throw new IllegalArgumentException( " Invalid priority " ); // prints this message if the user inputs an invalid method
 		}
-		priority = p;
+		priority = p; // sets priority equal to p
 	}
 	/**
 	 * returns priority to main
 	 * @return
 	 */
 	public short getPriority(){
-		return priority;
+		return priority; 
 	}
-	
+	/**
+	 * This method determines the priority name associated with each priority number for a task
+	 * @return
+	 */
 	public String getPriorityName(){
 		
-		String pName = null;
+		String pName = null; // sets string pName (priority name) equal to null
 		
-		switch( priority ){
+		switch( priority ){ // switches to the priority number ( short ) 
 		
 			case 0:
-			pName = "Undefined";
+			pName = "Undefined"; 
 			break;
 		case 1:
 			pName = "High";
@@ -131,7 +134,11 @@ public class Task implements Comparable {
 	}
 		return pName;
 	}
-
+/**
+ * This method compares the priority to sort it 
+ * @param t
+ * @return
+ */
 public int compareTo( Task t ){
 		
 		if( priority < t.getPriority() ){
@@ -195,7 +202,7 @@ public int compareTo( Task t ){
 		*/
 		if( c < 0|| c > 5){
 
-			throw new IllegalArgumentException( " Invalid category " );
+			throw new IllegalArgumentException( " Invalid category " ); // prints this message if the user inputs an invalid category
 			
 
 
@@ -203,10 +210,13 @@ public int compareTo( Task t ){
 		category = c;
 	}
 	
-	
+	/**
+	 * This method 
+	 * @return
+	 */
 	public String getCategoryName(){
 		String cName = null;
-		switch( category ){
+		switch( category ){ // switches to the category number (short) associated with each category
 		case 0:
 			cName = "Other";
 			break;
@@ -273,7 +283,7 @@ public int compareTo( Task t ){
 		
 	}
 	/**
-	 * Sets the value of completed by using variable trFa to test if equaled to 'y'
+	 * Sets the value of completed 
 	 * @param completed
 	 */
 	public void setCompleted( boolean b ){
@@ -289,17 +299,12 @@ public int compareTo( Task t ){
 		return completed;
 	}
 	
+	
+	
 	/**
 	 * write a task to the provided PrintWriter object
 	 * @param writer
 	 */
-	
-	public void setUserDate( Date userDate ){
-		dueDate = userDate;
-	}
-	public Date getUserDate(){
-		return dueDate;
-	}
 	public void write( PrintWriter writer ){
 		// write data separated by tabs
 		StringBuilder s = new StringBuilder();
@@ -312,6 +317,7 @@ public int compareTo( Task t ){
 		private String description; // variable for the description of the task
 		private String location; // variable for the location of the task
 		private boolean completed; // variable for the completion of the task, either true or false
+		s.append( variable ) converts variables to a string 
 		 */
 		s.append( priority );
 		s.append("\t" );
@@ -337,21 +343,21 @@ public int compareTo( Task t ){
 	 * @return read task or return null if not read
 	 */
 	public Task read( BufferedReader reader ){
-		// get rid of all this t crap, we don't want it
-		Task t = new Task();
-		String line = null;
-		String [] results;
+		
+		Task t = new Task();// creates a new task
+		String line = null; // creates line and sets it to null
+		String [] results; // creates an array for the results of the reading
 		try{
-			line = reader.readLine();
+			line = reader.readLine();// sets line to whatever is read 
 		}catch(IOException e){
-			System.out.println( "Cannot read file: " + e.getMessage());
+			System.out.println( "Cannot read file: " + e.getMessage()); // if the program cannot read the file, this method is printed
 			t = null;
 		}
 		
-		results = line.split("\t");
+		results = line.split("\t"); // splits the results so that it matches the regex
 		
 		for( int ctr = 0; ctr< results.length; ctr++ ){
-			System.out.println(  results[ctr] );
+			System.out.println(  results[ctr] ); // prints the results
 			
 		}
 		
@@ -364,18 +370,22 @@ public int compareTo( Task t ){
 		private boolean completed; // variable for the completion of the task, either true or false
 		 */
 		
-		t.setPriority( Short.parseShort(results[0]));
+		t.setPriority( Short.parseShort(results[0])); // sets priority using the parsed short
 		try {
-		t.setDate( DateFormat.getDateInstance().parse(results[1]) ); 
+		t.setDate( DateFormat.getDateInstance().parse(results[1]) ); // sets date using the date formatted into the date
 		} catch(ParseException e) {
 			System.out.println( "Could not parse date. Setting to null." );
 		}
-		t.setCatagory(Short.parseShort(results[2]));
-		t.setDescription(results[4]);
-		t.setLocation(results[4]);
-		t.setCompleted(Boolean.parseBoolean(results[5]));
+		t.setCatagory(Short.parseShort(results[2]));// sets priority using the parsed short 
+		t.setDescription(results[4]);// sets priority using the parsed description
+		t.setLocation(results[4]);// sets priority using the location
+		t.setCompleted(Boolean.parseBoolean(results[5]));// sets priority using the completed
 		return t;
 	}
+	/**
+	 * This method converts everything to a string 
+	 * @return s
+	 */
 	public String toString() {
 		  StringBuilder s = new StringBuilder();
 		  s.append( "Description: " + description + "\n" );
