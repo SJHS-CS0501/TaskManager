@@ -205,7 +205,7 @@ public class Task_Manager {
 					do{	
 						System.out.println("\n Which task would you like removed? "
 								     		+ "\nType the number of the task"
-								     		+ " or type 0 to exit");
+								     		+ " or type -1 to exit");
 						try{
 						i = k.nextInt();
 						}catch(Exception e){
@@ -215,8 +215,12 @@ public class Task_Manager {
 							
 						}
 						
+						try{
 						list.reamoveTask(i);
-						
+						}catch(Exception e){
+							System.out.println("Not found, exitinng");
+							i = 0;
+						}
 					}
 					while(i != 0);
 					break;
@@ -443,13 +447,20 @@ public class Task_Manager {
 		case 6:
 			
 		do{
-			System.out.println("\nWhich task do you want to edit (use numbers)\n -1 to exit");
+			System.out.println("\nWhich task do you want to edit (use numbers)\n -1 to exit \n(Remenber the first task is 0)");
 			
 			in = k.nextInt();
 			
+			try{
 			list.getTask(in);
-			
 			System.out.println(list.getTask(in));
+			}
+			catch(Exception e){
+				k.nextLine();
+			}
+			
+			
+			if(in != -1){
 			
 			do{
 			
@@ -518,6 +529,8 @@ public class Task_Manager {
 			
 			}
 			while(y != 0);
+			}
+			
 			
 		}
 		while(in != -1);
