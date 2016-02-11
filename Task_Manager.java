@@ -447,15 +447,9 @@ public class Task_Manager {
 		case 6:
 			
 		do{
-<<<<<<< HEAD
-<<<<<<< HEAD
-			System.out.println("\nWhich task do you want to edit (use numbers)\n -1 to exit \n(Remenber the first task is 0)");
-=======
+
 			System.out.println("\nWhich task do you want to edit (use numbers)\n 0 to exit");
->>>>>>> parent of 2c1b71f... Final edits
-=======
-			System.out.println("\nWhich task do you want to edit (use numbers)\n 0 to exit");
->>>>>>> parent of 2c1b71f... Final edits
+
 			
 			in = k.nextInt();
 			
@@ -536,17 +530,11 @@ public class Task_Manager {
 			list.writeFile(fileName);
 			
 			}
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 			while(y != 0);
 			}
 			
-=======
-			while(in != 0);
->>>>>>> parent of 2c1b71f... Final edits
-=======
-			while(in != 0);
->>>>>>> parent of 2c1b71f... Final edits
+
 			
 		}
 		while(in != 0);
