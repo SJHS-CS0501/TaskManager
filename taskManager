@@ -1,0 +1,40 @@
+import java.util.Scanner;
+/*
+ * Taskmanager program
+ * 
+ * do these things:
+ * -keep a list of tasks
+ * -allow user to insert or remove tasks
+ * -allow user to prioritize tasks
+ * -printout lists of tasks
+ * 
+ * List of tasks
+ * - read and store on disks
+ * - Sort
+ * - Search
+ * 
+ * Reports:
+ * - List high priority
+ * - list due  today/soon
+ * - list all (by day Or by priority)
+ */
+
+/**
+ * @author DylanJesse
+ *
+ */
+public class Taskmanager {
+
+	public static void main(String[] args)
+	{
+		Scanner SC =new Scanner(System.in);
+		int menuO =0;
+		System.out.println("Welcome to the Task manager!");
+		System.out.println("Menu\n\t1.Veiw Tasks\n2.close program");
+		menuO1= SC.nextInt();
+		if(
+		System.exit(0);
+		
+		
+	}//main class end
+}//taskmanager class end

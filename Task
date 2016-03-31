@@ -1,0 +1,204 @@
+import java.io.IOException;                               //used to try and catch exceptions
+import java.io.File;                                      //allows us to acces files
+import java.io.FileWriter;                                //allows us to write stuff inside the file
+import java.util.Scanner;                                 //allows user to enter data
+
+/**
+*First: place scanner                                     //complete
+*Second: place variables                                  //complete
+*Third: creat constructors of for each Variable           //not sure if done correctly
+*fourth: create the file creator                          //unsure
+*5th:Format the variable entries                          //need help(My attempt is on lines 41-58)
+*6th:write to file                                        //unsure if done correctly
+*7th: Write switch Statements for nessicary variables     //complete(category and priority)
+*8th: add file reader                                     //unsure if done correctly
+*/
+public class task
+{
+  //scanner below
+  Scanner SC = new Scanner(System.in);
+  
+  //varaibles below
+  private String Name;
+  private short Time;
+  private short Date;
+  private int Priority;
+  private int Category;
+  private String CategoryS;
+  
+  //Name setter
+  public static set.Name(String n)
+  {
+    System.out.println("Please enter the name of the task");
+    n = Sc.nextLine();
+  }//setName end
+  public static get.Name(String n)
+  {
+    return n;
+  }//getName end
+  
+  
+  //set time below
+  public static set.Time(short t)
+  {
+   System.out.println("Please enter the hour of the task");
+    StringBuilder SB = new StringBuilder();
+    Formatter TimeF = new Formatter(TimeF);
+    Formatter.format(%H);
+    t = SC.nextShort();
+    try{
+      t= time;
+      System.out.println("Valid hour entered");
+    }catch
+      (System.out.println("Invalid hour entered"));
+   
+  }//SetTime end
+  public static get.Time(short t)
+  {
+    return t;
+  }//getTime end
+  
+  //set date
+  public static set.Date(short d1, short d2)
+  {
+    boolean flag2 = true;
+    while(flag2==true)
+    {
+      System.out.println("Please enter the month of the task");
+      d1= SC.nextShort();
+      if(d1>12)
+      {
+       System.out.println("Invalid month");
+      }//if not a valid month
+      if(d1<12)
+      {
+        System.out.println("Valid month");
+        flag2 =false;
+      }//if valid month
+      System.out.println("Please enter the day number of the task");
+      d2 =SC.nextShort();
+      if(d2>31)
+      {
+        System.out.println("Invalid day");
+      }//if invalid day
+      if(d2<31)
+      {
+        System.out.println("Valid day");
+        flag2 = false;
+      }//if valid day
+    }//end of flag2 while true
+  }//setDate end
+public static get.Date(short d1, short d2)
+  {
+    return d1;
+    return d2;
+  }//getDate end
+  
+  
+  //set Priority below
+  public static set.Priority( int p)
+  {
+    boolean flag3 =true;
+    while(flag3==true)
+    {
+      System.out.println("Please enetr the priority level of 1-5");
+      p = SC.NextShort();
+      if(p>5)
+      {
+        System.out.println("Invalid priority");
+      }//invalid priority end
+      if(p<6)
+      {
+        System.out.println("Valid Priority entered");
+        flag3 = false;
+      }//if valid priority end
+    }//while flag3 = true end
+  }//setPriority end
+  public static get.Priority( int p)
+  {
+    return p;
+  }//get Priority end
+  
+  //priority switch statement
+  public static void SwitchPrio(short p)
+  {
+    switch(p) 
+    {
+      case1: priority = "Level 1 Priority";
+      break;
+      case2: priority = "Level 2 Priority";
+      break;
+      case3: priority = "Level 3 Priority";
+      break;
+      case4: priority = "Level 4 Priority";
+      break;
+      case5: priority = "Level 5 Priority";
+      break;
+      default: priority = "Invalid Priority";
+      break;
+    }//switch end
+  }//SwitchPrio end
+  
+  public static set.Category(int c)
+  {
+    System.out.println("Please enter the category number from below:");
+    System.out.println("\t1.School\n2.Chores\n3.Work\n4.Social");
+    c=SC.nextInt();
+  }//setCategory end
+  
+  public static get.Category(int c)
+  {
+    return c;
+  }//getCategory end
+  
+  public static CategorySwitch(int c)
+  {
+    switch(c) 
+    {
+      case1: CategoryS = "School";
+      break;
+      case2: CategoryS = "Chores";
+      break
+      case3: CategoryS = "Work";
+      break;
+      case4: CategoryS = "Social";
+      break;
+      default: CategoryS = "Invalid Category";
+      break;
+    }//switch end
+  }//CategorySwitch end
+  
+  //file class below
+  public static void File(String[]args)
+  {
+    private formatter fx;
+    
+    try{
+      fx= new formatter("Task.txt");
+      System.println("File Cretaed");
+    }//try end
+    catch(Exception e)
+    {
+      System.out.println("An Error has occured when creating the file");
+    }//catch end
+    
+    
+    //fileWriter below
+    fileWriter Fiwr =new fileWriter(task.txt);
+    Fiwr.write(Name);
+    Fiwr.write(Date);
+    Fiwr.write(Time);
+    Fiwr.write(Category);
+    Fiwr.write(Priority);
+    Fiwr.flush();
+    Fiwr.close();
+    
+    //file reader below
+    fileReader FR = new fileReader(task.txt);
+    BufferedReader BR = new BufferedReader(FR);
+    
+    
+   }//File end
+   
+   
+}//public task end
